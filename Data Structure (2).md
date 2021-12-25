@@ -1,3 +1,11 @@
+*【表】*
+*理解链表、数组的特点（优缺点）*
+*会代码实现：单链表 循环链表 双向链表……*
+
+*【栈和队列】*
+*理解原理，会算法：两种实现方法*
+*会应用算法，如：中序后序互转；前中后缀表达式互换；栈（队列）操作后的状态*
+
 # ADT
 **ADT(Abstract Data Type)** is a data type that is organized in such a way that the **specification**  on the objects and **specification** of the operations on the objects are **separated from** the **representation** of the objects and the **implementation** on the operations.
 
