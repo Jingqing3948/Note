@@ -33,7 +33,7 @@ f(i)=i^2^
 第一个散列函数冲突时，使用第二个散列函数。
 **hash2(x)必须不恒等于0！**
 *Tips: hash2(x)=R-(x%R) with R a prime smaller than TableSize, will work well.*
-#### Rehashing 再散列
+### Rehashing 再散列
 当插入数据达到N/2时，再散列。
 - 建立一个原表的二倍大的表（接近原表二倍大的素数）
 - 从原表中读取数据，用新hash function 存到新表中。
