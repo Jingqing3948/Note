@@ -17,10 +17,10 @@ TableSize=prime number is good for random integer keys.
 find another empty cell to solve collision 
 #### Linear Probing 线性探测法
 f(i)=i (a linear function)
-如果对应位被占了，则从头开始寻找空位。
-第0位是否为空？若为空放入，若不为空检查下一位；
-第1位是否为空？……
-查找：先去对应位找，如果没找到再从头遍历。
+如果对应位被占了，则往下继续寻找空位。
+下一位是否为空？若为空放入，若不为空检查下一位；
+再下一位是否为空？……
+查找：先去对应位找，如果没找到再继续往下遍历。
 #### Quadratic Probing 平方探测法
 f(i)=i^2^
 如果对应位被占了，则+1^1；
