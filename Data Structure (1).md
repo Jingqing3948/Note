@@ -1,5 +1,5 @@
-*理解时间复杂度的定义*
-*（本课程涉及到的所有算法，都需要记住时间复杂度O）*
+理解时间复杂度的定义
+（本课程涉及到的所有算法，都需要记住时间复杂度O）
 # Data structure notes
 Program = Algorithm + Data Structure
 An algorithm is a finite set of instructions that, fi followed, accomplishes a particular task. In addition, all algorithms must satisfy the following criteria:
