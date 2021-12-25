@@ -13,7 +13,7 @@ An algorithm can be described by human languages, flow charts, some programming 
 
 引入 time complexities 和 space complexities 的概念。
 
-2^n^>n^2^>nlogn>n>logn>1
+$2^n^>n^2^>nlogn>n>logn>1$
 
 # 单词：
 Algorithm 算法
