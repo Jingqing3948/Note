@@ -6,7 +6,7 @@
 【再散列】
 
 # HASHING
-散列表（hashing table）的实现叫散列（hashing）散裂是一种用于以常数时间执行插入、删除和查找的技术，但不能排序。
+散列表（hashing table）的实现叫散列（hashing）散列是一种用于以常数时间执行插入、删除和查找的技术，但不能排序。
 散列函数（hashing function）是关键字被映射到0～TableSize-1范围内的函数。
 - must be easy to compute and minimizes the number of collisions.
 - Should be unbiased. For any x and any i, we have that probability(f(x)=i)=1/b. (Uniform hash function)
