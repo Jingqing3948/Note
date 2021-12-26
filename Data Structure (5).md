@@ -44,6 +44,6 @@ We only need to delete the root node——the smallest node.
 - Exchange the root node with the last node——the nth node.
 - do the same thing mentioned above in the Italic text: re-arrange the new node.
 - Iteratively delete root node until delete the whole heap.
-  *Those 2 operations' time complexity are O(log N).*
+  **Those 2 operations' time complexity are O(log N). Insertion all node is O(nlogn).*
 
-*For the perfect binary tree of height h containing 2h+1  1 nodes, the sum of the heights of the nodes is 2h+1 - 1 - (h + 1).*
+*For the perfect binary tree of height h containing 2h+1 - 1 nodes, the sum of the heights of the nodes is 2h+1 - 1 - (h + 1).*
