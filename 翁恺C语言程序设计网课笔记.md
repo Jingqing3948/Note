@@ -3,10 +3,8 @@ title: 翁恺C语言程序设计网课笔记
 date: 2020-11-27
 tags: 
 - C
-- Programming Language
 categories:
-- Code
-- C
+- Programming Language
 ---
 
 [TOC]

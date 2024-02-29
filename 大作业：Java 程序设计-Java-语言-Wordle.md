@@ -3,10 +3,8 @@ title: 大作业：Java 程序设计-Java-语言-Wordle
 date: 2022-07-20
 tags:
 - Java
-- Homework
 categories:
-- Code
-- Java
+- Project
 ---
 
 # Wordle 游戏介绍
@@ -19,17 +17,18 @@ categories:
 > 根据反馈信息再进行下一轮猜测，在6次尝试之内猜出就算赢。
 > 来源：https://news.mydrivers.com/1/813/813695.htm#:~:text=Wordle%E7%9A%84%E6%B8%B8,%E4%BD%8D%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%B0%9C%E5%BA%95%E3%80%82
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/494e131e4b2641d48becd4aef3f90c7d.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/494e131e4b2641d48becd4aef3f90c7d.png)
 # 成果图示
 博主大二期间学习的java课程大作业，就是写一款 wordle 游戏，主要考察 GUI 界面的开发。
 最终成果图示：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/008abdff020b4e05bc56265450bc7442.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1840388526344189a27121987da22d47.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/74f2dd38063349298b84d23cafb28db2.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/008abdff020b4e05bc56265450bc7442.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1840388526344189a27121987da22d47.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/74f2dd38063349298b84d23cafb28db2.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e9aacefcb2984adf913ea8c80fee24ff.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/07e7dd5c4a4348afb35cfc7cc009ca88.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f163f8a63ff14878b74691ba432fd882.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/de75c6c50c9b45a3bbd2c58f95104217.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/07e7dd5c4a4348afb35cfc7cc009ca88.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/f163f8a63ff14878b74691ba432fd882.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/de75c6c50c9b45a3bbd2c58f95104217.png)
+
 # 玩法介绍
 点击HELP 查看帮助，点击 START 开始游戏。
 本游戏中没有虚拟键盘，输入框也不能获取鼠标焦点，只能通过键盘键入字母，回车检查答案。

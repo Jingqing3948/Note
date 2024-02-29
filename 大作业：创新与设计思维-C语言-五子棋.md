@@ -3,10 +3,8 @@ title: 大作业：创新与设计思维-C语言-五子棋
 date: 2021-07-25
 tags:
 - C
-- Homework
 categories:
-- Code
-- C
+- Project
 ---
 
 这次看了几位大佬的做法，我们也做了很多修改尝试。算是第一次尝试合作完成项目。

@@ -3,10 +3,8 @@ title: 大作业：程序设计课程设计-C语言-订餐系统
 date: 2021-09-11
 tags: 
 - C
-- Homework
 categories:
-- Code
-- C
+- Project
 ---
 
 尽管快半年没有学c了，好在回顾起来还是蛮快的。而且也发现比去年的自己熟练了许多。

@@ -3,10 +3,8 @@ title: 大作业：计算导论与程序设计-C语言-函数动画
 date: 2020-12-15
 tags: 
 - C
-- Homework
 categories:
-- Code
-- C
+- Project
 ---
 
 **绘制一个函数动画。**

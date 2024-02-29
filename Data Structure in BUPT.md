@@ -3,11 +3,8 @@ title: Data Structure in BUPT
 date: 2021-10-01
 tags: 
 - C
-- Programming Language
-- Data Structure
 categories:
-- Code
-- C
+- Data Structure
 ---
 
 
