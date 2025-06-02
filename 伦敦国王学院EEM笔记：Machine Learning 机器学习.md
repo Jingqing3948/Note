@@ -7,6 +7,7 @@ categories:
 - 王道（KCL电子工程专业课内学习）
 - Lecture
 description: 伦敦国王学院工程学院电子工程管理专业深度学习课程学习笔记
+mathjax: true
 ---
 
 
@@ -57,9 +58,9 @@ $$
 
 ### 连续随机变量
 
-连续随机变量（Continuous）通常用概率密度函数表示，$$x\sim p(\textit x)$$，同样 p(x)在域上求积分 = 1.
+连续随机变量（Continuous）通常用概率密度函数表示，$x\sim p(\textit x)$，同样 p(x)在域上求积分 = 1.
 
-比如经典的高斯变量，$$x \sim N(\mu, \sigma ^2)$$，表示公式：
+比如经典的高斯变量，$x \sim N(\mu, \sigma ^2)$，表示公式：
 $$
 p(x)= N(x|\mu,\sigma ^2) = \frac{1}{\sqrt{2\pi \sigma ^2}}exp(-\frac{(x-\mu)^2}{2\sigma ^2})
 $$
@@ -86,23 +87,23 @@ $$
 $$
 xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})] =\int_{-\infty }^{+\infty }p(x)f(x)dx
 $$
-高斯随机变量 $$N(µ, σ^2)$$ 的期望，对于 f(x)= x 函数来说 $= µ$，对于 $f(x)= x^2$ 函数来说 $= µ^2+σ^2$.
+高斯随机变量 $N(µ, σ^2)$ 的期望，对于 f(x)= x 函数来说 $= µ$，对于 $f(x)= x^2$ 函数来说 $= µ^2+σ^2$.
 
-- 高斯随机变量的期望是线性的. 也就是说满足 $$E(af(x)+bg(x))=aE(f(x))+bE(g(x))$$ 。
+- 高斯随机变量的期望是线性的. 也就是说满足 $E(af(x)+bg(x))=aE(f(x))+bE(g(x))$ 。
 
 ## 向量
 
 基础向量（Vector）操作矩阵乘法等不再赘述。这里指的向量的表示形式是列向量（L×1 长度）。
 
-**inner product 内积**：两个长度相同的列向量每个元素相乘，$$x^Ty$$。内积一般用来衡量两个向量的相似度（similarity）.
+**inner product 内积**：两个长度相同的列向量每个元素相乘，$x^Ty$。内积一般用来衡量两个向量的相似度（similarity）.
 
 比如下面这两对 xy，内积都 = 6，说明其相似度差不多。
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301313822.png" alt=" "  />
 
-**范数（norm）**：就是向量的标量长度，可以通过 $$x^Tx$$ 计算。
+**范数（norm）**：就是向量的标量长度，可以通过 $x^Tx$ 计算。
 
-L1 范数：$$x^Tx$$
+L1 范数：$x^Tx$
 
 L2 范数：L1 范数再开根，代表向量长度。
 
@@ -112,7 +113,7 @@ $\widetilde{x}$：x 的归一化，相当于一个和 x 方向相同但是长度
 
 ## 矩阵
 
-**对角矩阵（Diagonal matrix）**：只有对角线上的值（$$a_{ii}$$）非零
+**对角矩阵（Diagonal matrix）**：只有对角线上的值（$a_{ii}$）非零
 $$
 Diag(a)=
 \begin{bmatrix}
@@ -128,9 +129,9 @@ L×1 列向量的对角矩阵相当于把列向量中的元素均匀分到 L×L 
 
 ## 随机向量
 
-随机向量（Random Vector）是随机变量中所有元素按列向量排列。其中某个元素的概率：$$Pr[x=x_i]$$
+随机向量（Random Vector）是随机变量中所有元素按列向量排列。其中某个元素的概率：$Pr[x=x_i]$
 
-**联合随机向量（Joint pmf p(x)）**：多个维度的事件同时发生的概率。类似于：第一次硬币投出正面，第二次投出反面的概率。 $$p(x)=Pr[x_1 = x_1\ and\ x_2=x_2\ ...\ and\ x_L = x_L]$$
+**联合随机向量（Joint pmf p(x)）**：多个维度的事件同时发生的概率。类似于：第一次硬币投出正面，第二次投出反面的概率。 $p(x)=Pr[x_1 = x_1\ and\ x_2=x_2\ ...\ and\ x_L = x_L]$
 
 伯努利随机向量（Bernoulli random vector）：只有两种情况，类似投硬币，一正一反。
 
@@ -205,7 +206,7 @@ $$
 
 ## 贝叶斯推理
 
-贝叶斯定理（Optimal Soft Prediction / Bayesian Inference）比如我们求出，q(t|1)= Bern(t|0.8)，那么可以说：$$\hat t(1) = 1$$ with associated probability of error of 0.2（误差 = 0.2 的硬推理）。当 x = 1 时 t = 1 的硬预测器是最优的。
+贝叶斯定理（Optimal Soft Prediction / Bayesian Inference）比如我们求出，q(t|1)= Bern(t|0.8)，那么可以说：$\hat t(1) = 1$ with associated probability of error of 0.2（误差 = 0.2 的硬推理）。当 x = 1 时 t = 1 的硬预测器是最优的。
 
 ## 代价函数
 
@@ -222,13 +223,12 @@ k 一般 = 2，也就是平方损失（quadratic error loss）。
 $\mathbb{1}$ 是指示符函数，预测结果正确时 = 1，否则 = 0.
 $$
 \begin{aligned}
- \mathcal{l} (t, \hat t) = \mathbb{1}(t = \hat t)\\
- \mathbb{1}(a) = 
- \begin{cases}
-      1 & \text{if a = true}\\
-      
+  \mathcal{l} (t, \hat t) &= \mathbb{1}(t = \hat t) \\
+  \mathbb{1}(a) &= 
+  \begin{cases}
+      1 & \text{if a = true} \\
       0 & \text{if a = false}
-    \end{cases}     
+  \end{cases}
 \end{aligned}
 $$
 
@@ -238,10 +238,8 @@ L_p(\hat t(\cdot))= E_{(x, t)\sim p(x, t)}[l(t,\hat t(x))]
 $$
 比如下题，预测器是令 t 永远 = 1，求 population loss。只需要计算算错部分的概率即可。
 
-<div align="center">
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070004028.png" alt=" " style="zoom: 33%;" />
 
-<div>
 
 ## 最优硬预测
 
@@ -320,7 +318,7 @@ $$
 $$
 \hat t(x|\theta)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_Mx^M =\theta^Tu(x)
 $$
-其中的 u(x) 可不是阶跃函数，而是 feature vector 表示 $$[1, x, x^2, x^3...x^M]^T$$ 这个列向量。
+其中的 u(x) 可不是阶跃函数，而是 feature vector 表示 $[1, x, x^2, x^3...x^M]^T$ 这个列向量。
 
 这个模型类被称为线性预测器（不是因为 t 和 x 呈线性关系，很明显不是。而是因为 t 和 θ 呈线性关系）。
 
@@ -330,7 +328,7 @@ L_p(\theta)= E_{(x, t)\sim p(x, t)}[l(t,\hat t(x|\theta))]
 $$
 但是学习和推理不同，我们不知道具体概率值因此这个损失无法得到。我们可以评估训练损失：
 $$
-L_D(\theta)=\frac{1}{N}\sum^{N}_{n = 1}l(t_n,\hat t(x_n|\theta))=\sum_{x, t}p_D(x, t)l(t,\hat t(x|\theta))
+L_D(\theta) = \frac{1}{N} \sum_{n = 1}^{N} \ell(t_n, \hat{t}(x_n \mid \theta)) = \sum_{x, t} p_D(x, t) \, \ell(t, \hat{t}(x \mid \theta))
 $$
 ## 归纳偏差选择
 
@@ -343,12 +341,15 @@ $$
 t^*(\cdot)= arg\,\mathop{min}\limits_{t(\cdot)}L_p(t(\cdot))
 $$
 总体最优类内预测器（Population-optimal within-class predictor）：首先确定模型类，在这种模型类的前提下选择 θ 最小化损失。
+
 $$
-\theta ^*_M = arg \mathop{min}\limits_{\theta \in R^{M+1}}L_p(\theta)
+\theta_M^* = \arg\min_{\theta \in \mathbb{R}^{M+1}} L_p(\theta)
 $$
+
 经验风险最小化训练预测器（Trained ERM predictor）：确定模型类，且使用有限的训练数据集来计算损失。
+
 $$
-\theta_M^{ERM}== arg \mathop{min}\limits_{\theta \in R^{M+1}}L_D(\theta)
+\theta_M^{ERM} = \arg\min_{\theta \in \mathbb{R}^{M+1}} L_D(\theta)
 $$
 
 ### ERM 经验风险最小化预测
@@ -469,16 +470,14 @@ $$
 
 首先将模型划分为 K 个类。每次迭代从每个类中选取一个值作为验证集，比如第 3 次就把 3 类作为验证集，把剩下的类作为训练集。
 
-<div align="center">
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141707768.png" alt=" " style="zoom: 67%;" />
 
-</div>
 
 最后求所有迭代的损失平均值：
-$$
-\hat L_p = \frac{1}{K}\sum^{K}_{k = 1}L_{D_k}(\theta^{ERM}_{\mathop{D}\limits^{\sim}_{-k}})
-$$
 
+$$
+\hat{L}\_p = \frac{1}{K} \sum_{k=1}^{K} L\_{D_k} \left( \theta^{\mathrm{ERM}}\_{D\_{-k}^{\sim}} \right)
+$$
 
 例题：如下，尝试计算只选取两个元素作为验证集（不用 K-Fold 验证方式）的损失。
 
@@ -486,10 +485,8 @@ $$
 
 如果是总体最优预测模型：很简单，把所有数据都作为训练数据，并且如果只涉及到这四个数据，损失 = 0.
 
-<div align="center">
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141717057.png" alt="" style="zoom: 67%;" />
 
-<div>
 
 学习（ERM）：现在假设我们先选择两个数据作为训练数据。假设我们选择了 x = 2 x = 3. 那就完蛋了，用这两个数据我们训练得到的预测器是 t(x)= 2，t 的值不受 x 的影响。
 $$
@@ -501,7 +498,11 @@ $$
 
 如何权衡偏差和估计错误？
 $$
-L_p(\theta _D) = L_p(\hat t^*(\cdot))^{\text{minimum unconstrained population loss}} + \left(L_p(\theta^*_H) - L_p(\hat t^*(\cdot))\right)^{\text{bias}} + \left(L_p(\theta_D) - L_p(\theta^*_H)\right)^{\text{estimation error}}
+\begin{aligned}
+L_p(\theta_D) &= L_p(\hat{t}^{(\cdot)})^{\text{minimum unconstrained population loss}} 
+ +\left(L_p(\theta_H) -L_p(\hat{t}^{(\cdot)})\right)^{\text{bias}} 
+ +\left(L_p(\theta_D) -L_p(\theta_H)\right)^{\text{estimation error}}
+\end{aligned}
 $$
 第一部分：最优预测的损失。当然最优预测很难找到因为不知道概率。
 
@@ -515,13 +516,17 @@ M 增加，也就是模型 class 复杂度增加，bias 会下降，但 estimati
 
 N 增加，也就是训练数据集增加，bias 不变，estimation error 会减少。
 
-<div align="center">
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png" alt="" style="zoom:67%;" />
 
 再细化一点，对于每个输入 x，损失函数的表达方式是：
 $$
-L_p(\theta _D |x)=\underbrace{L_p(\hat t^*(x) |x)}_\text{aleatoric\, uncertainty}+\underbrace{(L_p(\theta^*_H|x)-L_p(\hat t^*(x)|x))}_\text{bias}+\underbrace{(L_p(\theta_D|x)-L_p(\theta^*_H|x))}_\text{epistemic\, uncertainty}\\
+\begin{aligned}
+L\_p(\theta\_D \mid x) =\ 
+&\underset{\mathrm{aleatoric\ uncertainty}}{\underbrace{L\_p(\hat{t}^\*(x) \mid x)}} \\
+&+ \underset{\mathrm{bias}}{\underbrace{\left(L\_p(\theta_H^* \mid x) - L\_p(\hat{t}^\*(x) \mid x)\right)}} \\
+&+ \underset{\mathrm{epistemic\ uncertainty}}{\underbrace{\left(L\_p(\theta\_D \mid x) - L\_p(\theta_H^\* \mid x)\right)}}
+\end{aligned}
 $$
 
 *其实这里对模型容量，数据量的介绍有些过于简化其作用了，训练效果和要解决的问题，模型选择，训练算法等等都有影响。比如深度神经网络一般是大容量模型，并不一定适用“模型容量越大，越容易过拟合”的定理。当模型容量增加的时候，测试误差会首先增加（过拟合）然后下降，直到一个插值点 interpolation point。这个特性被称为“双降 double descent”，意思是 training loss 随着模型容量增加而下降的同时，population loss 也没有如过拟合预期的那样增加。*
@@ -532,7 +537,7 @@ $$
 
 θ 的参数过多会导致 overfitting，而正交化期望：降低 θ 的权重使得过拟合问题不那么明显。
 $$
-\theta^{R-ERM}_D = arg\,\mathop{min}\limits_{\theta \in \Theta}\left\{L_D(\theta)+\frac{\lambda}{N}R(\theta) \right\}
+\theta^{\mathrm{R\mbox{-}ERM}}\_D = \arg\min_{\theta \in \Theta} \lbrace L\_D(\theta) + \frac{\lambda}{N} R(\theta) \rbrace
 $$
 
 
@@ -540,7 +545,7 @@ $$
 
 λ：一个可以设定的参数，尽可能的在减小训练损失和准确度之间权衡。
 
-R：正交化 θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维范式是其平方求和 $$||θ||^2$$。*一维范式被称作 LASSO Least Absolute Shrinkage and Selection Operator 最小绝对收缩和选择算子回归。*
+R：正交化 θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维范式是其平方求和 $||θ||^2$。*一维范式被称作 LASSO Least Absolute Shrinkage and Selection Operator 最小绝对收缩和选择算子回归。*
 
 θ 数量越多，第二项也会使得整体的值增加，作用相当于 loss 增加。
 
@@ -590,10 +595,8 @@ $$
 
 简单来说，每次迭代的时候沿损失梯度下降最快的方向走一定的步长，让下次迭代的 θ 序列损失更小。
 
-<div align="center">
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270009617.png" alt="[神经网络基础理论与简单实践 | korilin's blog](https://korilin.com/posts/basic-theory-and-simple-practice-of-neural-network/image_21.png)" style="zoom: 80%;" />
 
-</div>
 
 公式如下，注意这里的 θ 不是指多项式中的每一个参数 θ，而是每次迭代产生的一组 θ。初始化第一组 θ 后，后面的每组 θ 都迭代计算。γ 是学习率，步长，决定每次迭代要迈多大的步子。
 $$
@@ -602,9 +605,7 @@ $$
 
 如果 γ 设置的太大了，就容易迈过，再回头往反方向走。
 
-<div align="center">
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp" alt=" " style="zoom:80%;" />
-</div>
 
 > [!NOTE]
 >
@@ -631,7 +632,7 @@ $$
 
 ​		也就是说下一次迭代的 θ 一定能让损失下降这么多。
 
-- - convergence to a stationary point：g(θ) 收敛，$$\nabla g(\theta^{(i)})\rightarrow0$$
+- - convergence to a stationary point：g(θ) 收敛，$\nabla g(\theta^{(i)})\rightarrow0$
 
 不过问题在于 L 不一定知道。我们可以通过验证，以及其他方法获取（后续章节介绍）。
 
@@ -647,13 +648,13 @@ SGD 相比 GD 可能需要多走几步因为一开始的每一步不一定精准
 
 所以选择合适的学习率也可以适当减少迭代次数。根据 Munro-Robbins conditions，SGD 的学习率设置：
 $$
-\sum^{\infty}_{i = 1}\gamma^{(i)}=\infty\; and\;\sum^{\infty}_{i = 1}(\gamma^{(i)})^2\lt\infty
+\sum_{i = 1}^{\infty} \gamma^{(i)} = \infty \quad \text{and} \quad \sum_{i = 1}^{\infty} \left( \gamma^{(i)} \right)^2 < \infty
 $$
 第一部分保证了学习率不会太小以至于原地踏步，永远无法到达 stationary point；第二部分确保学习率不会太大，SGD 的方差是逐渐减小直到消失的，保证逐渐逼近 stationary point 而不会在极点附近来回徘徊。
 
-比如 $$\gamma^{(i)}=1/i^{\alpha},\alpha \in (0.5, 1]$$ 这个学习率满足这一条件。
+比如 $\gamma^{(i)}=1/i^{\alpha},\alpha \in (0.5, 1]$ 这个学习率满足这一条件。
 
-多项式学习率常常用 $$ \gamma ^{(i)} = \gamma ^{(0)}/(1 + \beta i)^\alpha, \beta>0,\gamma^{(0)}>0,\alpha \in (0.5,1]$$
+多项式学习率常常用 $ \gamma ^{(i)} = \gamma ^{(0)}/(1 + \beta i)^\alpha, \beta>0,\gamma^{(0)}>0,\alpha \in (0.5,1]$
 
 除了对学习率范围设限，另一种避免到达不了极点的方法是 S 样本量每次迭代都会增加。这两种方式可以结合使用。
 
@@ -698,7 +699,7 @@ $$
 
 反向传播（backward pass），假设 g(θ)= 1，反推回来。所有 f() 的部分要对相应的 θ 求导。
 
-> 例题： $$g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$$ ，求 [1,-1,1] 点处的梯度。
+> 例题： $g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$ ，求 [1,-1,1] 点处的梯度。
 >
 > 首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在 [1,-1,1] 处的数值，这一步的主要作用是确定计算图：
 >
@@ -710,9 +711,9 @@ $$
 >
 > [2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。
 >
-> 最终得到的 $$\nabla g(\theta)=[2,-4,-2]^T$$
+> 最终得到的 $\nabla g(\theta)=[2,-4,-2]^T$
 >
-> 例题 2：如下图，f1-f3 都是 $$(x_1+2x_2)^2$$，f4 = logx。
+> 例题 2：如下图，f1-f3 都是 $(x_1+2x_2)^2$，f4 = logx。
 >
 > 求 [1, -2, 1] 点处的梯度下降值。
 >
@@ -726,7 +727,7 @@ $$
 >
 > ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
 >
-> $$\nabla \theta=[-4/3, -8/3,0]^T$$
+> $\nabla \theta=[-4/3, -8/3,0]^T$
 
 # 上述方法在二元分类中的应用
 
@@ -736,12 +737,11 @@ $$
 
 目标 t 值：0 或者 1.
 $$
-t^{\pm}= 2t-1 =\left\{
-\begin{aligned}
-1,\, if\; t = 1\\
--1,\, if\; t = 0
-\end{aligned}
-\right.
+t^{\pm} = 2t - 1 = 
+\begin{cases}
+1, & \text{if } t = 1 \\
+-1, & \text{if } t = 0
+\end{cases}
 $$
 
 
@@ -781,7 +781,7 @@ p(t = 0|x,\theta)= 1&-p(t = 1|x,\theta)\\
 \sigma (x)=(&1+e^{(-x)})^{-1}
 \end{aligned}
 $$
-$$\sigma=\frac{1}{1+e^{-x}}$$ 或者 $$=\frac{e^2}{1+e^2}$$ ，**注意两种形式！**
+$\sigma=\frac{1}{1+e^{-x}}$ 或者 $=\frac{e^2}{1+e^2}$ ，**注意两种形式！**
 
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120232281.png" style="zoom: 67%;" />
@@ -810,48 +810,48 @@ l(t,\hat t(x|\theta))&=\mathbb{1} (t\neq \hat t(x|\theta))\\
 $$
 但是这个函数没法应用 GD 降维（损失函数图像类似矩阵函数，只有 0 和 1，没法降维）。所以我们可以应用其他的损失函数：
 
-<div align="center">
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120632479.png" style="zoom:67%;" />
 
-</div>
 
-- Exponential loss 指数损失：$$l(y)=e^{-y}$$
+- Exponential loss 指数损失：$l(y)=e^{-y}$
 
-- Hinge loss 铰链损失：$$l(y)=max(0,1-y)$$
+- Hinge loss 铰链损失：$l(y)=max(0,1-y)$
 
-- Hinge-at-zero loss 零损失铰链函数：$$l(y)=max(0,-y)$$
+- Hinge-at-zero loss 零损失铰链函数：$l(y)=max(0,-y)$
 
-- Logistic loss 对数损失：$$l(y)=log(1+e^{-y})$$
+- Logistic loss 对数损失：$l(y)=log(1+e^{-y})$
 
 这些函数都可以用，相比 detection-error loss 都可以应用 GD 降维。
 
-- 软预测损失：$$l(t,\hat t(x|\theta))=log(1+e^{-y})$$
+- 软预测损失：$l(t,\hat t(x|\theta))=log(1+e^{-y})$
 
 ### 感知器算法
 
 应用了 ERM，hinge-at-zero loss，SGD 的算法（Perceptron Algorithm）。
 
-损失函数：$$l(y)=max(0,-y)$$
+损失函数：$l(y)=max(0,-y)$
 
 梯度函数：
 $$
-\nabla l(t^\pm \cdot (\theta^T u(x)))=\left\{
 \begin{aligned}
-0\;\;\; if\; prediction\; is\; correct\\
--t^\pm \cdot u(x)\;\; if\; prediction\; is\; wrong
+\nabla \ell\left(t^{\pm} \cdot (\theta^T u(x))\right) &=
+\begin{cases}
+0, & \text{if prediction is correct} \\\\
+t^{\pm} \cdot u(x), & \text{if prediction is wrong}
+\end{cases}
 \end{aligned}
-\right .
 $$
 
 每次梯度下降迭代后的新 θ 参数计算公式：
 $$
-\theta^{(i+1)}=\theta^{(i)}+\gamma^{(i)}\cdot\left\{
 \begin{aligned}
-0\;\;\; if\; prediction\; is\; correct\\
-t^\pm \cdot u(x)\;\; if\; prediction\; is\; wrong
+\theta^{(i+1)} &= \theta^{(i)} + \gamma^{(i)} \cdot
+\begin{cases}
+0, & \text{if prediction is correct} \\\\
+t^{\pm} \cdot u(x), & \text{if prediction is wrong}
+\end{cases}
 \end{aligned}
-\right .
 $$
 
 
@@ -864,7 +864,6 @@ $$
 \begin{aligned}
 prediction\; is\; wrong,\ &\theta_1\cdot 2.1 =-2.1, hard\ prediction = 0\neq 1\\\\
 \theta_2&=\theta_1-\gamma x_1\\\\
-
 \theta_2&=-1+0.1\cdot 2.1 =-0.79
 \end{aligned}
 $$
@@ -882,15 +881,15 @@ $$
 $$
 \nabla l(t^\pm \cdot (\theta^T(u(x)))=(\sigma(\theta^T u(x))-t)\cdot u(x)
 $$
-$$\sigma(\theta^T u(x))-t$$ 部分又用 $$\delta(x,t) $$ 表示，表示 mean error，= 0 的时候说明预测完全准确。
+$\sigma(\theta^T u(x))-t$ 部分又用 $\delta(x,t) $ 表示，表示 mean error，= 0 的时候说明预测完全准确。
 
-当 mean error = 0 时，如果 t = 1，则 $$\theta^T(u(x))\rightarrow \infty$$ ；如果 t = 0，则 $$\theta^T(u(x))\rightarrow -\infty$$ 
+当 mean error = 0 时，如果 t = 1，则 $\theta^T(u(x))\rightarrow \infty$ ；如果 t = 0，则 $\theta^T(u(x))\rightarrow -\infty$ 
 
 软预测器梯度下降公式：
 $$
 \theta^{i+1}\leftarrow \theta^{(i)}-\gamma^{(i)}\frac{1}{S^{(i)}}\sum_{n\in S^{(i)}}(\sigma((\theta^{(i)})^Tu(x_n))-t^n)\cdot u(x_n)
 $$
-例题：还是上一道题的数据，初始预测器 $$\theta_1=-1, \lambda=0, \gamma=0.1$$, minimum batch size S = 1
+例题：还是上一道题的数据，初始预测器 $\theta_1=-1, \lambda=0, \gamma=0.1$, minimum batch size S = 1
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
 
@@ -913,8 +912,7 @@ u(x) 并不像线性模型一样一开始是确定的，可能在模型训练过
 每一层的处理公式如下：
 $$
 \begin{aligned}
-a^l = W^lh^{l-1}\\
-
+a^l = W^l h^{l-1}
 \end{aligned}
 $$
 W：权重向量，分配不同项之间的权重。
@@ -927,10 +925,10 @@ h：列向量，用本层的 a 向量通过一个激活函数激活后得到。
 
 典型的几种激活函数：
 
-- sigmoid：$$\sigma (a)$$
-- hyperbolic tangent: $$tanh(a)$$
-- Rectified Linear Unit: $$max(0,a)$$
-- Leaky ReLU: $$max(\alpha a,a),\,\alpha\in[0,1]$$
+- sigmoid：$\sigma (a)$
+- hyperbolic tangent: $tanh(a)$
+- Rectified Linear Unit: $max(0,a)$
+- Leaky ReLU: $max(\alpha a,a),\,\alpha\in[0,1]$
 
 下面是这四者的图像：
 
@@ -999,9 +997,9 @@ $$
 \delta^l =\sigma(a^L)-t
 $$
 
-最后一层后向传播的梯度 = 该层梯度的输入值代入 σ 函数再-目标值 t。比如最后一层输入-2，最终要计算 t = 0 时的梯度，计算结果就是 $$\frac{e^{-2}}{1+e^{-2}}-0\approx0.12$$
+最后一层后向传播的梯度 = 该层梯度的输入值代入 σ 函数再-目标值 t。比如最后一层输入-2，最终要计算 t = 0 时的梯度，计算结果就是 $\frac{e^{-2}}{1+e^{-2}}-0\approx0.12$
 
-推导也很简单，其实就是最后一层的损失函数求导罢了，$$t^\pm$$ 视作一个常数。大家可以对 l(θ) 求导试试，对于 t = 1 和 0 的情况得到的分别是 $$\frac{1}{e^x+1}$$ 和 $$\frac{e^x}{e^x+1}$$ ，和下面的结论项是相等的。
+推导也很简单，其实就是最后一层的损失函数求导罢了，$t^\pm$ 视作一个常数。大家可以对 l(θ) 求导试试，对于 t = 1 和 0 的情况得到的分别是 $\frac{1}{e^x+1}$ 和 $\frac{e^x}{e^x+1}$ ，和下面的结论项是相等的。
 
 对于前面的 1 到 L-1 层，其导数还是对对应自变量求导代入求值，和之前的 GD 算法类似。
 
@@ -1009,7 +1007,7 @@ $$
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260431343.png)
 
-t = 0 时，t^±^=-1（$$t^\pm=2t-1$$），a^2^ 是该层（第二层所以有个 2 的上标，不是平方）的输出 =-2，两者相乘 = 2，代入公式计算得到 0.13 为损失值。
+t = 0 时，t^±^=-1（$t^\pm=2t-1$），a^2^ 是该层（第二层所以有个 2 的上标，不是平方）的输出 =-2，两者相乘 = 2，代入公式计算得到 0.13 为损失值。
 
 然后假设结尾 = 1，开始后向传播：
 
@@ -1081,10 +1079,8 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 
 压缩（Compression）：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。
 
-<div align="center">
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" style="zoom:67%;" />
 
-</div>
 
 ### 直方图
 
@@ -1238,7 +1234,7 @@ Directed Generative Models 一种 z-> x 模型。
 
 #### K 聚类算法
 
-把 n 个 x 数据分配给 k 个聚类（K-means）。z 是分配结果，$$z_{k,n}=1$$ 代表第 n 个数据分配给了第 k 簇，$$z_{k,n}=0$$  代表不在这个簇里。所有的 z_{k, n} 组成列向量 z。 
+把 n 个 x 数据分配给 k 个聚类（K-means）。z 是分配结果，$z_{k,n}=1$ 代表第 n 个数据分配给了第 k 簇，$z_{k,n}=0$  代表不在这个簇里。所有的 z_{k, n} 组成列向量 z。 
 
 分法本质上是每个簇的中心点离该簇内所有 x 数据点的欧几里得距离和最小。
 

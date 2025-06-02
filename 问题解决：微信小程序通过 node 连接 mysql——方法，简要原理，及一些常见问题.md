@@ -28,13 +28,13 @@ nodejs 作为中介服务器，可以让小程序连接 mysql 数据库。
 
 1. 下载 node。可以在 cmd 中输入 `node -v` 查看有无成功下载。
 
-   ![image-20230302134251274](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344379.png)
+   ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344379.png)
 
 2. 新建一个数据库，这一部分很简单，有 mysql 相关基础的读者应该没问题，也可以看博主的 mysql 专栏学习。
 
 3. 新建一个小程序，在结构中新建 server 文件夹用于存储 node 本地服务器相关代码。
 
-   ![image-20230302135701456](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344368.png)
+   ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344368.png)
 
 4. 右键 server 文件夹，点击“在内建终端中打开”，安装一些所需的包。
 
@@ -123,21 +123,21 @@ nodejs 接收到了请求，就会执行 server.js 里对应的方法。
 
 右键 server 文件夹，在内建终端中打开，然后在终端中输入：
 
-![image-20230227001627448](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344060.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344060.png)
 
 下面那句话说明正常启动服务器并且开始监听。
 
 我们输出一下 res，看看成功会返回什么信息。调试器里的 console 输出：
 
-![image-20230227000549916](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343123.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343123.png)
 
 data 里是我们数据库的查询结果。
 
-![image-20230227000639178](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343704.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343704.png)
 
 res.data 获取这个15长度的 Array。
 
-![image-20230227000715899](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343282.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343282.png)
 
 然后比如我们要获取其中的 time 值，就是 res.data[0].time, res.data[1].time... res.dat[14].time。
 
@@ -145,7 +145,7 @@ res.data 获取这个15长度的 Array。
 
 而刚才的一直在监听的内建终端里输出：
 
-![image-20230302140540514](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344070.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212344070.png)
 
 这个的输出对应 function(error,results,fields) 里的 console.log(results)。如果查询失败，error 也是在这个内建终端里输出。
 
@@ -163,7 +163,7 @@ res.data 获取这个15长度的 Array。
 
 - 服务器防火墙的问题，要开启3306端口。
 
-  ![image-20230302141204512](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343761.png)
+  ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343761.png)
 
 ## 小程序报错 ERR TIMEOUT
 
@@ -177,6 +177,6 @@ res.data 获取这个15长度的 Array。
 
 - 启用或关闭 windows 功能——Internet Information Services，及其可承载 web 核心，**子项**全部打开。点击确定。如果成功启动，在浏览器中输入 127.0.0.1，应该可以看到：
 
-  ![image-20230302141638928](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343506.png)
+  ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343506.png)
 
 - 检查方法名，get post 类别是否写错。

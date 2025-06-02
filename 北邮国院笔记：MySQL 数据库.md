@@ -1141,7 +1141,7 @@ durability 持久性：提交或回滚后，事务对数据库的操作就是永
 
 以下是数据库事务可以设置的几种隔离级别，分别是应对不同问题用的。
 
-![image-20220801231316895](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336578.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336578.png)
 
 ```mysql
 select @@TRANSACTION_ISOLATION;-- 查看数据库隔离级别
@@ -1152,23 +1152,23 @@ read uncommitted 是数据库最低隔离级别，即：一个事务中的数据
 
 **问题1**：脏读：一个事务读到另一个事务未提交的数据（Read uncommitted会发生）
 
-![image-20220802212804661](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544202.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544202.png)
 
 **解决办法**：read committed 限制一个事务修改的数据要等到提交后别的数据才能读得到。解决了脏读问题，但是没有解决不可重复读问题，事务2第一次读和第二次读数据可能值不一样。
 
 解决后：（给要读取的左边的窗口设置 read-committed 隔离级别）
 
-![image-20220802212544087](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544203.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544203.png)
 
 **问题2**：不可重复读：一个事务前后读了同一个数据两次，两次值不一样。因为其他事务在这中间提交过一次。
 
-![image-20220802213646432](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544204.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544204.png)
 
 **解决办法**：repeatable 使得事务2开启后事务1才提交的数据事务2读取不到，避免了不可重复读的问题。但是没有解决串行化问题，即事务2再对数据的修改会覆盖事务1的修改。
 
 **问题3**：幻读：每个事务开启时把数据读入缓存内，这样重复读取的时候直接从缓存中读取，避免了重复读取数据不一样。但是数据不及时更新，比如事务1删库了，事务2还能读；或者事务1新增了一条主键为i的数据提交了，事务2随后也想新增一条主键为i的数据，提交的时候发现1已经写过了，交不进去了。
 
-![image-20220802221507795](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336806.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336806.png)
 
 **解决办法**：serializable 让事务1在操作当前数据库时，别的事务直接操作不了。
 
@@ -1178,7 +1178,7 @@ read uncommitted 是数据库最低隔离级别，即：一个事务中的数据
 
 ## Mysql 体系结构
 
-![image-20220803115255247](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png)
 
 连接层：连接池部分，与客户端连接，并检查授权认证、权限、最大连接数等。
 
@@ -1214,7 +1214,7 @@ ibd文件在mysql文件夹-data文件夹-对应数据库文件夹里。
 
 ibd文件直接打开是看不了的，都是二进制。可以进入目标文件夹后，通过命令行`ibd2sdi 指定表名.ibd`，就可以查看该表的json文件信息了。
 
-![image-20220803210405717](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544208.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544208.png)
 
 表空间文件逻辑存储结构如图所示，段-区-页-行，每一行就是表中的一行数据。
 
@@ -1242,11 +1242,11 @@ ibd文件直接打开是看不了的，都是二进制。可以进入目标文�
 
 存储文件只包括：.sdi，因为数据索引都存在内存里了。
 
-![image-20220803211018558](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png)
 
 ## 三种存储引擎的选择
 
-![image-20220803211235879](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png)
 
 # 索引
 
@@ -1260,7 +1260,7 @@ ibd文件直接打开是看不了的，都是二进制。可以进入目标文�
 
 FinalShell可以直接点击上传标志上传下载的压缩包：
 
-![image-20220803220722619](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544211.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544211.png)
 
 ```shell
 mkdir mysql
@@ -1332,7 +1332,7 @@ grant all privileges on *.* to 'Windows'@'%';
 
 可以通过ifconfig查看ip地址。查看后就可以在DataGrip中链接啦。
 
-![image-20220803223712197](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png)
 
 ## 索引介绍
 
@@ -1368,23 +1368,23 @@ B树：又名多路平衡查找树。
 
 一开始插入4个数以内，都在一个节点里
 
-![image-20220804001653602](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336423.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336423.png)
 
 然后插入第五个数，就开始分裂，中间的数作为父节点，左右两组数作为子节点
 
-![image-20220804001734711](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544220.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544220.png)
 
 然后插入数还是往子节点里插入
 
-![image-20220804001859705](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544221.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544221.png)
 
 如果子节点够5个，中间的提到父节点处。
 
-![image-20220804002347547](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336894.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336894.png)
 
 一直插入到父节点达到5个，父节点再次分裂。
 
-![image-20220804002649191](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png)
 
 ## B+树
 
@@ -1394,13 +1394,13 @@ B树：又名多路平衡查找树。
 
 Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访问性能。
 
-![image-20220804003507672](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png)
 
 ## Hash 索引
 
 通过一定的Hash算法，把值都归到对应hash值的槽位上。如果出现槽位冲突，采用链表的方式解决。
 
-![image-20220804003919738](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544226.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544226.png)
 
 只能用于=等值查询，不能查询范围(>< between)，不能排序。
 
@@ -1420,7 +1420,7 @@ Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访�
 
 没有主键和unique唯一索引，则表会自动生成一个rowid作为隐藏的聚集索引。
 
-![image-20220804131209280](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336849.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336849.png)
 
 `select ... where name='Arm';`会先在二级索引中找到对应节点，然后根据id去聚集索引B+树中找主键，进而找到对应的row行数据。
 
@@ -1548,7 +1548,7 @@ filtered：返回的行数/读取的行数百分比，越大越好。比如查�
 
 如果查询的多列只包含索引列，explain 中 extra 显示 using where; using index 意为只使用了索引查找，因为要查询的列只在索引列中就找得到。
 
-![image-20230404124124952](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304041241125.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202304041241125.png)
 
 比如上例，如果 `select * from table where id=2;` 先去聚集索引表中找 id=2 的行，然后回表找到这一行，找到这一行的所有数据。
 
@@ -1578,7 +1578,7 @@ varchar int 等类型可能是很长的字符串，导致索引变得很大，�
 
 多个查询条件时推荐使用建立联合索引。因为比如 column a 和 column b 建立了两个单列索引，同时查询两者时 mysql 也只会选择其中一个索引查询，另一个字段回表查询（如果 mysql 自动选择了单列索引，可以用 use index() 限制）。
 
-![image-20230404131344451](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png)
 
 ## 设计原则
 

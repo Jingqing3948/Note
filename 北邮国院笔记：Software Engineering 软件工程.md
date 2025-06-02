@@ -103,7 +103,7 @@ Rapid software development 快速开发：争取每一版都交一个可以交�
 
 敏捷开发：系统在一次一次迭代小增量过程中建立而成。specification, design, implementation, testing 并行。专注于代码，轻量级代码频繁发布，维护简单。
 
-![image-20230507002834816](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8a04dc9794b9fae3b772c1efab38b648.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8a04dc9794b9fae3b772c1efab38b648.png)
 
 Individuals and interactions over processes and tools 
 
@@ -232,13 +232,13 @@ customer 给他们排序需求，development team分解实现任务。
 
 一些项目相关的专业术语，建议总结出来方便大家理解讨论。
 
-![image-20230601235612956](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235612956.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235612956.png)
 
 ### Epics
 
 大的 usr story。通常开始讨论前被拆分为小的块。
 
-![image-20230601235720919](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235720919.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235720919.png)
 
 ### Acceptance Criteria
 
@@ -318,7 +318,7 @@ gather requirements-analyse in real world context-develop the architecture
 >
 > [UML-分析类_Iron_Sky的博客-CSDN博客](https://blog.csdn.net/iron_sky/article/details/45478455)
 
-![image-20230602013913446](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602013913446.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602013913446.png)
 
 attributes: 属性和相应数据类型。比如姓名，字符串。
 
@@ -427,17 +427,17 @@ what 测试用例？when 测试？how to 测试？如何比对输出是否正确
 
 test cases 示例（正确的输入。错误的输入比如学号输入英文）：
 
-![image-20230602160905111](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602160905111.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602160905111.png)
 
 Test Procedures 测试程序，通常设置为可通用的，便于之后修改重用。这个程序不一定是代码，可能以流程指导的形式（比如按下login按钮，输入账号99001122登录……）
 
 test matrix: 
 
-![image-20230602161119974](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161119974.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161119974.png)
 
 发现缺陷：比如上例，错误的密码也能登录，于是测试工程师把错误信息返回给开发者：
 
-![image-20230602161157432](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161157432.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161157432.png)
 
 ### Testing: Techniques
 
@@ -503,7 +503,7 @@ milestone：标志阶段的结束，不一定是能输出给用户的成果。�
 
 Deliverables：可以交付给用户的设计，规格等成果。
 
-![image-20230602221047262](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332283.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332283.png)
 
 ## Project scheduling
 
@@ -656,7 +656,7 @@ static：静态方法只能被类自己和其附加类调用。静态类实例�
 
 Variables and referencing：java中变量是对对象的引用，比如var2=var1不是赋值而是改变var2指向var1的引用。包括一个变量的自带方法的
 
-![image-20230603233317997](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332273.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332273.png)
 
 ![1685806438306](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685806438306.png)
 
@@ -783,7 +783,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 如果我们设定饥饿值大于6的狗要被构造为greedyDogBot是普通狗的子类，那么PlainDogBot和greedyDogBot都直接提供出来构造方法不太好。可以通过一个构造类来判断需要返回什么对象。
 
-![image-20230606123312445](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606123312445.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606123312445.png)
 
 这个构造方法可以返回接口类，但是实际方法里返回的都是实现了接口类的具体类，这样可以隐藏返回类类型：
 
@@ -831,7 +831,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 下面改变的几个类型都是accountState抽象类的实现类，通过多态的方式初始化。
 
-![image-20230606180142747](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332513.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332513.png)
 
 ### Bridge Design Pattern
 
@@ -841,7 +841,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 下例：求父子交集。
 
-![image-20230606181219816](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181219816.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181219816.png)
 
 ### Flyweight Pattern
 
@@ -849,7 +849,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 概念来源：[精读《设计模式 - Flyweight 享元模式》 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/336732854)
 
-![image-20230606181617881](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181617881.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181617881.png)
 
 # Open Source Software
 

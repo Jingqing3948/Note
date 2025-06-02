@@ -15,13 +15,13 @@ description: Win11 磁贴配置办公效率提升
 
 但是升级到 win11 对我而言影响最大的就是压根没有全屏桌面和磁贴功能了。因此我搜了很多解决方案，加上一些自己的改进，最终把桌面磁贴恢复成如上图所示。一个自己喜欢看的桌面还是会对生产力的提高有很大帮助的。
 
-![image-20230712234132339](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712234132339.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712234132339.png)
 
 ## 软件安装：start11
 
 首先，恢复开始菜单这一操作最离不开的就是 start11 这款软件。他让 win11 的开始菜单又有了全屏菜单选项，也支持了自定义磁贴在上面。虽然调整磁贴位置的时候偶尔会花几秒重启，但大多数时候还是没问题的。
 
-![image-20230712235022366](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235022366.png)
 
 正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：
 
@@ -31,15 +31,15 @@ description: Win11 磁贴配置办公效率提升
 
 首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.
 
-![image-20230712235704628](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235704628.png)
 
 点击“配置菜单”，进行如下配置：
 
-![image-20230712235738298](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230712235738298.png)
 
 在“自定义菜单视觉外观”里，可以设置全屏菜单的颜色、透明度等，比如我使用的是有一定透明度的毛玻璃的样式。
 
-![image-20230713000601091](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000601091.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000601091.png)
 
 然后在“控制”栏里设定如何打开 start11，确保可以打开：
 
@@ -58,7 +58,7 @@ description: Win11 磁贴配置办公效率提升
 
 然后可以手动分组磁贴（把他们移到临近的位置），调整磁贴背景色，调整磁贴大小（有小正方形，中正方形，长方形，大正方形四种可以选择），调整磁贴布局位置。
 
-![image-20230713000428410](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000428410.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000428410.png)
 
 ## 图片磁贴配置
 
@@ -66,13 +66,13 @@ description: Win11 磁贴配置办公效率提升
 
 之前 win10 是有一款快捷工具可以输入自定义图片，按自己想要的格式裁剪并自动在全屏菜单中输出的，叫 Tile Genie.
 
-![image-20230713000854968](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000854968.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713000854968.png)
 
 但是它好像并不能在 start11 中使用。我尝试了一下导出的都是不能显示的图片块，所以只能放弃这种方法。如果读者的 Tile Genie 是没有问题可以正常显示图片那再好不过了，后面的内容都可以不用看了。
 
 如果导出失败……我采用的方法是手动裁剪固定图片。很笨，但是有结果。
 
-![image-20230713001102790](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001102790.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001102790.png)
 
 首先，自行裁剪图片，计算公式为：中正方形 150\*150，长方形 306\*150，大正方形 306\*306，边界线是6（像素）.
 
@@ -84,7 +84,7 @@ description: Win11 磁贴配置办公效率提升
 
 在全屏菜单中右键-固定文件，选定文件路径添加。
 
-![image-20230713001454756](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001454756.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001454756.png)
 
 刚固定上是这种形式：
 
@@ -92,10 +92,10 @@ description: Win11 磁贴配置办公效率提升
 
 然后右键-调整大小，调整为想要的大小。
 
-![image-20230713001613170](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001613170.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001613170.png)
 
-![image-20230713001632462](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001632462.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001632462.png)
 
 最后一步，右键-图标-选择自定义磁贴图像，再次选择此文件，然后他就被当做图标全屏显示了。
 
-![image-20230713001653804](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001653804.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713001653804.png)

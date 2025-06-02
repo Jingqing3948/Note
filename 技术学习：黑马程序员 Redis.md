@@ -152,7 +152,7 @@ OK
 
 查看图形化客户端可以发现：Key 已经形成层级结构。
 
-![image-20250521223051719](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png)
 
 ### Hash
 
@@ -174,7 +174,7 @@ OK
 
 添加完字段之后，图形化界面中可视化结构：
 
-![image-20250521224155538](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png)
 
 ### List
 
@@ -264,7 +264,7 @@ spring data redis 整合了前两种。
 
 在 pom.xml 文件中粘贴：
 
-![image-20250522173946616](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505221740557.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505221740557.png)
 
 ```xml
 <dependencies>
@@ -522,7 +522,7 @@ private RedisTemplate<String, Object> redisTemplate;
 
 尝试传入对象也非常顺利，假设新建了一个 User 对象，数据库中成功传入后的 json value 如下（第一句话就是帮助反序列化还原用的）：
 
-![image-20250523114928080](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505231149205.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505231149205.png)
 
 并且 java 输出里面自动反序列化成对象的输出形式：
 

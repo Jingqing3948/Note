@@ -1467,11 +1467,11 @@ M-->HM(HashMap)
 
 - 红黑树。
 
-  ![image-20250529103715199](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291037431.png)
+  ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291037431.png)
 
   添加节点优先是添加红色的（不影响简单路径的黑色节点数，调整次数少）。
 
-  ![image-20250529110638118](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291106468.png)
+  ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291106468.png)
 
   红黑树对平衡要求性低一些（最长路径不超过最短路径的2倍），所以插入数据的时候需要的旋转次数平均下来更少。适用于频繁插入删除操作。
 
@@ -1565,7 +1565,7 @@ cfe-->|no|Y(checkForComodificationException)
 cfe-->|yes|X("集合没有被修改,继续遍历")
 ```
 
-![image-20250528231810569](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282318767.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282318767.png)
 
 但是通过 for 循环遍历集合，在遍历过程中对集合进行修改，不会报异常。
 
@@ -1679,7 +1679,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 如果一次添加多个元素超过扩容后的1.5倍的数量，则按照新添加元素数量来扩容数组。
 
-![image-20250528225349267](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282253668.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282253668.png)
 
 方法的话没什么特殊的。
 
@@ -1698,7 +1698,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 工作原理：
 
-![image-20250528230629720](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282306108.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282306108.png)
 
 ## 泛型
 
@@ -1718,7 +1718,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 泛型类：当不确定数据类型的时候使用。
 
-![image-20250528233910636](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282339799.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282339799.png)
 
 *字母写什么都行，不过上面这四个比较常见。*
 
@@ -1754,7 +1754,7 @@ public class MyArrayList<E> {
 
 泛型方法：如果类里面只有一个方法要用到泛型变量，推荐使用这种方法。
 
-![image-20250528235035645](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282350835.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282350835.png)
 
 ```java
 /**
@@ -1782,7 +1782,7 @@ ListUtil.addAll(list, "aaa", "bbb", "ccc", "ddd");
 
 泛型接口：
 
-![image-20250528235630079](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282356283.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282356283.png)
 
 ```java
 public class MyArrayList2 implements List<String>{}
@@ -1833,7 +1833,7 @@ JDK8 之前的版本底层是数组+链表实现。JDK8 之后是数组+链表+�
 
 添加元素时存储位置参考哈希值：
 
-![image-20250529120015332](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291200685.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291200685.png)
 
 加载因子用于判断数组什么时候扩容，比如上例是存入了 16\*0.75=12 个元素之后扩容。
 

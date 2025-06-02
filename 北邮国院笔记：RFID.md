@@ -190,7 +190,7 @@ read-only 和 R&W 两种，结构复杂度也有所不同
 
 interactive, independent。
 
-![image-20230618045820043](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230618045820043.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230618045820043.png)
 
 交互模式大概就是一直接收主机的命令，你让我读我就读，读完把结果还给你。
 
@@ -254,7 +254,7 @@ reader transmit energy(+) path loss(-) tag activate energy(-)
 
 - pass loss: 读取器天线向360度的发送能量。其中只有一部分区域可以被tags antenna读取到，这一部分被称作 Effective  Aperture (Ae) of the tag antenna。能量=有效面积*密度 $P_t=\rho A_e$ 。总共发送的能量比收到的能量就等于总表面积比有效面积 $\frac{P_{TX}}{P_{RX}}=\frac{A_e}{4\pi r^2}$
 
-![image-20230618174327976](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230618174327976.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230618174327976.png)
 
 来看上例，发送方30dBm对应1W，tag接收到-10dBm对应10^-4W. 然后5dB的衰减到-15dBm。这个5dB衰减就是两个dBm做差得到的。
 
@@ -294,7 +294,7 @@ Effective aperture $A=G\frac{\lambda ^2}{4\pi}$
 
 $P_{RX}=P_{TX}G_{RX}G_{TX}(\frac{\lambda}{4\pi r})^2$
 
-![image-20230619104251622](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619104251622.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619104251622.png)
 
 $R_{forward}=\frac{\lambda}{4\pi}\sqrt{\frac{P_{TX,reader}T_bG_{reader}G_{tag}}{P_{min,tag}}}$
 
@@ -350,7 +350,7 @@ FDMA: 多个频率通道 several frequency channels 传输数据。
 
 TDMA: 
 
-![image-20230619212501183](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619212501183.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619212501183.png)
 
 
 
@@ -370,13 +370,13 @@ conflict slot, single slot, idle slot（空）
 
 逻辑，电路设计，内存都比较简单，但是 frame length 长度不固定。tags 远远多于 frame length 冲突时间片就太多，tags 太少空时间片太多太浪费。负载 G=1 也就是 length=tags 利用率最好。
 
-![image-20230620001137399](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620001137399.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620001137399.png)
 
 DFSA：利用以前的 frame 冲突反馈结果，和一些机器学习算法推测合适的 frame length。
 
 EPC Global（第五章介绍）规范里使用了一种Q算法。简单说就是如果冲突太多了，当前 frame 就别继续了，中断，新开一个大容量 frame. 同理 空闲太多了就新开一个小 frame。
 
-![image-20230620002424045](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620002424045.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620002424045.png)
 
 Qfp是指定的初始值。每次先取整，然后发起 query。
 
@@ -396,53 +396,53 @@ binary query tree QT：排序，查询。
 
 每一个 tag 需要有一个计数器来记录自己的状态。
 
-![image-20230620003431357](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620003431357.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620003431357.png)
 
 每一个tag都会被识别，不会饥饿，但是需要存储每个tag的状态。
 
 比如看下面的例子：
 
-![image-20230620004226401](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620004226401.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620004226401.png)
 
 首先 tag1234 随机选一个数，比如选了0010，SN分别加自己选的数。
 
-![image-20230620010150624](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010150624.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010150624.png)
 
 找SN=0的，发现有是有，但是他们几个都冲突了。那么继续分，比如1011，SN=1021
 
-![image-20230620010254069](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010254069.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010254069.png)
 
 2的SN=0而且不冲突，把2读取了之后2不再继续参与。然后当有tag读取后，所有其他SN-=1
 
-![image-20230620010408026](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010408026.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010408026.png)
 
 =0的是14，但是他俩冲突。然后再重新划分一下，比如011, SN=0021
 
-![image-20230620010452073](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010452073.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010452073.png)
 
 然后处理1，其他-=1，处理4，其他-=1，处理3.
 
 QT 不需要存储状态，如何实现？读取tag的序列号比较。
 
-![image-20230620010802734](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010802734.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620010802734.png)
 
 不会饿死，也不需要一个可以读写的cnt，识别的时间和 tag id 有关。
 
-![image-20230620011058481](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011058481.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011058481.png)
 
 ## Binary search: Manchester code instead of NRZ code, 重点：执行过程
 
 具体分辨哪一位有冲突。1代表冲突。
 
-![image-20230620011804411](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011804411.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011804411.png)
 
 NRZ混合没法检测错误。
 
-![image-20230620011902936](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011902936.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011902936.png)
 
 曼彻斯特可以，一个上升一个下降，合起来是0或者1.
 
-![image-20230620011942870](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011942870.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011942870.png)
 
 查询的流程：
 
@@ -451,7 +451,7 @@ NRZ混合没法检测错误。
 - read_data：返回所选tag的信息。
 - unselect：读取完data了，这个tag退出选择流程。
 
-![image-20230620012706251](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620012706251.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620012706251.png)
 
 第一次迭代：返回uplink是所有transponder的id的共同信息（通过曼彻斯特编码找出没有冲突的位）。046位冲突了（从右往左），8个可能。
 
@@ -459,7 +459,7 @@ NRZ混合没法检测错误。
 
 第三次迭代：限定bit4为0的request……
 
-![image-20230620013603192](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620013603192.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620013603192.png)
 
 长度 L(N)=log2(N)+1
 
@@ -515,7 +515,7 @@ EPC码是唯一标识对象的代码。识别系统包括对象上的可被读�
 
 这其中的交互：
 
-![image-20230619112053963](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619112053963.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619112053963.png)
 
 transponder and reader : data acquisition
 
@@ -556,7 +556,7 @@ access rights to object data: 包含在EPCIS里，指明了trading partners 之�
 
 这种tag是只读的，制造商赋值。
 
-![1687148304873](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687148304873.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687148304873.png)
 
 ## EPCglobal C1 G1: PingID; C1G2: four commands (是什么，分别干什么用的), two types of performance  trade-offs
 
@@ -566,13 +566,13 @@ EPC C1G1：查询tags EPC的一种标准。
 
 pingID：掩码，用于查询tag EPC
 
-![1687197150310](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687197150310.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687197150310.png)
 
 EPC C1G2 有 OSI 的七层模型，两条数据链路（R-T）
 
-![1687197271532](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687197271532.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687197271532.png)
 
-![1687198440696](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687198440696.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687198440696.png)
 
 上电 ready
 

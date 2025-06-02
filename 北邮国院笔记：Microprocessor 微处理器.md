@@ -160,15 +160,15 @@ m4有4g的内存空间默认映射到一片空间中，用户也可以根据自�
 
 这样很麻烦，比如我们要给0x2000 0000处的数据第3位写1，详细汇编代码：
 
-![image-20230613232342659](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232342659.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232342659.png)
 
 LDR是把后面的数据加载到前面的寄存器中，[R1]是把R1的值当做一个地址，取得其中存储的数据。
 
 这样挺麻烦的，但是因为有内存映射我们可以直接写入和获取“位带别名地址”中的数据。
 
-![image-20230613232721037](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232721037.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232721037.png)
 
-![image-20230613232713587](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232713587.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230613232713587.png)
 
 0x2000 0000处的第0位到第31位分别是：
 
@@ -389,7 +389,7 @@ volatile 声明后的变量不会做这样的优化，值改变了就立刻写�
 
 2. 当前模式寄存器值压栈保存。
 
-   ![image-20230614171134845](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614171134845.png)
+   ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614171134845.png)
 
 3. 切换模式。
 
@@ -455,7 +455,7 @@ stm32有几组GPIO，每个有16个Pin，可以配置为input output pullin pull
 
 大多数引脚是这两个功能都有的，我们初始化GPIO的时候选用一个，寄存器根据值控制接通相应电路。
 
-![image-20230614193552367](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614193552367.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230614193552367.png)
 
 输入输出信号真的可以被称为“信号”。输入规定为0-0.5视作低电平，0.5-Vdd视作高电平，范围以外的值无效。输出电流也只有5mA左右是没有能力直接驱动一些设备的，我们可以通过一些电路比如三极管，放大器等，电路接收到信号得知”需要输出驱动电流了“然后输出大电流。
 
@@ -676,7 +676,7 @@ USARTDIV浮点数怎么存储？通过算法转化为十六进制。
 
 我们可以设置定时器溢出值，比如溢出值是1000，cnt加到1000会自动触发定时器中断。然后归0，继续++。
 
-![image-20230615014136641](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615014136641.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615014136641.png)
 
 执行周期数量：1+1+1+1+(0xFFFFFFFF一直-1-1-1直到变为0x00FFFFFF的循环次数)+(r0+1的执行次数，1次)
 
@@ -706,7 +706,7 @@ PWM（Pulse Width Modulation）脉冲宽度调制，在具有惯性的系统中�
 
 对于一个这种有惯性的系统，我们也可以反过来读取其波形来判断其速度。比如电机放一个转速检测传感器，把输入波形作为定时器的时钟源信号，定时器一直++：检测上升下降沿时记录cnt值，通过差值比较计算时间间隔。
 
-![image-20230615020829378](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615020829378.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230615020829378.png)
 
 第二，输出比较 output compare。
 
@@ -720,7 +720,7 @@ PWM（Pulse Width Modulation）脉冲宽度调制，在具有惯性的系统中�
 
 我们目前假设的是CPU一直运作的，只是在后台和前台之间切换。有一种低功耗定时器使得没有发生定时器中断的时候CPU被置为低功耗状态，只有发生定时器中断的时候才启动。（使用 __WFI() wait for instruction 指令）
 
-![image-20230621235021294](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235021294.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235021294.png)
 
 ## SysTick
 
@@ -728,11 +728,11 @@ M系列自带的一个系统时钟，使用处理器时钟或者参考时钟作�
 
 有四位寄存器：
 
-![image-20230621235527699](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235527699.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235527699.png)
 
 每次赋值是load，一直--到0时重新load赋值。ctrl是控制启用系统时钟。这个是CMSIS有提供的数据结构和相关操作函数的时钟处理部分。
 
-![image-20230621235805628](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235805628.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235805628.png)
 
 init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以是自己定义的函数，使得触发定时器中断时该函数被执行。以上代码意思是每隔100ms LED灯翻转一次，且 CPU 常态下处于低功耗状态。
 
@@ -740,7 +740,7 @@ init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以
 
 连接多个模块的传输方案：I2C，使用两根总线。
 
-![image-20230622000302459](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000302459.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000302459.png)
 
 两根总线分别是时钟总线 SCL 和数据总线 SDA。
 
@@ -757,13 +757,13 @@ init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以
 5. 发送完 MCU 等着 ACK，收到 ACK 后继续发送下一帧数据。
 6. 一直发送到发送停止位 stop 结束。
 
-![image-20230622000920336](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000920336.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230622000920336.png)
 
 数据长度可以设置，比如789.
 
 总线上的器件是开漏输出的半双工通信。
 
-![image-20230713135505107](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713135505107.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713135505107.png)
 
 默认总线是上拉电阻拉成高电平。
 
@@ -771,7 +771,7 @@ init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以
 
 然后是总线传输数据的方式，SCL SDA 两根总线在何种情况下表示 start stop 0 1 bit? 
 
-![image-20230713140225426](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140225426.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140225426.png)
 
 首先都是 SCL 为高电平时 SDA 的数值才有意义。
 
@@ -781,7 +781,7 @@ start 位后，SDA 高电平表示1，低电平表示0.
 
 发送完 1byte 数据后，总线保持拉高状态。如果接收方把总线拉低了，发送方发现总线1→0了（不是发送方自己拉的，是接收方给他拉下来的，但是发送方能察觉到），说明接收方成功接收了并且拉了拉总线以示“收到”。如果 SDA 还是保持在高电平，说明接收方没有成功收到或者成功发送 ACK。
 
-![image-20230713140822834](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140822834.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140822834.png)
 
 ## 问题处理
 
@@ -791,13 +791,13 @@ I2C 是一种很简单的主从通信协议了，但是局限性也很多，比�
 
 方法：clock stretching, 拉低一段时间 SCL 假装下一个时钟周期还没到。
 
-![image-20230713141906054](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713141906054.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713141906054.png)
 
 问题2：多个设备同时发数据冲突了怎么办？
 
 方法：Bus Aribitation，前面我们知道总线被一个设备拉低了，所有设备都能接收到总线拉低的信号。因此如果两个设备同时开始发信息，前面数据一致都无所谓，等到第一次数据不一致的时候，一个设备发送数据0，一个发送数据1，这时 SDA 总线被 DATA2 的0拉低了。
 
-![image-20230713142029471](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713142029471.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713142029471.png)
 
 发送 DATA1 数据的设备就明白了：有人同时在和我一起发数据，因此总线不是我预期的1而是被他拉低为0了。那我 quit，你发吧。然后就只有 DATA2 发送的数据了。
 
@@ -805,19 +805,19 @@ I2C 是一种很简单的主从通信协议了，但是局限性也很多，比�
 
 方法：少于 8bits 用一些固定的额外的 start 位填充，多于 8bits 的地址用两个 bytes，不够的也是用额外的 start 位填充。
 
-![image-20230713143052018](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143052018.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143052018.png)
 
 问题3：如果我 master 发完数据，想紧接着再收数据，变成 slave，可行吗？
 
 方法：通过一个 sr 信号，也就是 repeat start 重发 start 位，来标识自己是 read 而不再是 write 了重新开始通信。
 
-![image-20230713143601570](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143601570.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143601570.png)
 
 ## 编址格式
 
 slave 地址编址有一些固定格式。
 
-![image-20230713143744619](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143744619.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143744619.png)
 
 0000 000 0：广播，对所有 slave 结点讲话。如果 slave 无视（NACK），就不会参与广播。如果返回 ACK 就参与进来了。不过多个 slave 都返回 ACK 的话 master 是不知道都有谁回应了的。
 
@@ -838,7 +838,7 @@ slave mode:
 
 ![1689255491311](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1689255491311.png)
 
-![image-20230713214410998](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713214410998.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713214410998.png)
 
 这么说起来还是有点混乱 I2C 到底经历了哪些才顺利发送了数据？
 
@@ -883,7 +883,7 @@ void i2c_write(uint8_t address, uint8_t *buffer, int buff_len) {
 
 ```
 
-![image-20230714110003657](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110003657.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110003657.png)
 
 接收：
 
@@ -943,5 +943,5 @@ EV3-1：设置 TxE 位，开始传入数据。一直到主机返回 NACK 表示�
 
 总线错误，NACK，仲裁失败，时钟异常超时。
 
-![image-20230714110916968](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110916968.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230714110916968.png)
 
