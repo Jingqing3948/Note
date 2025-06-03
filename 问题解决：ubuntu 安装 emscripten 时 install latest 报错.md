@@ -132,7 +132,7 @@ Linux jingqing 5.19.0-35-generic #36~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 
 
    这里大家可以通过 download_file 的 print debug 调试来查看他校验文件是否存在是去哪里校验的，我就不再具体展开讲调试步骤了，结论就是：他在 emsdk/downloads/ 目录下先查找一下待下载的压缩包是否存在，那么我们复制报错信息中的 url 下载文件到这个 downloads 文件夹下即可（没有就新建）。
 
-<h2 id="solution">具体步骤</h2>
+## 具体步骤
 
 1. 首先要安装所缺的所有包，一个个安装，报错信息里提示什么安装什么。比如文章开头的报错信息中下载链接是：https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2，就先安装这个。
 

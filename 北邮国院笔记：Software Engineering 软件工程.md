@@ -9,15 +9,15 @@ categories:
 description: 北京邮电大学国际学院物联网工程专业软件工程课程学习笔记
 ---
 
-# Introduction
+## Introduction
 
-## software types
+### software types
 
 general: developed for a general market. (ps, office)
 
 custom: developed for a particular aim. (embeded system)
 
-## good software features
+### good software features
 
 delivers required functionality
 
@@ -35,23 +35,23 @@ cost-effective
 
 security
 
-## what is software engineering?
+### what is software engineering?
 
 using proper theories, tools, methods(organized and systematic), constraints to develop high quantity software.
 
-## 4 layers
+### 4 layers
 
 Tools, method, process, quality focus.
 
-## Why important?
+### Why important?
 
 large scale projects are hard to finish in time properly because of time, budget, disaster, etc. guiding scientific principles and universally applicable methods can reduce practice and frequent failures.
 
-## General issues that affect software
+### General issues that affect software
 
 Heterogeneity (distributed systems, different type of devices), business and social change, security and trust, scale.
 
-# Software process
+## Software process
 
 a set of structured activities to produce software.
 
@@ -65,23 +65,23 @@ includes: required specification, development(analysis, design, implementation),
 - deployment: install, run and test on real environment.
 - evolution: corrective, adaptive, perfective, preventive.
 
-## process models
+### process models
 
 a abstraction of process. activities must be modelled to be managed.
 
-### waterfall
+#### waterfall
 
 ![1685629715429](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332918.png)
 
 易于管理 monitor，结构化很好。前面的模块必须完成才能跳到下一个，也就要求我们在最初设计的时候对需求很清楚，但是很难不遇到一些问题，很难按照正常流程正常走。
 
-### evolutionary development
+#### evolutionary development
 
 ![1685629943510](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685629943510.png)
 
 交互性的活动，及时的反馈。核心需求能很好的满足，但是扩展性很差，结构性很差，缺少过程中的可见性。适合小型项目。
 
-### rational unified process
+#### rational unified process
 
 ![1685630556923](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685630556923.png)
 
@@ -95,7 +95,7 @@ transition: 交付到客户手中。
 
 通用的完整流程，动态。但是开销大了。
 
-### Agile Software Development 
+#### Agile Software Development 
 
 现代软件开发流程：敏捷开发。
 
@@ -157,7 +157,7 @@ Test Driven Development (TDD):
 
 适用于多变的，客户要求明确的中小型系统。
 
-## requirements
+### requirements
 
 确定需求是软工设计中最重要的部分。
 
@@ -174,13 +174,13 @@ Stakeholder 利益相关者：受系统影响的组织或个人（当然有的�
 
 需求分为：functional 和 non functional.
 
-### functional requirements
+#### functional requirements
 
 定义系统的需求，要干什么。比如教务系统对于老师和学生端提供的不同的服务。
 
 这一部分要完整 completeness 清晰一致 consistency 的描述大需求，避免不必要的误解。
 
-### non-functional requirements
+#### non-functional requirements
 
 这一部分比功能性更重要，相当于不满足这一部分系统错误，不满足功能需求系统有一些小bug。
 
@@ -196,15 +196,15 @@ external requirements: 比如“用户密码不能泄露”。
 
 非功能性需求需要定量描述指标。不然比如“希望程序跑的快一点”这就很模糊。要有measure的方法区测量quantitative定量指标。
 
-### Requirement conflicts
+#### Requirement conflicts
 
 要trade-off权衡需求，让所有人都同意一个最优需求。
 
-### Requirement document
+#### Requirement document
 
 Software Requirements Specification (SRS) 软件需求规范，确认测试的参考规范，指明了应该实现的需求，但是不指明如何实现。
 
-### Requirements Capture
+#### Requirements Capture
 
 Background Reading
 
@@ -216,9 +216,9 @@ Document or Record Sampling（专业的observation）
 
 Questionnaires
 
-## 敏捷开发中的需求
+### 敏捷开发中的需求
 
-### usr stories
+#### usr stories
 
 用户需求被称作用户故事，一两句话写在卡片上。
 
@@ -228,32 +228,32 @@ customer 给他们排序需求，development team分解实现任务。
 
 写在 stories cards 上，按顺序贴在墙上大家讨论，注意重点不是记录而是大家的讨论。
 
-### Project glossary
+#### Project glossary
 
 一些项目相关的专业术语，建议总结出来方便大家理解讨论。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235612956.png)
 
-### Epics
+#### Epics
 
 大的 usr story。通常开始讨论前被拆分为小的块。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230601235720919.png)
 
-### Acceptance Criteria
+#### Acceptance Criteria
 
 验收标准，通常写在故事卡背面，有助于理解需求和 invite negotiation with the team about the business  value that we are trying to create.
 
-### Non-functional Requirements as User Stories
+#### Non-functional Requirements as User Stories
 
 比如用户表示：我希望电脑打cf fps高于100.
 
-### usr stories注意事项
+#### usr stories注意事项
 
 1. 谁都能写，最好让更多的成员写。
 2. 整个 agile development 过程中都可以写。一开始开故事讨论会确定基本，后续随时可以添加。
 
-### Product backlog
+#### Product backlog
 
 需求按优先级排列的需求表。综合考虑多方因素。
 
@@ -264,7 +264,7 @@ MoSCoW：一种 dsdm 动态系统开发方法。
 - could have：用户期望的需求，完成后用户满意度会高。但是不必要。
 - want to have: 当前阶段不重要的。
 
-### Estimating
+#### Estimating
 
 估计项目用时。
 
@@ -276,13 +276,13 @@ MoSCoW：一种 dsdm 动态系统开发方法。
 >
 >  [敏捷开发中到底什么是故事点（Story Point）？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/351172855)
 
-### 评判 good usr story
+#### 评判 good usr story
 
 INVEST原则。
 
 – Independent – Negotiable – Valuable – Estimatable – Small – Testable
 
-### Prototyping
+#### Prototyping
 
 physical：比如画gui。
 
@@ -296,7 +296,7 @@ high-fidelity：如3d打印，最接近产品但是制作麻烦。
 
 ![1685636483862](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685636483862.png)
 
-## analysis
+### analysis
 
 仅仅从用户的需求来看得到的消息不全面，还需要分析。用户可能认为你明白了，或者他考虑不全面，觉得一些地方是不需要的。
 
@@ -306,7 +306,7 @@ gather requirements-analyse in real world context-develop the architecture
 
 分析包括：Textual analysis (针对文档分析)，Entities and concepts（应用层面分析），Experience（过往经验分析）
 
-### conceptual model
+#### conceptual model
 
 面向对象的UML图。
 
@@ -337,7 +337,7 @@ Activities:
 4. Identify attributes for each entity class 
 5. Add constraints 
 
-## design
+### design
 
 design 是把分析模型转换成设计模型，不是代码实现！implementation才是实现。
 
@@ -345,13 +345,13 @@ design must have a purpose: how things works.
 
 A software design: enough information for a  development team to implement the solution.
 
-### roles
+#### roles
 
 - finish non-functional requirements
 - break down the overall task.
 - Create a ‘skeleton’ of the system 创建易于实现的骨架结构。
 
-### Fundamental Concepts
+#### Fundamental Concepts
 
 - Abstraction：抽象类和行为的功能。
 - Encapsulation：information hiding。限制某些对象对内容的直接访问。
@@ -362,7 +362,7 @@ A software design: enough information for a  development team to implement the s
 
 面向对象设计的好处：对象就是实体；对象可以重用，继承；有的系统对象是现实世界的明显映射。
 
-### steps
+#### steps
 
 conceptual class diagram
 
@@ -376,7 +376,7 @@ Captures implementation requirements
 
 Produce detailed design class diagram
 
-## Implementation
+### Implementation
 
 分析和设计阶段基本上把创意都列出来了。实现就是比较机械地按照前面的设计去敲代码。
 
@@ -396,7 +396,7 @@ OOP：有类，对象，方法。但是关联不是双向的，而是只能单�
 
 类的实现要从最小耦合到最大耦合 least  coupled to most coupled。
 
-## Testing
+### Testing
 
 在交付给用户前尽可能发现错误，验证每个阶段的结果。测试占据了40%。
 
@@ -407,7 +407,7 @@ OOP：有类，对象，方法。但是关联不是双向的，而是只能单�
 - Validation testing：验证测试，测试系统正常需求已经满足。
 - Defect testing：检测系统的缺陷。
 
-### Testing policies
+#### Testing policies
 
 我们不可能把所有可能情况都找到并且测试出来。因此只能选取有代表性的子集。
 
@@ -421,7 +421,7 @@ test data：输入。
 
 ![1685693215844](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685693215844.png)
 
-### testing strategy
+#### testing strategy
 
 what 测试用例？when 测试？how to 测试？如何比对输出是否正确？
 
@@ -439,7 +439,7 @@ test matrix:
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161157432.png)
 
-### Testing: Techniques
+#### Testing: Techniques
 
 黑盒测试，black box/behavior test，即我们要测试的模块，对我们来说像一个内部结构不可见的黑盒子，我们重点关注他行为对不对，与外界的接口是否正确，访问外界数据库正不正确。
 
@@ -457,7 +457,7 @@ test matrix:
 
 总体测试流程：白盒测试，建立 test harness 测试装置，测试正确性，测试健壮性；然后黑盒测试。
 
-### TDD
+#### TDD
 
 ```java
 assertEquals(20, student.getAge());//判断返回值是不是20岁
@@ -469,7 +469,7 @@ assertEquals(20, student.getAge());//判断返回值是不是20岁
 
 small cycle：编写测试，编写代码，测试失败，修改代码，测试通过。
 
-# Software architecture
+## Software architecture
 
 功能需求和软件架构关系紧密，非功能需求是软件架构的选择结果（好的架构运行效率高之类的）。可以以表格或图的形式，比如UML图。
 
@@ -481,13 +481,13 @@ small cycle：编写测试，编写代码，测试失败，修改代码，测试
 - large-scale reuse：架构可重用，更安全、更快。
 - Stakeholder communication：可以 成为一个讨论点。
 
-# Project management
+## Project management
 
 让项目能在有限的时间和预算范围内按预期保质落地。
 
 软件工程比较灵活，没有标准的完全正确的方案，需要随机应变，敏锐的洞察力。
 
-## Project planning
+### Project planning
 
 最耗时的环节。
 
@@ -495,7 +495,7 @@ small cycle：编写测试，编写代码，测试失败，修改代码，测试
 
 计划可能包括多种，如质量计划，员工开发计划……
 
-## Activity organisation
+### Activity organisation
 
 活动应该组织成切实的输出以及可以判断的进度。
 
@@ -505,7 +505,7 @@ Deliverables：可以交付给用户的设计，规格等成果。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332283.png)
 
-## Project scheduling
+### Project scheduling
 
 估计项目时间预算的花费，并按顺序排布。
 
@@ -531,11 +531,11 @@ Deliverables：可以交付给用户的设计，规格等成果。
 
 Monitoring/Reporting：定期周会周报监督进度。
 
-### Metrics
+#### Metrics
 
 代码行数，代码中的缺陷，测试用例通过情况。
 
-### People in the process
+#### People in the process
 
 选择成员，管理，激励他们，解决大家遇到的技术和非技术问题。
 
@@ -544,7 +544,7 @@ Monitoring/Reporting：定期周会周报监督进度。
 - Inclusion：让大家都参与进项目，聆听所有人的意见。
 - Honesty：进度保持诚实。
 
-### Group working
+#### Group working
 
 不仅仅是个人的集合。团队能力的组成，凝聚力，沟通，大型团队的层次结构。
 
@@ -552,7 +552,7 @@ Monitoring/Reporting：定期周会周报监督进度。
 
 项目被分解为易于管理和理解的小部分。不稳定的需求不影响项目进度。团队成员对项目把控更到位 visibility，客户能常常看到项目进度，双方交流更相信彼此。
 
-## Risk management
+### Risk management
 
 失败是常有的事。我们要做好备选方案，推迟时间或者放弃目标。
 
@@ -566,23 +566,23 @@ Business risks：开发，采购组织的问题。比如上市了发现其他公
 
 Project+Product：需求一直变；分析阶段太慢了；开发团队技能能力不行；项目比预想的要大。
 
-### Risk Identification
+#### Risk Identification
 
 识别风险。
 
-### Risk Analysis
+#### Risk Analysis
 
 评估风险的影响。
 
-### Risk Planning
+#### Risk Planning
 
 制定应对风险的计划。
 
-### Risk Monitoring
+#### Risk Monitoring
 
 在项目开发过程中监控风险。
 
-### Avoidance Strategies
+#### Avoidance Strategies
 
 尽量使用熟悉的模式，但是也接受新技术，时刻关注市场动向；
 
@@ -590,7 +590,7 @@ Project+Product：需求一直变；分析阶段太慢了；开发团队技能�
 
 员工不要欺瞒进度，高管要时刻了解进度以及其对项目的重要性。
 
-### Contingencies 突发事件
+#### Contingencies 突发事件
 
 换人，换工具，换资源。
 
@@ -600,7 +600,7 @@ Project+Product：需求一直变；分析阶段太慢了；开发团队技能�
 
 我们知道敏捷开发持续提交小版本，因此经常进行测试修改当阶段错误。但是缺陷在于敏捷开发不注重长远眼光 long term planning，因此可能带来一些问题。
 
-## Quality Management
+### Quality Management
 
 对质量的评估，最好从软件开发过程中抽离出来。因为开发的过程会错误影响开发者自己对质量的评估（我都这么努力了，做出来的东西肯定很好吧）。
 
@@ -614,7 +614,7 @@ Project+Product：需求一直变；分析阶段太慢了；开发团队技能�
 
 软件标准有很多好处，新员工快速入手，大家更熟悉项目等，但是标准可能对一些过去常常发生而现在不怎么出现的问题采取忽略的态度，从而兼容性上出现问题；而且可能浪费很多时间填文书。注重标准好的部分。
 
-## Design principle
+### Design principle
 
 设计的软件不仅要正确，高效运行，还要在限定时间，人力，软件，经济条件下。差代码后期可能要花很多时间弥补隐患；而且不同模块的代码经常交互，差代码还会有安全隐患。
 
@@ -670,11 +670,11 @@ Scope and garbage collection：对象的作用域只要有变量还在引用这�
 
 - Design by Contract：一种思想。客户端代码应当满足承包商的先决需求pre-conditions；应当对异常做处理（exception）；后置条件post-conditions在测试中作为断言assertions合并到程序中。（前置条件：前提；后置条件：方法运行后的状态）
 
-### **Single Responsibility Principle (SRP)** 
+#### **Single Responsibility Principle (SRP)** 
 
 单一责任原则：每个类有一个职责 responsibility，其所有对象都服务于这个职责。Leads to highly cohesive 内聚性高
 
-### Open-Closed Principle (OCP)
+#### Open-Closed Principle (OCP)
 
 开放闭合原则：模块（类和方法）open to extension，close to modification 
 
@@ -682,11 +682,11 @@ Scope and garbage collection：对象的作用域只要有变量还在引用这�
 
 对修改封闭，意味着类一旦设计完成，就可以独立完成其工作，而不要对类进行任何修改。比如一个类以不同对象形式表现这就是扩展，因为需求改变或者有新需求。
 
-### **Do not Repeat Yourself principle (DRY)** 
+#### **Do not Repeat Yourself principle (DRY)** 
 
 不要复读机原则（不要重复自己原则）。本模块中如果发现重复内容，建议再抽象为方法和类。
 
-### **Liskov Substitution Principle (LSP) **
+#### **Liskov Substitution Principle (LSP) **
 
 Liskov替代原理：重写方法，不应该抱着”修改其方法“的想法。不能加强 strengthen 前置条件，不能削弱 weaken 后置条件。
 
@@ -702,11 +702,11 @@ Association, Aggregation and Composition：association是两个不同东西的�
 
 有的时候继承满足不了LSP（比如令正方形为矩形的子类），可以使用聚类来防止破坏LSP。
 
-### **Interface-Segregation Principle (ISP)** 
+#### **Interface-Segregation Principle (ISP)** 
 
 接口隔离原则：首先接口应该尽量分解为小接口。客户端每个类不应该依赖他不使用的方法。就是接口用啥实现啥，别多实现。
 
-### Dependency-Inversion Principle (DIP)
+#### Dependency-Inversion Principle (DIP)
 
 依赖倒置原则：
 
@@ -718,9 +718,9 @@ Association, Aggregation and Composition：association是两个不同东西的�
 >
 > [依赖倒置原则（Dependency Inversion Principle） - sangmado - 博客园 (cnblogs.com)](https://www.cnblogs.com/gaochundong/p/dependency_inversion_principle.html)
 
-## Design Patterns
+### Design Patterns
 
-### Decorator Design pattern
+#### Decorator Design pattern
 
 用于扩展系统功能的装饰模式。
 
@@ -732,7 +732,7 @@ Association, Aggregation and Composition：association是两个不同东西的�
 
 装饰模式实现一个接口，接口中的方法通过该变量的同一个参数去调用同一个方法，比如本例中是鸭子呱呱的计数，每次调用++。
 
-### Adapter design patterns
+#### Adapter design patterns
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332186.png" alt="1685983233527" style="zoom:50%;" />
 
@@ -745,7 +745,7 @@ Association, Aggregation and Composition：association是两个不同东西的�
 3. 如果想鸭子叫同时计数，直接调用包装类即可，DRY。
 4. GooseAdapter 只访问了 Goose 的 honk 方法而不是对其完全访问，DIP。这里如果改成继承的子类，就有全部访问权了。
 
-### Wrapper design patterns
+#### Wrapper design patterns
 
 Wrapper 模式包括 decorator 和 adapter。decorator 主要是外面的包裹类和里面的类都实现一个接口，比如上例的鸭子嘎嘎。adapter 是内部类不需实现。
 
@@ -753,13 +753,13 @@ Immutable View：前面提过java引用的问题，比如两个变量引用同�
 
 ![1685986070602](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685986070602.png)
 
-### Composite Design Pattern
+#### Composite Design Pattern
 
 包装了一个集合。
 
 ![1685985869548](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685985869548.png)
 
-### Observer Pattern
+#### Observer Pattern
 
 比如看到绿灯汽车知道该走了，这种观察者一个变量改变影响其他变量的实现。
 
@@ -779,7 +779,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 我们先用一个ObservableDogBot类继承Observable，且实现未完成的dogbots，然后写一个dogreporter实现observer。最后`rover.addObserver(reporter1);`
 
-### Factory Methods
+#### Factory Methods
 
 如果我们设定饥饿值大于6的狗要被构造为greedyDogBot是普通狗的子类，那么PlainDogBot和greedyDogBot都直接提供出来构造方法不太好。可以通过一个构造类来判断需要返回什么对象。
 
@@ -805,7 +805,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 ![1686026838784](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686026838784.png)
 
-### Singleton Design Pattern
+#### Singleton Design Pattern
 
 构造方法不一定返回必须是新创建的对象，工厂类里可以返回已有的对象。
 
@@ -813,11 +813,11 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 注意LSP原则。
 
-### Object Pool Design Pattern
+#### Object Pool Design Pattern
 
 对象池模式，保留一个对象列表，在需要的时候返回一个特定对象。
 
-### Strategy Design Pattern
+#### Strategy Design Pattern
 
 选择要执行的策略。
 
@@ -825,7 +825,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 上图是狗执行几次action的函数。我们也可以利用重写的Comparator实现条件结构，比如比较ab两狗叫了几次，叫的少的补差。
 
-### State Design Pattern
+#### State Design Pattern
 
 可以改变对象的状态类型。
 
@@ -833,7 +833,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332513.png)
 
-### Bridge Design Pattern
+#### Bridge Design Pattern
 
 解耦思想。比如我们需要12种颜色的画笔，可以选择12根固定颜色的蜡笔，或者1根毛笔和12种颜料。毛笔的例子就很好地解耦了画笔和颜色。
 
@@ -843,7 +843,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181219816.png)
 
-### Flyweight Pattern
+#### Flyweight Pattern
 
 将那些大量的，具有很多内部状态而外部状态很少的对象进行共享，可以以类似缓存的方式共享。
 
@@ -851,7 +851,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230606181617881.png)
 
-# Open Source Software
+## Open Source Software
 
 free of charge, free of legal restrictions on usage. 
 
@@ -875,7 +875,7 @@ free of charge, free of legal restrictions on usage.
 - approver：决定这些修改是否要合并进大版本的人，和verifier都需要审核面试筛选。
 - Project leads：监督单个项目的工程。
 
-## software freedom
+### software freedom
 
 - 运行程序的自由 run the program
 
@@ -884,35 +884,35 @@ free of charge, free of legal restrictions on usage.
 - 分发软件副本的自由 redistribute copies
 - 发布自己的版本给他人的自由  distribute copies of your modified versions to others。
 
-## Copyright
+### Copyright
 
 只有制作者producer有权利制作副本和创建新内容 produce copies and create new work based on it，但是可以授权允许别人复制和改编该作品 make copies of the work and adapt it。制作者可以通过收费等方式赋予这些权力给他人，或者对改编的范围加限制，因为这算是加在producer身上的一种义务，有点回报也正常。
 
-## Copyleft
+### Copyleft
 
 但是OSS的版权声明采用的是copyleft，一种 free software license，并不是限定他人复制改编的权力，而是赋予他人这种权力。许可证内容包括：声明源代码可用，以及改编允许的范围。
 
-## voting
+### voting
 
 有权投票的人每人最多一票；没权投票的人不能投；有权投票且选择投票的人不能被阻止投票；其须拥有充足的选择 full choice；其投票结果必须被正确统计不能被别人篡改；总票数正确相加，不能篡改；大多数时候没有人能知道任何一个投票者的选择。
 
 电子投票有风险，比如数据容易被篡改，被伪造等。
 
-# Software Development Tools
+## Software Development Tools
 
-## Software Craftsmanship and Clean Code
+### Software Craftsmanship and Clean Code
 
 注意代码整洁，比如格式、注释等。
 
-## Saying “No”
+### Saying “No”
 
 不要一直盲目答应老板和客户的需求，程序员更熟悉代码，而且需要帮老板规避可能发生的错误。
 
-## Learning from Mistakes
+### Learning from Mistakes
 
-## Microsoft’s Best Practices
+### Microsoft’s Best Practices
 
-### Revision Control System
+#### Revision Control System
 
 版本控制。
 
@@ -926,34 +926,34 @@ conflict：两个人的提交出冲突了。
 
 merge：合并入主分支。
 
-### Daily Build
+#### Daily Build
 
 每日构建一次代码，编译链接源代码，进行一些测试，确保第二天大家能使用最新版本。
 
-### Continuous Integration
+#### Continuous Integration
 
 开发人员也建议每天check-in一次。
 
-### Build Verification Tests
+#### Build Verification Tests
 
 断言和单元测试。
 
-### Bug Database
+#### Bug Database
 
 记录以前的bug记录，解决方法，严重程度，优先级等信息。
 
-### War Team and Bug Triage
+#### War Team and Bug Triage
 
 发布前，作战小组确认系统“好到可以发布”。检查运行是否正常，剩余的bug严重程度等。
 
-### Code reviews and coding guidelines 
+#### Code reviews and coding guidelines 
 
 团队对彼此代码进行彻底审查。
 
-### Globalisation and Localisation
+#### Globalisation and Localisation
 
 针对不同语言、脚本的差异处理。
 
-### Documentation Generators
+#### Documentation Generators
 
 文档生成。

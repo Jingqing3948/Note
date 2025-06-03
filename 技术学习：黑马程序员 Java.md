@@ -9,11 +9,11 @@ categories:
 description: 黑马程序员Java入门课程学习笔记
 ---
 
-# 前言
+## 前言
 
 以[黑马程序员全套Java教程](https://www.bilibili.com/video/BV18J411W7cE?p=1)网课为主。
 
-# Java 介绍
+## Java 介绍
 
 Java是一个可以跨平台的语言，借助Java虚拟机（Java Virtual Machine, JVM）能够在任意操作系统（operating system, OS）上运行。
 
@@ -48,7 +48,7 @@ JDK 的安装目录如下：
 
 环境配置等就不多赘述了，网上好的教程太多太多。总之就是终端 javac 和 java 可以执行，最好使用 IDEA 作为 IDE。
 
-## IDEA 环境介绍
+### IDEA 环境介绍
 
 集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。
 
@@ -58,9 +58,9 @@ JDK 的安装目录如下：
 
 ![AJdw2.png](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201224741.png)
 
-# 基础语法（重点比较与C的区别）
+## 基础语法（重点比较与C的区别）
 
-## HelloWorld 
+### HelloWorld 
 
 *使用 Notepad++ 前需要设置：`设置 -- 首选项 -- 新建 -- 默认语言：Java -- 编码 ANSI`。*
 
@@ -83,15 +83,15 @@ java HelloWorld // .class 文件被解释执行，转化为可以直接在本地
 
 java 和 C、C++ 一样，属于**编译型语言**（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。
 
-## 注释
+### 注释
 
 单行注释 `//` 、多行注释 `/* */` 都和C一样。还有一个文件注释 `/** */`暂时用不到，之后了解。
 
-## 关键字
+### 关键字
 
 字母全部小写。
 
-## 数据类型
+### 数据类型
 
 整数型：byte, short, int, long
 
@@ -116,7 +116,7 @@ float f=1.235F; //防止 long 类型和 float 类型不兼容
 
 *类名：大驼峰命名法*
 
-## 运算符
+### 运算符
 
 +，-，*，/，%，
 
@@ -139,7 +139,7 @@ float f=1.235F; //防止 long 类型和 float 类型不兼容
 "string"+1+99 //"string199"，从左往右计算
 ```
 
-## 类型转换
+### 类型转换
 
 自动类型转换：把小范围的变量赋值给大范围的变量
 
@@ -168,7 +168,7 @@ s=s+10;			// 错，因为右边发生了自动类型转换，变成了int型
 s=(short)(s+10);// 也可以
 ```
 
-## 数据输入
+### 数据输入
 
 输入通过 Scanner 类实现。Scanner 类在 java.util 包下，要先导包才能使用。
 
@@ -179,7 +179,7 @@ int i=sc.nextInt();//接收数据
 String s=sc.nextLine();
 ```
 
-## 分支、循环语句
+### 分支、循环语句
 
 if - else 语句：和 C 语言一样。
 
@@ -187,7 +187,7 @@ switch 语句：表达式的取值可以是 byte、short、int、char，JDK5之�
 
 for, while, do - while 语句，及 break continue 和 C 一样。
 
-## 随机数
+### 随机数
 
 Random 类，在 java.util 包下，需要导包。
 
@@ -197,7 +197,7 @@ Random r=new Random();
 int n=r.nextInt(10);//[0,10)的范围内取随机数
 ```
 
-## 数组
+### 数组
 
 一次性声明大量**同类型**变量。
 
@@ -216,13 +216,13 @@ int[] arr=new int[3];//动态初始化，只申请了空间，系统赋予初始
 
 java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。
 
-### 栈内存
+#### 栈内存
 
 定义的方法中的变量放在栈内存中，使用完直接消失。
 
 如`int a`，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。
 
-### 堆内存
+#### 堆内存
 
 实体、对象等的定义放在堆内存中，使用完会在垃圾回收器空闲时进行回收。
 
@@ -240,18 +240,18 @@ arr2[1]=22;
 arr2[2]=33;//这时访问 arr1[]，发现其中的数据也变成了11,22,33
 ```
 
-### 数组常见异常
+#### 数组常见异常
 
 1. 数组越界问题，ArrayIndexOutOfException。
 2. 空指针异常问题，NullPointerException。（`arr=null`，表示数组不指向任何有效对象）
 
-### Array.length
+#### Array.length
 
 数组自带属性 length，通过`arr.length`就能获得数组长度。
 
-## 字符串
+### 字符串
 
-## 字符串输入
+### 字符串输入
 
 查看 Scanner 的帮助文档可以得知，成员方法 nextLine() 可以获取一整行内容，可用于输入接收字符串。
 
@@ -261,7 +261,7 @@ String line=sc.nextLine();
 //这里只输入 sc.nextLine() 然后 alt enter 代码自动补全，就会自动生成左边 String line。
 ```
 
-## String
+### String
 
 String 类型代表字符串。其内容都是被双引号引住的。
 
@@ -282,7 +282,7 @@ String s3=new String(b);
 
 *字符串在效果上像字符数组 char[]，但（JDK9）以后底层实现方法其实是字节数组 byte[]。*
 
-### 字符串比较：== 和 equals()
+#### 字符串比较：== 和 equals()
 
 用==判断的比较，是比较 s1 和 s2 的值（即：对应字符串的地址值）是否相同。
 
@@ -306,7 +306,7 @@ System.out.println(s1==s3);//输出 false
 System.out.println(s1.equals(s3));//输出 true
 ```
 
-### 遍历字符串：成员方法 length() 和 charAt()
+#### 遍历字符串：成员方法 length() 和 charAt()
 
 `s.length()`可以获取字符串长度。**这里注意是有括号的，和数组长度 length 区分开！** 
 
@@ -318,7 +318,7 @@ for(int i=0;i<s.length();i++){
 }
 ```
 
-### 字符串拼接
+#### 字符串拼接
 
 字符串可以直接用 + 号拼接。
 
@@ -330,7 +330,7 @@ s1=s1+s2;//Hello World
 
 在内存中，字符串发生拼接后会在堆内存中新建一个字符串（有"Hello "，"World"，"Hello World"三个字符串，而不是直接在"Hello "的位置上拼接"World"）。这样操作还是比较费时费空间的。之后介绍的另一个类——StringBuilder 可以更有效地解决这个问题。
 
-### endsWith()
+#### endsWith()
 
 查看字符串是否以指定子串结尾。
 
@@ -339,7 +339,7 @@ String s1="hello world";
 s1.endsWith("world");
 ```
 
-### StringBuilder 类
+#### StringBuilder 类
 
 与 String 类相比，最主要的特点在于内容可变。
 
@@ -381,7 +381,7 @@ String s="Hello World";
 String sr=new StringBuilder(s).reverse().toString();
 ```
 
-## 方法
+### 方法
 
 java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。
 
@@ -398,7 +398,7 @@ public static 返回值类型 方法名(形参){//和 main 方法同级
 
 方法不能嵌套定义。
 
-### 方法重载
+#### 方法重载
 
 多个方法在一个类中，有相同的方法名，但参数不完全相同。
 
@@ -421,15 +421,15 @@ public static int max(int a, int b, int c)
 
 如图，如果是数组单元的值被修改了，实际上是堆内存中的内容被修改了， main() 方法中数组对应的地址中的内容也会被修改。
 
-# 类和对象
+## 类和对象
 
-## 类
+### 类
 
 类是对生活中一类具有共同属性和行为的事物的抽象。如猫类，都有毛的长短、颜色、名字等属性，也都能猫叫、吃饭等（不接受抬杠
 
 类是对象的数据类型，是一个抽象的概念。
 
-### 类的定义
+#### 类的定义
 
 ```java
 public class 类名{
@@ -456,19 +456,19 @@ public class Cat{
 }
 ```
 
-## 对象
+### 对象
 
 类的实体化。比如罗小黑，是猫类的一个实体化。
 
-### 属性
+#### 属性
 
 对象具有的各种特征，每个对象的每个属性都有特定的值（如猫毛有长毛、短毛、无毛）
 
-### 行为
+#### 行为
 
 对象能执行的动作，如猫可以叫，可以跑。
 
-### 对象的使用
+#### 对象的使用
 
 ```java
 //在 main 方法中
@@ -485,7 +485,7 @@ c.eat("猫粮")//行为：吃饭
 
 对象名 c 存储在栈内存中（其值代表对象的属性在堆内存中的地址），而对象的**属性**等具体内容存储在**堆内存**中。对象中的**方法**调用时则加载到**栈内存**中，执行完毕后出栈。
 
-## 成员变量和局部变量
+### 成员变量和局部变量
 
 成员变量：类中在方法外的变量（如上例中的属性变量）
 
@@ -498,7 +498,7 @@ c.eat("猫粮")//行为：吃饭
 | 对象消失时随之消失 | 方法调用完毕而消失                         |
 | 有默认的初始值     | 没有默认的初始值，必须先定义、赋值才能使用 |
 
-## 对象内存图介绍
+### 对象内存图介绍
 
 首先老师汇总介绍了一下所有内存空间。当我们运行 Java 文件的时候系统分配一片内存空间给 JDK，里面具体是这样细分的：
 
@@ -510,7 +510,7 @@ c.eat("猫粮")//行为：吃饭
 
 堆是我们 new() 出来的对象的存储区域，并产生地址。
 
-### 单个对象的内存图
+#### 单个对象的内存图
 
 比如：`Student s=new Student();`
 
@@ -528,7 +528,7 @@ c.eat("猫粮")//行为：吃饭
 
 当方法执行完毕撤出栈空间的时候，没有引用堆内存中对应对象的变量时，堆内存中的对象就没有存在必要了就也被清理了。
 
-# 封装 packaging
+## 封装 packaging
 
 Java 的三大特性：封装、继承、多态。
 
@@ -536,7 +536,7 @@ Java 的三大特性：封装、继承、多态。
 
 因此我们要添加一些限制。
 
-## private 修饰符
+### private 修饰符
 
 可以修饰成员变量、成员方法不**直接**被其他类使用。
 
@@ -547,7 +547,7 @@ private int age;
 
 被 private 修饰的成员变量有两种赋值（访问）方式：构造方法和 get / set 方法。
 
-## 构造方法
+### 构造方法
 
 写在类中，作为类的方法。主要用于对象初始化。声明变量时`Cat c=new Cat();`Cat() 就是一种无参构造方法。
 
@@ -574,7 +574,7 @@ this被哪个对象调用，就代表哪个对象。
 
 然后把"林青霞" 字符串类型传入堆内存中。
 
-## get / set
+### get / set
 
 无参构造方法后用 setXxx() 方法创建对象。
 
@@ -600,11 +600,11 @@ c.setName("小黑");
 System.out.print(c.getName);
 ```
 
-## 总结
+### 总结
 
 封装将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法实现对隐藏信息的操作和访问，提高了代码安全性（在 setXxx() 方法中可以对数据进行校验）和代码复用性（封装方法可以复用）。
 
-# 集合
+## 集合
 
 集合和数组相比，就像 StringBuilder 之于 String，数组长度固定，集合长度可变。
 
@@ -621,7 +621,7 @@ C-->Q[Queue]
 
 ArrayList 就是集合的一种。
 
-## ArrayList\<E\>
+### ArrayList\<E\>
 
 在 java.util 包下，需要导包。
 
@@ -652,7 +652,7 @@ array.add(1,2);	 // 1下标位置插入2这个元素
 System.out.println(array);//输出 array：1，2，3，4
 ```
 
-# 继承
+## 继承
 
 有一些类有许多相同属性和方法（如猫和狗，有动物的共同特征）重复写两遍相对麻烦一些。可以把这些类的共同部分提取出来作为父类，这些类继承父类中的共有部分后再添加自己特有的内容。
 
@@ -681,7 +681,7 @@ public class Dog extends Animal{
 
 当子类属于父类的一种时，可以使用继承。
 
-## 变量访问特点
+### 变量访问特点
 
 范围越小，权限越高。
 
@@ -691,7 +691,7 @@ public class Dog extends Animal{
 
 ![AmPt7.png](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201821077.png)
 
-## 构造方法的访问特点
+### 构造方法的访问特点
 
 构造方法的访问优先级和变量相反。即使访问子类的构造方法，也会优先访问**父类的无参构造方法**，再访问子类的构造方法。因为毕竟子类由父类而来，需要先构造父类再构造子类。
 
@@ -720,21 +720,21 @@ public Zi(int age)
 // 不支持一个子类继承多个父类，但是允许多层基层（爷->父->子）
 ```
 
-## 成员方法的访问特点
+### 成员方法的访问特点
 
 先在子类中寻找，找不到再去父类中寻找。
 
-## 权限修饰符
+### 权限修饰符
 
 public > protected > 默认 > private
 
 ![Awiam.png](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201821429.png)
 
-## 状态修饰符
+### 状态修饰符
 
 有 final 和 static。
 
-### final
+#### final
 
 成员变量和成员方法被 final 修饰后，不可以被重新赋值 / 重写。
 
@@ -742,7 +742,7 @@ public > protected > 默认 > private
 
 *引用类型被 final 修饰后，不可以被重新赋值，指的是地址不能改变，指向的内容还是可以变的。（除了字符串类型，字符串类型内容也不可以改变）*
 
-### static
+#### static
 
 被 static 修饰的成员变量在所有对象里值都是一样的。
 
@@ -756,7 +756,7 @@ Strudent s2=new Student();//university 变量的值是 "北大"
 
 静态成员方法则是与类本身相关（非静态的方法是和类的具体实例对象有关，静态方法是和整个类有关），调用方式也是 `类名.静态方法名`。静态方法中不能使用 this 关键字（因为没有具体的实例对象）。此外，**静态成员方法只能访问静态成员变量 / 方法！**
 
-## 包 Package
+### 包 Package
 
 文件夹，用于存放编译后生成的 class 文件，方便管理。
 
@@ -775,7 +775,7 @@ javac HelloWorld.java
 java com.ithema.HelloWorld
 ```
 
-## 导包 import
+### 导包 import
 
 如果测试类在 src 文件夹的A文件夹下，要调用的类在 src 文件夹的B文件夹下，可以通过导包的方式来调用
 
@@ -783,7 +783,7 @@ java com.ithema.HelloWorld
 
 之前对于权限的学习，我们知道：只有 public 的类可以被其他跨包无关类访问；被 protected 修饰的父类对跨包的子类可见。
 
-## 方法重写
+### 方法重写
 
 之前学过方法重载，是函数名相同但是参数设置不同的函数。
 
@@ -802,7 +802,7 @@ public void function()
 1. 父类的方法如果是 private 的，子类中就访问不到，也构不成方法重写一说了。
 2. 子类的重写方法权限必须高于父类方法。（public > protected > 默认 > private）
 
-# 多态
+## 多态
 
 同一个对象在不同时刻表现出的形态也不同。
 
@@ -813,7 +813,7 @@ Animal a=new Cat();//父类引用指向子类对象
 
 a 在内存中是 Cat 的大小，但是编译时被视作 Animal 类型。
 
-## 多态中成员的访问特点
+### 多态中成员的访问特点
 
 访问成员变量时：优先看等式左侧。如 Animal 和 Cat 中都对 age 赋值了，访问 age 得到的是 Animal 中的 age。*因为成员变量不会被重写*
 
@@ -851,7 +851,7 @@ Cat c=(Cat)a;//向下转型，这样 c 就可以访问 Cat 类中特有的方法
 
 使用转型的时候注意不能随便向下转型。如本例中 a 在内存中是 Cat 类，不能转换成 Dog 类。*ClassCastException*
 
-# Abstract, 接口
+## Abstract, 接口
 
 抽象方法：没有方法体的方法，待补全，请输入文本。
 
@@ -865,7 +865,7 @@ public abstract void eat();
 
 抽象类不能直接创建对象，需要子类把抽象方法重写补全后才能创建对象。否则，子类也是抽象类。
 
-## 接口
+### 接口
 
 接口是一种公共的行为规范标准，只要符合规范，大家都可以使用。 java 中的接口主要是对行为的抽象。如：
 
@@ -891,12 +891,12 @@ public class Cat implements Jumpping{ // 实现
 
 接口和接口之间也可以多继承 `interface1 extends interface2, interface3`
 
-## 总结
+### 总结
 
 ![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201836142.png)
 
 
-## 设计原则
+### 设计原则
 
 抽象类中的抽象方法所有对象中都必须有；接口则是选择性实现的。比如门这一大类，其中不管什么门，防盗门、木门、自动门，都有门的特有行为（开关门、锁门……）只是实现方法可能不一样，所以要在门父类中定义这些抽象方法，在子类中必须实现。
 
@@ -918,7 +918,7 @@ C-->F[篮球教练]
 
 其中，人、运动员、教练是抽象类，说英语是接口。其他具体类需要实现接口，并重写继承的所有抽象方法。
 
-## 抽象类 / 接口作为形参 / 返回值
+### 抽象类 / 接口作为形参 / 返回值
 
 类也可以作为形式参数或函数的返回值。
 
@@ -928,11 +928,11 @@ C-->F[篮球教练]
 
 接口作为形参/函数返回值，和抽象类一样，实际需要的是实现了该接口的类的实例对象。
 
-# 内部类
+## 内部类
 
 在类中定义一个类。
 
-## 内部类和外部类的互相使用
+### 内部类和外部类的互相使用
 
 无论外部类的成员变量的权限修饰符是什么（private, public……）因为都在同一个类中，所以即使权限修饰符是 private 也可以相互访问。
 
@@ -940,13 +940,13 @@ C-->F[篮球教练]
 
 而外部类如果想访问内部类的成员，需要**先创建一个内部类对象再访问**。
 
-## 外界使用内部类
+### 外界使用内部类
 
 外界使用内部类：`Outer.Inner oi=new Outer().new Inner();`
 
 如果 inner 是私有的，或者是局部内部类，则不能通过上述方法调用。但是可以在 outer 里定义一个公开的方法，在方法中 new 一个 inner 并使用其中的成员方法。对于外部的调用者来说，他只需调用 outer 的这个方法，就可以访问 inner 的成员方法。不过对使用者来说他并不知道内部结构如此。**封装**
 
-## 内部类的分类
+### 内部类的分类
 
 在类的成员位置定义：成员内部类
 
@@ -969,7 +969,7 @@ public class Outer {
 }
 ```
 
-## 匿名内部类
+### 匿名内部类
 
 继承了另一个类，或实现了接口的子类匿名对象。
 
@@ -1032,9 +1032,9 @@ jo.method(new jump(){
 
 直接传一个匿名内部类参数给 method 方法，就不用新建文件重新定义类了。
 
-# 一些常用类
+## 一些常用类
 
-## Math
+### Math
 
 不用导包，成员变量、方法都带有static修饰，可以直接通过类名访问。
 
@@ -1051,7 +1051,7 @@ jo.method(new jump(){
 
 随机数想要其他范围可以做算术运算。如 [0.0, 100.0)就用`random()*100`。
 
-## System
+### System
 
 不用导包，不能实例化，static
 
@@ -1062,7 +1062,7 @@ jo.method(new jump(){
 
 currentTimeMillis() 可以整除求得当前年份；可以用两个 currentTimeMillis() 值做差求时间间隔等。
 
-## Object
+### Object
 
 Object 类是所有类的根类。
 
@@ -1071,7 +1071,7 @@ Object 类是所有类的根类。
 | public String toString()          | 返回对象的字符串表示形式。建议子类全部重写该方法       |
 | public boolean equals(Object obj) | 比较对象是否相等（默认比较地址）。重写可以比较对象内容 |
 
-### toString() 方法
+#### toString() 方法
 
 Object 中包含 toString 方法
 
@@ -1092,7 +1092,7 @@ return "{ Person:name=" + name +" age=" + age+"}";// name 和 age 都是本类�
 }
 ```
 
-### equals
+#### equals
 
 `s1.equals(s2)`本质上是比较两个对象的地址，肯定是 false。
 
@@ -1108,7 +1108,7 @@ public boolean equals(Object o) {
 }
 ```
 
-## Arrays 类
+### Arrays 类
 
 需要导包 `java.util.Arrays`，不能创建对象，成员是 static的。
 
@@ -1117,7 +1117,7 @@ public boolean equals(Object o) {
 | public static String toString(int[] a) | 返回形如 "[a, b, c]" 的字符串形式 |
 | public static void sort(int[] a)       | 按数字顺序排列指定的数组          |
 
-## 补充：工具类
+### 补充：工具类
 
 以上工具类的特点都是：不能创建对象，但是成员方法都是 static 修饰，可以直接用类名访问。比如 `Arrays.sort(arr);`
 
@@ -1131,13 +1131,13 @@ public System(){};
 
 因为这些类自己写了无参构造方法，会把系统默认的无参构造方法覆盖。而该方法又是私有的，因此外界无法访问创建对象。
 
-## 基本类型包装类
+### 基本类型包装类
 
 其中有一些方法能更好地处理基本数据类型。
 
 包括：Byte, Short, Integer, Long, Float, Double, Character, Boolean
 
-### 方法示例
+#### 方法示例
 
 | 方法                                    | 说明                          |
 | --------------------------------------- | ----------------------------- |
@@ -1148,7 +1148,7 @@ public String[] split(String regex) 把给定字符串用 regex 分隔开。
 
 如给定字符串 s 是"1 2 3 4"，`s.split(" ")`就会得到4个字符串："1""2""3""4"。
 
-### 基本类型转换
+#### 基本类型转换
 
 int -> String：
 
@@ -1164,7 +1164,7 @@ String -> int：
 
 ② `int i=Integer.parseInt(s);`
 
-### 自动装箱和拆箱
+#### 自动装箱和拆箱
 
 装箱：基本类型->对应的包装类型
 
@@ -1181,9 +1181,9 @@ Integer i3=null;
 i3+=300;//NullPointerException。因此对象使用之前最好先判断是否为 null
 ```
 
-## 日期类
+### 日期类
 
-### Date
+#### Date
 
 Date 类，需要导包。**注意是 java.util 下的，而不是 java.sql 下的！**java.util 下的 Date 类非最终类，所以可以有子类， java.sql 下的 Date 类就是其子类。
 
@@ -1203,7 +1203,7 @@ Date da=new Date(d);//标准时间往后1h，即1970.1.1 上午9点（不是1点
 long time=System.currentTimeMillis();//可以这样获取当前时间，然后传给 Date() 或 setTime()
 ```
 
-### SimpleDateFormat
+#### SimpleDateFormat
 
 可以自己设置日期格式。
 
@@ -1239,7 +1239,7 @@ H 时 m 分 s 秒
 
 在方法内根据传入的字符串格式，利用 SimpleDateFormat 的方法进行转换。）
 
-### Calendar 类
+#### Calendar 类
 
 需要导包`java.util.Calendar`，是一个抽象类。
 
@@ -1271,11 +1271,11 @@ c.add(Calendar.DATE,-1);//倒退1天，就是2月的最后一天
 System.out.println("2020年2月有"+c.get(Calendar.DATE)+"天");
 ```
 
-# 异常
+## 异常
 
 有时因为编译错误，会提示一些信息（如：数组越界 ArrayIndexOutOfBoundException) 其实这些提示信息也是类。
 
-## Throwable
+### Throwable
 
 Throwable 是所有错误、异常的父类。
 
@@ -1293,13 +1293,13 @@ RuntimeException：运行时异常，非受检异常， 可以先不处理，等
 
 编译时异常：受检异常，不管运行会不会异常，都需要进行异常处理，不然无法编译。
 
-## 处理异常
+### 处理异常
 
 JVM 对异常的默认处理方式：输出异常名称、位置、原因，并停止运行。
 
 程序员还可以有自己的处理异常方法，如 try...catch 和 throw。
 
-### try...catch
+#### try...catch
 
 ```java
 try{
@@ -1327,7 +1327,7 @@ catch(ParseException e){
 
 但是通过这种方法处理异常之后，异常后面的部分仍然可以执行。
 
-### Throwable 的成员方法
+#### Throwable 的成员方法
 
 Throwable 作为超类，其所有子类都可以使用他的成员方法。
 
@@ -1359,7 +1359,7 @@ public class Throwable {
 }
 ```
 
-## Throws
+### Throws
 
 可以抛出异常给 try catch 处理，但是自身不能解决。
 
@@ -1391,7 +1391,7 @@ public static void method2() throws ParseException{
 }
 ```
 
-## 自定义异常
+### 自定义异常
 
 ```java
 public class 类名 extends Exception{
@@ -1434,7 +1434,7 @@ public static void main(String[] args){
 //异常时就会输出：异常类型 ScoreException，异常原因"输入分数有误！请重新输入"，异常位置。
 ```
 
-# 集合进阶
+## 集合进阶
 
 ```mermaid
 graph LR
@@ -1453,7 +1453,7 @@ M-->HM(HashMap)
 
 因此先学习 Collection 和 Map 接口后，只需要学习下一级的特有的部分。
 
-## 数据结构
+### 数据结构
 
 - 栈：后入先出 FILO。
 
@@ -1475,7 +1475,7 @@ M-->HM(HashMap)
 
   红黑树对平衡要求性低一些（最长路径不超过最短路径的2倍），所以插入数据的时候需要的旋转次数平均下来更少。适用于频繁插入删除操作。
 
-## Collection
+### Collection
 
 java.util.Collection
 
@@ -1502,7 +1502,7 @@ System.out.println(c);//输出['Hello','World']，因为 ArrayList 中重写了 
 
 快捷键：Alt+7，能看到类的所有信息
 
-### 迭代器 iterator
+#### 迭代器 iterator
 
 java.util.Iterator
 
@@ -1530,7 +1530,7 @@ while(it.hasNext()){
 
 it.next() 像指针一样从0开始遍历。
 
-### 并发修改异常
+#### 并发修改异常
 
 当不允许这样的修改时，会抛出此方法。
 
@@ -1569,7 +1569,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")
 
 但是通过 for 循环遍历集合，在遍历过程中对集合进行修改，不会报异常。
 
-## List
+### List
 
 java.util.List
 
@@ -1599,7 +1599,7 @@ System.out.println(l);//按存储的顺序输出，["Hello","World"]
 for(int i=0;i<l.size();i++)System.out.println(l.get(i));
 ```
 
-### List Interator
+#### List Interator
 
 通过 List 中的 listInterator() 方法得到。可以从各个方向遍历，迭代期间可以修改列表，还可以获取列表迭代器的当前位置。
 
@@ -1637,7 +1637,7 @@ while(li.hasNext()){
 
 在 listItr 类中的 add() 方法，添加完元素之后，有一句`expectedModCount=modCount;`重新把实际修改值赋给了预期修改值。因此 next() 方法中判断`expectedModCount==modCount`，即使添加了新元素也仍然是 true. 不会发生并发修改异常。这就是为什么要特殊强调这里的 add 和 List 自身的 add 不一样。
 
-### 增强 for
+#### 增强 for
 
 ```java
 for(E e:数组或 Collection 的集合)
@@ -1655,7 +1655,7 @@ for(int i:list){
 //内部是一个 iterator 迭代器，不可以中途修改数据，会引发并发修改异常。
 ```
 
-### 几种遍历方式的选择
+#### 几种遍历方式的选择
 
 单纯的遍历：增强 for 最简单。
 
@@ -1667,7 +1667,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 用法一模一样，查询效率高就用 ArrayList，增删效率高用 LinkedList。
 
-### ArrayList 
+#### ArrayList 
 
 实现原理：
 
@@ -1683,7 +1683,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 方法的话没什么特殊的。
 
-### LinkList 
+#### LinkList 
 
 双向链表，有很多操作首尾元素的特殊方法。
 
@@ -1700,7 +1700,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282306108.png)
 
-## 泛型
+### 泛型
 
 之前在介绍 ArrayList 的时候简单介绍过，泛型用于编译阶段约束操作的数据类型，如 `ArrayList<String> arrayList=new ArrayList<>();` 就只能存入 String 包装类型了。只能存入指定的泛型数据类型或者其子类（多态）。
 
@@ -1714,7 +1714,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 *其实这也解释了为什么泛型不能设定为基本数据类型如 `int` `char` 这些，因为这些类型存入的时候无法转换为 `Object` 类型）*
 
-### 泛型的几种应用场景
+#### 泛型的几种应用场景
 
 泛型类：当不确定数据类型的时候使用。
 
@@ -1789,7 +1789,7 @@ public class MyArrayList2 implements List<String>{}
 public class MyArrayList3<E> implements List<E> {}
 ```
 
-### 泛型不具备继承性
+#### 泛型不具备继承性
 
 但是数据具备继承性。
 
@@ -1821,11 +1821,11 @@ list1.add(new Zi());
 
 `public static void method(ArrayList<? super Ye> arrayList` 是 Fu 的所有父类包括 Fu 可以传入。
 
-## Set
+### Set
 
 List 有序，可重复，有索引。Set 无序（存取顺序不一定一样），不重复，无索引。
 
-### HashSet
+#### HashSet
 
 增删改查性能都不错。
 
@@ -1845,7 +1845,7 @@ JDK8 之前的版本底层是数组+链表实现。JDK8 之后是数组+链表+�
 
 *String 和 Integer 类型 在 Java 里面已经重写好了 equals 和 hashCode 方法，不需要重写。*
 
-### LinkedHashSet
+#### LinkedHashSet
 
 有序（存取顺序一致），无重复，无索引。
 
@@ -1853,7 +1853,7 @@ JDK8 之前的版本底层是数组+链表实现。JDK8 之后是数组+链表+�
 
 数据去重默认使用 HashSet，如果还有有序需求再使用 LinkedHashSet.
 
-### TreeSet
+#### TreeSet
 
 不重复，无索引，可排序。
 
@@ -1919,7 +1919,7 @@ TreeSet<String> ts = new TreeSet<>((o1, o2) -> {
 
 Comparator 优先级高于 compareTo，对于 Integer 和 String java 已经定义好 compareTo 的情况我们又不想修改源码，就可以使用 Comparator 来重新设置排序方法。
 
-## List Set 集合使用场景总结
+### List Set 集合使用场景总结
 
 ArrayList：元素可重复，随机存取。
 
@@ -1933,7 +1933,7 @@ TreeSet：去重，且排序。
 
 *后续也可以使用 List + 排序方法实现排序。*
 
-## Map 双列集合
+### Map 双列集合
 
 双列指的是键值对，添加一条数据需要同时添加键和值两个数据。键不能重复。键和值一一对应。在 Java 中键值对整体被称作”Entry 对象“。
 

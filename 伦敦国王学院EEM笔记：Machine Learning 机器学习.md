@@ -7,18 +7,17 @@ categories:
 - 王道（KCL电子工程专业课内学习）
 - Lecture
 description: 伦敦国王学院工程学院电子工程管理专业深度学习课程学习笔记
-mathjax: true
 ---
 
 
 
-# 概率论基础
+## 概率论基础
 
 在正式开始机器学习方法之前，我们先学习一些概率论（Probability）的知识以便后面进入算法正题。
 
-## 随机变量
+### 随机变量
 
-### 离散随机变量
+#### 离散随机变量
 
 离散随机变量（Discrete Random Variables）x 可能在集合 X 的范围内取值，比如投掷硬币的概率随机变量 x，取值集合 X ={正面，反面}。随机变量实质是函数。
 
@@ -56,7 +55,7 @@ $$
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301229711.png)
 
-### 连续随机变量
+#### 连续随机变量
 
 连续随机变量（Continuous）通常用概率密度函数表示，$x\sim p(\textit x)$，同样 p(x)在域上求积分 = 1.
 
@@ -66,7 +65,7 @@ p(x)= N(x|\mu,\sigma ^2) = \frac{1}{\sqrt{2\pi \sigma ^2}}exp(-\frac{(x-\mu)^2}{
 $$
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301232062.png" alt=" "  />
 
-## 期望
+### 期望
 
 期望（Expection）也叫平均值，最有可能的结果。离散随机变量的期望：
 $$
@@ -91,7 +90,7 @@ $$
 
 - 高斯随机变量的期望是线性的. 也就是说满足 $E(af(x)+bg(x))=aE(f(x))+bE(g(x))$ 。
 
-## 向量
+### 向量
 
 基础向量（Vector）操作矩阵乘法等不再赘述。这里指的向量的表示形式是列向量（L×1 长度）。
 
@@ -111,7 +110,7 @@ L2 范数：L1 范数再开根，代表向量长度。
 
 $\widetilde{x}$：x 的归一化，相当于一个和 x 方向相同但是长度 = 1 的向量，用 x/L2 范数（‖x‖）就可以得到。
 
-## 矩阵
+### 矩阵
 
 **对角矩阵（Diagonal matrix）**：只有对角线上的值（$a_{ii}$）非零
 $$
@@ -127,7 +126,7 @@ L×1 列向量的对角矩阵相当于把列向量中的元素均匀分到 L×L 
 
 **Symmetric matrix 对称矩阵**：矩阵转置仍然等于其本身。对角矩阵很明显就是对称的。
 
-## 随机向量
+### 随机向量
 
 随机向量（Random Vector）是随机变量中所有元素按列向量排列。其中某个元素的概率：$Pr[x=x_i]$
 
@@ -156,7 +155,7 @@ L×1 列向量的对角矩阵相当于把列向量中的元素均匀分到 L×L 
 
 p(x1, x2) = p(x1)p(x2|x1).
 
-## 贝叶斯定理
+### 贝叶斯定理
 
 贝叶斯定理（Bayes）被称为：改变信念 brief 的定理，大概是从概率角度上让人更改自己的偏好。所以也常用在机器学习中。
 $$
@@ -182,11 +181,11 @@ $$
 
 生成式大模型，搜索引擎等常见其应用。
 
-# 推理
+## 推理
 
 现在我们已经有一定概率论基础了。我们开始学习“推理（Inference）”，即：已知概率的情况下，根据输入 x 猜测输出 t。
 
-推理的中间过程是一个概率模型 probabilistic model （x 和 t 的联合分布 p(x, t) ）来预测最可能的 t。
+推理的中间过程是一个概率模型（probabilistic model x 和 t 的联合分布 p(x, t) ）来预测最可能的 t。
 
 模型的具体实现被称作预测器 predictor。
 
@@ -204,13 +203,17 @@ q(1|0)= 0.2
 \end{aligned}
 $$
 
-## 贝叶斯推理
+### 贝叶斯推理
 
 贝叶斯定理（Optimal Soft Prediction / Bayesian Inference）比如我们求出，q(t|1)= Bern(t|0.8)，那么可以说：$\hat t(1) = 1$ with associated probability of error of 0.2（误差 = 0.2 的硬推理）。当 x = 1 时 t = 1 的硬预测器是最优的。
 
-## 代价函数
+### 代价函数
 
-代价函数（Loss Function）用于计算预测器和正确值之间的偏差，进而后续决定如何修改预测器让代价更小。
+代价函数（Cost Function）用于计算预测器和正确值之间的偏差，进而后续决定如何修改预测器让代价更小。
+
+> [!NOTE]
+>
+> loss 一般指的是单个预测值和正确值的差距，而 cost 指的是模型整体（所有预测值和变量值）的差距。
 
 对于硬推理，我们用代价函数记录预测的硬推理值与真实值之间的偏差来评估硬推理。
 $$
@@ -218,12 +221,12 @@ $$
 $$
 k 一般 = 2，也就是平方损失（quadratic error loss）。
 
-一种损失函数：detection-error loss，也叫 0-1 loss。指实际值和预测值要么相等，要么差 1. 比如只有 0 和 1 两种结果的伯努利随机向量情况（猜猜明天是晴天还是雨天。猜对了损失 = 0，猜错了 = 1）。
+一种损失函数：detection-error loss，也叫 0-1 loss。指实际值和预测值一致时损失=0，否则=1. 比如只有 0 和 1 两种结果的伯努利随机向量情况（猜猜明天是晴天还是雨天。猜对了损失 = 0，猜错了 = 1）。
 
 $\mathbb{1}$ 是指示符函数，预测结果正确时 = 1，否则 = 0.
 $$
 \begin{aligned}
-  \mathcal{l} (t, \hat t) &= \mathbb{1}(t = \hat t) \\
+  \mathcal{l} (t, \hat t) &= \mathbb{1}(t \ne \hat t) \\\\
   \mathbb{1}(a) &= 
   \begin{cases}
       1 & \text{if a = true} \\
@@ -241,13 +244,13 @@ $$
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070004028.png" alt=" " style="zoom: 33%;" />
 
 
-## 最优硬预测
+### 最优硬预测
 
 最优硬预测（Optimal Hard Prediction）器的预测思路就是让 population loss 最小的预测函数。比如上图，很明显^t(1)= 0, ^t(0)= 1 的代价最小，= 0.15。
 
 对于硬预测，我们只需要挑出概率最大的条件概率点作为预测值即可。
 
-## 最优软预测
+### 最优软预测
 
 最优软预测（Cross-Entropy Loss and Optimal Soft Prediction）的损失函数突然就上强度了，要算 log。cross-entropy loss：−log q(t|x)
 
@@ -265,9 +268,9 @@ $$
 
 最优软预测就是让 log loss 最小化的预测取值。
 
-# 监督学习
+## 监督学习
 
-## 监督学习简介
+### 监督学习简介
 
 推理和学习的主要区别在于 p(x, t) 是否已知。比如天气预测问题，没有人知道根据当前条件明天到底会是什么天气，只能通过以往样本学习统计出估计值作为训练参考。
 
@@ -296,7 +299,7 @@ $$
 
 
 
-### 常见符号解释
+#### 常见符号解释
 
 训练集：D，内含 N 个数据。training set D with N training data points 
 $$
@@ -330,11 +333,11 @@ $$
 $$
 L_D(\theta) = \frac{1}{N} \sum_{n = 1}^{N} \ell(t_n, \hat{t}(x_n \mid \theta)) = \sum_{x, t} p_D(x, t) \, \ell(t, \hat{t}(x \mid \theta))
 $$
-## 归纳偏差选择
+### 归纳偏差选择
 
 选择模型类 / 预测器的过程也是确定归纳偏差（Inductive Bias Selection）的过程。
 
-### 三种预测器
+#### 三种预测器
 
 总体最优无约束预测器（Population-optimal unconstrainded predictor）：最小化总体损失且无视模型，所以叫做无约束预测器，因为不受模型类的限制。但是我们不知道标准概率分布所以很难实现。
 $$
@@ -352,7 +355,7 @@ $$
 \theta_M^{ERM} = \arg\min_{\theta \in \mathbb{R}^{M+1}} L_D(\theta)
 $$
 
-### ERM 经验风险最小化预测
+#### ERM 经验风险最小化预测
 
 针对这个损失函数，一种训练原则是 Empirical Risk Minimization 经验风险最小化（ERM），即找到使得 LD(θ) 最小的 θ 作为预测器参数。
 $$
@@ -377,7 +380,7 @@ $$
 $$
 如果第一部分的矩阵乘积是不可逆的，舍去这一部分即可。
 
-### ERM 相关的两个定理
+#### ERM 相关的两个定理
 
 对于学习，有两个定理：
 
@@ -392,7 +395,7 @@ $$
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png" alt=" " style="zoom:50%;" />
 
-### 最优预测器和经验风险最小化预测器的对比
+#### 最优预测器和经验风险最小化预测器的对比
 
 例：
 
@@ -427,7 +430,7 @@ M = 3 时，模型预测如图，可以看出 ERM 在欠拟合和过拟合中间
 
 但是我们如何判断模型是否过拟合？我们不一定知道正确的模型公式。因为我们到目前为止只是用训练数据在测试，就算训练出了完全拟合训练数据的预测器（如上面第二个图，M = 9 的例子）我怎么知道这是适用于所有数据的预测器呢？
 
-### 软预测器的概率模型
+#### 软预测器的概率模型
 
 软预测器的概率模型（Probabilistic Models）用已知 t 和 θ 的条件概率表示。第三章的时候用 q 符号表示，这章用 p 符号，反正意思到位了。
 $$
@@ -449,7 +452,7 @@ L_D(\theta)=\frac{1}{N}\sum^{N}_{n = 1}(-log\, p(t_n|x_n,\theta))
 $$
 也叫 Maximum Likehood Learning (ML Learning) 最大似然学习。最小化 log 损失，最大化概率。
 
-## 验证
+### 验证
 
 可以先拿出一部分已知数据作为验证集（validation set）不参与训练。预测器用训练集训练，验证集再计算损失。计算损失的方法仍然是整体损失：
 $$
@@ -466,7 +469,7 @@ $$
 
 如何选择验证集？
 
-### K-Fold Cross-Validation
+#### K-Fold Cross-Validation
 
 首先将模型划分为 K 个类。每次迭代从每个类中选取一个值作为验证集，比如第 3 次就把 3 类作为验证集，把剩下的类作为训练集。
 
@@ -494,7 +497,7 @@ $$
 $$
 总体损失就是(2^2^+1^2^+0+0)/4 = 5/4，过拟合。
 
-### Bias vs Estimation Error
+#### Bias vs Estimation Error
 
 如何权衡偏差和估计错误？
 $$
@@ -531,7 +534,7 @@ $$
 
 *其实这里对模型容量，数据量的介绍有些过于简化其作用了，训练效果和要解决的问题，模型选择，训练算法等等都有影响。比如深度神经网络一般是大容量模型，并不一定适用“模型容量越大，越容易过拟合”的定理。当模型容量增加的时候，测试误差会首先增加（过拟合）然后下降，直到一个插值点 interpolation point。这个特性被称为“双降 double descent”，意思是 training loss 随着模型容量增加而下降的同时，population loss 也没有如过拟合预期的那样增加。*
 
-### 正交化
+#### 正交化
 
 正交化（Regularization）一种让 ERM 模型变得更加泛化的方法。
 
@@ -549,13 +552,13 @@ R：正交化 θ。比如一维范式就是所有 θ 的值求和 ||θ||，二�
 
 θ 数量越多，第二项也会使得整体的值增加，作用相当于 loss 增加。
 
-## 测试
+### 测试
 
 验证集多次迭代的过程是有偏估计，所以损失一般小于总体损失。
 
 建议提前拿出一组数据作为测试集（Test Set），不参与训练和验证，用测试集评估总体损失且训练者不应该知道测试集的内容。
 
-## 优化
+### 优化
 
 我们之前已经得出损失公式，以及训练的目标就是让损失最小化：
 $$
@@ -589,7 +592,7 @@ $$
 
 其中的值全部 = 0 说明是凸函数。
 
-### 梯度下降优化
+#### 梯度下降优化
 
 梯度下降优化（Gradient Descent）是一种局部优化方法 Local optimization。
 
@@ -611,7 +614,7 @@ $$
 >
 > 图源：[深度学习优化算法入门：一、梯度下降 - 知乎](https://zhuanlan.zhihu.com/p/45365719)
 
-### 梯度下降
+#### 梯度下降
 
 - 如果 g(θ) 的二阶导全部 <= L，可以说 g(θ) 是 L-smooth 的函数。
 
@@ -636,7 +639,7 @@ $$
 
 不过问题在于 L 不一定知道。我们可以通过验证，以及其他方法获取（后续章节介绍）。
 
-### 随机梯度下降
+#### 随机梯度下降
 
 计算整个数据集的梯度，对于大模型来说计算成本还是太高了。
 
@@ -658,7 +661,7 @@ $$
 
 除了对学习率范围设限，另一种避免到达不了极点的方法是 S 样本量每次迭代都会增加。这两种方式可以结合使用。
 
-### 计算梯度的方式
+#### 计算梯度的方式
 
 Symbolic Differentiation：直接求导。
 
@@ -679,7 +682,7 @@ Automatic Differentiation：使用求导方法，但是只求出某个点的梯�
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png)
 
-### 计算图
+#### 计算图
 
 计算图（Computational Graph）便于计算梯度的图。
 
@@ -729,7 +732,7 @@ $$
 >
 > $\nabla \theta=[-4/3, -8/3,0]^T$
 
-# 上述方法在二元分类中的应用
+## 上述方法在二元分类中的应用
 
 如下图，给了一个新点判断这个点可能是圈还是叉。
 
@@ -755,9 +758,9 @@ $$
 
 模型主要分为线性模型和神经网络模型。
 
-## 线性模型
+### 线性模型
 
-### 预测器
+#### 预测器
 
 还是经典公式：
 $$
@@ -793,7 +796,7 @@ $\sigma=\frac{1}{1+e^{-x}}$ 或者 $=\frac{e^2}{1+e^2}$ ，**注意两种形式�
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120233740.png" style="zoom:67%;" />
 
 
-### 损失函数
+#### 损失函数
 
 考虑下面这个式子，就是 classification margin：
 $$
@@ -826,7 +829,7 @@ $$
 
 - 软预测损失：$l(t,\hat t(x|\theta))=log(1+e^{-y})$
 
-### 感知器算法
+#### 感知器算法
 
 应用了 ERM，hinge-at-zero loss，SGD 的算法（Perceptron Algorithm）。
 
@@ -893,7 +896,7 @@ $$
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
 
-## 神经网络模型
+### 神经网络模型
 
 神经网络模型（Neural Network Model）主要用于处理非线性情况。
 
@@ -980,7 +983,7 @@ $$
 
 p(0|x, θ) 就 1-0.12 = 0.88 即可。
 
-### SGD
+#### SGD
 
 又到了最喜欢的梯度下降优化环节。
 
@@ -1029,7 +1032,7 @@ t = 0 时，t^±^=-1（$t^\pm=2t-1$），a^2^ 是该层（第二层所以有个 
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260451091.png)
 
-# Transformer
+## Transformer
 
 一种常常用于自然语言处理的深度学习架构。
 
@@ -1043,7 +1046,7 @@ t = 0 时，t^±^=-1（$t^\pm=2t-1$），a^2^ 是该层（第二层所以有个 
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260501909.png)
 
-## 自注意力
+### 自注意力
 
 transformer 的一个重要机制在于自注意力（self-attention）。
 
@@ -1061,11 +1064,11 @@ softmax 是形如下图的公式，这只是一种计算方法：
 
 Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过来不同。比如“伦敦国王学院”和“大学”关联度很高，但”大学“和”伦敦国王学院“关联度不高，大学有那么多所呢。
 
-## 多头注意力
+### 多头注意力
 
 多头注意力（MultiHead Attention）除了一个句子中不同词之间的关联，可能还有其他因素（如一词多义，语序问题等）。
 
-# 无监督学习
+## 无监督学习
 
 无监督学习（Unsupervised Learning）相比监督学习没有一个“标准答案”，比如对于输入 x 我们没有期望 t 输出值。有很多问题是没有期望答案的，比如分类问题，或者异常检测（某个 x 的 p 值过小，很可能是异常）。
 
@@ -1075,14 +1078,14 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292239366.png)
 
-## 密度估计
+### 密度估计
 
 压缩（Compression）：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" style="zoom:67%;" />
 
 
-### 直方图
+#### 直方图
 
 很简单的无参密度估计方法，就是统计 x 出现次数除以总数据数。
 
@@ -1108,7 +1111,7 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 
 可以看出区间的选取对直方图无监督学习影响很大。选太大了，bias 就很大，因为比较贴近正常值的异常值也可能被划进正常区间范围内；选太小了，估计误差可能又大了，因为每个区间的点数少了，就像上图，每个有样本的区间内都是一个样本数，怎么判断哪个是异常。
 
-### 核密度估计
+#### 核密度估计
 
 核密度估计（Kernel Density Estimation）：如果分布假设是平滑的而不是类似直方图的离散状，误差应该会小一些。比如假设每个样本点（相当于一个阶跃函数的图像）都变成一个高斯函数 k_h(x)= N(x|0, h)，概率密度函数如下：
 
@@ -1130,13 +1133,13 @@ h 越小，高斯函数越窄，但是就像直方图中暴露出来的问题一
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292336721.png)
 
-### 维度诅咒
+#### 维度诅咒
 
 前两种方法缺陷在于 h 和 △ 选择必须合适，而且对于多维度数据误差可能很大（除非数据量够大）。这就是维度诅咒。
 
 由此引入了参数密度估计方法，相较于非参数密度方法不会受到维度诅咒（Curse of Dimensionality）。但是对概率模型有限制，必须是可以通过参数模型得到的概率模型。
 
-### 对比监督学习
+#### 对比监督学习
 
 对比监督学习（Contrastive Density Learning）：目标是将相似样本拉近，不相似样本离远。
 
@@ -1146,7 +1149,7 @@ h 越小，高斯函数越窄，但是就像直方图中暴露出来的问题一
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300051547.png)
 
-### 潜在变量模型
+#### 潜在变量模型
 
 潜在变量模型（Latent Variable Models）找到一些隐变量进行分类。
 
@@ -1164,7 +1167,7 @@ d：x 转换为 z 后再重建，比如图片 AI 高清化。
 
 z 需要通过无监督学习找寻。
 
-### 自动编码器
+#### 自动编码器
 
 自动编码器（Autoencoders）：一种 x-> z-> x 潜在变量模型。依赖于模型参数 θ：
 
@@ -1172,7 +1175,7 @@ z 需要通过无监督学习找寻。
 
 比如 z 是图片 x 的压缩形式，解压得到 x（可能会有损失）。
 
-#### 自动编码器训练
+##### 自动编码器训练
 
 将无监督问题转化为监督问题的一种案例。选定期望输出 x 值或者原始 x 值作为预期结果，这样就可以计算损失了。
 
@@ -1228,11 +1231,11 @@ https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6cc
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010241248.png)
 
-### 直接生成模型
+#### 直接生成模型
 
 Directed Generative Models 一种 z-> x 模型。
 
-#### K 聚类算法
+##### K 聚类算法
 
 把 n 个 x 数据分配给 k 个聚类（K-means）。z 是分配结果，$z_{k,n}=1$ 代表第 n 个数据分配给了第 k 簇，$z_{k,n}=0$  代表不在这个簇里。所有的 z_{k, n} 组成列向量 z。 
 

@@ -9,13 +9,13 @@ categories:
 description: 北京邮电大学国际学院物联网工程专业数据库课程学习笔记
 ---
 
-# 前言
+## 前言
 
 本博客学习自：黑马程序员 mysql 入门网课，b站 骆昊jackfrued 老师 mysql 网课，以及博主自己课内学习的数据库课程，侵删！
 
 课内学习的课程内容因为是英方课，包括一些不常用的概念和英文，更注重整体框架的理解，大致了解即可。
 
-# 安装配置
+## 安装配置
 
 MYSQL 的安装配置网上一搜一大把，博主就不在此发表拙见了，安装太久了自己也记不是很清具体方法了。这里指跟随课程学习了 Command Line Client 的安装（说实话，这玩意我自认为没啥用）。
 
@@ -27,7 +27,7 @@ Mysql Command Line Client 是官方提供的客户端。之前一直直接用 Wi
 
 由于安装目录和 Mysql 不一致，缺少配置文件 my.ini 导致 Mysql Command Line Client 一开始无法使用。直接把 Mysql 里的 my.ini 复制到 Mysql Server 目录下就可以了。
 
-# 常用命令
+## 常用命令
 
 其实在 cmd 窗口中登录 mysql 时也会给出相应的命令提示，只是当时没有仔细研究。正好借使用 Mysql Command Line Client 的机会了解一下常用的命令。
 
@@ -44,7 +44,7 @@ Mysql Command Line Client 是官方提供的客户端。之前一直直接用 Wi
 | （选中某个数据库后）show tables;  | 查看当前数据库中所有表                              |
 | exit / quit                       | 退出                                                |
 
-# 关系型数据库
+## 关系型数据库
 
 数据库有很多种结构，mysql 学习的是关系型数据库，说白了就是二维表的结构。
 
@@ -80,15 +80,15 @@ DCL: grant（授权） / revoke（召回权限）
 | 度（degree）       | 列数（number of columns）            |
 | 定义域（domain）   | 列的取值集合（pool of legal values） |
 
-# ER 和 EER 模型
+## ER 和 EER 模型
 
-## 介绍
+### 介绍
 
 为什么要有 ER 图和 EER 图的存在？
 
 **真正做项目、设计数据库时，**实际并没有这么简单，比如还有很多用户看不到、但为了方便 DBA 使用而创建的字段。如 id，一般还会有两条 Date 字段（一表示这条记录被创建的时间，二表示这条记录最后更新的时间），以及预留一个 VARCHAR / json 字段；还有一些其他注意事项（比如 auto-increment 约束其实开发中不常用，更多使用算法比如分布式 ID 生成算法（如 SnowFlake……）当然对课程来说这并不重要）**是不可能一上来就写 SQL 语句的，需要先设计表的结构和表之间的关系。**
 
-### ER 模型
+#### ER 模型
 
 ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER 图的示例，其中矩形框代表：表（也就是实体），椭圆框代表：表中的字段（实体的属性），菱形框代表：关系，在连接线上表明了关系的重数。
 
@@ -96,7 +96,7 @@ ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER �
 
 相较于大段的 SQL 建表语句，只要能看懂 ER 图，表的结构、关系一目了然。
 
-### EER 模型
+#### EER 模型
 
 以下部分内容有参考自文章：[为了彻底搞清楚数据库 E-R 模型设计，我肝了这篇万字长文 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/356216273)
 
@@ -104,7 +104,7 @@ ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER �
 
 相较 ER 模型多了泛化层次、汇集层次、弱实体等概念。
 
-#### 泛化层次
+##### 泛化层次
 
 包括 generalization 和 specialization （泛化和特化）、父类（superclass）和子类（subclass）的概念。
 
@@ -124,7 +124,7 @@ ER 图（Entity Relationship, 实体关系）因此出现。下图是一个 ER �
 
 图中 运输工具是父类，飞机、火车、汽车是子类。圆圈中写 D / O，表示 disjoint / overlapping。父类和圆圈之间是双实线，表示是 mandatory 完全性继承。
 
-#### 汇集层次
+##### 汇集层次
 
 Aggregation, 汇集层次不再有父类子类的区别，而是由……组成的区别。
 
@@ -132,7 +132,7 @@ Aggregation, 汇集层次不再有父类子类的区别，而是由……组成�
 
 如图，房间、门窗、电脑、投影仪等是教室的组成部分，不是继承关系。
 
-#### 弱实体
+##### 弱实体
 
 一种实体只有另一种实体存在的时候才有意义。如父母和子女，少了一方另一方就没有意义了。
 
@@ -150,7 +150,7 @@ Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语�
 
 *Power Designer 建模工具，也支持正 / 反向工程，可以生成 SQL 方言。完整版付费。*
 
-# 数据类型
+## 数据类型
 
 数据类型可以通过 `? data types` 查看说明，每种数据类型也可以通过 `? 数据类型` 查看。
 
@@ -191,7 +191,7 @@ PS:
 
 5.7 之后版本的 Mysql 支持 json 属性，以键值对的方式存储，内容相对灵活。因为虽然数据库结构相对严谨，但是很多时候并不是所有属性都能考虑得到（如二手交易平台，不同的售卖品属性差的很多，如自行车和冰箱）加入相对灵活的 json ，一定程度上就能解决这类问题。包括以前 Mysql 没有这个功能的时候，许多公司也会建一个 varchar() 字段来存储 json 字符
 
-# DDL
+## DDL
 
 | SQL 语句 | 作用                | 使用示例                                                     |
 | -------- | ------------------- | ------------------------------------------------------------ |
@@ -210,9 +210,9 @@ create table `表名`(
 )engine = innodb auto_increment=2 comment '表示例';
 ```
 
-## 约束
+### 约束
 
-### 主键约束
+#### 主键约束
 
 ```mysql
 primary key (`列名`),
@@ -222,11 +222,11 @@ primary key (`列名`),
 
 *如选课表，有课程号和学生学号字段，合在一起作为复合主键可以唯一确定记录。但是一般会在新建一个选课id之类的可以唯一确定所有选课记录的字段作为主键。*
 
-### 默认约束
+#### 默认约束
 
 `default val;` 设置默认值。
 
-### 自增约束、非空约束
+#### 自增约束、非空约束
 
 都在字段描述后面写即可
 
@@ -247,7 +247,7 @@ alter table add primary key(列名);
 alter  table table_name modify 列名 数据类型  not null;# 如果是 null，就是取消非空约束
 ```
 
-### 唯一约束
+#### 唯一约束
 
 ```mysql
 constraint `uk_col_name` unique (`col_name`),
@@ -255,7 +255,7 @@ constraint `uk_col_name` unique (`col_name`),
 
 类似主键约束，唯一约束也可以设定多个字段，再括号里多写几个字段就行（如选课记录，一个学生不能重复选课，学生学号和课程编号不能重复）
 
-### 检查约束
+#### 检查约束
 
 检查约束可以帮忙检查数据合法性，但是相对的，肯定对性能有损耗。
 
@@ -263,7 +263,7 @@ constraint `uk_col_name` unique (`col_name`),
 constraint `ck_col_sex` check (`col_sex`='M' or `col_sex`='F'),
 ```
 
-### 外键约束
+#### 外键约束
 
 首先在需要加外键的表中添加和另一个表的主键一样格式（名称可以不一样）的字段。
 
@@ -291,9 +291,9 @@ alter table 表名 drop foreign key 外键名;
 alter table 子表名 add constraint 外键名 foreign key (要添加外键的字段) references 父表名(父表字段) on update cascade on delete cascade;
 ```
 
-# DML
+## DML
 
-## 插入
+### 插入
 
 ```mysql
 insert into `表名` values (对应字段值)(对应字段值)(对应字段值);//写多个括号，可以一次填写多行
@@ -314,7 +314,7 @@ insert into `表名` (要填写的字段) values (对应字段值); //省略不�
 
 **如果没有给 NOT NULL且没有默认值的字段赋值时会报错。** 报错显示：`Field '字段名' doesn't have a default value.` 尽量不要出现空列，之后处理空值会带来很多麻烦。哪怕用空字符串、0、1代替也更好一些。
 
-## 删除
+### 删除
 
 ```mysql
 delete from `表名`;//这可不兴用啊！
@@ -335,14 +335,14 @@ truncate table `表名`;
 
 截断表，这个比 delete 还要危险。delete 了表之后，如果有日志，还是可以找回原数据的。截断就算有日志也没法恢复。
 
-## 更新
+### 更新
 
 ```mysql
 update `表名` set `列名` = '值';//把这一列的数据全都改成这个值，不常用
 update `表名` set `列名` = '值',`列名` = '值',`列名` = '值' where `字段`='值';//限制条件，只修改某几个记录
 ```
 
-# DQL
+## DQL
 
 学习自b站骆昊jackfrued 老师的网课以及黑马网课。
 
@@ -352,7 +352,7 @@ update `表名` set `列名` = '值',`列名` = '值',`列名` = '值' where `�
 
 *tb_record 记录表，连接学生和所选的课 id 及课程成绩（学号 stu_id，课程号）*
 
-## 编写顺序、执行顺序
+### 编写顺序、执行顺序
 
 编写顺序如下：`select from where group by having order by limit;`
 
@@ -367,7 +367,7 @@ update `表名` set `列名` = '值',`列名` = '值',`列名` = '值' where `�
 6. order by 排序
 7. limit 分页
 
-## Select
+### Select
 
 查询所有学生的所有信息
 
@@ -385,7 +385,7 @@ select `stu_id`,`stu_sex`,`stu_name`,`stu_address` from `tb_student`;
 
 如果只查询部分列，就只写那几列就行。
 
-## 联合 Union
+### 联合 Union
 
 Union 会把查询结果联合起来。
 
@@ -395,7 +395,7 @@ union：重复的结果合并。
 
 **想做union操作，两个要联合的表必须字段数相同，字段类型匹配。**
 
-## 别名
+### 别名
 
 给字段或表起别名—— alias，简写为 as。
 
@@ -405,7 +405,7 @@ select `stu_id` as `学号` from `tb_student`;
 
 as 可以省略，不过还是写上可读性高一些。***一般字段不省略，表省略**。具体还得看公司编程规范的要求，没有就看个人喜好了。*
 
-## 条件
+### 条件
 
 限制查询记录的条件——where（选择 Selection，只查询某几行）
 
@@ -435,7 +435,7 @@ select * from table where `stu_name`='Jingqing';
 select * from table where `stu_age` between 10 and 30;-- 相当于 <=30 and >=10
 ```
 
-## 分支结构
+### 分支结构
 
 如果 sex 是布尔值，1代表男，0代表女，怎么把0和1处理成对应的性别？
 
@@ -457,7 +457,7 @@ else '未知'
 end as '性别' from `tb_student`;-- end 表示条件判断结束
 ```
 
-## 模糊查询
+### 模糊查询
 
 如：查询所有姓王的学生。
 
@@ -478,7 +478,7 @@ select * from `student` where `字段名` regexp '正则表达式';
 
 模糊查询，特别是 % 在左侧的时候，性能还是比较差的，尽量避免。
 
-## 空值处理，以及三值逻辑
+### 空值处理，以及三值逻辑
 
 **下面两种写法是错误的！**
 
@@ -496,13 +496,13 @@ select * from `student` where `stu_address` is null;
 select * from `student` where `stu_address` is not null;
 ```
 
-## 去重
+### 去重
 
 ```mysql
 select distinct `字段名` from `表名`;
 ```
 
-## 排序
+### 排序
 
 ```mysql
  select `字段名` from `表名` order by `字段名1` asc, `字段名2` desc; -- asc: 默认，ascending，升序；desc：descending，降序
@@ -510,13 +510,13 @@ select distinct `字段名` from `表名`;
 
 order by 后面跟多个字段，就是先按字段1排序，字段1相等时再按字段2排序。
 
-## 当前日期
+### 当前日期
 
 curdate()获取当前日期，使用 datediff(datepart, date1, date2) 函数可以和出生日期做差获取年龄。
 
 now()获取当前年月日时分秒（datetime）。
 
-## 取整
+### 取整
 
 floor() 函数是下取整。floor(3.99) = 3.
 
@@ -530,7 +530,7 @@ select floor(datediff(curdate(),`date`)/365) from `staff`;
 
 *可以通过? functions 查看函数一览。还会有相应的例子提示~*
 
-## 聚合函数
+### 聚合函数
 
 描述性统计信息：包括集中趋势和离散趋势。
 
@@ -574,7 +574,7 @@ select floor(datediff(curdate(),`date`)/365) from `staff`;
   - variance(), var_pop()
   - var_samp()
 
-## 分组
+### 分组
 
 聚合函数通常和分组一起使用。分组是非常重要的操作。
 
@@ -619,7 +619,7 @@ select `stu_id` from `tb_record` group by `stu_id` having avg(score)>90;
 select `stu_id`,avg(score) from `Score` where `cou_id` in (1111,2222,3333) group by `stu_id` having avg(score)>90;
 ```
 
-## 子查询
+### 子查询
 
 子查询 (subquery) 的用途：
 
@@ -666,7 +666,7 @@ where `stu_id` in (
 
 表子查询：结果为多行多列。最常用 IN NOT IN 操作。
 
-## 多表连接
+### 多表连接
 
 一对一，一对多，多对多（两个一对多）
 
@@ -676,7 +676,7 @@ where `stu_id` in (
 
 多对多：建立中间表，设置两个外键。
 
-### 笛卡尔积
+#### 笛卡尔积
 
 ```mysql
 select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` from `tb_student`,`tb_college`;
@@ -686,7 +686,7 @@ select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` from `tb_student`,`t
 
 本例中，学生表和学员表中都有学院号 col_id 字段，因此投影该字段的时候需要指明是从那个表中得到的，用 表名.字段 指定。
 
-### 自然连接
+#### 自然连接
 
 1. 有外键约束：利用外键连接，不用加条件，自动连接。
 
@@ -698,7 +698,7 @@ from `tb_student` natural join `tb_college`;
 2. 没有外键，但是两个表中有同名的列（如本例中两个表中都有 col_id 列）也可以进行自然连接。*注意：不管有几个同名的列，所有列都会作为连接的条件！*
 3. 如果没有外键也没有同名列，就只会得到笛卡尔积的结果。
 
-### 内 / 外连接
+#### 内 / 外连接
 
 另一种连接方式是 inner join / outer join 
 
@@ -718,13 +718,13 @@ right outer join：右表中所有内容都会呈现出来，左表中如果没�
 
 full outer join：左右表数据全拿出来，没有对应的内容都补 null。但是 mysql 并不支持全外连接，可以用左外连接 union 右外连接代替。
 
-### 自连接
+#### 自连接
 
 ```mysql
 select * from A AS1 inner join A AS2 where 条件;-- 自连接可以是内或外连接。必须起别名！！！
 ```
 
-### θ 连接
+#### θ 连接
 
 添加条件使得两个表中的数据相互对应：
 
@@ -733,7 +733,7 @@ select `stu_name`,`stu_id`,`col_name`,`tb_college`.`col_id` from `tb_student`,`t
 where `tb_student`.`col_id`=`tb_college`.`col_id`; -- 查询所有学生的姓名、学号、对应的学院名、学院号
 ```
 
-### 三表连接
+#### 三表连接
 
 链接条件用多个条件筛选。
 
@@ -754,7 +754,7 @@ natural join `tb_record`
 natural join `tb_course`;
 ```
 
-## 查询小技巧
+### 查询小技巧
 
 百度搜索：filetype:pdf python 搜索带 python 名的 pdf 文件
 
@@ -764,7 +764,7 @@ site:zhihu.com python 只搜索知乎里的 python 内容
 
 2023-01-23 补充：关于信息检索，博主也有开一个新坑：[信息检索_灰海宽松的博客-CSDN博客](https://blog.csdn.net/jtwqwq/category_12158048.html?spm=1001.2014.3001.5482)。目前更新还不完全，不过对于搜索引擎部分应该足够用了。
 
-## 分页查询
+### 分页查询
 
 limit 是 mysql 的**方言**。
 
@@ -776,7 +776,7 @@ select * from `tb_student` order by `stu_id` desc limit 5 offset 3;-- 只显示4
 select * from `tb_student` order by `stu_id` desc limit (3,5);-- 只显示4-8条数据(跳过前3条数据)
 ```
 
-## 派生表
+### 派生表
 
 select 的返回值也是一个关系。（关系运算的封闭性，关系的运算仍然是关系）
 
@@ -803,9 +803,9 @@ natural join (select `stu_id`,avg(score) from `tb_record` group by `stu_id`) `tb
 
 如果要查询每个学生，就要用到外连接。没选课的学生选课数显示 null。（当然可以用 ifnull(字段, 0) 把 null 替换成 0。记得 ifnull 是 mysql 方言）。
 
-# DQL 例题及注意事项
+## DQL 例题及注意事项
 
-## 简单排序——查询最大值、次大只
+### 简单排序——查询最大值、次大只
 
 1. 员工表中含有员工号、姓名、薪水、职位、补贴 、所在部门等信息。查询薪水最高的员工姓名和薪水值。
 
@@ -909,7 +909,7 @@ natural join (select `stu_id`,avg(score) from `tb_record` group by `stu_id`) `tb
    )<2 order by t1.dno asc, t1.salary desc;
    ```
 
-## 窗口函数
+### 窗口函数
 
 内容来自：[通俗易懂的学会：SQL 窗口函数 - 知乎](https://zhuanlan.zhihu.com/p/92654574)
 
@@ -926,7 +926,7 @@ natural join (select `stu_id`,avg(score) from `tb_record` group by `stu_id`) `tb
 
 窗口函数是以一个列的形式使用的。
 
-### 专用窗口函数
+#### 专用窗口函数
 
 rank、dese rank、row_number
 
@@ -934,7 +934,7 @@ rank、dese rank、row_number
 
 ![img](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152337617.png)
 
-### partition by 和 group by 的区别
+#### partition by 和 group by 的区别
 
 partition by 是把所有数据分成绩一个窗口，而并不汇总。比如上图中，如果按班级号分窗口再进行排序，就会在每个班级内部从1到无穷排序。不写的话就默认整个表是一个大窗口。
 
@@ -967,7 +967,7 @@ from(
 
 *窗口函数性能还是比较差的，业务中不应使用，数据分析师可能会常用一些。*
 
-# DCL
+## DCL
 
 Data Control Language，给用户授权，不同用户能操作数据权限也是不一样的。主要是 DBA 使用。
 
@@ -1019,11 +1019,11 @@ Workbench - Administration - Management - Users and privileges - 选中某个用
 
 至此，SQL 语句基本内容就已经学完啦~接下来涉及 Python 数据持久化的内容。
 
-# 函数
+## 函数
 
 很多内容其实在 DQL 早就介绍过。
 
-## 字符串函数
+### 字符串函数
 
 | 函数                       | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
@@ -1041,7 +1041,7 @@ Workbench - Administration - Management - Users and privileges - 选中某个用
 update 表名 set 字段名 = lpad(字段名,5,'0');
 ```
 
-## 数值函数
+### 数值函数
 
 | 函数       | 说明                         |
 | ---------- | ---------------------------- |
@@ -1059,7 +1059,7 @@ update 表名 set 字段名 = lpad(字段名,5,'0');
 select lpad(round(rand()*1000000,0),6,'0');
 ```
 
-## 日期函数
+### 日期函数
 
 | 函数                               | 说明                                                        |
 | ---------------------------------- | ----------------------------------------------------------- |
@@ -1072,7 +1072,7 @@ select lpad(round(rand()*1000000,0),6,'0');
 | date_add(date, interval expr type) | date 加时间间隔 expr，可以是年月日时间，如`interval 70 day` |
 | datediff(date1, date2)             | 求两个日期相差天数                                          |
 
-## 流程函数
+### 流程函数
 
 | 函数                                           | 说明                                      |
 | ---------------------------------------------- | ----------------------------------------- |
@@ -1095,7 +1095,7 @@ select lpad(round(rand()*1000000,0),6,'0');
  end) as '成绩所在段';
 ```
 
-# 事务
+## 事务
 
 事务是一组不可分割的操作集合，要么都成功执行，要么都失败。如银行账户数据库操作，一个人给另一个人转账1000元，那么这两个人的update操作就是不可分割的，不然如果有一个操作成功执行另一个没有，就可能银行平白无故少了1000或者收款人没收到钱。
 
@@ -1105,7 +1105,7 @@ select lpad(round(rand()*1000000,0),6,'0');
 2. 执行一条条操作。这期间如果有失败则事务回滚。或者手动进行事务回滚。
 3. 全部执行完后提交事务。默认mysql是自动提交事务的，每执行一条语句就会提交一条。
 
-## 开启事务
+### 开启事务
 
 ```mysql
 select @@autocommit;-- 1：自动提交；0：手动提交
@@ -1125,7 +1125,7 @@ commit;-- 提交
 start transaction;-- 开启事务
 ```
 
-## 事务四大特性 ACID
+### 事务四大特性 ACID
 
 atomicity 原子性：事务是不可分割的最小操作单元。
 
@@ -1135,7 +1135,7 @@ isolation 隔离性：事务不受外部干扰，独立进行。
 
 durability 持久性：提交或回滚后，事务对数据库的操作就是永久的。
 
-## 并发事务问题及解决办法
+### 并发事务问题及解决办法
 
 多个事务同时进行时会出现的问题。
 
@@ -1174,9 +1174,9 @@ read uncommitted 是数据库最低隔离级别，即：一个事务中的数据
 
 **问题4**：开启序列化后，其他事务插入会卡住，等待当前事务插入完成后再执行插入操作。会导致用户体验差，需要等待。所以序列化等级还是很少使用的。
 
-# 存储引擎
+## 存储引擎
 
-## Mysql 体系结构
+### Mysql 体系结构
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336306.png)
 
@@ -1188,7 +1188,7 @@ read uncommitted 是数据库最低隔离级别，即：一个事务中的数据
 
 存储层：最下面一行，存取数据库的相关数据。
 
-## 存储引擎简介
+### 存储引擎简介
 
 存储数据、建立索引、更新/查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的。
 
@@ -1200,7 +1200,7 @@ read uncommitted 是数据库最低隔离级别，即：一个事务中的数据
 
 修改表引擎：`alter table 表名 engine=指定引擎;`
 
-## InnoDB
+### InnoDB
 
 高性能存储引擎，Mysql 5.5后的默认引擎。
 
@@ -1220,7 +1220,7 @@ ibd文件直接打开是看不了的，都是二进制。可以进入目标文�
 
 一个区大小固定为1M，一页大小固定为16K。（大概了解，SQL优化部分还要涉及）
 
-## MYISAM
+### MYISAM
 
 数据库早期的默认存储引擎。（现在功能几乎可以被NoSQL的Mongodb取代）
 
@@ -1234,7 +1234,7 @@ ibd文件直接打开是看不了的，都是二进制。可以进入目标文�
 
 .sdi：表结构，可以直接打开，里面装的是json格式内容（可以通过json.cn格式化）。
 
-## Memory
+### Memory
 
 存放在内存中，数据是临时的。（现在功能几乎可以被NoSQL的Redis取代）
 
@@ -1244,15 +1244,15 @@ ibd文件直接打开是看不了的，都是二进制。可以进入目标文�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544209.png)
 
-## 三种存储引擎的选择
+### 三种存储引擎的选择
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544210.png)
 
-# 索引
+## 索引
 
 索引是高效获取数据的数据结构。
 
-## Linux中安装Mysql
+### Linux中安装Mysql
 
 首先在Linux中安装Mysql。还好前两天接触了一点虚拟机。
 
@@ -1334,7 +1334,7 @@ grant all privileges on *.* to 'Windows'@'%';
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336010.png)
 
-## 索引介绍
+### 索引介绍
 
 是帮助Mysql高效**获取数据**的有序数据结构。
 
@@ -1348,7 +1348,7 @@ grant all privileges on *.* to 'Windows'@'%';
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544216.png" alt="image-20220803225009939" style="zoom:67%;" />
 
-## B树
+### B树
 
 二叉树比较简单，小数插在左子树，大数插在右子树。
 
@@ -1386,7 +1386,7 @@ B树：又名多路平衡查找树。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544223.png)
 
-## B+树
+### B+树
 
 就是B树的所有叶子节点会形成一个单向链表
 
@@ -1396,7 +1396,7 @@ Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202211241544225.png)
 
-## Hash 索引
+### Hash 索引
 
 通过一定的Hash算法，把值都归到对应hash值的槽位上。如果出现槽位冲突，采用链表的方式解决。
 
@@ -1408,7 +1408,7 @@ Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访�
 
 只有Memory存储引擎支持。但是InnoDB具有自适应hash功能，可以在给定的条件下将B+树构建为hash索引。
 
-## 索引分类
+### 索引分类
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336338.png" alt="image-20220804004326046" style="zoom:80%;" />
 
@@ -1426,7 +1426,7 @@ Mysql里的B+树就是叶子结点变成了双向循环链表，提高区间访�
 
 因此直接`select ... where id=10;`效率会更高，哪怕name有索引也需要回表查询（回id表）。
 
-## 创建索引
+### 创建索引
 
 ```mysql
 CREATE [UNIQUE|FULLTEXT] INDEX index_name ON table_name (col_name,...);
@@ -1436,7 +1436,7 @@ SHOW INDEX FROM table_name;
 DROP INDEX index_name ON table_name;
 ```
 
-## 性能分析
+### 性能分析
 
 `show global status like 'Com_______';`查看当前数据库增删改查等操作的频次。如 Com_commit Com_select。
 
@@ -1511,13 +1511,13 @@ rows：Mysql认为必须要执行查询的行数（估计值）。
 
 filtered：返回的行数/读取的行数百分比，越大越好。比如查主键就不用遍历，查一条就查得出来。
 
-## 使用索引
+### 使用索引
 
 通过 create index 给某个属性添加索引。
 
 *查询结果结尾加 /G ，可以把列转换为行显示。*
 
-### 使用规则
+#### 使用规则
 
 1. 联合索引的**最左前缀法则**。比如一个索引要关联多列，那么查询从最左列开始，且不跳过索引中的列。比如我们给 profession age status 三列添加了一个索引，那么查询时就该写：`select * from table where profession="" and age="" and status=""; ` 不写 profession 查询或者只写 profession 和 status 查询会出错，会出现有 null 的列。（好像8.0可以不写最左列）原理大概是复合属性的索引是先按第一个排序，再按第二个，再第三个……所以只按后面的排序查找就出错。当然这三个查询顺序无所谓，关键是左边的一定得有。（这里的左指的是创建索引的时候的顺序，比如 `create index index_name on table_name(left_column, right column);`）
 2. 联合索引中如果出现范围查询（< >），范围查询右侧的属性失效。比如 `select * from table where profession="" and age>30 and status=""; `  status 查询就会失效。解决办法是尽量用 >= <=。
@@ -1528,7 +1528,7 @@ filtered：返回的行数/读取的行数百分比，越大越好。比如查�
 
 总结就是，mysql 评估说全表扫描比索引查找快，那么就决定用全表。比如当前列 null 值比较多，`is null` 查询就会全表查询，`is not null` 是索引查询。
 
-### SQL 提示
+#### SQL 提示
 
 有的列可能用了多个索引。可以人为提示指明用哪一个。
 
@@ -1538,7 +1538,7 @@ filtered：返回的行数/读取的行数百分比，越大越好。比如查�
 
 `explain select * from table force index(index_name) where 条件;` use 可能不接受。force 是强制使用这个索引。
 
-### 覆盖索引
+#### 覆盖索引
 
 查询使用了索引，且查询返回的列都在该索引当中。
 
@@ -1560,7 +1560,7 @@ filtered：返回的行数/读取的行数百分比，越大越好。比如查�
 
 答：id 是主键索引，为了达成覆盖索引，我们要给 username pwd 建立复合索引。
 
-### 前缀索引
+#### 前缀索引
 
 varchar int 等类型可能是很长的字符串，导致索引变得很大，查询时浪费大量磁盘 IO。
 
@@ -1572,7 +1572,7 @@ varchar int 等类型可能是很长的字符串，导致索引变得很大，�
 
 我们可以用 substring(column, 1, n) / count(*) 来计算前n个前缀的选择性。
 
-### 单列索引和联合索引
+#### 单列索引和联合索引
 
 包含多列的是联合索引。
 
@@ -1580,7 +1580,7 @@ varchar int 等类型可能是很长的字符串，导致索引变得很大，�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152336398.png)
 
-## 设计原则
+### 设计原则
 
 1. 什么时候用索引？数据量比较大，且查询比较频繁的表要建立。
 2. 哪几列建立索引？常作为查询条件的列（where, order by, group by)。
@@ -1590,9 +1590,9 @@ varchar int 等类型可能是很长的字符串，导致索引变得很大，�
 6. 索引也会影响维护，因此并不是多多益善。
 7. 如果索引列不能存储 null，建表的时候请用 not null 约束该列。当优化器知道每列是否有 null 值时，可以更好的决定用哪个索引查询。
 
-# SQL 优化
+## SQL 优化
 
-## 插入优化
+### 插入优化
 
 `insert into table values(1,1...);`
 

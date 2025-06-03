@@ -9,15 +9,15 @@ categories:
 description: 北京邮电大学国际学院物联网工程专业RFID课程学习笔记
 ---
 
-# 前言
+## 前言
 
 主要围绕考试提纲里的所有问题展开，没有拓展内容，Exam oriented Study。
 
 关注微信公众号：灰海宽松，回复 “RFID” 可获取本文pdf格式。
 
-# 1. Introduction
+## Introduction
 
-## Comparison of different automatic identification technologies
+### Comparison of different automatic identification technologies
 
 首先明确一下比较对象。human identification（cost too high）是人力识别就不用说了。
 
@@ -61,7 +61,7 @@ rfid：
 
 主要考虑各个的缺点，人脸和声音特征点多速度慢，而且人脸容易被影响，声音由于国际标准技术难以提升；条码需要视觉可见；指纹容易被盗取。
 
-## The main features of RFID
+### The main features of RFID
 
 - Non-contact automatic and rapid identification 快速薄纱复杂的人脸和声音，无接触薄纱条码和指纹
 - Permanently store a certain amount of data 永久存储一定量数据
@@ -70,11 +70,11 @@ rfid：
 
 - Low cost, can be deployed at a large scale
 
-## Constraints of RFID technology
+### Constraints of RFID technology
 
 ![1687019780697](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687019780697.png)
 
-## Core technologies of RFID
+### Core technologies of RFID
 
 Anti-collision mechanism：rfid并不支持传统的cmsa/ca无线通信协议，需要采取一些措施防碰撞（reader-reader, tag-reader, tag-tag)
 
@@ -84,7 +84,7 @@ Make full use of the attenuation laws of backscatter signal to assist in positio
 
 Security certification and privacy protection: 如何利用逻辑门电路校验安全性。
 
-## The advantage of RFID in IoT, and the development trend
+### The advantage of RFID in IoT, and the development trend
 
 充电方式：Backscatter, small node and indefinitely time of endurance. but rely on reader, one to many centralized communication 利用无线电 ratio signal 充电的方式
 
@@ -99,11 +99,11 @@ RFID and IoT:
 - provides a low-cost communication way to achieve effective communication between nodes. 
 - makes the physical objects in a passive environment achieve "passive intelligence“, providing fundamental guarantee for the “thing-thing connection"
 
-# 2. Identification
+## Identification
 
 简单说RFID就是物体上贴tag，用reader上的antenna去读取，这三个是主要组成。
 
-## Reader’s function
+### Reader’s function
 
 Energy supply: 比如有的标签自身不带能量需要reader提供信号中蕴含的能量
 
@@ -113,7 +113,7 @@ Security Assurance: 比如加密解密
 
 扩展功能：比如自组网 ad-hoc, 管理天线 antenna management 中间件接口 interface of middle components 连接外设 connecting peripherals
 
-## Reader’s classification
+### Reader’s classification
 
 按频率：LF HF算低频，UHF和SHF算高频（ultra super)，高频数据传输速度快，距离远，但是衰减快 signal attenuation，收到障碍物影响大  sensitive to obstacles。
 
@@ -123,7 +123,7 @@ Security Assurance: 比如加密解密
 - portable 可移动的像手持手机一样，small, charging battery, easy to move
 - Industrial 为工厂目的而生，比如集成其他 sensor
 
-## Influencing factors of R&W range
+### Influencing factors of R&W range
 
 许多东西都有说明书，规范，来提醒我们怎么不把东西玩坏比如手机提示不要放水里玩。
 
@@ -138,7 +138,7 @@ RFID的R&W range是其中一种。影响因素如下：
 - Operation environment condition
 - Movement speed of tags
 
-## Reader’s components and their functions
+### Reader’s components and their functions
 
 Signal Processing and Control Module: 主要是控制功能，协调一些本地计算
 
@@ -155,7 +155,7 @@ Inductively Coupled RF Module: 主要是产生能量和调制发送信号功能
 - Modulate signal to sent,  transferring data to RF tags
 - Receive and demodulate RF signal  from RF tags.
 
-## Tag’s functions
+### Tag’s functions
 
 - data storage
 - energy harvesting 吸收能量，与reader的 energy supply 对应
@@ -163,7 +163,7 @@ Inductively Coupled RF Module: 主要是产生能量和调制发送信号功能
 - Security Encryption 与 reader 的 Security Assurance 对应
 - Collision Concessions 碰撞让步
 
-## Tag classification: by package form, by power source, by work frequency, by R&W capability
+### Tag classification: by package form, by power source, by work frequency, by R&W capability
 
 Package form 也就是外观上的分类：
 
@@ -186,7 +186,7 @@ By R&W Capability
 
 read-only 和 R&W 两种，结构复杂度也有所不同
 
-## Two work modes of RFID middleware
+### Two work modes of RFID middleware
 
 interactive, independent。
 
@@ -196,9 +196,9 @@ interactive, independent。
 
 独立模式是可以不接收主机命令自行按预设的程序和读取到的结果信息循环执行指令，并将结果返回给主机。
 
-# 3. Wireless Communication Principle of RFID
+## Wireless Communication Principle of RFID
 
-## Different work principles of different carrier frequency
+### Different work principles of different carrier frequency
 
 不同频率载波也适用不同的工作原则。
 
@@ -210,7 +210,7 @@ interactive, independent。
 
 两者的能量消耗都和距离平方成正比 squared distance
 
-## Signal voltage and energy: dB, dBm，重点：如何计算
+### Signal voltage and energy: dB, dBm，重点：如何计算
 
 变化的电压通常用 $V(t)=v_0cos(\omega t)$ 表示。
 
@@ -224,7 +224,7 @@ $G_{dB}=10log_{10}\frac{P2}{P1}$
 
 dBm单位是功率的W，GdB单位是dB，代表一个比值。
 
-## Modulation of reader signal: OOK and its problem, solution: PIE; Tag encoding: FM0
+### Modulation of reader signal: OOK and its problem, solution: PIE; Tag encoding: FM0
 
 一些阅读器通过调制使得正弦电压信号携带信息的方法。
 
@@ -246,7 +246,7 @@ FM0编码方式：位窗起始处翻转信号表示1，中间翻转表示0.
 
 FM0属于 FSK frequent shift key 通过信号变化频率来识别的机制。
 
-## Link budget (重点)
+### Link budget (重点)
 
 Link budget: forward link budget  and backward link budget 发射过程中能量增减的总和
 
@@ -262,7 +262,7 @@ reader transmit energy(+) path loss(-) tag activate energy(-)
 
 从tags反射回来的信号 reflection link 和路径四次方成反比 inversely proportional. $P_{RX,back}:\frac{1}{r^4}$
 
-## Antenna gain and polarization, EIRP
+### Antenna gain and polarization, EIRP
 
 antenna gain: 输入条件相同情况下，实际情况某一点能量密度/理想条件下的密度单元。反应了天线 concentrates the input power 的能力。就比如把阅读器放中间，标签围一圈，360度去读取周围标签对能量消耗就大，可能因此传输距离也近；但是如果把标签集中放在一块区域，周围放置的 reader 利用定向天线 Directional antenna，固定读取某一个角度范围内的tags能量利用效率就高。
 
@@ -272,7 +272,7 @@ EIRP, Equivalent Isotropic Radiated Power: 天线在所指方向上获得最大�
 
 For example, FCC regulations in the United States, a non-irradiated  transmitter can transmit 1W of energy signals, and can use 6dBi antenna; antenna gain increased by 1dB, transmission energy needs to  be reduced by 1dB. In fact, FCC is not more than  36dBm(30dBm+6dBi).
 
-## Effects of antenna gain，重点：分析 link budget，几个计算公式
+### Effects of antenna gain，重点：分析 link budget，几个计算公式
 
 directional gain: radiation density of one direction d / average value in all direction
 
@@ -300,9 +300,9 @@ $R_{forward}=\frac{\lambda}{4\pi}\sqrt{\frac{P_{TX,reader}T_bG_{reader}G_{tag}}{
 
 $R_{reverse}=\frac{\lambda}{4\pi}\sqrt[4]{\frac{P_{TX,reader}T_bG_{reader}^2G_{tag}^2}{P_{min,reader}}}$
 
-# 4. **Tag** Identification Protocol
+## Tag Identification Protocol
 
-## Checksum procedure: parity checks, LRC, CRC
+### Checksum procedure: parity checks, LRC, CRC
 
 奇偶校验不多说，查1的个数，poor error recognition。电路通过所有位异或是偶校验，结果为1说明有错误；再取反是奇校验。
 
@@ -314,7 +314,7 @@ CRC (cyclic redundancy check) procedure
 
 接收方计算原数据+CRC数据拼接起来的CRC数据值，应该为0. 不能纠错，不过检错效率很高。
 
-## ASK, FSK, PSK
+### ASK, FSK, PSK
 
 amplitude Shift Keying: 幅度调制，y轴上的调制。
 
@@ -334,13 +334,13 @@ Phase shift keying: 频率相位翻转180.
 
 ![1687143276722](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687143276722.png)
 
-## Difficulty of traditional anti-collision algorithms for solving collision detection between RFID tags
+### Difficulty of traditional anti-collision algorithms for solving collision detection between RFID tags
 
 Compared with the reader, limited by hardware resources, tags have very limited storage capacity and computing. 
 
 标签受制于硬件资源，存储容量和计算能力都不高。
 
-## TDMA, FDMA, CSMA
+### TDMA, FDMA, CSMA
 
 首先主要有两种方式，一个是reader broadcast 广播到诸多 tags，一个是多个 tags Multi-access 每个tags单独访问reader。
 
@@ -354,7 +354,7 @@ TDMA:
 
 
 
-## ALOHA based protocols: pure ALOHA, S-ALOHA, FSA, DFSA, Q 算法。重点：性能分析、执行过程
+### ALOHA based protocols: pure ALOHA, S-ALOHA, FSA, DFSA, Q 算法。重点：性能分析、执行过程
 
 Pure ALOHA algorithm：收到成功确认 ack 后就不再发送。否则一直随机等待后继续发送。简单但是通道利用率 channel utilization 低，poor performance.
 
@@ -386,7 +386,7 @@ Qfp是指定的初始值。每次先取整，然后发起 query。
 
 ALOHA 算法公平。**但是可能发生饥饿** ，比如有一个 tag 每次都是有冲突的 slot，一直没有办法被处理。
 
-## Binary tree based protocols: BT, QT, 重点：执行过程
+### Binary tree based protocols: BT, QT, 重点：执行过程
 
 第二种算法，基于二进制数。就像二叉树不断拆分冲突的结点变为两个结点，直到节点里只有一个 tag。
 
@@ -430,7 +430,7 @@ QT 不需要存储状态，如何实现？读取tag的序列号比较。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230620011058481.png)
 
-## Binary search: Manchester code instead of NRZ code, 重点：执行过程
+### Binary search: Manchester code instead of NRZ code, 重点：执行过程
 
 具体分辨哪一位有冲突。1代表冲突。
 
@@ -463,7 +463,7 @@ NRZ混合没法检测错误。
 
 长度 L(N)=log2(N)+1
 
-## Dynamic binary search, 重点：执行过程
+### Dynamic binary search, 重点：执行过程
 
 Binary Search 是每次都传输完整二进制字符串. 其实我们只需要动态改变的部分.
 
@@ -471,7 +471,7 @@ Binary Search 是每次都传输完整二进制字符串. 其实我们只需要�
 
 每次请求发送的信息: Request+NVB=4+1010
 
-## Advantages and disadvantages of ALOHA based anti-collision algorithm 
+### Advantages and disadvantages of ALOHA based anti-collision algorithm 
 
 simple
 
@@ -481,7 +481,7 @@ results can be statistically analyzed 结果可以被统计化分析
 
 缺点就是可能 starvation 饥饿，delay trend to ∞
 
-## Advantages and disadvantages of binary tree based anti-collision algorithm
+### Advantages and disadvantages of binary tree based anti-collision algorithm
 
 simple
 
@@ -489,9 +489,9 @@ intermediate state variables 不需要存储中间状态变量（QT）
 
 缺点：查询时间受到 tags id 和 长度限制，比如二叉树沿着一个方向一直偏。
 
-# 5. EPCglobal Standard & protocol
+## EPCglobal Standard & protocol
 
-## Concept of EPC global network
+### Concept of EPC global network
 
 EPCglobal Network: a technology that 
 
@@ -499,7 +499,7 @@ EPCglobal Network: a technology that
 - if possible in real time
 - additional information: such as 生产使用日期，能否被贸易伙伴交换
 
-## Five basic services of EPC global network, interaction of different components of EPCglobal network
+### Five basic services of EPC global network, interaction of different components of EPCglobal network
 
 Electronic product code (EPC)
 
@@ -525,11 +525,11 @@ Discovery services
 
 EPC Information Services : access to EPC-related data
 
-## EPC code 组成
+### EPC code 组成
 
 Domain Manager Number + Object Class Number + Serial Number
 
-## Basic procedures of the EPC Network
+### Basic procedures of the EPC Network
 
 EPC码用于标识对应对象
 
@@ -552,13 +552,13 @@ access rights to object data: 包含在EPCIS里，指明了trading partners 之�
 7. The company prefix send to root EPCIS
 8. root -> local -> the EPCIS
 
-## Binary tree based variant algorithm for EPCglobal Class 0
+### Binary tree based variant algorithm for EPCglobal Class 0
 
 这种tag是只读的，制造商赋值。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1687148304873.png)
 
-## EPCglobal C1 G1: PingID; C1G2: four commands (是什么，分别干什么用的), two types of performance  trade-offs
+### EPCglobal C1 G1: PingID; C1G2: four commands (是什么，分别干什么用的), two types of performance  trade-offs
 
 EPC C1G1：查询tags EPC的一种标准。
 

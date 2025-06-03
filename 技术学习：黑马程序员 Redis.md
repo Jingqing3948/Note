@@ -11,11 +11,11 @@ description: 黑马程序员Redis入门课程学习笔记
 
 ---
 
-# 前言
+## 前言
 
 学习自：[【黑马程序员Redis入门到实战教程，深度透析redis底层原理+redis分布式锁+企业解决方案+黑马点评实战项目】 ](https://www.bilibili.com/video/BV1cr4y1671t/?p=2&share_source=copy_web&vd_source=dcdc734e318da0cd82bcccb180b12b40)
 
-## SQL vs. NoSQL
+### SQL vs. NoSQL
 
 - S：结构化，比如在 MySQL 我们需要定义一个表，第一个属性是 id 第二个是 name 第三个是 age…… 定义好表之后所有新插入的数据都必须遵循这个结构，各个表还可能有外键等关联，所以总的来说不能随意修改表的属性。而 NoSQL 结构要求没那么严格，比如下面这种 Redis 定义方式也可以，就是没啥章法：
 
@@ -30,7 +30,7 @@ description: 黑马程序员Redis入门课程学习笔记
 - 存储位置：SQL 在硬盘，NoSQL 在内存。
 - SQL 对安全一致性要求较高，NoSQL 对性能要求较高。
 
-## Redis
+### Redis
 
 Redis Remote Dictionary Server 是一种基于内存的**键值对**数据库，被创造的原因就是 MySQL 性能太差。里面没有表什么的结构，就是存储一对一对的键值，所以是 NoSQL 数据库。值可以是复杂的数据形式，比如键是 1001，值是 {name: "xxx", age:"19"}…… 这样的 json 格式。
 
@@ -42,7 +42,7 @@ Redis 是**单线程**的，但是效率仍然比 MySQL 高很多，因为内存
 
 支持多语言客户端。
 
-# Redis 基础
+## Redis 基础
 
 安装部分就跳过不做过多赘述了。
 
@@ -63,37 +63,37 @@ $ redis-cli -h 127.0.0.1 [-p port] [-a password] # 客户端终端方式连接 r
 
 图形化客户端连接：其实不是官方开发的是 Github 上有人发布的开源图形化客户端。
 
-## Redis 通用命令
+### Redis 通用命令
 
-### Keys
+#### Keys
 
 `Keys pattern` 查询符合某种模式的键，比如 `keys a*` 是查询 a 打头的所有键值。
 
 这个查询并不高效，而且会阻塞其他请求，所以在生产环境中尽量不要使用，特别是不要在主节点上使用。
 
-### Del
+#### Del
 
 `Del key1 key2 ...` 删除键值对。返回值是成功删除的键数量。
 
-### MSet
+#### MSet
 
 `msel k1 v1 k2 v2 ...` 批量添加键值对。
 
-### Exists
+#### Exists
 
 `exists key` 查询指定键是否存在。
 
-### Expire
+#### Expire
 
 给键值对设定一个有效期，到期自动删除。
 
 `expire key seconds`
 
-### TTL
+#### TTL
 
 `ttl key` 查询这个键还有多久过期。-1表示永久有效，-2表示已过期。
 
-## Redis 数据结构
+### Redis 数据结构
 
 key 一般是 string 类型，而 value 类型多种多样。
 
@@ -113,7 +113,7 @@ key 一般是 string 类型，而 value 类型多种多样。
 
 在 redis 里面输入 `help @想要查询的 command 名称` 就可以进行查询。
 
-### String
+#### String
 
 最简单的存储方式，字符串类型。具体可以分为三类：String，int，float。
 
@@ -133,7 +133,7 @@ key 一般是 string 类型，而 value 类型多种多样。
 | `SETNX k v`            | 添加一个 String 类型的键值对，如果存在则不执行返回0. 其实 `set key value nx` 也能实现同样的效果 |
 | `SETEX k v seconds`    | 添加一个 String 类型的键值对并指定有效期。`set key value ex` 也能实现同样的效果 |
 
-#### Key 的层级格式
+##### Key 的层级格式
 
 Redis 没有 MySQL 的 Table，如何区分不同的 key 意义呢，比如一个商品 id 是1，一个顾客 id 也是1.
 
@@ -154,7 +154,7 @@ OK
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212230806.png)
 
-### Hash
+#### Hash
 
 无序字典，类似 java HashMap.
 
@@ -176,7 +176,7 @@ OK
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212241594.png)
 
-### List
+#### List
 
 大致可以看做 java 的双向链表结构。有序，插入删除速度快，查询速度一般。
 
@@ -200,7 +200,7 @@ OK
 
 *阻塞队列：当队列为空的时候，取元素的线程会等待一段时间直到队列非空。应用：线程池，待处理的任务先到等待队列，等待有空闲的线程时再开始被执行。这样不用一直创建新的线程，只利用现有的最大线程数，节约资源和响应速度。*
 
-### Set
+#### Set
 
 类似 Java 中的 HashSet，无序，不重复，查找快，支持并集差集交集等运算。
 
@@ -215,7 +215,7 @@ OK
 | `SDIFF key1 key2 ...`  | 求 key1 与 key2 的差集        |
 | `SUNION key1 key2 ...` | 求 key1 和 key2 的并集        |
 
-### SortedSet
+#### SortedSet
 
 有点类似 java 的 treeset 但是底层逻辑差得很远。
 
@@ -244,7 +244,7 @@ SortedSet 由于其排序效率高，常常被用于实现如排行榜这样的�
 
 以上都是升序，降序就在 Z 后面加 REV。
 
-## Redis 的 Java 客户端
+### Redis 的 Java 客户端
 
 主要有一下三种：
 
@@ -256,11 +256,11 @@ SortedSet 由于其排序效率高，常常被用于实现如排行榜这样的�
 
 spring data redis 整合了前两种。
 
-### Jedis
+#### Jedis
 
 使用方式很简单：引入依赖，建立连接，使用，释放资源。
 
-#### 引入依赖
+##### 引入依赖
 
 在 pom.xml 文件中粘贴：
 
@@ -336,7 +336,7 @@ public class JedisTest {
 }
 ```
 
-#### 连接池
+##### 连接池
 
 Jedis 线程不安全，而且频繁创建销毁 Jedis 线程性能损耗比较大。
 
@@ -379,7 +379,7 @@ jedis = JedisConnectionFactory.getJedis();
 
 `jedis.close()` 函数底层如果判断有连接池的时候，就不会 close 关闭 Jedis 资源了，而是归还资源，所以不需要改。
 
-### SpringDataRedis
+#### SpringDataRedis
 
 SpringData 是 Spring 的数据操作模块，其中的 Redis 集成模块叫做 SpringDataRedis。整合了多个 Redis 客户端，并提供了统一的访问 API。
 
@@ -475,7 +475,7 @@ class RedisDemoApplicationTests {
 
 这种方式的主要两个问题：可读性差；内存占用大。Java 的 String 也会被视作是一种对象，而非单纯的 String。
 
-#### RedisTemplate 自定义和序列化
+##### RedisTemplate 自定义和序列化
 
 想要“写入什么值就存入什么值”，就必须去改写 RedisTemplate 的序列化方法（其实底层调用的是 `JDKSerializationRedisSerializer` 的序列化方法）。
 
@@ -534,7 +534,7 @@ value User(name=jingqing, age=22)
 
 不要这部分，就不能实现自动的反序列化了。要吧，又要占用内存空间。
 
-#### StringRedisTemplate 手动序列化
+##### StringRedisTemplate 手动序列化
 
 另一种实现方式是 `StringRedisTemplate` ，就是统一使用 String 序列化器。对于对象的存储，需要手动序列化或者反序列化。
 

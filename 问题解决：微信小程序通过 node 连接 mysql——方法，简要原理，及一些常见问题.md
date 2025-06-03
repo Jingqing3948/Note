@@ -8,7 +8,7 @@ categories:
 description: 微信小程序通过 node 连接 mysql 问题解决
 ---
 
-# 前言
+## 前言
 
 博主自己在22年夏天根据课程要求做了一个小程序连接阿里云服务器的案例，在最近又碰到了相应的需求。
 
@@ -16,13 +16,13 @@ description: 微信小程序通过 node 连接 mysql 问题解决
 
 第二次尝试的时候已经熟练许多了，但是还是遇到了很多挺烦人的问题，也浪费了很多时间排查 bug。因此博主打算趁着刚做过记忆还深刻的时候，把全过程、博主自己的理解和遇到的一些问题的解决方法整理出来。当然我也不可能能解决所有问题，遇到的部分问题也只是针对我自己的情况可以解决。因此如果 solutions 不起效或遇到其他问题，可以在评论区留言，我会与大家沟通（不保证能否解决~）。
 
-# 原理
+## 原理
 
 ![55ff06e4153087c9216fd7b56763ea7](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343956.png)
 
 nodejs 作为中介服务器，可以让小程序连接 mysql 数据库。
 
-# 步骤
+## 步骤
 
 如果不出错误的话， 基本流程就是跟着上面的文章来的。
 
@@ -117,7 +117,7 @@ onLoad() {
 
 nodejs 接收到了请求，就会执行 server.js 里对应的方法。
 
-# 如何运行
+## 如何运行
 
 首先 **nodejs 服务器需要手动开启**，我还不会自动开启。
 
@@ -149,9 +149,9 @@ res.data 获取这个15长度的 Array。
 
 这个的输出对应 function(error,results,fields) 里的 console.log(results)。如果查询失败，error 也是在这个内建终端里输出。
 
-# 常见问题
+## 常见问题
 
-## 数据库无法连接？
+### 数据库无法连接？
 
 建好数据库后，最好就先用 cmd 或 workbench 连接一下试试。如果能成功连接并查询，之后出问题也可以排除 mysql 的一部分问题。
 
@@ -165,7 +165,7 @@ res.data 获取这个15长度的 Array。
 
   ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505212343761.png)
 
-## 小程序报错 ERR TIMEOUT
+### 小程序报错 ERR TIMEOUT
 
 打开网站可以看到 404 显示。
 

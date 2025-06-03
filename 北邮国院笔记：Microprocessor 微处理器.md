@@ -9,13 +9,13 @@ categories:
 description: 北京邮电大学国际学院物联网工程专业微处理器课程学习笔记
 ---
 
-# 前言
+## 前言
 
 主要围绕考试提纲里的所有问题展开，没有拓展内容，Exam oriented Study。
 
 关注微信公众号：灰海宽松，回复 “微处理器” 可获取本文pdf格式。
 
-# Introduction-随便聊
+## Introduction-随便聊
 
 嵌入式系统是什么？专用的计算机系统。为专门功能可能对计算机架构，外设等做出一些取舍。
 
@@ -50,9 +50,9 @@ void IRQ_Handler(){
 
 我们课程仅限于裸机开发的内容。
 
-# 计算机系统简要介绍
+## 计算机系统简要介绍
 
-## Von Neumann Architecture
+### Von Neumann Architecture
 
 运算器控制器 (合在CPU中) 存储器 main memory 输入设备输出设备 IO，以及三条传输总线：数据，控制，地址 data bus / control bus / address bus.
 
@@ -60,17 +60,17 @@ void IRQ_Handler(){
 
 前面介绍过MPU重点在于数据计算处理，MCU则是控制，因此MPU不需要一些外设去控制外接的组件。
 
-## Harvard Architecture
+### Harvard Architecture
 
 和冯诺依曼区别就是在于指令和数据分开存储。这样寻指取指取数效率高。
 
-## Stored Program Concept
+### Stored Program Concept
 
 主要两个部分：RAM存储程序和数据，ROM存储不变只读的程序和数据。
 
 cpu执行指令就是三个步骤的重复执行：fetch decode execute 取指解码执行
 
-## assembly
+### assembly
 
 如果高级语言相当于人话翻译给计算机，汇编语言相当于计算机语言翻译给我们。更贴近底层，因此运行效率也更高，而且可以直接操作硬件。
 
@@ -84,7 +84,7 @@ MOV r2, r1 		;r2 = r1
 
 高级语言通过 compiler 翻译为汇编语言，汇编语言通过 assembler翻译为二进制机器语言。
 
-# ARM架构
+## ARM架构
 
 ARM是一个指令集，前面讲的几个汇编指令这些都算做指令。
 
@@ -98,7 +98,7 @@ M：microcontroller，应用于小型嵌入式系统，我们使用的板子。
 
 m系列有m0到m7（简单说就是性能逐渐增加？），而且向下兼容即m7兼容m0~m6.
 
-## SoC
+### SoC
 
 我们的板子上有一个黑色的小芯片，上面写着stm32blabla一串字符。这个就是整个板子的核心，相当于囊括了上文提到的计算机架构的芯片结构，system on chips。
 
@@ -114,7 +114,7 @@ ARM处理器 processor 是 architecture 的具体涵盖，多了很多新内容�
 
 只看非optional大概了解即可，处理器核访问代码，数据接口。
 
-## register
+### register
 
 前面我们已经简单介绍了register。事实上如果想对内存中数据做处理，也要先拿到处理器核中的寄存器里做运算，然后返回回去。
 
@@ -140,13 +140,13 @@ xPSR包括：
 
 ![1686659814546](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686659814546.png)
 
-## Memory Map
+### Memory Map
 
 m4有4g的内存空间默认映射到一片空间中，用户也可以根据自己喜好修改。有存储代码的code region，存储数据的sram region，存储外设的peripheral region，external ram region，external device region，Internal Private Peripheral Bus (PPB)。
 
 ![1686669411390](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686669411390.png)
 
-## Bit-band Operations
+### Bit-band Operations
 
 位带操作。
 
@@ -188,7 +188,7 @@ LDR是把后面的数据加载到前面的寄存器中，[R1]是把R1的值当�
 
 操作更快，指令更少，而且只访问一位更安全，比如刚取出0x2000 0000的32位数据，这时候中断修改了0x2000 0000的数据，这时我们取得的数据就是旧的错误数据了，修改完第3位再写回去，相当于中断白改了。
 
-## Program Image
+### Program Image
 
 ![1686670722574](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670722574.png)
 
@@ -204,7 +204,7 @@ c lib code：库函数代码。
 
 ![1686670972039](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686670972039.png)
 
-## Endianness
+### Endianness
 
 两种存储规范。
 
@@ -220,7 +220,7 @@ c lib code：库函数代码。
 >
 > [大端、小端基础知识 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/316347205)
 
-## Instruction Set
+### Instruction Set
 
 指令集。早期arm指令集32位，性能好能实现的功能强大。但是太长了处理效率低。
 
@@ -228,11 +228,11 @@ thumb-1 指令集16位，处理效率高了，性能也降了。早期arm架构�
 
 后来thumb-2指令集包含早期16位和新的32位，和arm指令集的混合指令集性能没减太多，代码量和处理效率还高了。
 
-# Assembly
+## Assembly
 
 汇编语法。
 
-## 顺序结构
+### 顺序结构
 
 ```assembly
 label							; 可省略，用于跳转到此位置
@@ -292,7 +292,7 @@ SDIV R0, R1, R2					; signed
 
 PC每次取到半个字 hw，就+2B跳转到下一个hw。
 
-## 选择结构
+### 选择结构
 
 ```assembly
 	CMP R0, R1						; 相当于if，比较后更新APSR。EQ= LT< GT> LE<= GE >=
@@ -307,7 +307,7 @@ BRANCH_2
 B IFEND
 ```
 
-## 循环结构
+### 循环结构
 
 ```assembly
 WHILE_BEGIN 
@@ -320,7 +320,7 @@ WHILE_BEGIN
 WHILE_END
 ```
 
-## Stack
+### Stack
 
 内存中有一片内存空间类似栈的数据结构。SP指针指向栈顶。
 
@@ -339,7 +339,7 @@ POP {R2-R3, R5} 	; Pop to r2, r3, r5。入栈出栈顺序不是按照书写顺�
 
 存入5个数据和取出3个数据。
 
-## Functions
+### Functions
 
 BL先保存当前PC值到LR，然后PC跳转到函数地址，
 
@@ -351,15 +351,15 @@ arm AAPCS规定：r0-r3是通用寄存器（类似全局变量），但main和�
 
 简单的参数的函数调用：传参给R0-R3作为函数参数，R4-R11压入栈，然后跳转到函数处。
 
-![1686733381292](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733381292.png)
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733381292.png" alt="1686733381292" style="zoom:67%;" />
 
-## Program Memory Use
+### Program Memory Use
 
 ROM里都是只读数据，比如常量常数。
 
-![1686733480351](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733480351.png)
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686733480351.png" alt="1686733480351" style="zoom:67%;" />
 
-## const, static, volatile
+### const, static, volatile
 
 貌似是不会过多涉及具体代码实现的部分，就先简单介绍一下了。
 
@@ -375,7 +375,7 @@ volatile：一个在嵌入式里挺重要的东西，软考题里出现过几次
 
 volatile 声明后的变量不会做这样的优化，值改变了就立刻写回内存，虽然可能效率低但是安全。
 
-# Interrupts
+## Interrupts
 
 比如我们程序的逻辑是按键按下的时候点亮小灯。第一种做法是 Polling 轮询，一直看：按键按下了吗？没有。按下了吗？没。按下了吗？……
 
@@ -383,7 +383,7 @@ volatile 声明后的变量不会做这样的优化，值改变了就立刻写�
 
 中断允许CPU专心处理background的事情，触发中断的时候先放下后台处理前台。对于无os的裸机也能实现简单的多线程切换。
 
-## 异常处理流程
+### 异常处理流程
 
 1. 结束当前正在执行的指令。
 
@@ -403,7 +403,7 @@ volatile 声明后的变量不会做这样的优化，值改变了就立刻写�
 
 8. 出栈。
 
-## Timing
+### Timing
 
 中断执行也是耗时的，需要一定的时间保存源程序状态，执行中断，恢复。
 
@@ -427,19 +427,19 @@ $U_{int}=F_{Int}/F_{Max\_Int}$
 
 非中断执行速度：(1-U_Int)*F_Int
 
-# GPIO
+## GPIO
 
 General Purpose Input Output, 
 
-## Memory-Mapped IO
+### Memory-Mapped IO
 
 把设备，控制等寄存器映射到内存里。好处就是访问设备方式和内存一样，也不用设计复杂的IO电路，便捷；缺点在于占用了内存空间。
 
-## Peripheral-Mapped IO
+### Peripheral-Mapped IO
 
 IO有一块专门的存储区域，和内存不一样，也有专门的不同的电路指令去访问IO。好处就是节省内存空间，也能清晰的知道什么时候发生IO了；缺点在于开发、设计上的造价增加。
 
-## GPIO
+### GPIO
 
 通用IO可以判断引脚高低电平，可以给引脚赋值高低电平进行控制。
 
@@ -459,7 +459,7 @@ stm32有几组GPIO，每个有16个Pin，可以配置为input output pullin pull
 
 输入输出信号真的可以被称为“信号”。输入规定为0-0.5视作低电平，0.5-Vdd视作高电平，范围以外的值无效。输出电流也只有5mA左右是没有能力直接驱动一些设备的，我们可以通过一些电路比如三极管，放大器等，电路接收到信号得知”需要输出驱动电流了“然后输出大电流。
 
-## Control
+### Control
 
 每个GPIO口有：
 
@@ -476,25 +476,25 @@ stm32有几组GPIO，每个有16个Pin，可以配置为input output pullin pull
 
 2 * 32bit alternate function selection register.
 
-### Mode
+#### Mode
 
 如图，32个Pin，每个两位来设置4种模式（in out 可选 模拟）。
 
 ![1686743308300](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743308300.png)
 
-### Pull
+#### Pull
 
 只有3种模式（无pull，上拉，下拉）。
 
 ![1686743360055](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743360055.png)
 
-### data
+#### data
 
 输入输出数据寄存器分开的。
 
 ![1686743538223](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686743538223.png)
 
-## CMSIS
+### CMSIS
 
 先说一下考试定义：
 
@@ -578,7 +578,7 @@ drivers二次开发，可以帮助简化。
 
 当然这一段都是题外话了。考试就理解为“cmsis是变量宏定义直接映射到寄存器上；drivers是对其添加进一步行为”即可。
 
-# Serial Communication
+## Serial Communication
 
 串口通信，一种发送消息的通信方式。
 
@@ -604,13 +604,13 @@ RT两方需要有相同的波特率。
 
 异步通信不需要同步时钟之类电路，开销小，但是开发起来难度大一些因为需要起始结束位啥的。
 
-## RS232
+### RS232
 
 异步通信，Reversed Polarity 标准电压（-3~-15是1,3~15是0.还有一些其他标准比如TTL是+5为1，-5为0.）
 
 发送数据有两种类型，ascii码和二进制，都得转化为二进制传输。
 
-## uart
+### uart
 
 针对stm32f401.
 
@@ -640,7 +640,7 @@ RT两方需要有相同的波特率。
 
 8采样率因为采样间隔长了，更容易碰到左右边界的高电平，所以容错率低。但是速度更快。
 
-## 计算
+### 计算
 
 波特率计算：
 
@@ -662,7 +662,7 @@ USARTDIV浮点数怎么存储？通过算法转化为十六进制。
 
 然后整数小数部分拼接起来（最多3个整数位，1个小数位，32位寄存器）。
 
-# Timer
+## Timer
 
 想让程序定时运行，比如led 1s闪烁一次。如何做到？
 
@@ -686,7 +686,7 @@ USARTDIV浮点数怎么存储？通过算法转化为十六进制。
 
 ![1686764952191](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1686764952191.png)
 
-## PWM
+### PWM
 
 PWM这个东西是什么？
 
@@ -716,13 +716,13 @@ PWM（Pulse Width Modulation）脉冲宽度调制，在具有惯性的系统中�
 
 这就是PWM。占空比相当好算。
 
-## Low Power Timer
+### Low Power Timer
 
 我们目前假设的是CPU一直运作的，只是在后台和前台之间切换。有一种低功耗定时器使得没有发生定时器中断的时候CPU被置为低功耗状态，只有发生定时器中断的时候才启动。（使用 __WFI() wait for instruction 指令）
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230621235021294.png)
 
-## SysTick
+### SysTick
 
 M系列自带的一个系统时钟，使用处理器时钟或者参考时钟作为时钟源。
 
@@ -736,7 +736,7 @@ M系列自带的一个系统时钟，使用处理器时钟或者参考时钟作�
 
 init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以是自己定义的函数，使得触发定时器中断时该函数被执行。以上代码意思是每隔100ms LED灯翻转一次，且 CPU 常态下处于低功耗状态。
 
-# I2C
+## I2C
 
 连接多个模块的传输方案：I2C，使用两根总线。
 
@@ -744,7 +744,7 @@ init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以
 
 两根总线分别是时钟总线 SCL 和数据总线 SDA。
 
-## 通信过程
+### 通信过程
 
 现在我们串一遍I2C上一个模块（master）要给另一个模块（slave）发消息的过程。
 
@@ -783,7 +783,7 @@ start 位后，SDA 高电平表示1，低电平表示0.
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140822834.png)
 
-## 问题处理
+### 问题处理
 
 I2C 是一种很简单的主从通信协议了，但是局限性也很多，比如7 bit 的地址线只允许 2^7 个设备；一次顶多两个设备主从通信；一个设备的快慢会影响到整条总线的通信等。
 
@@ -813,7 +813,7 @@ I2C 是一种很简单的主从通信协议了，但是局限性也很多，比�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713143601570.png)
 
-## 编址格式
+### 编址格式
 
 slave 地址编址有一些固定格式。
 
@@ -823,7 +823,7 @@ slave 地址编址有一些固定格式。
 
 第二个 byte 发送一些行为相关，比如：start，clear，reset software
 
-## 编程应用
+### 编程应用
 
 slave mode: 
 
@@ -844,7 +844,7 @@ slave mode:
 
 首先，从主模式的概念。master 主模式驱动时钟信号，发起传输；slave 从模式响应传输。
 
-## 主模式
+### 主模式
 
 ![用于主发送数据的 I2C 传输序列图](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/Figure-1-4.png)
 

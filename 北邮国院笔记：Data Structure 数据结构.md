@@ -9,7 +9,7 @@ categories:
 description: 北京邮电大学国际学院物联网工程专业数据结构课程学习笔记
 ---
 
-# 前言
+## 前言
 
 因为考试要求，博主学习的是双语的数据结构，因此自己总结一些英文的概念、知识点。希望也可以对读者学习这门课程有所帮助~
 特别感谢许可老师的教导！
@@ -17,7 +17,7 @@ description: 北京邮电大学国际学院物联网工程专业数据结构课�
 理解时间复杂度的定义
 （本课程涉及到的所有算法，都需要记住时间复杂度O）
 
-# Data structure notes
+## Data structure notes
 
 Program = Algorithm + Data Structure
 An algorithm is a finite set of instructions that, fi followed, accomplishes a particular task. In addition, all algorithms must satisfy the following criteria:
@@ -36,7 +36,7 @@ An algorithm can be described by human languages, flow charts, some programming 
 
 $2^n^>n^2^>nlogn>n>logn>1$
 
-# 单词：
+## 单词：
 
 Algorithm 算法
 Definiteness 确定性
@@ -63,11 +63,11 @@ Pow 指数
 *理解原理，会算法：两种实现方法*
 *会应用算法，如：中序后序互转；前中后缀表达式互换；栈（队列）操作后的状态*
 
-# ADT
+## ADT
 
 **ADT(Abstract Data Type)** is a data type that is organized in such a way that the **specification**  on the objects and **specification** of the operations on the objects are **separated from** the **representation** of the objects and the **implementation** on the operations.
 
-# The List ADT
+## The List ADT
 
 1.	Array implementation
    - 	**MaxSize** has to be estimated. （大小必须事先给出。给小了数组越界；(可以再申请)给大了太浪费空间）
@@ -77,26 +77,26 @@ Pow 指数
    -	三种操作：Find_Kth、Find_Value、Find_Length take O(N) time. 注意循环逻辑，以及有无头结点时对边界情况的处理
    -	找前一个结点不方便，只能重新从头遍历、
 
-## Doubly Linked Lists
+### Doubly Linked Lists
 
 找前一个结点更方便。注意初始化、插入、删除、双向遍历的区别。
 
-## Circular Lists
+### Circular Lists
 
 头尾相接的单链表。注意判空条件（`L->Next==L`）、判断表尾结点条件(`p->Next==L`)以及插入删除时修改的操作。
 双向循环链表不再赘述。
 
-## Application: The polynomial ADT
+### Application: The polynomial ADT
 
 多项式求和、求积函数，使用链表更好，因为如果出现形如x^100000^+x^5^+x^1^这种，数组会浪费大量空间，而单链表只需要将系数非0的部分申请空间创造结点。
 （也可以建立十字链表，两个维度分别存储系数和指数）
 
-## Cursor Implementation of Linked Lists (no pointer)
+### Cursor Implementation of Linked Lists (no pointer)
 
 可以使用一个游标int Cursor来作为指针，游标移动访问数组，从而实现类似于指针移动的操作。
 The cursor implementation is usually significantly **faster** because of the lack of memory management routines.
 
-# The Stack ADT
+## The Stack ADT
 
 A Stack is a **Last-in-First-Out (LIFO)** list. An ordered list in which insertions and deletion are made at the top only.
 类似于一堆书，放书和拿书都只能从最顶上进行。最后放上的书最早被拿出来。
@@ -104,7 +104,7 @@ Push: 入栈
 Top: 读取并返回栈顶元素
 Pop: 栈顶元素出栈
 
-## Application 1: Balancing symbols 括号匹配
+### Application 1: Balancing symbols 括号匹配
 
 输入一串表达式，判断其中的括号()[]{}是否匹配。
 检验方法：每个右括号都和离他最近的，也就是最晚输入的左括号匹配，正符合栈的后进先出原则。
@@ -112,7 +112,7 @@ Pop: 栈顶元素出栈
 最后结束输入，还要检查一下栈是否为空，若非空，栈内剩下的括号全都不匹配。
 [7-1 Balancing symbols 代码实现](https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-1%20Balancing%20Symbols.cpp)
 
-## Application 2: Postfix Evaluation 后缀表达式的计算
+### Application 2: Postfix Evaluation 后缀表达式的计算
 
 Infix expression中缀表达式： a + b * c - d / e
 Prefix expression 前缀表达式：- + a * b c / d e
@@ -133,16 +133,16 @@ Postfix expression 后缀表达式： a b c * + d e / -
 
 [7-2 Infix to postfix Conversion 代码实现](https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-2%20Infix%20to%20Postfix%20Conversion.cpp)
 
-# The Queue ADT
+## The Queue ADT
 
 A Queue is a **First-In-First-Out (FIFO)** list. An ordered list in which insertions take place at one end and deletions take place at the opposite end.
 就像日常生活中的排队，先来后到，先排的有机会先出。
 EnQueue: 入队
 DeQueue: 出队
 
-## Circular Queue：循环链表
+### Circular Queue：循环链表
 
-## Application: who is the last
+### Application: who is the last
 
 输入n、m；n个人坐成一个圈，从第一个人开始报数，每m个人淘汰掉第m个人，然后下一个人继续重新报数。问：谁能留到最后？
 [7-4 who is the last 代码实现](https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/2%20QUEUE/7-4%20who%20is%20the%20last.cpp)
@@ -155,9 +155,9 @@ DeQueue: 出队
 【霍夫曼树】：理解原理 给出数据 会画霍夫曼树的图；节点关系
 理清各种树之间的关系
 
-# Tree
+## Tree
 
-## Conception
+### Conception
 
 - degree of a node: number of its subtrees
 - degree of a tree: max{degree(node)}
@@ -170,31 +170,31 @@ DeQueue: 出队
 - ancestors of anode: all the nodes along the path from the node up to the root
 - descendants of a node: all the nodes in its subtrees
 
-## Representation
+### Representation
 
-### FirstChild-NextSibling Representation
+#### FirstChild-NextSibling Representation
 
 Each Node carries its element and 2 pointers. The first points its FirstChild; The second points its NextSibling.
 *This representation is **not unique** since the children in a tree can be of any order.*
 
-### Binary Trees
+#### Binary Trees
 
 a tree in wh ich no node can have more than 2 children.
 *Rotate the FirstChild-NextSibling tree clockwise by 45°*
 
-## Tree Traversals (significant!)
+### Tree Traversals (significant!)
 
-### Preorder Traversal
+#### Preorder Traversal
 
 visit This Node first;
 visit its child recursively.
 
-### Postorder Traversal
+#### Postorder Traversal
 
 visit its child recursively;
 At last, visit this node itself.
 
-### Levelorder Traversal
+#### Levelorder Traversal
 
 visit Tree via a queue.
 
@@ -203,7 +203,7 @@ visit Tree via a queue.
 - visit first node in queue and Dequeue;
 - for its each child, enqueue.}
 
-### Inorder Traversal(for binary trees)
+#### Inorder Traversal(for binary trees)
 
 Recursive:
 
@@ -245,13 +245,13 @@ static void ListDir(DirOrFile D,int Depth)//at first, Depth is 0
 ```
 
 
-## Threaded Binary Trees
+### Threaded Binary Trees
 
 - If tree->Left is null, 指向中序遍历的前一个结点  a pointer to the inorder predecessor of Tree.
 - If tree->Right is null, 指向中序遍历的前一个结点  a pointer to the inorder successor of Tree.
 - 最开头、最结尾结点的左、右指针指向head node. There must not be any loose threads. Therefore a threaded binary tree must have a **head node** of which the left child points to the first node.
 
-## The Search Tree ADT -- Binary Search Trees
+### The Search Tree ADT -- Binary Search Trees
 
 - Every node has a key which is an integer, and it's distinct.
 - The keys in a nonempty **left** subtree must be **smaller** than the key in the root of the subtree.
@@ -279,7 +279,7 @@ int Height(Tree T)
 }
 ```
 
-## AVL Trees
+### AVL Trees
 
 If the tree is too high, AST can be very large and time complexities is O(N). So we need to balance the height by rotating.
 **If |h_L-h_R|>1,rotate.**
@@ -320,9 +320,9 @@ Tree DoubleRotatewithRight(Tree T)
 }
 ```
 
-## B Trees 要会插入、建立
+### B Trees 要会插入、建立
 
-### Insertion
+#### Insertion
 
 考完试补全
 $$
@@ -333,9 +333,9 @@ $$
 T_{Find}(M,N)=O(log N)
 $$
 
-## Forest Empty
+### Forest Empty
 
-## Huffman Tree
+### Huffman Tree
 
 Weighted Path Length, WPL
 $$
@@ -352,7 +352,7 @@ Huffman Tree: the binary tree with the minimum weighted path length.
 【开放定址法】线性探测法 平方探测法 双散列
 【再散列】
 
-# HASHING
+## HASHING
 
 散列表（hashing table）的实现叫散列（hashing）散列是一种用于以常数时间执行插入、删除和查找的技术，但不能排序。
 散列函数（hashing function）是关键字被映射到0～TableSize-1范围内的函数。
@@ -362,13 +362,13 @@ Huffman Tree: the binary tree with the minimum weighted path length.
   ** f(x)=x%TableSize**
   TableSize=prime number is good for random integer keys.
 
-## 处理冲突的办法
+### 处理冲突的办法
 
-### open addressing 开放定址法
+#### open addressing 开放定址法
 
 find another empty cell to solve collision 
 
-#### Linear Probing 线性探测法
+##### Linear Probing 线性探测法
 
 f(i)=i (a linear function)
 如果对应位被占了，则往下继续寻找空位。
@@ -376,7 +376,7 @@ f(i)=i (a linear function)
 再下一位是否为空？……
 查找：先去对应位找，如果没找到再继续往下遍历。
 
-#### Quadratic Probing 平方探测法
+##### Quadratic Probing 平方探测法
 
 f(i)=i^2^
 如果对应位被占了，则+1^1；
@@ -386,13 +386,13 @@ f(i)=i^2^
 最大加到（n/2）的平方
 查找：先去对应位找，如果没找到再去加1、加4等等位找。
 
-#### Double Hashing 双散列法
+##### Double Hashing 双散列法
 
 第一个散列函数冲突时，使用第二个散列函数。
 **hash2(x)必须不恒等于0！**
 *Tips: hash2(x)=R-(x%R) with R a prime smaller than TableSize, will work well.*
 
-### Rehashing 再散列
+#### Rehashing 再散列
 
 当插入数据达到N/2时，再散列。
 
@@ -403,7 +403,7 @@ f(i)=i^2^
 【二叉堆】
 要求：会构建堆 插入 删除； 画图，手动执行中间数据；
 
-# Piority Queue(Heap)
+## Piority Queue(Heap)
 
 Can find the element with the highest \ lowest priority.
 
@@ -425,7 +425,7 @@ Can find the element with the highest \ lowest priority.
 **A min tree** is a tree in which the key value in each node is no larger than the key values in its children.
 **A min heap** :a complete binary tree + a min tree. And the max heap is visa versa.
 
-## Insertion(Min Heap)
+### Insertion(Min Heap)
 
 Because a heap is a complete binary tree, the nth node only has one possible position to insert. Then, if nth node is smaller than its parent:exchange upward will its location is proper.
 
@@ -438,7 +438,7 @@ for ( i = ++H->Size; H->Elements[ i / 2 ] > X; i /= 2 )
 
 *Another kind of Insertion is: insert all nodes first, then adjust their location. We need to check from n/2 node. If its children node is smaller than it, choose the smallest node and exchange them. n/2 node go downward until reach the proper location. Then do the same thing to the n/2-1 node until the first node.*
 
-## Deletion
+### Deletion
 
 We only need to delete the root node——the smallest node.
 
@@ -449,7 +449,7 @@ We only need to delete the root node——the smallest node.
 
 *For the perfect binary tree of height h containing 2h+1 - 1 nodes, the sum of the heights of the nodes is 2h+1 - 1 - (h + 1).*
 
-# Graph
+## Graph
 
 G:graph
 
@@ -488,13 +488,13 @@ Directed graph: $<v_i,v_j>$ *v_i is adjacent to v_j;v_j is adjacent from v_i*
 
 **Degree(v)**: in-degree and out-degree  进入某个顶点的边数和传出该顶点的边数
 
-## Representation of Graphs
+### Representation of Graphs
 
-### Adjacency Matrix 邻接矩阵法
+#### Adjacency Matrix 邻接矩阵法
 
 二维矩阵存储边信息。如果v_i to v_j 有边，adj_mat[i][j]=1，否则=0.（undirected graph还要考虑双向，同时也要让adj_mat[j][i]=1）
 
-### Adjacency Lists 邻接表法
+#### Adjacency Lists 邻接表法
 
 每个顶点结点都是一个单链表的头结点，后面挂着他连接的顶点的节点。
 
@@ -510,7 +510,7 @@ Directed graph: $<v_i,v_j>$ *v_i is adjacent to v_j;v_j is adjacent from v_i*
 
 S(n+2e) Space complexities
 
-## Topological Sort
+### Topological Sort
 
 **AOV Network**: digraph in which V(G) represents activities and E(G) represents precedence relations 顶点表示事件，边表示事件之间的进程关系。比如A->B，就是要先做完A才能做B
 
@@ -531,14 +531,14 @@ AOV network must be a dag (directed acyclic graph)
 
 If we use a special box (queue or stack) to sort, T=O(|V|+|E|)
 
-## Shortest Path Algorithms 最短路径算法
+### Shortest Path Algorithms 最短路径算法
 
 两类问题：
 
 1. 从物流中心（一个顶点）往其他所有顶点运输物品，怎样路径最短？
 2. 怎样让所有顶点之间路径总和最短？
 
-### 1. Single-Source Shortest-Path Problem
+#### 1. Single-Source Shortest-Path Problem
 
 Given as input a weighted graph, G = ( V, E ), and a distinguished vertex, s, find the shortest weighted path from s to every other vertex in G.
 
@@ -581,7 +581,7 @@ void Dijkstra( Table T )
 
 T=O(|E|log|V|)
 
-## Acylic Graphs
+### Acylic Graphs
 
 If the graph is acyclic, vertices amy be selected in topological order since when a vertex is selected, its distance can no longer be lowered without any incoming edges from unknown nodes.
 
@@ -608,7 +608,7 @@ T = O(|V|^3) – works fast on sparse graph. 稀疏图
 
 Method 2  O( |V|^3 ) algorithm given in Ch.10, works faster on dense graphs.
 
-## Network Flow Problems
+### Network Flow Problems
 
 Find Maximum Path from s to t.
 
@@ -623,7 +623,7 @@ Step 4:  If (there is a path s -> t in G_r )
                Else
                      End.
 
-## Minimum Spanning Tree
+### Minimum Spanning Tree
 
 is a tree which consists of V(G) and a subset of E(G). 
 
@@ -631,7 +631,7 @@ is a tree which consists of V(G) and a subset of E(G).
 - It is minimum for the total cost of edges is minimized.
 - A minimum spanning tree exists if G is connected.
 
-## 2 Method of calculating the minimum spanning tree: 
+### 2 Method of calculating the minimum spanning tree: 
 
 1. Prim's Algorithm
    very samiliar to Dijkstra’s algorithm. We choose a vertex to start, and every time add a a least cost vertex until all vertex is connected.
@@ -639,7 +639,7 @@ is a tree which consists of V(G) and a subset of E(G).
 2. Kruskal’s Algorithm – maintain a forest
    every time add a a least cost edge <v,w> from E until all vertex is connected.
 
-## DFS -- Depth-First Search
+### DFS -- Depth-First Search
 
 ```c
 void ListComponents ( Graph G ) 
@@ -664,15 +664,15 @@ Applications:
 2. Biconnectivity
 3. Euler Circuits
 
-## NP-Completeness
+### NP-Completeness
 
-# KMP
+## KMP
 
-## Basic String Operations
+### Basic String Operations
 
 The StrAssign、Strcopy、StrCompare、StrLength、Concat and SubString
 
-## String Operations Library (in C)
+### String Operations Library (in C)
 
 gets(str)  //Input a string;
 
@@ -686,13 +686,13 @@ strcmp(str1, str2) //String comparision；
 
 strlen(str)  //Get the length of string 
 
-## Pattern Matching algorithm
+### Pattern Matching algorithm
 
 旧模式匹配算法：每次不匹配时，子串都从头重新匹配。效率很低
 
 Basic match algorithm is inefficient
 
-### Knuth-Morris-Pratt (KMP Algorithms)
+#### Knuth-Morris-Pratt (KMP Algorithms)
 
 When dismatch happens, we don't need to go back to first. We can use a next array to decide where to go back.
 
