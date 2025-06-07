@@ -19,12 +19,12 @@ web 开发实践课的大作业。本次小程序设计主要围绕 map 组件�
 
 小程序的主要功能就是记录地图上的标点信息，并上传到云数据库中；
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/035976c6063c4d019ea3a2e62d35bca0.gif)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/035976c6063c4d019ea3a2e62d35bca0.gif)
 
 
 以及编辑文章，把文章信息上传到云数据库中；
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/00c96f64cec54457a23359ff540dcc67.gif)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/00c96f64cec54457a23359ff540dcc67.gif)
 
 
 获取云数据库中的文章（最新发布的3篇）。
@@ -32,7 +32,7 @@ web 开发实践课的大作业。本次小程序设计主要围绕 map 组件�
 
 ## 数据库设计
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/77e31ce1557342dd8a883fe55c21c05d.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/77e31ce1557342dd8a883fe55c21c05d.png)
 
 
 目前有两个数据库表。databasemarkers 存储本次记录中所有标点信息；databasearticles 存储该文章发布时间、文章标题、备注、内容以及对应的标点记录id（外键）。
@@ -43,7 +43,7 @@ web 开发实践课的大作业。本次小程序设计主要围绕 map 组件�
 
 
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/4e581029e11d4f26ae9ba03e9effae44.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/4e581029e11d4f26ae9ba03e9effae44.png)
 
 
 
@@ -167,7 +167,7 @@ Page({
 ```
 
 ## 发布文章
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/28e718d09b274fb89bbed42d385fab02.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/28e718d09b274fb89bbed42d385fab02.png)
 
 
 添加完标点信息后，提示输入文章标题、备注、正文信息，点击提交，文章就会发布到 databasearticles 数据库中。
@@ -328,7 +328,7 @@ wxss：
 
 ## 获取最新发布的三篇文章
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/f2b099a392ac4f8aae5218d74c035409.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/f2b099a392ac4f8aae5218d74c035409.png)
 
 
 最新发布模块可以获取云数据库中最新发布的三篇文章，原理是根据时间戳倒叙排序后取前三条记录。

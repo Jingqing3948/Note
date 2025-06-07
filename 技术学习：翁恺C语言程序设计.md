@@ -4007,16 +4007,16 @@ mask 依次是
 0010 0000
 ...
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302308608.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302308608.png)
 
 这样每一位依次取余，看每一位。
 另外一件事：做单片机时常遇到这样的特殊功能寄存器（SFR）
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302308228.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302308228.png)
 
 怎么把对应比特置为 0 或 1？
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302308442.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302308442.png)
 
 第几位就是 1u << 几
 
@@ -4039,7 +4039,7 @@ PE 是 1，左移 3 位是 1000
 
 冒号后面的数字表示 该成员占几个比特。
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302309899.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505302309899.png)
 
 prtBin 函数就是刚刚看过的输出二进制位。 
 

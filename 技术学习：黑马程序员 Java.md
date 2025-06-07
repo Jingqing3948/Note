@@ -893,7 +893,7 @@ public class Cat implements Jumpping{ // 实现
 
 ### 总结
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201836142.png)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201836142.png)
 
 
 ### 设计原则

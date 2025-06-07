@@ -20,9 +20,26 @@ description: 北京邮电大学国际学院物联网工程专业Java大作业项
 > 根据反馈信息再进行下一轮猜测，在6次尝试之内猜出就算赢。
 > 来源：[数学大神攻克猜字游戏Wordle，求解算法成绩逼近理论极限，连信息论都用上了 -量子位](https://mp.weixin.qq.com/s/iddHGL4IaibPq_A59efuyg)
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/b0d7914573006aedb8e26edd3f4c2a31.png)
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072108495.png" alt=" " style="zoom:50%;" />
+
+## 成果展示
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109768.png" alt=" " style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109595.png" alt=" " style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109440.png" alt=" " style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109063.jpeg" alt=" " style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109793.png" alt=" " style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109432.png" alt=""  />
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072109102.png" alt=" "  />
 
 ## 玩法介绍
+
 点击HELP 查看帮助，点击 START 开始游戏。
 本游戏中没有虚拟键盘，输入框也不能获取鼠标焦点，只能通过键盘键入字母，回车检查答案。
 敲下回车后，字母就会呈现灰色、黄色、绿色三种状态，并换到下一行开始下一次猜单词机会。当猜中答案或六轮游戏结束时，弹出小窗，提示用户游戏胜利/失败。
@@ -31,7 +48,7 @@ description: 北京邮电大学国际学院物联网工程专业Java大作业项
 2. 一些小的注意点。当用户输入中有两个e，都不在正确的位置上，那这两个e只有一个会显示黄色就够了，另一个显示灰色，否则会影响用户的判断。
 ## 代码
 [Java_Wordle_Game github下载地址](https://github.com/Jingqing3948/Java_Wordle_Game)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/41a2ad5623f9074db53001b89c6d06a6.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506072108270.png)
 
 README：帮助信息
 javadoc：生成的 javadoc 
