@@ -19,7 +19,7 @@ description: 黑马程序员Redis入门课程学习笔记
 
 - S：结构化，比如在 MySQL 我们需要定义一个表，第一个属性是 id 第二个是 name 第三个是 age…… 定义好表之后所有新插入的数据都必须遵循这个结构，各个表还可能有外键等关联，所以总的来说不能随意修改表的属性。而 NoSQL 结构要求没那么严格，比如下面这种 Redis 定义方式也可以，就是没啥章法：
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505211052874.png" alt="image-20250521105232832" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505211052874.png" style="zoom:67%;" />
 
 ​	除了键值类型，还有文档类型，列类型，图类型等 NoSQL。
 

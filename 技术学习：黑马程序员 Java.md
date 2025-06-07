@@ -11,11 +11,11 @@ description: 黑马程序员Java入门课程学习笔记
 
 ## 前言
 
-以[黑马程序员全套Java教程](https://www.bilibili.com/video/BV18J411W7cE?p=1)网课为主。
+以 [黑马程序员全套 Java 教程](https://www.bilibili.com/video/BV18J411W7cE?p=1) 网课为主。
 
 ## Java 介绍
 
-Java是一个可以跨平台的语言，借助Java虚拟机（Java Virtual Machine, JVM）能够在任意操作系统（operating system, OS）上运行。
+Java 是一个可以跨平台的语言，借助 Java 虚拟机（Java Virtual Machine, JVM）能够在任意操作系统（operating system, OS）上运行。
 
 JVM: Java Virtual Machine，在 JRE 的 bin 目录下。JVM 本质上是一个程序，使得 Java 在不同平台上运行时不需要重新编译，只需要执行保存在某字节码文件（.class）中的指令，不管什么平台，只要装有相应平台的 JVM ，字节码文件就可以在该平台上运行。
 
@@ -36,7 +36,7 @@ JDK: Java Development Kit，Java 程序开发工具包。
 
 JDK 的安装目录如下：
 
-| JDK目录名称 | 说明                                |
+| JDK 目录名称 | 说明                                |
 | ----------- | ----------------------------------- |
 | bin         | 存放工具命令，如：javac, java, etc. |
 | conf        | 配置文件                            |
@@ -58,7 +58,7 @@ JDK 的安装目录如下：
 
 ![AJdw2.png](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201224741.png)
 
-## 基础语法（重点比较与C的区别）
+## 基础语法（重点比较与 C 的区别）
 
 ### HelloWorld 
 
@@ -74,18 +74,18 @@ public class HelloWorld { // class 类名必须和文件名一致
 }
 ```
 
-然后在DOS窗口中进入当前文件所在目录，输入命令：
+然后在 DOS 窗口中进入当前文件所在目录，输入命令：
 
 ```
 javac HelloWorld.java //编译，得到 .class 字节码文件，可以在任何支持 java 的平台上运行
 java HelloWorld // .class 文件被解释执行，转化为可以直接在本地对应平台上运行的机器码文件
 ```
 
-java 和 C、C++ 一样，属于**编译型语言**（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。
+java 和 C、C++ 一样，属于 **编译型语言**（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。
 
 ### 注释
 
-单行注释 `//` 、多行注释 `/* */` 都和C一样。还有一个文件注释 `/** */`暂时用不到，之后了解。
+单行注释 `//` 、多行注释 `/* */` 都和 C 一样。还有一个文件注释 `/** */` 暂时用不到，之后了解。
 
 ### 关键字
 
@@ -183,7 +183,7 @@ String s=sc.nextLine();
 
 if - else 语句：和 C 语言一样。
 
-switch 语句：表达式的取值可以是 byte、short、int、char，JDK5之后可以是枚举，JDK7之后可以是 String。其他 case break default 用法和 C 一样。
+switch 语句：表达式的取值可以是 byte、short、int、char，JDK5 之后可以是枚举，JDK7 之后可以是 String。其他 case break default 用法和 C 一样。
 
 for, while, do - while 语句，及 break continue 和 C 一样。
 
@@ -199,7 +199,7 @@ int n=r.nextInt(10);//[0,10)的范围内取随机数
 
 ### 数组
 
-一次性声明大量**同类型**变量。
+一次性声明大量 **同类型** 变量。
 
 ```java
 int[] arr;//推荐。定义了一个 int 型的数组，数组名是 arr
@@ -220,13 +220,13 @@ java 程序运行时需要在内存中分配空间，为了提高效率，内存
 
 定义的方法中的变量放在栈内存中，使用完直接消失。
 
-如`int a`，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。
+如 `int a`，以及上文中定义的数组名 arr（其值是指向堆内存中数组内容的地址）。
 
 #### 堆内存
 
 实体、对象等的定义放在堆内存中，使用完会在垃圾回收器空闲时进行回收。
 
-如 new 一个对象，以及上文中数组 arr 中的具体数据内容（arr[0]=1, arr[1]=2……）
+如 new 一个对象，以及上文中数组 arr 中的具体数据内容（arr [0] = 1, arr [1] = 2……）
 
 访问数组中的内容，首先根据栈内存中数组的地址找到相应的堆内存中的位置（以及移动相应的索引步长）然后访问数据。
 
@@ -247,7 +247,7 @@ arr2[2]=33;//这时访问 arr1[]，发现其中的数据也变成了11,22,33
 
 #### Array.length
 
-数组自带属性 length，通过`arr.length`就能获得数组长度。
+数组自带属性 length，通过 `arr.length` 就能获得数组长度。
 
 ### 字符串
 
@@ -278,17 +278,17 @@ byte[] b={97,98,99};//a, b, c 对应的 ascii 码
 String s3=new String(b);
 ```
 
-字符串一旦创建不能再修改。不过多个字符串的值可以共享`s1=s2;`
+字符串一旦创建不能再修改。不过多个字符串的值可以共享 `s1=s2;`
 
-*字符串在效果上像字符数组 char[]，但（JDK9）以后底层实现方法其实是字节数组 byte[]。*
+*字符串在效果上像字符数组 char []，但（JDK9）以后底层实现方法其实是字节数组 byte []。*
 
 #### 字符串比较：== 和 equals()
 
-用==判断的比较，是比较 s1 和 s2 的值（即：对应字符串的地址值）是否相同。
+用 == 判断的比较，是比较 s1 和 s2 的值（即：对应字符串的地址值）是否相同。
 
-基本类型 == 比较的是数据值是否相同，引用类型 **==** 比较的是**地址**是否相同。
+基本类型 == 比较的是数据值是否相同，引用类型 **== ** 比较的是 ** 地址 ** 是否相同。
 
-用字符串的成员方法 **equals()** 判断，是比较字符串**内容**是否相同。
+用字符串的成员方法 **equals()** 判断，是比较字符串 **内容** 是否相同。
 
 ```java
 char[] c={'a','b','c'};
@@ -308,7 +308,7 @@ System.out.println(s1.equals(s3));//输出 true
 
 #### 遍历字符串：成员方法 length() 和 charAt()
 
-`s.length()`可以获取字符串长度。**这里注意是有括号的，和数组长度 length 区分开！** 
+`s.length()` 可以获取字符串长度。**这里注意是有括号的，和数组长度 length 区分开！** 
 
 s.charAt(i) 可以获取索引为 i 处的字符
 
@@ -328,7 +328,7 @@ String s2="World";
 s1=s1+s2;//Hello World
 ```
 
-在内存中，字符串发生拼接后会在堆内存中新建一个字符串（有"Hello "，"World"，"Hello World"三个字符串，而不是直接在"Hello "的位置上拼接"World"）。这样操作还是比较费时费空间的。之后介绍的另一个类——StringBuilder 可以更有效地解决这个问题。
+在内存中，字符串发生拼接后会在堆内存中新建一个字符串（有 "Hello "，"World"，"Hello World" 三个字符串，而不是直接在 "Hello " 的位置上拼接 "World"）。这样操作还是比较费时费空间的。之后介绍的另一个类——StringBuilder 可以更有效地解决这个问题。
 
 #### endsWith()
 
@@ -407,11 +407,11 @@ public static int max(int a, int b)
 public static int max(int a, int b, int c)
 ```
 
-**注意：返回值不能作为判断方法是否重载的标准！**只有方法名和参数可以。
+**注意：返回值不能作为判断方法是否重载的标准！** 只有方法名和参数可以。
 
 调用时，JVM 根据传入参数不同，来得知调用的是哪个方法。
 
-**形参值修改不会对实参造成影响。**main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存。
+**形参值修改不会对实参造成影响。** main() 方法存储在栈内存中，当 main() 方法调用其它方法时，其他方法进入栈内存。
 
 ![A8wxg.png](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201224438.png)
 
@@ -483,7 +483,7 @@ c.eat("猫粮")//行为：吃饭
 
 在同级目录下，类在一个文件中，main 方法在另一个文件中而且实例化了这个类，也是可以的。
 
-对象名 c 存储在栈内存中（其值代表对象的属性在堆内存中的地址），而对象的**属性**等具体内容存储在**堆内存**中。对象中的**方法**调用时则加载到**栈内存**中，执行完毕后出栈。
+对象名 c 存储在栈内存中（其值代表对象的属性在堆内存中的地址），而对象的 **属性** 等具体内容存储在 **堆内存** 中。对象中的 **方法** 调用时则加载到 **栈内存** 中，执行完毕后出栈。
 
 ### 成员变量和局部变量
 
@@ -502,7 +502,7 @@ c.eat("猫粮")//行为：吃饭
 
 首先老师汇总介绍了一下所有内存空间。当我们运行 Java 文件的时候系统分配一片内存空间给 JDK，里面具体是这样细分的：
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505281457686.png" alt="image-20250528145755552" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505281457686.png" style="zoom:50%;" />
 
 元空间，或者叫方法区，负责加载字节码文件，是 JDK 8 及以后的版本从堆空间中划分出来的。
 
@@ -519,12 +519,12 @@ c.eat("猫粮")//行为：吃饭
 1. 加载 class 文件
 2. 声明局部变量
 3. 在堆内存中开辟一片空间
-4. 默认初始化（将对象中的局部变量值赋值为默认值，如 `String name` 赋值就是 null, `int age` 赋值就是0）
+4. 默认初始化（将对象中的局部变量值赋值为默认值，如 `String name` 赋值就是 null, `int age` 赋值就是 0）
 5. 显示初始化（如果在类定义中我们做了赋值，如 `int age=19;` 显示初始化就会重新赋值成这个我们给定的默认值）
 6. 构造方法初始化（通过构造方法中的参数赋值）
 7. 将堆空间中的地址值赋值给左边的局部变量
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505281511260.png" alt="image-20250528151133023" style="zoom: 33%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505281511260.png" style="zoom: 33%;" />
 
 当方法执行完毕撤出栈空间的时候，没有引用堆内存中对应对象的变量时，堆内存中的对象就没有存在必要了就也被清理了。
 
@@ -532,13 +532,13 @@ c.eat("猫粮")//行为：吃饭
 
 Java 的三大特性：封装、继承、多态。
 
-之前定义的成员变量都可以直接对值进行修改，存在安全隐患（比如设置 age=-30）
+之前定义的成员变量都可以直接对值进行修改，存在安全隐患（比如设置 age =-30）
 
 因此我们要添加一些限制。
 
 ### private 修饰符
 
-可以修饰成员变量、成员方法不**直接**被其他类使用。
+可以修饰成员变量、成员方法不 **直接** 被其他类使用。
 
 ```java
 private String name;
@@ -549,7 +549,7 @@ private int age;
 
 ### 构造方法
 
-写在类中，作为类的方法。主要用于对象初始化。声明变量时`Cat c=new Cat();`Cat() 就是一种无参构造方法。
+写在类中，作为类的方法。主要用于对象初始化。声明变量时 `Cat c=new Cat();` Cat() 就是一种无参构造方法。
 
 每个类定义时系统都会给一个默认无参构造方法。如果自己给了一个无参构造方法，就会覆盖系统默认的。**建议无论是否用到构造方法，都写一个无参构造方法。**
 
@@ -568,11 +568,11 @@ Cat c2=new Cat("小黑");
 Cat c3=new Cat("小白",2);//这些都可以，与自己写的构造方法的参数相对应。
 ```
 
-this被哪个对象调用，就代表哪个对象。
+this 被哪个对象调用，就代表哪个对象。
 
 ![AlrRQ.png](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505201256813.png)
 
-然后把"林青霞" 字符串类型传入堆内存中。
+然后把 "林青霞" 字符串类型传入堆内存中。
 
 ### get / set
 
@@ -621,11 +621,11 @@ C-->Q[Queue]
 
 ArrayList 就是集合的一种。
 
-### ArrayList\<E\>
+### ArrayList \< E \>
 
 在 java.util 包下，需要导包。
 
-\<E\> 表示泛型，限制数组中的元素只能是某一种类型（或者其子类，多态），可以在编译阶段约束操作的数据类型并进行检查（下面左边的 String）。
+\< E \> 表示泛型，限制数组中的元素只能是某一种类型（或者其子类，多态），可以在编译阶段约束操作的数据类型并进行检查（下面左边的 String）。
 
 ```java
 ArrayList<String> array=new ArrayList<>();
@@ -635,8 +635,8 @@ ArrayList<String> array=new ArrayList<>();
 
 | 方法                        | 说明                                   |
 | --------------------------- | -------------------------------------- |
-| ArrayList\<E\>()            | 无参构造方法                           |
-| boolean add(E e)            | 结尾添加一个元素，成功返回true         |
+| ArrayList \< E \>()            | 无参构造方法                           |
+| boolean add(E e)            | 结尾添加一个元素，成功返回 true         |
 | void add(index i, E e)      | 在指定索引处添加一个元素（不能越界！） |
 | boolean remove(Object o)    | 删除指定对象，成功返回 true            |
 | E remove(int index)         | 删除指定索引处的值，返回该值           |
@@ -685,7 +685,7 @@ public class Dog extends Animal{
 
 范围越小，权限越高。
 
-访问优先级：子类中局部变量>子类中成员变量>父类中成员变量>找不到就报错
+访问优先级：子类中局部变量 > 子类中成员变量 > 父类中成员变量 > 找不到就报错
 
 如果想优先访问父类中的元素：super 关键字（使用方法类似 this，只是 this 是访问本类中的成员， super 是访问父类中的成员）
 
@@ -693,7 +693,7 @@ public class Dog extends Animal{
 
 ### 构造方法的访问特点
 
-构造方法的访问优先级和变量相反。即使访问子类的构造方法，也会优先访问**父类的无参构造方法**，再访问子类的构造方法。因为毕竟子类由父类而来，需要先构造父类再构造子类。
+构造方法的访问优先级和变量相反。即使访问子类的构造方法，也会优先访问 **父类的无参构造方法**，再访问子类的构造方法。因为毕竟子类由父类而来，需要先构造父类再构造子类。
 
 而在之前介绍过，如果在类中只定义了带参构造方法，就会覆盖系统默认给的无参构造方法，这时类中就没有无参构造方法了。这时再尝试使用类中的无参构造方法，就会报错。
 
@@ -777,7 +777,7 @@ java com.ithema.HelloWorld
 
 ### 导包 import
 
-如果测试类在 src 文件夹的A文件夹下，要调用的类在 src 文件夹的B文件夹下，可以通过导包的方式来调用
+如果测试类在 src 文件夹的 A 文件夹下，要调用的类在 src 文件夹的 B 文件夹下，可以通过导包的方式来调用
 
 `import B文件夹.要调用的类名;`
 
@@ -924,7 +924,7 @@ C-->F[篮球教练]
 
 抽象类：如果方法的形参或函数的返回值是抽象类名，实际需要传递的是实现了该抽象类的子类的实例对象。
 
-如函数形参是Animal，实际需要通过多态的方法Animal a=new Cat();然后把a传给函数。
+如函数形参是 Animal，实际需要通过多态的方法 Animal a = new Cat(); 然后把 a 传给函数。
 
 接口作为形参/函数返回值，和抽象类一样，实际需要的是实现了该接口的类的实例对象。
 
@@ -936,9 +936,9 @@ C-->F[篮球教练]
 
 无论外部类的成员变量的权限修饰符是什么（private, public……）因为都在同一个类中，所以即使权限修饰符是 private 也可以相互访问。
 
-内部类都可以**直接**访问外部类的全部成员变量。
+内部类都可以 **直接** 访问外部类的全部成员变量。
 
-而外部类如果想访问内部类的成员，需要**先创建一个内部类对象再访问**。
+而外部类如果想访问内部类的成员，需要 **先创建一个内部类对象再访问**。
 
 ### 外界使用内部类
 
@@ -1008,7 +1008,7 @@ public class Outer {
 
 我们要让不同动物都能 jump，就要在不同动物类中 implements jump 接口，并重写其中的抽象方法；
 
-然后用多态的方式`jump c=new cat(); jump d=new dog();` 新建对象并传给 method 方法。
+然后用多态的方式 `jump c=new cat(); jump d=new dog();` 新建对象并传给 method 方法。
 
 但是可以通过匿名内部类的方法：
 
@@ -1036,7 +1036,7 @@ jo.method(new jump(){
 
 ### Math
 
-不用导包，成员变量、方法都带有static修饰，可以直接通过类名访问。
+不用导包，成员变量、方法都带有 static 修饰，可以直接通过类名访问。
 
 | 方法                                        | 说明                                     |
 | ------------------------------------------- | ---------------------------------------- |
@@ -1044,12 +1044,12 @@ jo.method(new jump(){
 | public static double ceil(double a)         | 向上取整，返回一个 double 值             |
 | public static double floor(double a)        | 向下取整，返回一个 double 值             |
 | public static int round(float a)            | 四舍五入                                 |
-| public static int max(int a,int b)          |                                          |
-| public static int min(int a,int b)          |                                          |
-| public static double pow(double a,double b) | a 的 b 次幂                              |
+| public static int max(int a, int b)          |                                          |
+| public static int min(int a, int b)          |                                          |
+| public static double pow(double a, double b) | a 的 b 次幂                              |
 | public static double random()               | 随机数，范围 [0.0,1.0)                   |
 
-随机数想要其他范围可以做算术运算。如 [0.0, 100.0)就用`random()*100`。
+随机数想要其他范围可以做算术运算。如 [0.0, 100.0)就用 `random()*100`。
 
 ### System
 
@@ -1058,7 +1058,7 @@ jo.method(new jump(){
 | 方法                                   | 说明                                               |
 | -------------------------------------- | -------------------------------------------------- |
 | public static void exit(int status)    | 终止运行 JVM，非零表示非正常终止                   |
-| public static long currentTimeMillis() | 返回当前时间到1970年1月1日的时间间隔，以毫秒为单位 |
+| public static long currentTimeMillis() | 返回当前时间到 1970 年 1 月 1 日的时间间隔，以毫秒为单位 |
 
 currentTimeMillis() 可以整除求得当前年份；可以用两个 currentTimeMillis() 值做差求时间间隔等。
 
@@ -1094,7 +1094,7 @@ return "{ Person:name=" + name +" age=" + age+"}";// name 和 age 都是本类�
 
 #### equals
 
-`s1.equals(s2)`本质上是比较两个对象的地址，肯定是 false。
+`s1.equals(s2)` 本质上是比较两个对象的地址，肯定是 false。
 
 一般也会重写/自动生成可以比较两个对象内容是否一致的方法。
 
@@ -1110,12 +1110,12 @@ public boolean equals(Object o) {
 
 ### Arrays 类
 
-需要导包 `java.util.Arrays`，不能创建对象，成员是 static的。
+需要导包 `java.util.Arrays`，不能创建对象，成员是 static 的。
 
 | 方法                                   | 说明                              |
 | -------------------------------------- | --------------------------------- |
-| public static String toString(int[] a) | 返回形如 "[a, b, c]" 的字符串形式 |
-| public static void sort(int[] a)       | 按数字顺序排列指定的数组          |
+| public static String toString(int [] a) | 返回形如 "[a, b, c]" 的字符串形式 |
+| public static void sort(int [] a)       | 按数字顺序排列指定的数组          |
 
 ### 补充：工具类
 
@@ -1144,9 +1144,9 @@ public System(){};
 | public static Integer valueOf(int i)    | 把 int 转换为 Integer 类型    |
 | public static Integer valueOf(String s) | 把 String 转换为 Integer 类型 |
 
-public String[] split(String regex) 把给定字符串用 regex 分隔开。
+public String [] split(String regex) 把给定字符串用 regex 分隔开。
 
-如给定字符串 s 是"1 2 3 4"，`s.split(" ")`就会得到4个字符串："1""2""3""4"。
+如给定字符串 s 是 "1 2 3 4"，`s.split(" ")` 就会得到 4 个字符串："1" "2" "3" "4"。
 
 #### 基本类型转换
 
@@ -1166,9 +1166,9 @@ String -> int：
 
 #### 自动装箱和拆箱
 
-装箱：基本类型->对应的包装类型
+装箱：基本类型-> 对应的包装类型
 
-拆箱：包装类型->基本类型
+拆箱：包装类型-> 基本类型
 
 ```java
 Integer i=Integer.valueOf(100);//装箱
@@ -1185,7 +1185,7 @@ i3+=300;//NullPointerException。因此对象使用之前最好先判断是否�
 
 #### Date
 
-Date 类，需要导包。**注意是 java.util 下的，而不是 java.sql 下的！**java.util 下的 Date 类非最终类，所以可以有子类， java.sql 下的 Date 类就是其子类。
+Date 类，需要导包。**注意是 java.util 下的，而不是 java.sql 下的！** java.util 下的 Date 类非最终类，所以可以有子类， java.sql 下的 Date 类就是其子类。
 
 | 方法                           | 说明                                                   |
 | ------------------------------ | ------------------------------------------------------ |
@@ -1231,7 +1231,7 @@ y 年 M 月 d 日
 
 H 时 m 分 s 秒
 
-（实际运用的时候，也可以让用户自己指定格式。比如单独写一个日期工具类，有两个方法，把 Date 转换为 String 和把String转换为Date；这两个方法可以设置两个传入参数：
+（实际运用的时候，也可以让用户自己指定格式。比如单独写一个日期工具类，有两个方法，把 Date 转换为 String 和把 String 转换为 Date；这两个方法可以设置两个传入参数：
 
 `public static String dateToString(Date d, String format)`
 
@@ -1241,7 +1241,7 @@ H 时 m 分 s 秒
 
 #### Calendar 类
 
-需要导包`java.util.Calendar`，是一个抽象类。
+需要导包 `java.util.Calendar`，是一个抽象类。
 
 为某一时刻和某些日历字段的转换，以及操作日历字段提供了一些方法。
 
@@ -1323,7 +1323,7 @@ catch(ParseException e){
 
 出现异常时，异常对象会被提交给 Java 运行时系统，如果和 catch 中的异常类匹配就会进行异常的处理，**处理完成后可以继续执行。**
 
-如果异常变量命名为 e ,调用 e 的成员方法 `e.printStackTrace()` 就会输出平时出现异常时系统默认提示的信息：`java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3  at com.ithema_02.ExceptionDemo02.method..... `
+如果异常变量命名为 e , 调用 e 的成员方法 `e.printStackTrace()` 就会输出平时出现异常时系统默认提示的信息：`java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3  at com.ithema_02.ExceptionDemo02.method..... `
 
 但是通过这种方法处理异常之后，异常后面的部分仍然可以执行。
 
@@ -1473,13 +1473,13 @@ M-->HM(HashMap)
 
   ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291106468.png)
 
-  红黑树对平衡要求性低一些（最长路径不超过最短路径的2倍），所以插入数据的时候需要的旋转次数平均下来更少。适用于频繁插入删除操作。
+  红黑树对平衡要求性低一些（最长路径不超过最短路径的 2 倍），所以插入数据的时候需要的旋转次数平均下来更少。适用于频繁插入删除操作。
 
 ### Collection
 
-java.util.Collection
+`java.util.Collection`
 
-Collection 是单例集合的最高级接口。他表示一组对象，这些对象也被称为 Collection 的元素。
+`Collection` 是单例集合的最高级接口。他表示一组对象，这些对象也被称为 `Collection` W 的元素。
 
 无法直接实现。可以用多态的方式实现。
 
@@ -1528,7 +1528,7 @@ while(it.hasNext()){
 }
 ```
 
-it.next() 像指针一样从0开始遍历。
+it.next() 像指针一样从 0 开始遍历。
 
 #### 并发修改异常
 
@@ -1538,15 +1538,15 @@ it.next() 像指针一样从0开始遍历。
 
 iterator 调用 next() 方法时，会先调用 checkForComodification() 方法。
 
-checkForComodification() 会检验 modCount 修改集合的次数和expectedModCount 预期修改集合的次数是否相等。
+checkForComodification() 会检验 modCount 修改集合的次数和 expectedModCount 预期修改集合的次数是否相等。
 
-modCount 来自于 ArrayList 的父类：AbstractList，初始值为0.每次使用 add() 方法时，modCount 就会++。
+modCount 来自于 ArrayList 的父类：AbstractList，初始值为 0.每次使用 add() 方法时，modCount 就会++。
 
 expectedCount 来自于 Itr 类，且初始值为 `expectedCount=modCount`.
 
 每次实例化一个 Iterator 类，都会调用其子类 Itr 类，使得 expectedCount 等于当前的 modCount。
 
-然后遍历过程中每次调用 next() 方法时，都会先检查一下`expectedCount==modCount`，即集合有没有被修改。如果没有修改就可以顺利地返回下一个元素；如果有异常 checkForComodificationException，就会终止运行。
+然后遍历过程中每次调用 next() 方法时，都会先检查一下 `expectedCount==modCount`，即集合有没有被修改。如果没有修改就可以顺利地返回下一个元素；如果有异常 checkForComodificationException，就会终止运行。
 
 ```mermaid
 graph TB
@@ -1586,9 +1586,9 @@ System.out.println(l);//按存储的顺序输出，["Hello","World"]
 
 | 方法                          | 说明           |
 | ----------------------------- | -------------- |
-| void add(int index,E element) | 感觉并不用解释 |
+| void add(int index, E element) | 感觉并不用解释 |
 | E remove(int index)           |                |
-| E set(int index,E element)    |                |
+| E set(int index, E element)    |                |
 | E get(int index)              |                |
 
 越界报错 IndexOutOfException。
@@ -1635,7 +1635,7 @@ while(li.hasNext()){
 }
 ```
 
-在 listItr 类中的 add() 方法，添加完元素之后，有一句`expectedModCount=modCount;`重新把实际修改值赋给了预期修改值。因此 next() 方法中判断`expectedModCount==modCount`，即使添加了新元素也仍然是 true. 不会发生并发修改异常。这就是为什么要特殊强调这里的 add 和 List 自身的 add 不一样。
+在 listItr 类中的 add() 方法，添加完元素之后，有一句 `expectedModCount=modCount;` 重新把实际修改值赋给了预期修改值。因此 next() 方法中判断 `expectedModCount==modCount`，即使添加了新元素也仍然是 true. 不会发生并发修改异常。这就是为什么要特殊强调这里的 add 和 List 自身的 add 不一样。
 
 #### 增强 for
 
@@ -1671,13 +1671,13 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 实现原理：
 
-底层先创建一个长度为0的数组。
+底层先创建一个长度为 0 的数组。
 
-添加第一个元素的时候底层扩容为一个长度为10的连续存储区域的数组。指针指向下一个要存入的数据的位置。
+添加第一个元素的时候底层扩容为一个长度为 10 的连续存储区域的数组。指针指向下一个要存入的数据的位置。
 
-后续继续添加元素，直到装满的时候，整个数组扩容1.5倍（在其他地方开辟一片1.5倍原数组长度的区域，并且把原来的数据全部拷贝进去）。
+后续继续添加元素，直到装满的时候，整个数组扩容 1.5 倍（在其他地方开辟一片 1.5 倍原数组长度的区域，并且把原来的数据全部拷贝进去）。
 
-如果一次添加多个元素超过扩容后的1.5倍的数量，则按照新添加元素数量来扩容数组。
+如果一次添加多个元素超过扩容后的 1.5 倍的数量，则按照新添加元素数量来扩容数组。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505282253668.png)
 
@@ -1835,7 +1835,7 @@ JDK8 之前的版本底层是数组+链表实现。JDK8 之后是数组+链表+�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505291200685.png)
 
-加载因子用于判断数组什么时候扩容，比如上例是存入了 16\*0.75=12 个元素之后扩容。
+加载因子用于判断数组什么时候扩容，比如上例是存入了 16\*0.75 = 12 个元素之后扩容。
 
 这也解释了为什么 Set 遍历无序（按数组顺序遍历，但是对应的是哈希值从小到大遍历，不一定是存入顺序）
 
@@ -1912,7 +1912,7 @@ TreeSet<String> ts = new TreeSet<>((o1, o2) -> {
     // 按照长度排序
     int i = o1.length() - o2.length();
     // 如果一样长则按照首字母排序
-    i = i == 0 ? o1.compareTo(o2) : i;
+    i = (i == 0 ? o1.compareTo(o2) : i);
     return i;
 });
 ```
@@ -1921,17 +1921,17 @@ Comparator 优先级高于 compareTo，对于 Integer 和 String java 已经定�
 
 ### List Set 集合使用场景总结
 
-ArrayList：元素可重复，随机存取。
+`ArrayList`：元素可重复，随机存取。
 
-LinkedList：元素可重复，且增删操作数量明显多于查询。
+`LinkedList`：元素可重复，且增删操作数量明显多于查询。
 
-HashSet：对集合中的元素去重。
+`HashSet`：对集合中的元素去重。
 
-LinkedHashSet：去重，而且保证存取顺序。
+`LinkedHashSet`：去重，而且保证存取顺序。
 
-TreeSet：去重，且排序。
+TreeSet`：去重，且排序。
 
-*后续也可以使用 List + 排序方法实现排序。*
+*后续也可以使用 `List` + 排序方法实现排序。*
 
 ### Map 双列集合
 
@@ -1941,19 +1941,859 @@ Set 的底层源码都和 Map 有关。
 
 Map 常用 API 一览：
 
-| 方法签名                              | 说明                                                         |
-| ------------------------------------- | ------------------------------------------------------------ |
-| `V put(K key, V value)`               | 添加元素. 默认返回 null，如果该键已经存在则会覆盖旧值，返回旧值 |
-| `V remove(Object key)`                | 根据键删除键值对元素                                         |
-| `void clear()`                        | 移除所有的键值对元素                                         |
-| `boolean containsKey(Object key)`     | 判断集合是否包含指定的键                                     |
-| `boolean containsValue(Object value)` | 判断集合是否包含指定的值                                     |
-| `boolean isEmpty()`                   | 判断集合是否为空                                             |
-| `int size()`                          | 集合的长度，即键值对的个数                                   |
+| 方法签名                                                   | 说明                                                         |
+| ---------------------------------------------------------- | ------------------------------------------------------------ |
+| `V put(K key, V value)`                                    | 添加元素. 默认返回 null，如果该键已经存在则会覆盖旧值，返回旧值 |
+| `V get(K key)`                                             |                                                              |
+| `V remove(Object key)` `void clear()`                      | 根据键删除键值对元素移除所有的键值对元素                     |
+| `void clear()` `boolean containsKey(Object key)`           | 移除所有的键值对元素判断集合是否包含指定的键                 |
+| `boolean containsKey(Object key)`                          | 判断集合是否包含指定的键                                     |
+| `boolean containsValue(Object value)`                      | 判断集合是否包含指定的值                                     |
+| ``boolean containsValue(Object value)` `boolean isEmpty()` | 判断集合是否包含指定的值判断集合是否为空                     |
+| `boolean isEmpty()` `int size()`                           | 判断集合是否为空集合的长度，即键值对的个数                   |
+| `int size()`                                               | 集合的长度，即键值对的个数                                   |
 
 和集合有些区别，比如 add 变成了 put，contains 变得复杂了。
 
 ```java
-Map<String, String> m = new HashMap<>();
+Map<String, String> map = new HashMap<>();
 ```
+
+遍历方法：
+
+```java
+// 1. 获取所有键
+Set<String> keys = map.keySet();
+for(String key in keys){
+    String value = map.get(key);
+}
+
+// 2. 获取所有键值对
+Set<Map.Entry<String, String>> entries = map.entrySet();
+for(Map.Entry<String, String> entry: entries){
+    String key = entry.getKey();
+    String value = entry.getValue();
+}
+
+// 3. lambda 表达式。底层逻辑其实也是 entrySet 获取所有键值对赋值给 k v。
+map.forEach((k,v)->{
+            System.out.println(k+": "+v);
+});
+```
+
+#### HashMap
+
+没啥额外方法。特点和键一样，无序不重复无索引。
+
+底层和 `HashSet` 一样，数组+链表，JDK8 之后还有红黑树。添加一个键值对，创建 Entry 对象存储键值对，计算其索引，放入对应的哈希数组单元。如果该单元里有对应的键 则覆盖该键（和 `HashSet` 不一样，`HashSet` 是不存），如果不一样则挂到旧的键值对下面。长度超过 8 转为红黑树。
+
+键依靠 `hashCode()` 和 `equals()` 判断是否一致，如果键是自定义对象还需要重写这两个方法。
+
+>[!NOTE]
+>
+>基于这个覆盖特性，比如可以做统计。投票统计，看看 A B C D 谁的票最多。我们创建一个键为 A 或 B 或 C 或 D，值为票数的数组，每次有人投票就取出对应的键值，值++再写回。最后遍历统计。
+
+#### LinkedHashMap
+
+有序，不重复，无索引。有序指的是存取顺序一致，底层额外使用双链表记录顺序，类似 `LinkedHashSet`。
+
+#### TreeMap
+
+不重复，无索引，可排序（对键），可以自己定义排序方法，底层排序结构红黑树。类似 `TreeSet`。
+
+#### HashMap 源码分析
+
+如下，老师对源码做了一些简化和注释（比如一个同时包含赋值和逻辑判断的语句，老师可能会拿出来拆成先赋值再判断，但是其实看懂先后顺序逻辑的话也不是特别难），然后我再加了一些补充注释供自己理解。
+
+```java
+/*
+1.看源码之前需要了解的一些内容
+
+Node<K,V>[] table   哈希表结构中数组的名字
+
+DEFAULT_INITIAL_CAPACITY：   数组默认长度 16
+
+DEFAULT_LOAD_FACTOR：        默认加载因子 0.75
+    
+加载因子的作用：当存入数据达到数组长度*加载因子的长度时，数组就需要进行 2 倍扩容了。
+
+
+HashMap里面每一个对象包含以下内容：
+1.1 链表中的键值对对象
+    包含：  
+            int hash;         // 键的哈希值
+            final K key;      // 键
+            V value;          // 值
+            Node<K,V> next;   // 下一个节点的地址值
+          
+          
+1.2 红黑树中的键值对对象
+    包含：
+            int hash;                // 键的哈希值
+            final K key;             // 键
+            V value;                 // 值
+            TreeNode<K,V> parent;    // 父节点的地址值
+            TreeNode<K,V> left;      // 左子节点的地址值
+            TreeNode<K,V> right;     // 右子节点的地址值
+            boolean red;             // 节点的颜色
+                
+
+
+2.添加元素
+HashMap<String,Integer> hm = new HashMap<>();
+hm.put("aaa" , 111);
+hm.put("bbb" , 222);
+hm.put("ccc" , 333);
+hm.put("ddd" , 444);
+hm.put("eee" , 555);
+
+添加元素的时候至少考虑三种情况：
+2.1 数组位置为 null
+2.2 数组位置不为 null，键不重复，挂在下面形成链表或者红黑树
+2.3 数组位置不为 null，键重复，元素覆盖
+
+*/
+
+// 返回值：被覆盖元素的值，如果没有覆盖，返回null
+public V put(K key, V value) {
+    return putVal(hash(key), key, value, false, true);
+}
+
+
+// 利用键计算出对应的哈希值，再把哈希值进行一些额外的处理
+// 简单理解：返回值就是返回键的哈希值
+static final int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+}
+
+// 参数一：键的哈希值
+// 参数二：键
+// 参数三：值
+// 参数四：如果键重复了是否保留
+//        true，表示老元素的值保留，不会覆盖
+//        false，表示老元素的值不保留，会进行覆盖
+// 对于 HashSet 的实现就是 true，第二次出现同样的键的数据不存
+// 对于 HashMap 的实现就是 false，第二次出现同样的键的数据覆盖旧数据
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
+    // 定义一个局部变量，用来记录哈希表中数组的地址值。
+    Node<K, V>[] tab;
+
+    // 临时的第三方变量，用来记录键值对对象的地址值
+    Node<K, V> p;
+
+    // 表示当前数组的长度
+    int n;
+
+    // 表示索引
+    int i;
+
+    // 把哈希表中数组的地址值，赋值给局部变量 tab
+    // 因为 table 数组存在堆里，我们把数据拿到函数栈的临时变量里访问速度更快。
+    tab = table;
+
+    if (tab == null || (n = tab.length) == 0) {
+        // 1. 如果当前是第一次添加数据，底层会创建一个默认长度为 16，加载因子为 0.75 的数组
+        // 2. 如果不是第一次添加数据，会看数组中的元素是否达到了扩容的条件
+        // 如果没有达到扩容条件，底层不会做任何操作
+        // 如果达到了扩容条件，底层会把数组扩容为原先的两倍，并把数据全部转移到新的哈希表中
+        tab = resize();
+        // 表示把当前数组的长度赋值给n
+        n = tab.length;
+    }
+
+    // 拿着数组的长度跟键的哈希值进行计算，计算出当前键值对对象，在数组中应存入的位置
+    i = (n - 1) & hash; // index
+    // 获取数组中对应元素的数据
+    p = tab[i];
+
+
+    if (p == null) {
+        // 如果当前数组位置为空，底层会创建一个键值对对象，直接放到数组当中
+        tab[i] = newNode(hash, key, value, null);
+    } else {
+        // 我们用 e 表示要被添加的新节点，或者要被替换值的旧节点
+        Node<K, V> e;
+        K k;
+
+        // 等号的左边：数组中键值对的哈希值
+        // 等号的右边：当前要添加键值对的哈希值
+        // b1 是单纯判断哈希值是否相同
+        boolean b1 = p.hash == hash;
+        // 哈希值相同了，键也未必相同，还要判断一下键。遍历当前哈希值位置的所有链表元素或者红黑树元素进行判断
+        // 如果是同一个键，就要决定是覆盖还是跳过了
+        // 如果不是同一个键，就添加新节点到链表或者红黑树中。
+        // 如果链表长度过长，要转化为红黑树结构
+        
+        // 下面这里我们是先判断了一下链表或红黑树的头节点的键值和新插入的键值是否相同
+        // 如果不同再分两种结构处理判断
+        if (b1 && ((k = p.key) == key || (key != null && key.equals(k)))) {
+            e = p;
+        } else if (p instanceof TreeNode) {
+            // 判断数组中获取出来的键值对是不是红黑树中的节点
+            // 如果是，则调用方法 putTreeVal，把当前的节点按照红黑树的规则添加到树当中。
+            // 这个方法如果在旧树中没有找到这个新键，就执行插入操作。返回 null。
+            // 如果找到了，就返回那个已经存在的键的树节点，等待后续替换其值。
+            e = ((TreeNode<K, V>) p).putTreeVal(this, tab, hash, key, value);
+        } else {
+            // 如果从数组中获取出来的键值对不是红黑树中的节点
+            // 表示此时下面挂的是链表
+            for (int binCount = 0; ; ++binCount) {
+                if ((e = p.next) == null) {
+                    // 说明遍历到链表结尾了，这期间所有键都和我们要插入的新键不同
+                    // 此时就会创建一个新的节点，挂在下面形成链表
+                    p.next = newNode(hash, key, value, null);
+                    // 判断当前链表长度是否超过 8，如果超过 8，就会调用方法 treeifyBin
+                    // treeifyBin 方法的底层还会继续判断
+                    // 判断数组的长度是否大于等于 64
+                    // 如果同时满足这两个条件，就会把这个链表转成红黑树
+                    if (binCount >= TREEIFY_THRESHOLD - 1)
+                        treeifyBin(tab, hash);
+                    break;
+                }
+                //                地址    键   值
+                // e：           0x0044  ddd  444
+                // 要添加的元素： 0x0055  ddd  555
+                // 这里还是判断一下键值是否相同（ddd == ddd）
+                // 如果相同，e 被记录为新的待覆盖的节点的位置
+                if (e.hash == hash && ((k = e.key) == key || (key != null && key.equals(k)))) {
+                    break;
+                }
+                p = e;
+            }
+        }
+
+        // 如果 e 为 null，表示当前不需要覆盖任何元素
+        // 如果 e 不为 null，表示当前的键是一样的，值会被覆盖
+        // e:0x0044  ddd  555
+        // 要添加的元素： 0x0055   ddd   555
+        if (e != null) {
+            V oldValue = e.value;
+            if (!onlyIfAbsent || oldValue == null) {
+                // 等号的右边：当前要添加的值
+                // 等号的左边：0x0044 的值
+                // 也就是说我们并不是把原来的键值对替换成新的键值对
+                // 而是更改原来的键值对里的值变为新值
+                e.value = value;
+            }
+            // 下面这个方法是做一些子类补充扩展操作的。
+            // 在 HashMap 中这个方法是空方法
+            // 但是在 LinkedHashMap 中就会包含创建那个记录存储顺序的双链表等内容。
+            afterNodeAccess(e);
+            return oldValue;
+        }
+    }
+
+    // threshold：记录的就是数组的长度 * 0.75，哈希表的扩容时机  16 * 0.75 = 12
+    if (++size > threshold) {
+        resize();
+    }
+
+    // 表示当前没有覆盖任何元素，返回null
+    return null;
+}
+```
+
+#### TreeMap 源码分析
+
+```java
+// 1.TreeMap中每一个节点的内部属性
+K key;                    //键
+V value;                //值
+Entry<K, V> left;        //左子节点
+Entry<K, V> right;        //右子节点
+Entry<K, V> parent;        //父节点
+boolean color;            //节点的颜色
+
+
+// 2.TreeMap类中中要知道的一些成员变量
+
+public class TreeMap<K, V> {
+
+    //比较器对象
+    private final Comparator<? super K> comparator;
+
+    //根节点
+    private transient Entry<K, V> root;
+
+    //集合的长度
+    private transient int size = 0;
+
+
+// 3.空参构造
+
+    //空参构造就是没有传递比较器对象
+    public TreeMap() {
+        comparator = null;
+    }
+
+
+// 4.带参构造
+
+    //带参构造就是传递了比较器对象。
+    public TreeMap(Comparator<? super K> comparator) {
+        this.comparator = comparator;
+    }
+
+
+// 5.添加元素
+
+    public V put(K key, V value) {
+        return put(key, value, true);
+    }
+
+    /*参数一：键
+    参数二：值
+    参数三：当键重复的时候，是否需要覆盖值
+    true：覆盖
+    false：不覆盖*/
+
+    private V put(K key, V value, boolean replaceOld) {
+        // 获取根节点的地址值，赋值给局部变量t
+        Entry<K, V> t = root;
+        // 判断根节点是否为null
+        // 如果为null，表示当前是第一次添加，会把当前要添加的元素，当做根节点
+        // 如果不为null，表示当前不是第一次添加，跳过这个判断继续执行下面的代码
+        if (t == null) {
+            // 方法的底层，会创建一个Entry对象，把他传给 root 当做根节点
+            addEntryToEmptyMap(key, value);
+            // 表示此时没有覆盖任何的元素
+            return null;
+        }
+        // 表示两个元素的键比较之后的结果
+        int cmp;
+        // 表示当前要添加节点的父节点
+        Entry<K, V> parent;
+
+        // 表示当前的比较规则
+        // 如果我们是采取默认的自然排序，那么此时comparator记录的是null，cpr记录的也是null
+        // 如果我们是采取比较去排序方式，那么此时comparator记录的是就是比较器
+        Comparator<? super K> cpr = comparator;
+        // 表示判断当前是否有比较器对象
+        // 如果传递了比较器对象，就执行if里面的代码，此时以比较器的规则为准
+        // 如果没有传递比较器对象，就执行else里面的代码，此时以自然排序的规则为准
+        if (cpr != null) {
+            do {
+                parent = t;
+                cmp = cpr.compare(key, t.key);
+                if (cmp < 0)
+                    t = t.left;
+                else if (cmp > 0)
+                    t = t.right;
+                else {
+                    V oldValue = t.value;
+                    if (replaceOld || oldValue == null) {
+                        t.value = value;
+                    }
+                    return oldValue;
+                }
+            } while (t != null);
+        } else {
+            // 把键进行强转，强转成Comparable类型的
+            // 要求：键必须要实现Comparable接口，如果没有实现这个接口
+            // 此时在强转的时候，就会报错。
+            Comparable<? super K> k = (Comparable<? super K>) key;
+            do {
+                // 把根节点当做当前节点的父节点
+                parent = t;
+                // 调用compareTo方法，比较根节点和当前要添加节点的大小关系
+                cmp = k.compareTo(t.key);
+
+                if (cmp < 0)
+                    // 如果比较的结果为负数
+                    // 那么继续到根节点的左边去找
+                    t = t.left;
+                else if (cmp > 0)
+                    // 如果比较的结果为正数
+                    // 那么继续到根节点的右边去找
+                    t = t.right;
+                else {
+                    // 如果比较的结果为0，会覆盖
+                    V oldValue = t.value;
+                    if (replaceOld || oldValue == null) {
+                        t.value = value;
+                    }
+                    return oldValue;
+                }
+            } while (t != null);
+        }
+        // 就会把当前节点按照指定的规则进行添加
+        addEntry(key, value, parent, cmp < 0);
+        return null;
+    }
+
+
+    private void addEntry(K key, V value, Entry<K, V> parent, boolean addToLeft) {
+        Entry<K, V> e = new Entry<>(key, value, parent);
+        if (addToLeft)
+            parent.left = e;
+        else
+            parent.right = e;
+        // 添加完毕之后，需要按照红黑树的规则进行调整
+        fixAfterInsertion(e);
+        size++;
+        modCount++;
+    }
+
+
+    // 这个函数用于调整红黑树节点
+    private void fixAfterInsertion(Entry<K, V> x) {
+        // 因为红黑树的节点默认就是红色的
+        // 这里 RED 和 BLACK 是 true 和 false，用常量名修饰
+        x.color = RED;
+
+        // 按照红黑规则进行调整
+
+        // parentOf: 获取x的父节点
+        // parentOf(parentOf(x)): 获取x的爷爷节点
+        // leftOf: 获取左子节点
+        while (x != null && x != root && x.parent.color == RED) {
+
+
+            // 判断当前节点的父节点是爷爷节点的左子节点还是右子节点
+            // 目的：为了获取当前节点的叔叔节点
+            if (parentOf(x) == leftOf(parentOf(parentOf(x)))) {
+                // 表示当前节点的父节点是爷爷节点的左子节点
+                // 那么下面就可以用rightOf获取到当前节点的叔叔节点
+                Entry<K, V> y = rightOf(parentOf(parentOf(x)));
+                if (colorOf(y) == RED) {
+                    // 叔叔节点为红色的处理方案
+
+                    // 把父节点设置为黑色
+                    setColor(parentOf(x), BLACK);
+                    // 把叔叔节点设置为黑色
+                    setColor(y, BLACK);
+                    // 把爷爷节点设置为红色
+                    setColor(parentOf(parentOf(x)), RED);
+
+                    // 把爷爷节点设置为当前节点
+                    x = parentOf(parentOf(x));
+                } else {
+
+                    // 叔叔节点为黑色的处理方案
+
+                    // 表示判断当前节点是否为父节点的右子节点
+                    if (x == rightOf(parentOf(x))) {
+
+                        // 表示当前节点是父节点的右子节点
+                        x = parentOf(x);
+                        // 左旋
+                        rotateLeft(x);
+                    }
+                    setColor(parentOf(x), BLACK);
+                    setColor(parentOf(parentOf(x)), RED);
+                    rotateRight(parentOf(parentOf(x)));
+                }
+            } else {
+                // 表示当前节点的父节点是爷爷节点的右子节点
+                // 那么下面就可以用leftOf获取到当前节点的叔叔节点
+                Entry<K, V> y = leftOf(parentOf(parentOf(x)));
+                if (colorOf(y) == RED) {
+                    setColor(parentOf(x), BLACK);
+                    setColor(y, BLACK);
+                    setColor(parentOf(parentOf(x)), RED);
+                    x = parentOf(parentOf(x));
+                } else {
+                    if (x == leftOf(parentOf(x))) {
+                        x = parentOf(x);
+                        rotateRight(x);
+                    }
+                    setColor(parentOf(x), BLACK);
+                    setColor(parentOf(parentOf(x)), RED);
+                    rotateLeft(parentOf(parentOf(x)));
+                }
+            }
+        }
+
+        // 把根节点设置为黑色
+        root.color = BLACK;
+    }
+    
+    
+/*    
+6.课堂思考问题：
+6.1TreeMap添加元素的时候，键是否需要重写hashCode和equals方法？
+此时是不需要重写的。（因为比较是基于比较器比较的，其底层是红黑树而不是哈希表
+
+6.2HashMap是哈希表结构的，JDK8开始由数组，链表，红黑树组成的。
+既然有红黑树，HashMap的键是否需要实现Compareable接口或者传递比较器对象呢？
+不需要的。
+因为在HashMap的底层，默认是利用哈希值的大小关系来创建红黑树的
+
+6.3TreeMap和HashMap谁的效率更高？
+如果是最坏情况，添加了8个元素，这8个元素形成了链表，此时TreeMap的效率要更高
+但是这种情况出现的几率非常的少。
+一般而言，还是HashMap的效率要更高。
+
+6.4你觉得在Map集合中，java会提供一个如果键重复了，不会覆盖的put方法呢？
+此时putIfAbsent本身不重要。
+传递一个思想：
+代码中的逻辑都有两面性，如果我们只知道了其中的A面，而且代码中还发现了有变量可以控制两面性的发生。
+那么该逻辑一定会有B面。
+
+习惯：
+boolean 类型的变量控制，一般只有 AB 两面，因为 boolean 只有两个值
+int 类型的变量控制，一般至少有三面，因为 int 可以取多个值。
+
+6.5三种双列集合，以后如何选择？
+HashMap LinkedHashMap
+TreeMap
+
+默认：HashMap（效率最高）
+如果要保证存取有序：LinkedHashMap
+如果要进行排序：TreeMap
+*/
+```
+
+>[!WARNING]
+>
+>注意和 HashMap 的区别在于，HashMap 是一个 Hash 数组，里面每个单元是链表或者红黑树的头节点的结构。
+>
+>而 TreeMap 底层就是一个红黑树，没有 Hash 数组结构。
+>
+>所以假设我们想要设置 TreeMap 的键为自定义 Object，那么我们需要实现比较器才能确保红黑树正确运行，但是不用非要实现 hashCode 和 equalsTo 方法，这俩用不到。而 HashMap 就需要实现这俩方法了，不然的话同样的键值（比如两个一样的学生）HashMap 判断不出来是同一个哈希值，就不会去同一个哈希数组单元中存数据，更不会遇到同样的旧键了。TreeMap 是直接遍历红黑树看有没有相同的旧键，而 HashMap 是先计算哈希值找到对应应该存储的哈希数组单元，然后再在里面的链表或者红黑树结构中找有没有同样的键。
+
+### 可变参数
+
+可以传入可变长度的参数。传入进去使用方法还是和 array 一样，这样写方便些。
+
+```java
+public class ArgsDemo4 {
+    public static void main(String[] args) {
+
+        // 可变参数的小细节：
+        // 1. 在方法的形参中最多只能写一个可变参数
+        // 可变参数，理解为一个大胖子，有多少吃多少
+
+        // 2. 在方法的形参当中，如果除了可变参数以外，还有其他的形参，那么可变参数要写在最后
+        getSum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    }
+
+    public static int getSum(int a, int... args) {
+        // 使用方式就当可变参数是个数组就行
+        for( int arg : args){
+            sout(arg);
+        }
+        return 0;
+    }
+}
+```
+
+### Collections 工具类
+
+`Collections` 是集合，`Collections` 是一个工具类。
+
+| 方法名称                                                     | 说明                            |
+| ------------------------------------------------------------ | ------------------------------- |
+| `public static <T> boolean addAll(Collection<T> c, T... elements)` | 批量添加元素                    |
+| `public static void shuffle(List<?> list)`                   | 打乱 List 集合元素的顺序        |
+| `public static <T> void sort(List<T> list)`                  | 排序                            |
+| `public static <T> void sort(List<T> list, Comparator<T> c)` | 根据指定的规则进行排序          |
+| `public static <T> int binarySearch(List<T> list, T key)`    | 以二分查找法查找元素            |
+| `public static <T> void copy(List<T> dest, List<T> src)`     | 拷贝集合中的元素                |
+| `public static <T> int fill(List<T> list, T obj)`            | 使用指定的元素填充集合          |
+| `public static <T> void max/min(Collection<T> coll)`         | 根据默认的自然排序获取最大/小值 |
+| `public static <T> void swap(List<?> list, int i, int j)`    | 交换集合中指定位置的元素        |
+
+### 项目：斗地主
+
+这个项目我就先不写了，简单总结一下思路和其中我觉得比较关键的点。
+
+首先，真实项目里一般 main 方法只用作启动，很少写核心功能。所以这个项目中老师只在 main 里写了一个 `PokerGame()` 启动游戏。
+
+首先 52 张牌创建集合，打乱后随机分给三个人后留下三张底牌（得到 4 个集合）。然后牌如何排序？老师的牌的字符串是类似 "♥9" “♣5” 这样的，感觉很难写比较器。所以老师用了其他排序方法。
+
+第一种排序方式：创建了一个 `HashMap<Integer, String>` 用 1-54 的数字对应映射这些牌，这样就可以根据键进行排序了。
+
+（牌的顺序是：四种花色的 3，四种花色的 4，四种花色的 5……）
+
+然后我们处理数据的时候都是处理 0-53 的索引值，只有用户看到的是我们从 HashMap 中找到的对应牌面。这样整数排序也很方便。
+
+第二种排序方式：截取字符串的第二位开始的子串（也就是只获取 9， 10 这样的数字，或者 AJQK 字母），然后写一个字母和大小王的对应分值转换表，其他的数字就直接字符串转数字就能获取其分值了。
+
+不过这样会遇到一个问题，就是截取 `“大王”“小王”` 这两个字符串获取到的都是王。所以可以定义这两个字符串为 `” 大王” “ 小王”`，这样获取的子串就是空格后面的部分了。
+
+*说实话总感觉这种方法不太舒服。还是索引那个好，可以直接定义不同分值的索引啊。*
+
+别的就是一些游戏逻辑，前端设计之类的了，没什么比较特别的点，我就先跳过啦。
+
+### 不可变集合
+
+长度，元素都不能修改的集合。
+
+> [!NOTE]
+>
+> 为啥要创建这样的集合？如果要将数据交给不可信的库处理的时候，将数据拷贝进不可变集合的方式就比较保险。
+
+只要创建集合的时候加一个 of 就行。如 `ArrayList<String> arrayList = List.of("1", "2", "3");`
+
+| 方法名称                                    | 说明                                 |
+| ------------------------------------------- | ------------------------------------ |
+| `static <E> List<E> of(E... elements)`      | 创建一个具有指定元素的 List 集合对象 |
+| `static <E> Set<E> of(E... elements)`       | 创建一个具有指定元素的 Set 集合对象  |
+| `static <K, V> Map<K, V> of(E... elements)` | 创建一个具有指定元素的 Map 集合对象  |
+
+可以遍历，可以查，但是增删改都会报错。
+
+除此之外，创建 Set 的时候出现重复元素也会报错。比如 `Set<String> set = Set.of("张三", "张三");`
+
+Map 的键也是一样的不能有重复。
+
+还有，Map 的 `of` 传入最多只能传入 10 个键值对 20 个数据。这么设计的原因是可变参数在一个函数的形参中只能有一个，所以 Map 的传入不可能写成 `(K...keys, V...values)` 这样的形式。所以只手动写了 1-10 个传入键值对的方法。
+
+超过 10 个键值对也不是不能传入，可以通过 `ofEntries` 方法。
+
+```java
+HashMap<String, String> hm = new HashMap<>();
+hm.put("张三", "南京");
+hm.put("李四", "北京");
+hm.put("王五", "上海");
+// ...
+
+// 2. 利用上面的数据来获取一个不可变的集合
+
+// 获取到所有的键值对对象（Entry对象）
+Set<Map.Entry<String, String>> entries = hm.entrySet();
+
+// 把entries变成一个数组
+Map.Entry[] arr1 = new Map.Entry[0];
+
+// toArray方法在底层会比较集合的长度和数组的长度大小
+// 如果集合的长度 > 数组的长度：数据在数组中放不下，此时会根据实际数据的个数，重新创建数组
+// 如果集合的长度 <= 数组的长度：数据在数组中放得下，此时不会创建新的数组，而是直接用
+Map.Entry[] arr2 = entries.toArray(arr1);
+
+Map<String, String> hm1 = Map.ofEntries(arr2);
+
+// 简化版：
+Map<String, String> hm2 = Map.ofEntries(hm.entrySet().toArray(new Map.Entry[0]));
+
+// 究极无敌简化版：
+Map<String, String> hm3 = Map.copyOf(hm);
+
+```
+
+## Stream 流
+
+结合 lambda 表达式，像流水线一样，简化集合，数组操作。
+
+比如下面这个语句快速执行了：从 `list1` 中筛选出开头为“张”，长度为 3 的人名，最终输出。
+
+```java
+list1.stream()
+     .filter(name -> name.startsWith("张"))
+     .filter(name -> name.length() == 3)
+     .forEach(name -> System.out.println(name));
+```
+
+### Stream 流流程
+
+1. 获取 Stream 流。
+2. 中间处理。
+3. 终结处理。
+
+| 获取方式     | 方法名                                          | 说明                                                         |
+| ------------ | ----------------------------------------------- | ------------------------------------------------------------ |
+| 单列集合     | `default Stream<E> stream()`                    | Collection 中的默认方法                                      |
+| 双列集合     | 无                                              | 无法直接使用 stream 流<br>需要通过 keySet 或者 EntrySet 转成单列 |
+| 数组         | `public static <T> Stream<T> stream(T[] array)` | Arrays 工具类中的静态方法                                    |
+| 一堆零散数据 | `public static <T> Stream<T> of(T... values)`   | Stream 接口中的静态方法                                      |
+
+```java
+ArrayList<String> list = new ArrayList();
+list.add("test1");
+list.add("test2");
+
+Stream<String> stream = list.stream();
+stream.forEach(s -> System.out.println(s));
+
+
+HashMap<String, Integer> map = new HashMap<>();
+map.put("test1", 1);
+map.put("test2", 2);
+
+Stream<Map.Entry<String, Integer>> stream1 = map.entrySet().stream();
+stream1.forEach(s -> System.out.println(s));
+
+int[] arr = {1,2,3,4,5,6};
+Stream<Integer> stream2 = Arrays.stream(arr);
+stream2.forEach(s -> System.out.println(s));
+
+System.out.println(Stream.of("a", "b", "c")); // 必须是同种类型的
+// 此外，Stream.of() 里面也可以传递引用数据类型的数组，但是不能传递基本数据类型的数组
+// 比如 Stream.of(arr) 存入的是数组地址。如果 arr 是一个 String 数组就没问题，存入每个元素
+```
+
+### 中间方法
+
+| 名称                                               | 说明                                       |
+| -------------------------------------------------- | ------------------------------------------ |
+| Stream <T> `filter(Predicate<? super T> predicate)` | 过滤                                       |
+| Stream <T> `limit(long maxSize)`                    | 获取前几个元素                             |
+| Stream <T> `skip(long n)`                           | 跳过前几个元素                             |
+| Stream <T> `distinct()`                             | 元素去重，依赖 `hashCode` 和 `equals` 方法 |
+| static `<T> Stream<T> concat(Stream a, Stream b)`  | 合并 a 和 b 两个流为一个流                 |
+| Stream <R> `map(Function<T, R> mapper)`             | 转换流中的数据类型                         |
+
+```java
+ArrayList<String> list = new ArrayList();
+list.add("test1");
+list.add("ccccc");
+
+Stream<String> stream = list.stream();
+
+stream.filter(new Predicate<String>() {
+    @Override
+    public boolean test(String s) {
+        return s.startsWith("t");
+    }
+}).forEach(System.out::println); // 输出 test1，只保留 t 开头的
+
+stream.filter(s -> s.startsWith("t")).forEach(System.out::println);// lambda 表达式
+stream.filter(s -> (s.length() < 3).forEach(System.out::println);// 这个语句没问题，但是如果同时运行这一句和上面那一句会报错
+// 提示说这个 stream 已经被操作过一次了
+// 他俩可以放在同一个语句中执行但是不能先后分两句执行
+       
+// map 类型转换案例
+ArrayList<String> list = new ArrayList();
+list.add("echo-123");
+list.add("blacky-456");
+
+Stream<String> stream = list.stream();
+stream.map(new Function<String, Integer>() {
+    @Override
+    public Integer apply(String input) {
+        String[] split = input.split("-");
+        return Integer.parseInt(split[1]);
+    }
+}).forEach(System.out::println);
+              
+// 再用 lambda 表达式简化上面的功能
+
+list.stream().map(s-> Integer.parseInt(s.split("-")[1])).forEach(System.out::println);
+```
+
+### 终结方法
+
+## Stream 流的终结方法（部分）
+
+| 名称                            | 说明                       |
+| ------------------------------- | -------------------------- |
+| void `forEach(Consumer action)` | 遍历                       |
+| long `count()`                  | 统计                       |
+| `toArray()`                     | 收集流中的数据，放到数组中 |
+| `collect(Collector collector)`  | 收集流中的数据，放到集合中 |
+
+```java
+// toArray()
+// Object[] arr1 = list.stream().toArray();
+// System.out.println(Arrays.toString(arr1));
+
+// 上面的方法获取到的是 Object 泛型的数组，下面是获取指定数据类型数组的方法
+// IntFunction 的泛型：具体类型的数组
+// apply 的形参：流中数据的个数，要跟数组的长度保持一致
+// apply 的返回值：具体类型的数组
+// 方法体：就是创建数组
+list.stream().toArray(new IntFunction<String[]>() {
+    @Override
+    public String[] apply(int value) {
+        return new String[value];
+    }
+});
+
+// lambda 表达式简写：
+
+list.stream().toArray(value -> {new String[value]});
+
+// collect
+ArrayList<String> list = new ArrayList<>();
+Collections.addAll(list,
+    "张无忌-男-15", "周芷若-女-14", "赵敏-女-13", "张强-男-20",
+    "张三丰-男-100", "张翠山-男-40", "张良-男-35", "王二麻子-男-37", "谢广坤-男-41"
+);
+
+// 收集List集合当中
+// 需求：我要把所有的男性收集起来
+List<String> newList1 = list.stream()
+    .filter(s -> "男".equals(s.split("-")[1]))
+    .collect(Collectors.toList());
+
+// 收集Set集合当中
+// 需求：我要把所有的男性收集起来
+Set<String> newList2 = list.stream()
+    .filter(s -> "男".equals(s.split("-")[1]))
+    .collect(Collectors.toSet());
+```
+
+`toMap()` 稍微复杂一些，因为要实现两个函数式接口，分别用于指定 key 和 value。
+
+```java
+/**
+Stream流的收集方法 toMap方法演示
+创建一个ArrayList集合，并添加以下字符串。字符串中前面是姓名，后面是年龄
+"zhangsan-23"
+"lisi-24"
+"wangwu-25"
+保留年龄大于等于24岁的人，并将结果收集到Map集合中，姓名为键，年龄为值
+*/
+ArrayList<String> list = new ArrayList<>();
+list.add("zhangsan-23");
+list.add("lisi-24");
+list.add("wangwu-25");
+
+// 完整写其实是两个函数式接口
+Map<String, Integer> map = list.stream().filter(
+        s -> {
+            String[] split = s.split("-");
+            int age = Integer.parseInt(split[1]);
+            return age >= 24;
+        }
+).collect(Collectors.toMap(
+
+    new Function<String, String>() {
+        @Override
+        public String apply(String s) {
+            // 张无忌-15
+            return s.split("-")[0]; // 获取姓名
+        }
+    },
+    new Function<String, Integer>() {
+        @Override
+        public Integer apply(String s) {
+            return Integer.parseInt(s.split("-")[1]); // 获取年龄整数
+        }
+    }
+));
+
+System.out.println(map);
+
+// lambda 表达式简洁写
+
+Map<String, Integer> map = list.stream().filter(
+        s -> {
+            String[] split = s.split("-");
+            int age = Integer.parseInt(split[1]);
+            return age >= 24;
+        }
+
+ //   collect方法只能获取到流中剩余的每一个数据.
+ //在底层不能创建容器,也不能把数据添加到容器当中
+
+ //Collectors.toMap 创建一个map集合并将数据添加到集合当中
+
+  // s 依次表示流中的每一个数据
+
+  //第一个lambda表达式就是如何获取到Map中的键
+  //第二个lambda表达式就是如何获取Map中的值
+).collect(Collectors.toMap(
+        s -> s.split(",")[0],
+        s -> Integer.parseInt(s.split(",")[1])));
+
+*/
+
+```
+
+> [!WARNING]
+>
+> 注意，toSet 对于重复元素会去重，而 toMap 遇到重复的键会报错。
 

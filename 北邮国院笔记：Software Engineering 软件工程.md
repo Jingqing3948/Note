@@ -728,13 +728,13 @@ Association, Aggregation and Composition：association是两个不同东西的�
 
 我们可以用一个计数类来把鸭子类包住。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332689.png" alt="image-20230605183433552" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332689.png" style="zoom:67%;" />
 
 装饰模式实现一个接口，接口中的方法通过该变量的同一个参数去调用同一个方法，比如本例中是鸭子呱呱的计数，每次调用++。
 
 #### Adapter design patterns
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332186.png" alt="1685983233527" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332186.png"  style="zoom:50%;" />
 
 ![1685983255642](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685983255642.png)
 
