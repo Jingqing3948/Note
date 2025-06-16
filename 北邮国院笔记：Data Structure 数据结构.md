@@ -2,7 +2,7 @@
 title: 北邮国院笔记：Data Structure 数据结构
 date: 2021-10-01
 tags: 
-- C
+- Algorithm
 categories:
 - 邮途（北邮国院课内学习）
 - Lecture

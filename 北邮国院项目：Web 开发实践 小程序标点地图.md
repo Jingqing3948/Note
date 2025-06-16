@@ -2,7 +2,7 @@
 title: 北邮国院项目：Web 开发实践 小程序标点地图
 date: 2022-05-12
 tags: 
-- Wechat Miniprogram
+- Web
 categories:
 - 邮途（北邮国院课内学习）
 - Project

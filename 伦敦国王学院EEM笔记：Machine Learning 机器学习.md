@@ -479,7 +479,7 @@ $$
 最后求所有迭代的损失平均值：
 
 $$
-\hat{L}\_p = \frac{1}{K} \sum_{k=1}^{K} L\_{D_k} \left( \theta^{\mathrm{ERM}}\_{D\_{-k}^{\sim}} \right)
+\hat{L}_p = \frac{1}{K} \sum_{k=1}^{K} L_{D_k} \left( \theta^{\mathrm{ERM}}_{D_{-k}^{\sim}} \right)
 $$
 
 例题：如下，尝试计算只选取两个元素作为验证集（不用 K-Fold 验证方式）的损失。
@@ -525,10 +525,10 @@ N 增加，也就是训练数据集增加，bias 不变，estimation error 会�
 再细化一点，对于每个输入 x，损失函数的表达方式是：
 $$
 \begin{aligned}
-L\_p(\theta\_D \mid x) =\ 
-&\underset{\mathrm{aleatoric\ uncertainty}}{\underbrace{L\_p(\hat{t}^\*(x) \mid x)}} \\
-&+ \underset{\mathrm{bias}}{\underbrace{\left(L\_p(\theta_H^* \mid x) - L\_p(\hat{t}^\*(x) \mid x)\right)}} \\
-&+ \underset{\mathrm{epistemic\ uncertainty}}{\underbrace{\left(L\_p(\theta\_D \mid x) - L\_p(\theta_H^\* \mid x)\right)}}
+L_p(\theta_D \mid x) =\ 
+&\underset{\mathrm{aleatoric\ uncertainty}}{\underbrace{L_p(\hat{t}^\*(x) \mid x)}} \\
+&+ \underset{\mathrm{bias}}{\underbrace{\left(L_p(\theta_H^* \mid x) - L_p(\hat{t}^\*(x) \mid x)\right)}} \\
+&+ \underset{\mathrm{epistemic\ uncertainty}}{\underbrace{\left(L_p(\theta_D \mid x) - L_p(\theta_H^\* \mid x)\right)}}
 \end{aligned}
 $$
 
@@ -540,7 +540,7 @@ $$
 
 θ 的参数过多会导致 overfitting，而正交化期望：降低 θ 的权重使得过拟合问题不那么明显。
 $$
-\theta^{\mathrm{R\mbox{-}ERM}}\_D = \arg\min_{\theta \in \Theta} \lbrace L\_D(\theta) + \frac{\lambda}{N} R(\theta) \rbrace
+\theta^{\mathrm{R\mbox{-}ERM}}_D = \arg\min_{\theta \in \Theta} \lbrace L_D(\theta) + \frac{\lambda}{N} R(\theta) \rbrace
 $$
 
 

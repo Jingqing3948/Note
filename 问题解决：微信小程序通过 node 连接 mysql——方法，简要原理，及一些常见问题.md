@@ -2,7 +2,7 @@
 title: 问题解决：微信小程序通过 node 连接 mysql——方法，简要原理，及一些常见问题
 date: 2023-03-02
 tags:
-- WXMiniProgram
+- Web
 categories:
 - 破浪（遇到的bug及解决方案）
 description: 微信小程序通过 node 连接 mysql 问题解决

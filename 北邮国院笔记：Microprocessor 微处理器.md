@@ -2,7 +2,8 @@
 title: 北邮国院笔记：Microprocessor 微处理器
 date: 2023-07-14
 tags: 
-- Miprocessor
+- Hardware
+- C
 categories:
 - 邮途（北邮国院课内学习）
 - Lecture

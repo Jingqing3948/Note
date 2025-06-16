@@ -2,7 +2,7 @@
 title: 北邮国院笔记：Software Engineering 软件工程
 date: 2024-12-01
 tags: 
-- Software
+- Product Development
 categories:
 - 邮途（北邮国院课内学习）
 - Lecture

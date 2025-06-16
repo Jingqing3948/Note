@@ -2,7 +2,7 @@
 title: 北邮国院笔记：RFID
 date: 2023-07-25
 tags: 
-- RFID
+- Hardware
 categories:
 - 邮途（北邮国院课内学习）
 - Lecture

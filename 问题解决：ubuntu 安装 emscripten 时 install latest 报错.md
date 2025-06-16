@@ -2,7 +2,7 @@
 title: 问题解决：ubuntu 安装 emscripten 时 install latest 报错
 date: 2023-10-09
 tags:
-- Ubuntu
+- Linux
 categories:
 - 破浪（遇到的bug及解决方案）
 description: ubuntu 安装 emscripten 时 install latest 报错问题解决

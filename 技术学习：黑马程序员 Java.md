@@ -1391,6 +1391,10 @@ public static void method2() throws ParseException{
 }
 ```
 
+> [!WARNING]
+>
+> 如果一个父类没有 throws 抛异常，那继承它的方法并重写方法的子类也不能用 throws 抛异常，只能 try catch。
+
 ### 自定义异常
 
 ```java
@@ -1941,17 +1945,17 @@ Set 的底层源码都和 Map 有关。
 
 Map 常用 API 一览：
 
-| 方法签名                                                   | 说明                                                         |
-| ---------------------------------------------------------- | ------------------------------------------------------------ |
-| `V put(K key, V value)`                                    | 添加元素. 默认返回 null，如果该键已经存在则会覆盖旧值，返回旧值 |
-| `V get(K key)`                                             |                                                              |
-| `V remove(Object key)` `void clear()`                      | 根据键删除键值对元素移除所有的键值对元素                     |
-| `void clear()` `boolean containsKey(Object key)`           | 移除所有的键值对元素判断集合是否包含指定的键                 |
-| `boolean containsKey(Object key)`                          | 判断集合是否包含指定的键                                     |
-| `boolean containsValue(Object value)`                      | 判断集合是否包含指定的值                                     |
-| ``boolean containsValue(Object value)` `boolean isEmpty()` | 判断集合是否包含指定的值判断集合是否为空                     |
-| `boolean isEmpty()` `int size()`                           | 判断集合是否为空集合的长度，即键值对的个数                   |
-| `int size()`                                               | 集合的长度，即键值对的个数                                   |
+| 方法签名                                                  | 说明                                                         |
+| --------------------------------------------------------- | ------------------------------------------------------------ |
+| `V put(K key, V value)`                                   | 添加元素. 默认返回 null，如果该键已经存在则会覆盖旧值，返回旧值 |
+| `V get(K key)`                                            |                                                              |
+| `V remove(Object key)` `void clear()`                     | 根据键删除键值对元素移除所有的键值对元素                     |
+| `void clear()` `boolean containsKey(Object key)`          | 移除所有的键值对元素判断集合是否包含指定的键                 |
+| `boolean containsKey(Object key)`                         | 判断集合是否包含指定的键                                     |
+| `boolean containsValue(Object value)`                     | 判断集合是否包含指定的值                                     |
+| `boolean containsValue(Object value)` `boolean isEmpty()` | 判断集合是否包含指定的值判断集合是否为空                     |
+| `boolean isEmpty()` `int size()`                          | 判断集合是否为空集合的长度，即键值对的个数                   |
+| `int size()`                                              | 集合的长度，即键值对的个数                                   |
 
 和集合有些区别，比如 add 变成了 put，contains 变得复杂了。
 
@@ -2675,8 +2679,6 @@ list.stream().map(s-> Integer.parseInt(s.split("-")[1])).forEach(System.out::pri
 
 ### 终结方法
 
-## Stream 流的终结方法（部分）
-
 | 名称                            | 说明                       |
 | ------------------------------- | -------------------------- |
 | void `forEach(Consumer action)` | 遍历                       |
@@ -2796,4 +2798,1768 @@ Map<String, Integer> map = list.stream().filter(
 > [!WARNING]
 >
 > 注意，toSet 对于重复元素会去重，而 toMap 遇到重复的键会报错。
+
+## 方法引用
+
+有的方法传入的形参需要我们实现一个函数接口。比如 `Arrays.sort` 对自定义对象排序的时候：
+
+```java
+Arrays.sort(arr, new Comparator<Integer>(){
+    @Override
+    public int compare(Integer o1, Integer o2){
+        return o2-o1;
+    }
+})
+    
+// 当然简洁一些可以写成 lambda 表达式
+Arrays.sort(arr, (o2,o1)-> o2 - o1);
+```
+
+方法引用就是我们可以不用在这个地方再实现方法，可以提前实现一个同样数据类型的形参，同样数据类型的返回值的方法，直接传入这个形参作为函数接口实现。
+
+想使用方法引用的前提：
+
+- 引用处必须是函数式接口；
+- 被引用的方法需要已经存在，自定义的或者 java 自带的都可以；
+- 形参，返回值数据类型相对应；
+- 功能上满足当前需求。
+
+比如对上面这个重写 Integer 数组排序的方法引用实现：
+
+```java
+// 此类类名：FunctionDemo1
+
+public static void main(String[] args){
+    // ...
+    // 引用 FunctionDemo1 里的 substraction 方法
+    // 将其作为抽象方法的方法体
+    // 双冒号是方法引用符
+    Arrays.sort(arr, FunctionDemo1::substraction);
+}
+
+public static int substraction(int num1, int num2){
+	return num2 - num1;   
+}
+```
+
+
+
+## 文件
+
+要保存文件的位置：文件路径（注意区分绝对和相对路径）。
+
+写入方式：IO 流。
+
+通过 IO 流将程序数据写入硬盘。
+
+| 方法签名                                   | 说明                                                 |
+| ------------------------------------------ | ---------------------------------------------------- |
+| `public File(String pathname)`             | 根据文件路径字符串创建文件对象                       |
+| `public File(String parent, String child)` | 根据父路径字符串和子路径字符串创建文件对象           |
+| `public File(File parent, String child)`   | 根据父路径对应的 File 对象和子路径字符串创建文件对象 |
+
+```java
+String path = "C:\\Desktop\\a.txt";
+File f = new File(path);
+
+String pathFather = "C:\\Desktop";
+String pathChild = "a.txt";
+File f1 = new File(pathFather, pathChild);	// 其实就是拼接，中间补了一个 //。
+// 但是还是建议用构造方法拼接而不是我们自己手动拼接，因为不同os文件的路径分隔符也不一样，用构造方法会根据平台自动补不同的路径分隔符。
+```
+
+### 文件操作
+
+| 方法名称                        | 说明                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| public boolean isDirectory()    | 判断此路径名表示的File是否为文件夹                           |
+| public boolean isFile()         | 判断此路径名表示的File是否为文件                             |
+| public boolean exists()         | 判断此路径名表示的File是否存在                               |
+| public long length()            | 返回文件的大小（字节数量）无法获取路径大小（=0）<br />可以 % 1024 获取 MB GB 等单位 |
+| public String getAbsolutePath() | 返回文件的绝对路径                                           |
+| public String getPath()         | 返回定义文件时使用的路径                                     |
+| public String getName()         | 返回文件的名称，带后缀<br />如果是文件，就返回文件名+扩展名<br />如果是文件夹，就返回文件夹名称，无扩展名 |
+| public long lastModified()      | 返回文件的最后修改时间（时间戳毫秒值）                       |
+
+| 方法名称                       | 说明                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| public boolean createNewFile() | 创建一个新的空的文件（根据当前文件路径字符串创建）<br />成功返回 true，失败（比如已存在）返回 false<br />如果父级文件夹不存在，报异常 IO Exception<br />默认创建文件，如果没有文件后缀名，会创建一个无后缀的文件，而不是文件夹 |
+| public boolean mkdir()         | 创建单级文件夹（根据当前文件路径字符串创建）<br />如果已经存在路径，或存在同名文件，则无法创建<br />此外，不能创建多级文件夹 |
+| public boolean mkdirs()        | 创建多级文件夹<br />也可以创建单级文件夹，所以我们只用这个方法就行<br />不过其底层还是依靠 mkdir 实现的 |
+| public boolean delete()        | 删除文件、空文件夹，不走回收站                               |
+
+| 方法名称                    | 说明                                                         |
+| --------------------------- | ------------------------------------------------------------ |
+| `public File[] listFiles()` | 获取当前该路径下所有内容，包括隐藏文件<br />如果是空目录，或者需要权限才能访问，返回 null |
+
+以下方法全部是扩展补充，不常用：
+
+| 方法名称                                       | 说明                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| public static File[] listRoots()               | 列出可用的文件系统根                                         |
+| public String[] list()                         | 获取当前该路径下所有内容                                     |
+| public String[] list(FilenameFilter filter)    | 利用文件名过滤器获取当前该路径下所有内容<br />可以传递一个 `FilenameFilter 在里面自定义规则<br />不常用 一般 listFile 手动判断多些 |
+| public File[] listFiles(FileFilter filter)     | 利用文件名过滤器获取当前该路径下所有内容<br />accept 方法里形参就是一个 String 的文件路径 |
+| public File[] listFiles(FilenameFilter filter) | 利用文件名过滤器获取当前该路径下所有内容<br />accept 方法里是两个形参，一个是 File 类型的文件目录<br />一个是 String 类型的文件名 |
+
+## IO 流
+
+存储，读取数据的写入方案。操作本地文件数据，或者从网络中读写数据，都要用到 IO 流。
+
+按照流向可以分为：输出流（程序到文件）和输入流（文件到程序）；按照操作文件类型可以分为：字节流（可以操作任何类型的文件）和字符流（只能操作文本文件，文本文件就是用记事本打开可以正常读懂的文件，比如 docx 其实不是文本文件，如 txt, md, xml, lrc 等）。
+
+### 输出字节流
+
+写入：
+
+```java
+// 1. 创建对象
+// 写出 输出流 OutputStream
+// 本地文件 File
+FileOutputStream fos = new FileOutputStream("myio\\a.txt"); // 参数可以是路径或者 File 对象
+// 不存在就会创建 a.txt 文件，但是如果路径不存在不会创建路径
+// 如果已经存在文件，会清空文件！
+// 不过，构造方法的第二个参数是“是否续写文件”. 默认为 false
+// 如果是 new FileOutputStream("myio\\a.txt", true); 这样，就不会清空文件了
+
+// 2. 写出数据。这里参数是整数的话，会写入对应的 ASCII 字符 a
+fos.write(97);
+// 换行：windows 是 "\r\n"
+// linux 是 "\n"
+// mac 是 "\r"
+
+// 3. 释放资源，解除对资源的占用
+fos.close();
+
+```
+
+| 方法签名                                 | 说明                         |
+| ---------------------------------------- | ---------------------------- |
+| `void write(int b)`                      | 一次写一个字节数据           |
+| `void write(byte[] b)`                   | 一次写一个字节数组数据       |
+| `void write(byte[] b, int off, int len)` | 一次写一个字节数组的部分数据 |
+
+### 输入字节流
+
+```java
+FileInputStream fos = new FileInputStream("myio\\a.txt");// 不存在直接报错
+fis.read(); // 只读取一个字节，读出来是字节 byte 型，需要转类型。
+// 如果想持续读就需要多调用几次
+// 读到末尾再读，会读到 -1
+fis.close();
+```
+
+循环读取：
+
+```java
+int b;
+while(b = (fis.read())!= -1){
+    sout((char)b);
+}
+fis.close;
+```
+
+文件拷贝代码示例：
+
+```java
+// 1. 创建对象
+FileInputStream fis = new FileInputStream("D:\\itheima\\movie.mp4");
+FileOutputStream fos = new FileOutputStream("myio\\copy.mp4");
+
+// 2. 拷贝
+int b;
+while ((b = fis.read()) != -1) {
+    fos.write(b);
+}
+
+// 3. 释放资源，后开的先关
+fos.close();
+fis.close();
+
+```
+
+但是这个文件拷贝速率特别慢，原因就是读一个写一个。
+
+还有一个重构 `read(byte[] bytes)` 方法是读取到 byte[] 数组中的，每次读取会尽可能将数组装满，牺牲一定空间换取时间。返回值是 len 读取到的长度。
+
+>[!NOTE]
+>
+>假设创建了一个 byte[2] 数组，我们读取一个内容为 "abcde" 的文件。
+>
+>第一次读取，获取到 “ab”（要转换数据类型才能看到字符，`new String(bytes)`，返回值2。
+>
+>第二次读取，获取到 “cd”，返回值2,。
+>
+>第三次读取，获取到 "ed"，这是为什么？因为只获取到 e 结尾字节，后面就没了，就不会再继续对字节数组做覆盖了。返回值1.
+>
+>所以读取结果转换为字符串可以这样处理：`new String(bytes, offset, length)` 
+>
+>```java
+>int len = 0;
+>byte[] bytes = new byte[2];
+>while((len = fis.read(bytes))!=-1){ // 没读到内容返回 -1 长度
+>    sout(new String(bytes, 0, len));// ab, cd, e
+>}
+>
+>fis.close();
+>```
+
+> [!TIP]
+>
+> try catch 如何处理 IO 流操作？要记住一定要关闭 IO 流不然别的程序就无法操作文件了，所以 close 一定放在 final 里面。
+>
+> ```java
+> // 1. 创建对象
+> FileInputStream fis = null;
+> FileOutputStream fos = null;
+> 
+> try { // 文件不存在异常
+>     fis = new FileInputStream("D:\\itheima\\movie.mp4");
+>     fos = new FileOutputStream("myio\\copy.mp4");
+> 
+>     // 2. 拷贝
+>     int len;
+>     byte[] bytes = new byte[1024 * 1024 * 5]; // 5MB 缓冲区
+>     while ((len = fis.read(bytes)) != -1) {
+>         fos.write(bytes, 0, len);
+>     }
+> } catch (IOException e) {
+>     e.printStackTrace();
+> } finally {
+>     // 3. 释放资源
+>     if (fos != null) { // 因为文件不存在所以指针为空，无法 close
+>         try {
+>             fos.close();
+>         } catch (IOException e) {
+>             e.printStackTrace();
+>         }
+>     }
+> 
+>     if (fis != null) {
+>         try {
+>             fis.close();
+>         } catch (IOException e) {
+>             e.printStackTrace();
+>         }
+>     }
+> }
+> 
+> ```
+>
+> 不过，这个实现实在太抽象了。下面有简洁版。
+
+对于实现了 AutoCloseable 接口的类，可以用如下两种方式使用，就会自动释放（一个是在 try 括号里面创建，一个是先创建再放到 try 括号里面）：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506140959067.png" alt=" " style="zoom:67%;" />
+
+FileInputStream FileOutputStream 是已经实现了 AutoCloseable 类。
+
+```java
+try (
+    FileInputStream fis = new FileInputStream("D:\\itheima\\movie.mp4");
+    FileOutputStream fos = new FileOutputStream("myio\\copy.mp4")
+) {
+    int len;
+    byte[] bytes = new byte[1024 * 1024 * 5];  // 5MB 缓冲区
+    while ((len = fis.read(bytes)) != -1) {
+        fos.write(bytes, 0, len);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+```
+
+JDK 1.9 就是可以先定义，然后传入变量在 try 括号里。外面可能还要加一个抛出找不到文件异常。
+
+这部分不是重点大致看看即可。
+
+### Unicode 字符集
+
+如果读取中文内容的文件会乱码，为什么？
+
+计算机存储数据的最小单位是字节。
+
+ASCII 码：主要给欧美国家使用，不支持中文。
+
+GB2312：我国第一步支持中文的字符集。
+
+GBK：中日韩。中文字符用两个字节存储。高位字节首位一定是1，所以转成二进制一定是负数，以此和英文区分。
+
+Unicode：支持大多数语言。**Unicode 是字符集，其中又有UTF-8 UTF-16 UTF-32 等编码方式，这些不是字符集是编码方式！**中文字符用三个字节存储。UTF-16 是所有字符都用2-4个字节存储，UTF-32 是所有字符都用4个字节存储，UTF-8 则是根据不同的语言用不同的长度存储，比如英文还是一个字节（和 ASCII 码兼容），中文3个字节。1-4字节字符存储形式如下：
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506141738939.png)
+
+使用字节流读取数据，读取到的是底层二进制码，而且每次只读取一个字节，就会把汉字拆开读取。然后用 `new String` 直接强转数据类型，采用的编码方式是 JVM 的默认编码方式，比如  Eclipse 上是 GBK，IDEA上是 UTF-8，没法具体指定，所以用错误的编码方式解码，而且不读取完整汉字所有字节，就会读到乱码。
+
+所以处理文本文件的正确方式是用字符流，且用正确的编码方式读取。
+
+### Java 编解码
+
+编码：
+
+| 方法名                                     | 说明                              |
+| ------------------------------------------ | --------------------------------- |
+| public byte[] getBytes()                   | 使用默认方式进行编码              |
+| public byte[] getBytes(String charsetName) | 使用指定方式进行编码，比如`"GBK"` |
+
+解码：
+
+| 方法名                                   | 说明                 |
+| ---------------------------------------- | -------------------- |
+| String(byte[] bytes)                     | 使用默认方式进行解码 |
+| String(byte[] bytes, String charsetName) | 使用指定方式进行解码 |
+
+### 输入字符流
+
+字符流的 Reader 读取到非单个字节的字符的时候（比如 GBK UTF-8 的中文）会一次默认读取多个字节。
+
+文件读取类：`FileReader`
+
+| 构造方法                           | 说明                       |
+| ---------------------------------- | -------------------------- |
+| public FileReader(File file)       | 创建字符输入流关联本地文件 |
+| public FileReader(String pathname) | 创建字符输入流关联本地文件 |
+
+| 成员方法                       | 说明                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| public int read()              | 读取数据，返回读取到的字符的十进制值<br />如果读取到中文会自动读入多个字节<br />读到末尾返回 -1 |
+| public int read(char[] buffer) | 读取多个数据，并直接转成字符<br />相当于在空参 read 的基础上多做了一步。<br />空参 read 是自动读入一个字符长度的字节<br />有参 read 是再将其转换为字符存入字符数组<br />读到末尾返回 -1 |
+
+关闭还是 `close()` 方法。
+
+### 输出字符流
+
+| 构造方法                                             | 说明                             |
+| ---------------------------------------------------- | -------------------------------- |
+| `public FileWriter(File file)`                       | 创建字符输出流关联本地文件       |
+| `public FileWriter(String pathname)`                 | 创建字符输出流关联本地文件       |
+| `public FileWriter(File file, boolean append)`       | 创建字符输出流关联本地文件，续写 |
+| `public FileWriter(String pathname, boolean append)` | 创建字符输出流关联本地文件，续写 |
+
+细节上和之前字节流差不多，比如可以传入字符串路径或者 File 对象，可以创建不存在的文件但是不会连着创建不存在的父级路径，还有续写开关默认 false 不打开的话创建输出字符流对象的时候就会清空文件内容。
+
+| 成员方法                                    | 说明                                                         |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| `void write(int c)`                         | 写出一个字符<br />传入的是字符的二进制编码<br />不过实际写入的内容是对应字符 |
+| `void write(String str)`                    | 写出一个字符串                                               |
+| `void write(String str, int off, int len)`  | 写出一个字符串的一部分                                       |
+| `void write(char[] cbuf)`                   | 写出一个字符数组                                             |
+| `void write(char[] cbuf, int off, int len)` | 写出字符数组的一部分                                         |
+
+### 输入字符流底层原理
+
+实际上，输入字符流在内存中有一个长度8192字节的缓冲区，每次读取的时候都会尽量填满这个缓冲区，省得硬盘和内存之间真的每次读取一个字节。
+
+如下图，第一次 read 读取其实缓冲区中被装入了4个字节的数据，第一个代表字母 a，后三个代表汉字 我。
+
+然后 ch 被赋值为 a 的十进制数据。
+
+第二次阅读的时候，首先判断缓冲区中是否还有没读的数据，有三个字节，并且判断是一个中文字符。于是将这个中文字符的底层十进制传递给 ch。
+
+第三次阅读的时候，我们发现缓冲区中已经没有数据了，于是再次去数据源中读取并覆盖缓冲区。这次读取到的是字符串的结尾值 -1，原封不动地存入缓冲区再存入 ch 数组。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506141939275.png" alt=" " style="zoom:50%;" />
+
+有参 read 类似，就是多了一步，直接强转成 char 然后存到字符数组里了。
+
+> [!NOTE]
+>
+> 如果先调用输入字符流 read 读了一次，然后创建了输出字符流，这个时候文件被清空了，但是内存中的缓冲区没有被清空，还可以继续读到清空前的2-8192字节的数据。
+
+### 输出字符流底层原理
+
+也是内存有一个缓冲区，写入数据的时候不是直接写到内存中的，而是先写到缓冲区中的。有三种情况会写入内存：
+
+1. 缓冲区满了。
+2. 调用了 `flush()` 方法。
+3. 调用了 `close()` 方法。
+
+close 和 flush 的区别主要就是 flush 还可以继续写。
+
+## 多线程
+
+进程是程序的基本执行实体，一个程序是一个进程。线程是计算机执行计算调度的最小单位。
+
+有了多线程我们就可以同时执行多个任务。
+
+常用于：解决拷贝，迁移大文件，以及加载大量的资源文件等软件中的耗时操作；所有的聊天软件，后台服务器也都会用到多线程。
+
+多线程并发：单个 CPU 在多个线程之间切换执行。比如 2 核四线程计算机并发执行 16 个线程，就是这 4 个核心交替在 16 个任务中切换。
+
+多线程并行：多个 CPU 同时执行多个线程。
+
+### 多线程创建
+
+1. 将类声明为 Thread 的子类，重写 Thread 的 run 方法，然后分配并启动该类的实例。优点是实现简单，可以直接使用 Thread 类中的方法，缺点是不能被继承扩展。
+2. 声明实现 Runnable 接口的类，实现 run 方法，然后分配该类的实例，在创建 Thread 时作为一个参数来传递并启动。
+3. 借助 Callable 赋予任务，借助 FutureTask 处理返回结果（前两种方法都没法返回结果），最后传递给 Thread 启动。
+
+方法 1：
+
+```java
+public class ThreadDemo {
+    public static void main(String[] args) {
+        /*
+         * 多线程的一种启动方式：
+         *   1. 自定义一个类继承 Thread
+         *   2. 重写 run 方法
+         *   3. 创建子类的对象，并启动线程
+         */
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+
+        t1.setName("线程1");
+        t2.setName("线程2");
+
+        t1.start();
+        t2.start();
+    }
+}
+
+public class MyThread extends Thread {
+    @Override
+    public void run() {
+        // 编写线程要执行的代码
+        for (int i = 0; i < 100; i++) {
+            System.out.println(getName() + "HelloWorld");
+        }
+    }
+}
+// 输出：一会输出 线程1 helloworld，一会输出 线程2 helloworld
+```
+
+方法 2：相比方法 1 可能需要时刻判断自己被传递给了哪个线程。
+
+```java
+public class ThreadDemo {
+    public static void main(String[] args) {
+        /*
+         * 多线程的第二种启动方式：
+         *  1. 自定义一个类实现 Runnable 接口
+         *  2. 重写里面的 run 方法
+         *  3. 创建自己的类对象
+         *  4. 创建一个 Thread 类的对象，并开启线程
+         */
+
+        // 创建 MyRun 的对象，表示多线程要执行的任务
+        MyRun mr = new MyRun();
+
+        // 创建线程对象
+        Thread t1 = new Thread(mr);
+        Thread t2 = new Thread(mr);
+
+        // 给线程设置名字
+        t1.setName("线程1");
+        t2.setName("线程2");
+
+        // 开启线程
+        t1.start();
+        t2.start();
+    }
+}
+
+
+public class MyRun implements Runnable {
+    @Override
+    public void run() {
+        // 编写线程要执行的代码
+        for (int i = 0; i < 100; i++) {
+            // 获取当前线程对象
+            Thread t = Thread.currentThread();
+            System.out.println(t.getName() + "：HelloWorld!");
+        }
+    }
+}
+
+```
+
+第三种方法：
+
+```java
+public static void main(String[] args){
+    // 创建 MyCallable 的对象（表示多线程要执行的任务）
+    MyCallable mc = new MyCallable();
+
+    // 创建 FutureTask 的对象（作用：管理多线程运行的结果）。ft 数量和 thread 数量一致
+    FutureTask<Integer> ft = new FutureTask<>(mc);
+
+    // 创建线程的对象
+    Thread t1 = new Thread(ft);
+
+    // 启动线程
+    t1.start();
+
+    // 获取多线程运行的结果
+    Integer result = ft.get();
+    System.out.println(result); // 输出 5050
+
+}
+
+public class MyCallable implements Callable<Integer> {
+
+    @Override
+    public Integer call() throws Exception {
+        // 求 1~100 之间的和
+        int sum = 0;
+        for (int i = 1; i <= 100; i++) {
+            sum = sum + i;
+        }
+        return sum;
+    }
+}
+
+```
+
+> [!NOTE]
+>
+> main 本身也是一个线程。在主程序中可以通过执行下面这个语句获取 main 线程的名字（main）：
+>
+> ```java
+> Thread.currentThread().getName();
+> ```
+>
+> 
+
+### 多线程方法
+
+| 方法名称                         | 说明                                                         |
+| -------------------------------- | ------------------------------------------------------------ |
+| String getName()                 | 返回此线程的名称，默认名字：`Thread-xx` 自增序号             |
+| void setName(String name)        | 设置线程的名字（构造方法也可以设置名字，直接调用 Thread 父类的有参构造方法就行） |
+| static Thread currentThread()    | 获取当前线程的对象                                           |
+| static void sleep(long time)     | 让线程休眠指定的时间，单位为毫秒                             |
+| setPriority(int newPriority)     | 设置线程的优先级                                             |
+| final int getPriority()          | 获取线程的优先级                                             |
+| final void setDaemon(boolean on) | 设置为守护线程                                               |
+| public static void yield()       | 出让线程 / 礼让线程                                          |
+| public static void join()        | 插入线程 / 插队线程                                          |
+
+前四个方法都比较简单，我们接下来学习一下优先级。
+
+### 线程优先级
+
+线程调度一般有两种形式，抢占式和非抢占式。抢占式就是谁抢到给谁，随机。非抢占式就是轮流，比如每个程序运行固定的时间片长度交给下一个程序。
+
+Java 就是抢占式，线程有 1-10 的优先级，优先级越高抢到的概率越大，默认 5.
+
+### 守护线程
+
+老师起了一个名字很有意思：备胎线程。非守护线程执行完毕，守护线程也没有什么存在的必要了，可能不等到执行完毕就会提前结束。
+
+比如用聊天软件给朋友传文件，传一半我把聊天软件关了，文件传输也会终止，那文件传输就可以设置为守护线程。
+
+### 礼让线程
+
+之前线程抢夺纯随机，礼让线程就是让线程调度更均匀一些（虽然还是比较随机），执行 yield 方法的时候就会出让当前 CPU 资源，然后再抢一次。
+
+```java
+public class MyThread extends Thread {
+
+    @Override
+    public void run() {
+        for (int i = 1; i <= 100; i++) {
+            System.out.println(getName() + "@" + i);
+
+            // 表示出让当前CPU的执行权
+            Thread.yield();
+        }
+    }
+}
+
+```
+
+### 插队线程
+
+意为：当前线程执行完了再执行其他线程。比如下例，会先执行完土豆线程再执行 main 线程，如果没有 join 那一行，就会先执行完 main 再执行土豆线程。
+
+```java
+public class ThreadDemo {
+    public static void main(String[] args) throws InterruptedException {
+        /*
+         * public final void join() 插入线程/插队线程
+         */
+
+        MyThread t = new MyThread();
+        t.setName("土豆");
+        t.start();
+
+        // 表示插队这个线程，插入到当前线程之前。
+        t.join();
+
+        // 执行在 main 线程当中的
+        for (int i = 0; i < 10; i++) {
+            System.out.println("main线程" + i);
+        }
+    }
+}
+
+```
+
+礼让 插队实际应用不多，了解即可。
+
+### 线程的生命周期
+
+如下图。
+
+需要注意的是，一个线程结束 sleep 后不是立刻执行的，这个时候它有执行权了，但是还要抢到执行资格才能执行。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506091154501.png)
+
+### 线程安全
+
+之前的都是比较简单的线程。下面有一个涉及到安全问题的案例：
+
+一个电影院卖票，只有 100 张票，可以分三个窗口（三个线程同时卖）。卖完了就没了。
+
+如果我们按之前的写法，就是写三个 Thread 自定义类：
+
+```java
+public class MyThread extends Thread {
+
+    int ticket = 0;  // 票号范围：0 ~ 99
+
+    @Override
+    public void run() {
+        while (true) {
+            if (ticket < 100) {
+                try {
+                    // 让线程睡眠100毫秒，模拟出票延迟
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                ticket++;
+                System.out.println(getName() + " 正在卖第 " + ticket + " 张票");
+            } else {
+                break; // 当票数 >= 100 时，退出循环
+            }
+        }
+    }
+}
+
+```
+
+这样的执行结果就是三个窗口独立地卖了 100 张票。
+
+那是不是给 ticket 加一个 static 字段就解决了呢？真实执行发现也并不是的。主要是安全问题，就比如窗口 1 输出自己卖了第 44 张票，还没来得及 ticket++，窗口 2 读取了当前票数并且说我也卖了第 44 张票，然后 ticket++。然后两个窗口都加完了，窗口三读取到第 46 张票，说我卖了第 46 张票。输出结果特别混乱，44 还有两张重复了。
+
+#### 同步代码块
+
+使用 `synchronized` 将要操作的对象锁住。我要操作数据的时候，把数据先锁起来自己操作，操作完了才解锁让别人能访问到。这样避免同时操作出现错误。
+
+java 实现真的是简单到极致：
+
+```java
+public class MyThread extends Thread {
+
+    static int ticket = 0; // 票号，多个线程共享，需加锁
+    static final Object lock = new Object(); // 加锁用的共享对象
+
+    @Override
+    public void run() {
+        while (true) {
+            synchronized (lock) { // 加锁，确保同一时间只有一个线程进入
+                if (ticket < 100) {
+                    try {
+                        Thread.sleep(100); // 模拟出票延迟
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    ticket++;
+                    System.out.println(getName() + " 正在卖第 " + ticket + " 张票！！！");
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+}
+
+```
+
+注意：
+
+1. 这里面 synchronized 要写在循环里面，不能写在循环外面。如果写在循环外面，就会线程 1 抢到之后锁住，然后卖出全部 100 张票，然后线程 2 3 才能抢。
+2. 锁一定要用 **唯一** 的对象，比如这里没用 static 的 object，就会导致锁没生效（每个 MyThread 实例都自己创建了一个锁）。一般会用 `MyThread.class` 字节码文件当锁。
+
+第二种方法实现（实现 Runnable 接口，然后 传递给 Thread 作为参数）：
+
+```java
+public class ThreadDemo {
+    public static void main(String[] args) {
+        /*
+         * 需求：
+         * 某电影院目前正在上映国产大片，共有100张票，而它有3个窗口。
+         * 利用同步方法完成
+         * 技巧：同步代码块
+         */
+        MyRunnable mr = new MyRunnable();
+
+        Thread t1 = new Thread(mr);
+        Thread t2 = new Thread(mr);
+        Thread t3 = new Thread(mr);
+
+        t1.setName("窗口1");
+        t2.setName("窗口2");
+        t3.setName("窗口3");
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
+
+public class MyRunnable implements Runnable {
+    int ticket = 0;
+
+    @Override
+    public void run() {
+        // 1. 循环
+        while (true) {
+            // 2. 同步代码块，锁住类的字节码对象
+            synchronized (MyRunnable.class) {
+                // 3. 判断共享数据是否到底了，如果是就退出
+                if (ticket == 100) {
+                    break;
+                } else {
+                    // 4. 没到末尾则出票
+                    ticket++;
+                    System.out.println(Thread.currentThread().getName()
+                            + " 正在卖第 " + ticket + " 张票");
+                }
+            }
+        }
+    }
+}
+
+```
+
+有一个小细节，这里的 MyRunnable 的 ticket 没用 static 修饰，因为这里的实现方法和我们继承 Thread 的实现方法不同，那个方法我们会创建 3 个 MyThread 对象，而这里我们只需要创建一个 MyRunnable 对象，然后作为参数传递给三个 Thread 对象就行，所以他们的 ticket 变量还是共用的。而且锁不锁 MyRunnable.class 而是锁 this 也行，因为只创建了一个实例嘛。
+
+然后其实我们还可以把要同步的部分抽象出来抽象成一个同步方法：
+
+```java
+public class MyRunnable implements Runnable {
+    private int ticket = 0; // 共享资源：票数
+
+    @Override
+    public void run() {
+        // 1. 循环
+        while (true) {
+            // 2. 调用同步方法
+            if (method()) break;
+        }
+    }
+
+    // 同步方法：具备互斥访问 ticket 的能力
+    private synchronized boolean method() {
+        // 3. 判断是否到末尾
+        if (ticket == 100) {
+            return true;
+        } else {
+            // 4. 模拟出票延迟
+            try {
+                Thread.sleep(10); // 模拟出票耗时
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            ticket++;
+            System.out.println(Thread.currentThread().getName()
+                    + " 在卖第 " + ticket + " 张票！！！");
+        }
+
+        return false;
+    }
+}
+
+```
+
+#### StringBuilder 和 StringBuffer
+
+相比 StringBuilder，StringBuffer 就是基本每个方法前面都加了 synchronized 修饰。所以 StringBuffer 是多线程安全的。
+
+所以，单线程的话用 StringBuilder 就行，多线程用 StringBuffer。
+
+#### Lock
+
+JDK5 之后有一个 lock 锁对象，可以更清晰地表示如何获得和释放锁的过程。
+
+`void lock()` 获取锁，`void unlock()` 释放锁。不过 Lock 是接口不能直接实例化，可以用其实现类 `ReentrantLock` 来实例化，`ReentrantLock()` 来创建实例。
+
+```java
+public class MyThread extends Thread {
+
+    static int ticket = 0;
+    static Lock lock = new ReentrantLock();
+
+    @Override
+    public void run() {
+        // 1. 循环
+        while (true) {
+            // 2. 同步代码块
+            // synchronized (MyThread.class) {
+            lock.lock(); // 2 // 3
+            try {
+                // 3. 判断
+                if (ticket == 100) {
+                    break;
+                } else {
+                    // 4. 判断
+                    Thread.sleep(10);
+                    ticket++;
+                    System.out.println(getName() + "正在卖第" + ticket + "张票！！！");
+                }
+                // }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        }
+    }
+}
+
+```
+
+重点 1 是别忘记锁是 static 的，因为我们会创建多个 MyThread 实例。
+
+重点 2 在于一定不要忘记 unlock()，不能有一种情况中途停止运行直接跳出了，没解锁，那样程序会无法退出。
+
+#### 死锁问题
+
+一段程序执行需要多个锁的时候可能会产生。比如两个人准备拿起一双筷子吃饭，只有拿起两支筷子才能吃，只拿到一支或者没拿到就会一直等待拿到剩余的筷子才会吃饭。如果两个人各拿到一支筷子，就会永远等对方放下筷子，永远不会自己放下筷子，产生死锁。
+
+```java
+public class MyThread extends Thread {
+
+    static Object objA = new Object();
+    static Object objB = new Object();
+
+    @Override
+    public void run() {
+        // 1. 循环
+        while (true) {
+            if ("线程A".equals(getName())) {
+                synchronized (objA) {
+                    System.out.println("线程A拿到了A锁，准备拿B锁");
+                    synchronized (objB) {
+                        System.out.println("线程A拿到了B锁，顺利执行完一轮");
+                    }
+                }
+            } else if ("线程B".equals(getName())) {
+                if ("线程B".equals(getName())) {
+                    synchronized (objB) {
+                        System.out.println("线程B拿到了B锁，准备拿A锁");
+                        synchronized (objA) {
+                            System.out.println("线程B拿到了A锁，顺利执行完一轮");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+解决方法有几种，很简单。避免使用多个锁；避免嵌套使用多个锁；如果非要嵌套使用，那么几个不同的线程获取锁的顺序要一致（比如都是先尝试获取 A 锁再尝试获取 B 锁）。
+
+#### 等待唤醒机制：生产者和消费者实现
+
+让两个线程交替执行。
+
+比如生产者是厨师，消费者是顾客。
+
+桌子上没有饭，消费者等待，唤醒生产者吃饭，生产者做饭，做好饭后唤醒消费者来吃饭；
+
+桌子上有饭，消费者吃饭，生产者等待。
+
+下面是代码实现。首先是桌子这个中间类：
+
+```java
+public class Desk {
+
+    /*
+     * 作用：控制生产者和消费者的执行
+     */
+
+    // 是否有面条  0：没有面条   1：有面条
+    public static int foodFlag = 0;
+
+    // 顾客最多能吃几碗面条
+    public static int count = 10;
+
+    // 锁对象，别忘了一定 static
+    public static Object lock = new Object();
+}
+
+```
+
+然后是消费者的类：
+
+```java
+public class Foodie extends Thread {
+
+    @Override
+    public void run() {
+        /*
+         * 写多线程代码的逻辑：
+         * 1. 循环
+         * 2. 同步代码块
+         * 3. 判断共享数据是否到了末尾（到了末尾）
+         * 4. 判断共享数据是否到了末尾（没有到末尾，执行核心逻辑）
+         */
+        while (true) {
+            synchronized (Desk.lock) {
+                if (Desk.count == 0) {
+                    break;
+                } else {
+                    // 判断桌子上是否有面条
+                    // 如果没有，就等待
+                    // 如果有，就开吃
+                    //
+                    if(foodFlag == 0){
+                        try {
+                        Desk.lock.wait(); // 标识：这个要阻塞的线程是和当前对象的 Lock 锁有关联的
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        // 后面相应的 lock.notifyAll() 也只会唤醒所有和这把锁有关联的阻塞线程
+                    }
+                    else {
+                        sout("开吃，吃完这一顿还能吃" + (--Desk.count) + "顿");
+                        Desk.lock.notifyAll();
+                        Desk.foodFlag = 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+然后是生产者的类：
+
+```java
+public class Cook extends Thread {
+
+    @Override
+    public void run() {
+        /*
+         * 1. 循环
+         * 2. 同步代码块
+         * 3. 判断共享数据是否到了末尾（到了末尾）
+         * 4. 判断共享数据是否到了末尾（没有到末尾，执行核心逻辑）
+         */
+        while (true) {
+            synchronized (Desk.lock) {
+                if (Desk.count == 0) { // 消费者吃不下了，不用做了
+                    break;
+                } else {
+                    // 判断桌子上是否有食物
+                    if (Desk.foodFlag == 1) {
+                        // 如果有，就等待
+                        try {
+                            Desk.lock.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        // 如果没有，就制作食物
+                        System.out.println("厨师做了一碗面条");
+                        // 修改桌子上的食物状态
+                        Desk.foodFlag = 1;
+                        // 唤醒等待的消费者开吃
+                        Desk.lock.notifyAll();
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+这样就可以实现交替运行的效果了。
+
+#### 等待唤醒机制：阻塞队列实现
+
+生产者和消费者中间有一个管道。如果管道满了放不进去，生产者就阻塞。如果管道空了拿不出来饭，消费者就阻塞。
+
+继承结构如下：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506111820481.png" alt=" " style="zoom: 50%;" />
+
+创建方式：在测试类里面创建阻塞队列，作为参数传递给生产者和消费者。不能在他们两个里面各自创建自己的阻塞队列。
+
+如下是生产者和消费者的实现，非常非常简单，put 和 take 就可以。
+
+```java
+public class Cook extends Thread {
+    ArrayBlockingQueue<String> queue;
+
+    public Cook(ArrayBlockingQueue<String> queue) {
+        this.queue = queue;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            // 不断地把面条放到阻塞队列当中
+            try {
+                queue.put("🍜面条");
+                System.out.println("厨师放了一碗面条");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+```
+
+```java
+public class Foodie extends Thread {
+    ArrayBlockingQueue<String> queue;
+
+    public Foodie(ArrayBlockingQueue<String> queue) {
+        this.queue = queue;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            // 不断从阻塞队列中获取面条
+            try {
+                String food = queue.take();
+                System.out.println(food);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+```
+
+queue 底层实现是有锁的，通过 ReentrantLock，所以我们不需要自己再创建锁了。
+
+里面的入队出队逻辑和之前生产者消费者我们的实现差不多，如果为空 take 不到的时候 wait，否则 dequeue 出队；如果未满 put 不进的时候 wait，否则 enqueue 入队。
+
+测试类实现也非常简单：
+
+```java
+public class ThreadDemo {
+    public static void main(String[] args) {
+        /*
+         * 需求：
+         * 利用阻塞队列完成生产者和消费者（等待唤醒机制）的代码
+         * 
+         * 细节：
+         * 生产者和消费者必须使用同一个阻塞队列
+         */
+
+        // 1. 创建阻塞队列的对象，容量为 1
+        ArrayBlockingQueue<String> queue = new ArrayBlockingQueue<>(1);
+
+        // 2. 创建线程对象，并把阻塞队列传递过去
+        Cook c = new Cook(queue);
+        Foodie f = new Foodie(queue);
+
+        // 3. 开启线程
+        c.start();
+        f.start();
+    }
+}
+
+```
+
+但是运行起来可能发现输出不规整，比如连续输出 2 次厨师做饭或者连续 2 次吃饭。这其实是因为 sout 定义在锁外面的（锁是在 put 和 take 里面定义），所以输出会比较不规整，比如可能有的线程一开始运行到 put 然后因为队列满阻塞了，然后唤醒的时候继续运行接着运行 sout 输出。但是队列里面的共享数据绝对是安全的，这一点不用在意。
+
+### 线程 6 大状态
+
+如下图。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506111835767.png" alt=" " style="zoom:50%;" />
+
+为什么说是只有 6 个状态？因为 java 中没有定义运行态。java ThreadState 定义如下：
+
+- 新建 NEW
+- 就绪 RUNNABLE
+- 阻塞 BLOCKED
+- 无限等待 WAITING
+- 计时等待 TIMED_WAITING
+- 结束状态 TERMINATED
+
+为什么没有定义运行态？因为运行的时候 jvm 就把线程交给 OS 执行了，不归自己管了。所以没必要定义一个状态了。
+
+### 多线程应用题
+
+我就光挑感觉比较有意思的，难的点总结了。
+
+1. 抢红包问题。5 个人抢 3 个包，100 块钱随机分成 3 个包。最小金额 0.01.
+
+​	这里第一个点在于：前三个线程抢到红包，如何随机计算钱数。前两个线程的问题在于，不能随机出 0 或者全部剩余金额（这样就没给另外两个人留下钱了）。比如线程 1 最少能抢到 0.01，顶多只能抢到 99.98，这样才能给后面俩人留下至少 0.02 的红包。所以计算公式是 `random.nextDouble(leftAmount - 0.01*(leftCount - 1)) + 0.01`
+
+​	然后，第三个人就不用随机计算能抢到多少了，第三个人直接获得剩余的所有金额。
+
+​	最后，抢到红包的三个人要输出自己抢到的金额，但是不能输出 double，要约到小数点后两位。老师是用了什么 BigDecimal 实现，我看到有一种比较有意思的方法是随机整数 `(0~9999)*0.01`. 
+
+2. 多线程比较问题，比如抽奖箱问题每个抽奖箱都抽到金额不等的一系列奖券，最后我们要输出谁抢到了最大的奖券，谁的总计奖券最大。也就是说需要多线程返回结果，需要使用 `Callable` 创建多线程的方法，并且通过 FutureTask 获取返回值。
+
+### 线程池
+
+其实之前的线程使用方法都比较浪费，每次针对不同的任务我们都需要新建线程，任务结束再销毁线程。老师举了一个比喻很有意思，就像每次要吃饭就去买碗，吃完饭把碗摔了。
+
+线程池可以保存线程。线程池会一口气创建完所有线程，然后所有线程进入 wait 状态阻塞。线程池负责将线程唤醒分配给任务，完成任务后继续休眠阻塞。程序关闭线程池回收，销毁所有线程。但是如果是 24 小时运行的服务器，线程池就不会关闭了。
+
+这部分在 java 里实现非常简单：
+
+| 方法名称                                                     | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `public static ExecutorService newCachedThreadPool()`        | 创建一个 **没有上限** 的线程池（根据需要自动创建线程，空闲线程可复用） |
+| `public static ExecutorService newFixedThreadPool(int nThreads)` | 创建一个 **有上限** 的线程池，线程数量固定为 `nThreads`        |
+
+> [!NOTE]
+>
+> 第一个也并非是真的没有上限，上限是 int 的最大值。当然很少有电脑能创建到那么多。
+
+代码实现如下。没有分配到线程的任务会排队等待。
+
+```java
+// 1. 获取线程池对象（有上限线程池）
+ExecutorService pool1 = Executors.newCachedThreadPool(3);
+
+// 2. 提交任务（Runnable 实现类）
+pool1.submit(new MyRunnable());
+// 重复提交，就会多次执行
+pool1.submit(new MyRunnable());
+pool1.submit(new MyRunnable());
+
+// 3. 销毁线程池（不再接收新任务，已提交的任务会执行完）
+pool1.shutdown();
+
+```
+
+### 自定义线程池
+
+`Executors.newCachedThreadPool` 底层其实是调用 `ThreadPoolExecutor` 创建线程池，我们也可以调用这个函数创建自定义的线程池。
+
+其构造方法最多有 7 个参数：
+
+```java
+    public ThreadPoolExecutor(int corePoolSize,//线程池的核心线程数量
+                              int maximumPoolSize,//线程池的最大线程数
+                              long keepAliveTime,//当线程数大于核心线程数时，多余的空闲线程存活的最长时间
+                              TimeUnit unit,//时间单位
+                              BlockingQueue<Runnable> workQueue,//任务队列，用来储存等待执行任务的队列，可以 new 一个新的。非空
+                              ThreadFactory threadFactory,//线程工厂，用来创建线程，一般默认即可。非空
+                              RejectedExecutionHandler handler//拒绝策略，当提交的任务过多而不能及时处理时，我们可以定制策略来处理任务。非空
+                               );
+// 摘自：https://blog.csdn.net/xu_yong_lin/article/details/117521773
+```
+
+线程池中有两种线程，一种是核心线程，有任务来时创建，随着线程池销毁而销毁。第一个参数就是核心线程最大数量。
+
+第二种是临时线程。因为核心线程数量和阻塞队列数量有限，比如核心线程 3，阻塞队列 3，来了 7 个任务，第 7 个就没法排队了。这个时候可以创建临时线程处理任务 7，临时线程一段时间空闲后就会被销毁。第二个参数就是最大线程数 = 最多核心线程数+最多临时线程数。第三，四个参数是临时线程的 TTL 的值和单位。
+
+第五个参数就是创建的的阻塞队列。第六个不必多说。
+
+如果核心线程数 3，临时线程数最多 3，队列最大长度 3，来了 10 个任务，第 10 个任务怎么办？只能丢弃一个任务了。第七个参数：拒绝策略用于配置具体的拒绝策略。
+
+| 策略名                | 行为说明                                                     | 建议                     |
+| --------------------- | ------------------------------------------------------------ | ------------------------ |
+| `AbortPolicy`         | **默认策略**，丢弃任务并抛出 `RejectedExecutionException` 异常<br>（第 10 个任务，没被处理也没进队的任务丢弃） | 推荐捕获处理             |
+| `DiscardPolicy`       | 直接丢弃任务，不抛异常                                       | 不推荐（易丢数据）       |
+| `DiscardOldestPolicy` | 丢弃队列中最旧的任务，再尝试加入新任务<br>（排队等待时间最久的任务被丢弃） | 适用于任务迭代性高的场景 |
+| `CallerRunsPolicy`    | 由提交任务的 **调用线程** 执行 `run()`，降低压力（你自己想办法运行吧，别用线程池了） | 推荐用于削峰限流         |
+
+> [!NOTE]
+>
+> 拒绝策略是内部类。
+>
+> 之前学习内部类的时候老师说过，什么时候用内部类，就是这个类单独存在没有意义必须要依托于父类的时候。线程池的拒绝策略脱离了线程池就没有存在意义。
+
+```java
+ThreadPoolExecutor pool = new ThreadPoolExecutor(
+    3,                    // corePoolSize：核心线程数（可为 0）
+    6,                    // maximumPoolSize：最大线程数 ≥ 核心数
+    60,                   // keepAliveTime：空闲线程最大存活时间
+    TimeUnit.SECONDS,     // 时间单位
+    new ArrayBlockingQueue<>(3),         // 工作队列（容量 3）
+    Executors.defaultThreadFactory(),    // 线程工厂
+    new ThreadPoolExecutor.AbortPolicy() // 拒绝策略
+);
+
+```
+
+那么线程池具体设置成多大比较合适？这就需要视自己电脑而定。
+
+比如我电脑 14 核 20 线程，最大并行数就是 20.
+
+如果是 CPU 密集型运算场景，线程池大小取最大并行数 + 1 即可（21）。
+
+如果是 I/O 密集型运算，线程池大小取（最大并行数\*期望 CPU 利用率）\*（CPU 计算时间+等待时间）/CPU 计算时间。比如期望 CPU 利用率 100%，CPU 读取文件用时 1s 计算时间用时 1s，那么计算结果就是 20\*100%\*(2/1) = 40. CPU 计算时间和等待时间要靠工具测，比如 thread dump。
+
+### 其他面试知识点
+
+#### volatile
+
+场景：一个线程的 run 方法里是对自己的成员变量进行 count++，循环 100 次。然后我们启动这个线程运行 100 次。
+
+按理来说最终的 count 是 10000，但是有的时候程序返回结果是小于 10000 的，比如 9999.
+
+这是为什么？这涉及到线程的工作内存这个概念。
+
+JMM（Java Memory Model）Java 内存模型：每个线程都会开辟自己的工作内存，并不会立刻将改动写回主内存。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506112318265.png)
+
+所以，可能线程 1 还没来得及将更改后的 count 写回主内存，线程 2 就读取旧值并++了。最后结果就是被吞了 1.
+
+改进方法 1：main 里面每次新建线程的时候延时一下，确保前一个线程修改 count 后的值写回主内存了。但是这样比较影响运行效率。
+
+改进方法 2：加锁。锁的机制是，该线程会重新从主内存中读取工作内存进行处理，结束处理后写回主内存后其他内存才能插手，所以确保原子性。
+
+改进方法 3：volatile，流程如下图。第 3 步，这时候左边线程还没把 flag = true 的新值写回主内存，所以 main 线程读取到的还是旧值 false。第 4 步，这时 volatile flag = true 被写回主内存，然后 main 中的工作内存的 flag 变量副本就失效了（得到通知说有更新，自己手里现在这个是过时了的，需要更新）。然后下次 main 线程再用到 flag，就不能直接用攻错内存中的 flag 了，需要从主内存中重新读取。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506112331406.png)
+
+volatile 可以保证不同线程对共享变量操作的可见性，即数据发生改动之后其他线程立刻知道有改动了。但是不一定保证原子性，如果就在 flag 写回主存时 main 线程已经读取完了旧 flag 值并做了修改，这个时候才得到通知说要更新 flag，那么这期间 main 做的变动就被吞了。volatile 还是不像锁一样能保证原子性。此外，volatile 只可以修饰实例变量和类变量，synchronized 可以修饰方法和代码块。
+
+那么 volatile 既然也不保证原子性，应用场景是什么呢？
+
+1. 状态变量。比如我们说当线程 1 将 flag 变为 false 时，线程 2 停止运行。这个时候 volatile 就可以保证另一个线程立刻看到变动。
+2. 独立观察。一个线程写，多个线程读的情况（比如一个传感器采集数据，然后多个线程读取传感器数据），用 volatile 可以保证写完其他线程立刻看见新值。
+
+#### 原子类
+
+此外，还有专门确保变量修改原子性的原子类。比如 AtomicInteger 原子型 Integer 及其操作方法：
+
+```java
+public AtomicInteger()：	   				初始化一个默认值为0的原子型Integer
+public AtomicInteger(int initialValue)： 初始化一个指定值的原子型Integer
+
+int get():   			 				 获取值
+int getAndIncrement():      			 以原子方式将当前值加1，注意，这里返回的是自增前的值。
+int incrementAndGet():     				 以原子方式将当前值加1，注意，这里返回的是自增后的值。
+int addAndGet(int data):				 以原子方式将输入的数值与实例中的值（AtomicInteger里的value）相加，并返回结果。
+int getAndSet(int value):   			 以原子方式设置为newValue的值，并返回旧值。
+```
+
+其本质：自旋锁+CAS（Compare and Swap）。
+
+> 自旋锁：如果一个线程没获取到锁，就继续轮询直到获取到为止。而互斥锁是没获取到的话，线程就释放自己的 CPU 资源并阻塞。
+>
+> 相比互斥锁，自旋锁不用切换线程上下文，始终处于用户态。但是轮询对 CPU 性能也有损耗。所以，如果明确知道锁不了多久的场景，用自旋锁锁一下比互斥锁好。（比如我在抱着一箱子东西排队，如果马上就到我了，我就不放下东西等了，因为可能刚放下就叫到我了，我还得立刻拿起来。如果还有很多个人，我就放下歇一会）还有自旋锁会引起死锁问题。
+
+> CAS 机制：由三部分组成，内存值 V，旧预期值 A，要写入的新值 B。
+>
+> 旧预期值相当于“我记得这个变量上次是 xx 值。”如果读取 V 和 A 一样，说明这段时间内没其他线程做改动，我就可以安心写入新值 B 了。如果不一样，则直接返回 error，不做操作。就像抢火车票，没抢到就重试。
+
+原子类底层源码大致就是：轮询获取当前内存值 V 作为旧预期值 A，然后再判断 V == A（可能这一小段时间内 V 变了），如果没变则写入 B（调用一条原子 CAS CPU 指令立刻执行，应该是不用担心这一瞬间值被改了的），如果变了则重新更新 A 再继续获取。
+
+CAS 这种机制和 synchronized 分别被称为 **乐观锁和悲观锁**（乐观锁和悲观锁还有其他实现方式，这两种机制只是其中的一部分）。因为 CAS 是总是假定没被别人修改，比较乐观，除非发现值变了，否则就认为满足原子性。而 synchronized 比较悲观，无论有没有别人修改它都会上锁来防止别人修改。
+
+CAS 的优点是不脱离用户态，所以减少上下文切换开销。缺点在于轮询长时间 CPU 性能浪费，而且可能面临 ABA 问题（一个对象 A 被改为 B 又改回 A，值没变但是其实也改了，可能会发生一些逻辑问题，比如对象引用其实指向了一个新的同样值的不一样的新对象。不过版本号乐观锁可以避免这个问题，就是如果有改动版本号就++，能看到历史版本而不是只根据值判断有无改动），适合读多写少的情况。synchronized 比较慢，有上下文切换开销，并发性能低，适合读少写多的情况。
+
+#### HashMap 安全性问题
+
+HashMap 是不安全的。比如两个线程同时往一个 HashMap 写入大量的值，可能就会丢数据。
+
+解决方法可以加锁，实际上 java 中有一种 HashTable 就是加锁版的 HashMap 实现，底层很多方法都用 synchronized 修饰。但是这样效率会大大降低，因为每次读写数据都要阻塞其他线程（不过其倒可以绝对保证线程安全）。
+
+ConcurrentHashMap 是 JDK 1.5 之后的类。
+
+##### JDK 1.7 ConcurrentHashMap
+
+我们先来看 1.7 版本的 ConcurrentHashMap 源码。
+
+简单来说，就是首先整个 Hash 表被切割为多段数组：Segment，两层哈希分级。
+
+Segment 里面的每一个表单元是一个 HashEntry 数组，存储一个链表头节点，里面放置所有对应哈希值的键值对。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506121410452.png)
+
+然后 ConcurrentHashMap 上锁并不是对整个 Hash 表上锁，而是对 Segment 上锁。也就是只锁一段 Hash 数据，大大减少锁竞争概率，提高并发读写效率。不过 hash 操作要多做一次，第一次定位到 segment，第二次定位到 hashEntry 头节点。
+
+> [!NOTE]
+>
+> ConcurrentHashMap 具体定位流程：
+>
+> 1. 计算 key 的 hashCode。
+> 2. 根据 Segment 的长度，扰动运算（打乱 hash 值，让分布更均匀。可能有的 key 组合的 hashCode 特定位置值几乎都相等）获取高几位的 hash 值，找到对应的 Segment 位置。
+> 3. 再利用低几位找到对应的 HashEntry 位置。
+
+##### JDK 1.8 ConcurrentHashMap
+
+1.8 之后取消了这个分段锁设计，变为更细粒度的 CAS 机制 + 局部锁。
+
+首先数据结构上，取消了 Segment 机制，就变成一个 Hash table 数组，每个数组中存储的是链表或红黑树头节点（我们已经知道 JDK 1.8 之后 HashMap 存储机制引入了红黑树，JDK8 = JDK 1.8，命名方式问题而已）。指针的 value next 都用 volatile 修饰。
+
+然后对于上锁实现：
+
+- get 操作不锁，但是 volatile 修饰变量确保修改可见性。
+
+- put 操作：锁该 Table 元素的链表或者红黑树头节点。
+
+1. 如果这个数组位置还没有链表元素，没有头节点，则用 CAS 机制插入头节点，如果发现 V 被改了，则自旋更新 A 直到 V==A，然后采取步骤2的方法（因为这个时候已经不能直接放入头节点了，而是要采取插入方法了）；
+2. 如果已经存在链表了，则用 synchronized 机制锁住头节点，暂时不让其他线程读或者写。
+
+多线程 put 核心代码：
+
+```java
+public class ConcurrentHashMap<K,V> extends AbstractMap<K,V> implements ConcurrentMap<K,V>, Serializable {
+    
+    // 添加元素
+    public V put(K key, V value) {
+    	return putVal(key, value, false);
+	}
+    
+    // putVal方法定义
+    final V putVal(K key, V value, boolean onlyIfAbsent) {
+        
+        // ...
+        for (Node<K,V>[] tab = table;;) {
+            
+            // ...
+            // 哈希表如果不存在，那么此时初始化哈希表
+            if (tab == null || (n = tab.length) == 0)
+                tab = initTable();
+
+            // 通过hash值计算key在table表中的索引，将其值赋值给变量i,然后根据索引找到对应的Node，如果Node为null,做出处理
+            else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) {
+
+                // 新增链表头结点，cas方式添加到哈希表table
+                if (casTabAt(tab, i, null, new Node<K,V>(hash, key, value, null))) break;    
+                // 如果获取自旋锁成功，则原子操作 CAS 创建头节点。
+                // 如果获取自旋锁失败，说明刚刚有线程已经插入新头节点了。
+                // 跳过当前循环，下一轮循环走 else              
+            }
+            else if ((fh = f.hash) == MOVED) // 当前哈希表在扩容复制中，则帮助扩容复制操作，把操作指向新表
+                tab = helpTransfer(tab, f);
+            else {
+                V oldVal = null;
+
+                // f为链表头结点，使用synchronized加锁
+                synchronized (f) {
+                // 悲观锁锁住链表头，插入元素
+                    
+                // ...
+            }
+            
+        }
+        // 插入完，后面还会有链表转红黑树等判断
+    }
+}
+```
+
+#### CountDownLatch
+
+比如有几个线程是必须要先完成的前置操作，可以用 CountDownLatch 来处理。具体实现是一个计数器，比如我们必须完成线程1和线程2才能继续运行主线程，则 count = 2，线程1 和 线程 2 执行完成的时候 count --，当 count == 0 的时候调用 CountDownLatch 的线程才会解除 await 阻塞状态。
+
+线程12写法：
+
+```java
+public class CountDownLatchThread implements Runnable {
+
+    // CountDownLatch类型成员变量
+    private CountDownLatch countDownLatch ;
+    public CountDownLatchThread01(CountDownLatch countDownLatch) {      // 构造方法的作用：接收CountDownLatch对象
+        this.countDownLatch = countDownLatch ;
+    }
+
+    @Override
+    public void run() {
+
+        // ...
+        // 调用CountDownLatch对象的countDown方法对计数器进行-1操作
+        countDownLatch.countDown();
+
+    }
+
+}
+```
+
+主线程：
+
+```java
+public static void main(String[] args) {
+
+    //  1. 创建一个CountDownLatch对象
+    CountDownLatch countDownLatch = new CountDownLatch(2) ;                 // CountDownLatch中的计数器的默认值就是2
+
+    //  2. 创建线程任务类对象，并且把这个CountDownLatch对象作为构造方法的参数进行传递
+    CountDownLatchThread countDownLatchThread = new CountDownLatchThread(countDownLatch) ;
+
+    //  4. 创建线程对象，并启动线程
+    Thread t1 = new Thread(countDownLatchThread);
+    Thread t2 = new Thread(countDownLatchThread);
+    t1.start();
+    t2.start();
+
+    //  5. 在主线程中调用 CountDownLatch中的await让主线程处于阻塞状态
+    try {
+        countDownLatch.await();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+
+    //  6. 程序结束的输出
+    System.out.println("主线程执行了.... 程序结束了......");
+}
+```
+
+> [!NOTE]
+>
+> await：等待，一般和某个结束等待的条件一同使用。表示条件满足后结束等待（阻塞状态）。
+
+#### CyclicBarrier
+
+字面意思：循环（等待）屏障。让一组线程全部到齐了才开始执行某个线程，先到者会被阻塞，等其他没来的线程。（就像人齐了才开会）
+
+比如：员工类：
+
+```java
+public class EmployeeThread extends Thread {
+
+    // CyclicBarrier类型的成员变量
+    private CyclicBarrier cyclicBarrier ;
+    public EmployeeThread(CyclicBarrier cyclicBarrier) {        // 使用构造方法对CyclicBarrier进行初始化
+        this.cyclicBarrier = cyclicBarrier ;
+    }
+
+    @Override
+    public void run() {
+        try {
+
+            // ...
+            // 完成操作，表示到达，开始等待
+            cyclicBarrier.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+}
+```
+
+开会线程：所有员工线程都到达了才开始执行。
+
+```java
+public class MettingThread extends Thread {
+
+    @Override
+    public void run() {
+        System.out.println("好了，人都到了，开始开会......");
+    }
+
+}
+```
+
+测试：
+
+```java
+public static void main(String[] args) {
+
+    // 创建CyclicBarrier对象
+    CyclicBarrier cyclicBarrier = new CyclicBarrier(5 , new MettingThread()) ;
+
+    // 创建5个EmployeeThread线程对象，把第一步创建的CyclicBarrier对象作为构造方法参数传递过来
+    EmployeeThread thread1 = new EmployeeThread(cyclicBarrier) ;
+    EmployeeThread thread2 = new EmployeeThread(cyclicBarrier) ;
+    EmployeeThread thread3 = new EmployeeThread(cyclicBarrier) ;
+    EmployeeThread thread4 = new EmployeeThread(cyclicBarrier) ;
+    EmployeeThread thread5 = new EmployeeThread(cyclicBarrier) ;
+
+    // 启动5个员工线程
+    thread1.start();
+    thread2.start();
+    thread3.start();
+    thread4.start();
+    thread5.start();
+
+}
+```
+
+应用：比如统计数据。两个线程同时计算两个文件中的金额总和，写入并发 HashMap 中，运行完就 await。它俩运行完之后才运行遍历计算 HashMap 中的所有金额总和：总金额。
+
+#### 信号量
+
+信号量（Semaphore）控制访问特定资源的线程数。比如一个资源（摄像头）同时只能由最多两个线程使用。
+
+创建：
+
+```java
+    // 创建一个Semaphore对象,限制只允许2个线程获取到许可证
+    private Semaphore semaphore = new Semaphore(2) ;
+	// new Semaphore(n, fair) : FIFO 公平获取机制
+```
+
+获取，释放信号量：
+
+```java
+sem.acquire(); // 阻塞获取
+sem.tryAcquire(); // 非阻塞获取
+sem.release();
+
+// 批量获取释放
+sem.acquire(n);
+sem.release(n);
+```
+
+#### Exchanger
+
+用于交换两个数据。
+
+底层逻辑依靠 wait 和 notify 的等待机制。一个线程先处理完数据准备交换，发现另一个线程还没准备好交换，那么这个线程就先 wait。
+
+第二个线程准备好了，检查发现第一个线程早已 wait 等待交换了，那么 notify 唤醒第一个线程，两者交换数据。
+
+```java
+public Exchanger()							// 构造方法
+public V exchange(V x)						// 进行交换数据的方法，参数x表示本方数据 ，返回值v表示对方数据
+```
+
+使用：我们创建两个线程，各自都有一个 exchanger 成员对象，然后主线程创建同一个 exchanger 传递给他们两个。
+
+这两个线程各自的使用方法都是（比如交换字符串）：`String result = exchanger.exchange("xxx");` 这样一句代码就能交换了。
+
+通常用于数据校对，比如两个人分别录入数据，然后开两个线程读取并进行校对，看有无错误。
+
+## 网络编程
+
+在网络协议下，不同计算机程序之间进行数据传输。
+
+### 常见软件架构
+
+C/S：Client 和 Server，用户本地要下载安装客户端程序（比如 QQ），远程运行服务器端程序。主要缺点就是用户下载更新麻烦。
+
+B/S：Browser 和 Server，通过浏览器，用户通过不同的网址访问不同的服务器。开发者不需要开发客户端，用户也可以方便用浏览器运行。但是所有资源都要通过浏览器传输（比如图片，音频等），因此不能运行太大的程序。
+
+### 网络编程三要素
+
+IP：用于定位对方电脑。主机在网络中的唯一标识。
+
+端口：用于确定通信方式，比如什么软件（qq）。应用程序在设备中的唯一标识。
+
+协议：用于统一数据格式。
+
+### IP
+
+互联网协议地址（Internet Protocol），如 IPv4,IPv6.
+
+IPv4 是第一版发布的 IP 协议，32位（4字节）地址，如123.456.123.345（瞎写的）。其实底层就是32位数字，便于记忆给改成分段的点分十进制显示了。
+
+后来不太够用了，19年就分完了。于是 IPv6 出现了，128位，8组，冒分十六进制表示。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506121545274.png" alt=" " style="zoom: 33%;" />
+
+#### 公网 私网
+
+比如一个网吧，路由器分配一个公网 IP，网吧里的每台设备可能都被路由器分配一个私有 IP，如 192.168.x.x 这样的形式，节约 IP。
+
+*如果有一个机子违规了，比如开挂，可能连带着整个网吧都被封了，因为这个路由器的公网地址被封了。*
+
+不同路由器可能分配的局域网 IP 不同。
+
+局域网 IP 查找是发到路由器，然后路由器发回给本机。
+
+#### 本地回环地址
+
+127.0.0.1 永远寻找本机。数据发到本机网卡，网卡自动返回来了。
+
+#### InetAddress
+
+Java 中的 IP 类。
+
+没有构造方法，只能通过静态方法创建：
+
+```java
+// 1. 获取 InetAddress 对象
+InetAddress address = InetAddress.getByName("DESKTOP-5OJJSAM");	// 或者 ip 地址字符串
+System.out.println(address); // 输出主机名/IP组合信息
+
+// 2. 获取主机名
+String name = address.getHostName();
+System.out.println(name);   // 示例输出：DESKTOP-5OJJSAM
+
+// 3. 获取 IP 地址
+String ip = address.getHostAddress();
+System.out.println(ip);     // 示例输出：192.168.1.100
+
+```
+
+### 端口号
+
+应用在设备中唯一的标识，一个端口只能被一个应用占用。0~1023 一般用于知名应用，我们建议用 1024 之后。
+
+### 协议
+
+数据传输通信的格式。如 OSI，但是太理想没推广。TCP UDP 这些使用更多。
+
+#### OSI 七层模型
+
+从底层到顶层：物理层，数据链路层，网络层，传输层，会话层，表示层，应用层。发送数据时，数据在我们电脑上层级由高到低（应用层 -> 物理层）传到对方电脑上然后再由低到高处理（物理层 -> 应用层）。太过简单理想化。
+
+#### TCP IP 四层模型
+
+应用层，传输层，网络层，物理链路层。
+
+*其实就是物理层，数据链路层合并成物理链路层，应用层、表示层、会话层合并成应用层。*
+
+每一层都有自己的协议，如应用层的 http，传输层的 TCP 等。
+
+UDP协议：用户数据报协议（User Datagram Protocol）UDP是面向无连接通信协议（不管是否连接，只管发）。速度快，有大小限制（一次最多发送64K），数据不安全，易丢失数据。
+TCP协议：传输控制协议TCP（Transmission Control Protocol）。TCP协议是面向连接的通信协议。数据安全，速度慢，:没有大小限制。
+
+UDP 适用于丢失部分数据影响不大的情况，比如视频语音会议，网络游戏等。
+
+TCP 适合数据安全性要求高的情况。
+
+### UDP 
+
+发送数据主要经历四个步骤：
+
+1. 发送数据用的对象（DatagramSocket 对象）。
+2. 数据打包（DatagramPacket）。
+3. 发送资源。
+4. 释放资源。
+
+```java
+public class SendMessageDemo {
+    public static void main(String[] args) throws SocketException, UnknownHostException {
+        // 1. 创建 DatagramSocket 对象（发送端）
+        DatagramSocket ds = new DatagramSocket();
+
+        // 2. 打包数据
+        String str = "你好威啊！！！";
+        byte[] bytes = str.getBytes();  // 数据转字节
+        InetAddress address = InetAddress.getByName("127.0.0.1"); // 接收方地址
+        int port = 10086;  // 接收方端口
+
+        DatagramPacket dp = new DatagramPacket(bytes, bytes.length, address, port);
+
+        // 3. 发送数据
+        ds.send(dp);
+
+        // 4. 释放资源
+        ds.close();
+    }
+}
+
+```
+
+发完也没啥返回值反馈，也不知道发没发。
+
+接收数据主要经历四个步骤：
+
+1. 接收数据用的对象（DatagramSocket 对象）。
+2. 接收打包数据。
+3. 解包。
+4. 释放资源。
+
+```java
+public class ReceiveMessageDemo {
+    public static void main(String[] args) throws IOException {
+        // 1. 创建 DatagramSocket 对象（接收端）并绑定端口
+        DatagramSocket ds = new DatagramSocket(10086);  // 必须与发送端一致
+
+        // 2. 准备接收数据的字节数组（缓冲区）
+        byte[] bytes = new byte[1024];
+        DatagramPacket dp = new DatagramPacket(bytes, bytes.length);
+
+        // 3. 接收数据包（阻塞方法）
+        ds.receive(dp);
+
+        // 4. 解析数据包
+        byte[] data = dp.getData();       // 获取原始数据
+        int len = dp.getLength();         // 实际长度
+        InetAddress address = dp.getAddress(); // 获取发送方地址
+        int port = dp.getPort();          // 获取发送方端口
+
+        // 5. 输出数据
+        System.out.println("接收到数据：" + new String(data, 0, len));
+        System.out.println("该数据是从 " + address + " 这个电脑中的 " + port + " 这个端口发出的");
+
+        // 6. 关闭资源
+        ds.close();
+    }
+}
+
+```
+
+>[!NOTE]
+>
+>receive 是阻塞的。
+
+然后可以尝试开发聊天室。注意，在 send 之前必须运行 Receiver 程序，不然会接收不到。
+
+#### 单播 组播 广播
+
+单播：给局域网里的一个IP 发送数据。之前的实现就是单播。
+
+组播：给一组 IP 地址发数据。224.0.0.0 ~ 239.255.255.255，其中 224.0.0.0 ~ 224.0.0.255 是预留的组播地址。
+
+广播：给全部 IP 发数据。广播地址：255.255.255.255。
+
+组播代码：
+
+```java
+public class MulticastSender {
+    public static void main(String[] args) throws IOException {
+        MulticastSocket socket = new MulticastSocket();
+        String message = "你好，组播！";
+        byte[] data = message.getBytes();
+
+        InetAddress group = InetAddress.getByName("224.0.0.1"); // 组播地址（D类地址）
+        int port = 10000;
+
+        DatagramPacket packet = new DatagramPacket(data, data.length, group, port);
+        socket.send(packet);
+
+        socket.close();
+    }
+}
+```
+
+```java
+public class MulticastReceiver {
+    public static void main(String[] args) throws IOException {
+        MulticastSocket socket = new MulticastSocket(10000);
+        InetAddress group = InetAddress.getByName("224.0.0.1"); // 把当前地址添加到组播
+
+        socket.joinGroup(group);
+
+        byte[] buffer = new byte[1024];
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+        socket.receive(packet);
+
+        String message = new String(packet.getData(), 0, packet.getLength());
+        System.out.println("接收到组播消息: " + message);
+
+        socket.leaveGroup(group);
+        socket.close();
+    }
+}
+```
+
+这样可以添加多个主机 / 程序到 224.0.0.1 中，他们都会收到消息（端口号要对应）。如果一个主机是 224.0.0.2，它收不到 224.0.0.1 的组播数据。
+
+广播更简单，发送 IP 直接设置成 255.255.255.255，则所有的 IP 地址都能接收到这个消息（端口号也要对应，比如发到 10086 端口，10085 端口就接收不到了）。
+
+### TCP
+
+在通信两端各建立一个 Socket 对象。通信之前先确保连接已经建立，通过 Socket 产生 IO 流来进行网络通信。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506121651377.png)
+
+客户端获取 Socket 对象（与指定服务器连接）-> 获取输出流 -> 写入数据 -> 释放资源。
+
+服务端获取 Socket 对象-> 监听客户端连接，返回一个 Socket 对象 -> 获取输入流，读取数据 -> 释放资源。
 
