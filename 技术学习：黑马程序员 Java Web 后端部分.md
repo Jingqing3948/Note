@@ -4,7 +4,7 @@ date: 2025-06-07
 tags: 
 - Java
 categories:
-- 算道求索（课外IT技能学习）
+- 算道（课外IT技能学习）
 - Lecture
 description: 黑马程序员 JavaWeb 课程学习笔记
 ---
@@ -25,7 +25,7 @@ Apache 下一个开源 Java 项目，用于管理，构建 Java 项目的工具�
 
 main：实际项目资源。
 
-java：源代码目录。
+Java：源代码目录。
 
 resource：配置文件目录。
 

@@ -60,32 +60,42 @@ $$
 连续随机变量（Continuous）通常用概率密度函数表示，$x\sim p(\textit x)$，同样 p(x)在域上求积分 = 1.
 
 比如经典的高斯变量，$x \sim N(\mu, \sigma ^2)$，表示公式：
+
 $$
 p(x)= N(x|\mu,\sigma ^2) = \frac{1}{\sqrt{2\pi \sigma ^2}}exp(-\frac{(x-\mu)^2}{2\sigma ^2})
 $$
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301232062.png" alt=" "  />
 
 ### 期望
 
 期望（Expection）也叫平均值，最有可能的结果。离散随机变量的期望：
+
 $$
 E_{\mathbb{x}\sim p(x)}[\mathbb{x}] =\sum_{x\in\mathcal{X}}p(x)\cdot x
 $$
+
 离散变量的 **函数** 的期望：给定 x 和其概率分布，求 f(x) 的期望值是多少。可以理解为首先 x 有多大的概率等于这个值，然后再用 x 的这个值代入 f(x)得到的结果，我们要计算这个结果的期望值。
+
 $$
 xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})] =\sum_{x\in \mathcal{X}}p(x)\cdot f(x)
 $$
+
 比如下题，cat 是分类分布，表示 x 有 0.1 的概率 = 0,0.2 的概率 = 1,0.7 的概率 = 2，求 f(x)的期望值：
+
 $$
 \begin{aligned}
 x\sim Cat([0.1,0.2,0.7])\, and\, f(x)= x^2\\\\
 E_{x\sim Cat(q)}[x^2] = 0.1 \cdot 0^2+0.2\cdot 1^2+0.7\cdot 2^2 = 3
 \end{aligned}
 $$
+
 连续函数求期望的方式类似，求积分而已。
+
 $$
 xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})] =\int_{-\infty }^{+\infty }p(x)f(x)dx
 $$
+
 高斯随机变量 $N(µ, σ^2)$ 的期望，对于 f(x)= x 函数来说 $= µ$，对于 $f(x)= x^2$ 函数来说 $= µ^2+σ^2$.
 
 - 高斯随机变量的期望是线性的. 也就是说满足 $E(af(x)+bg(x))=aE(f(x))+bE(g(x))$ 。
@@ -113,6 +123,7 @@ $\widetilde{x}$：x 的归一化，相当于一个和 x 方向相同但是长度
 ### 矩阵
 
 **对角矩阵（Diagonal matrix）**：只有对角线上的值（$a_{ii}$）非零
+
 $$
 Diag(a)=
 \begin{bmatrix}
@@ -122,6 +133,7 @@ Diag(a)=
    0 & 0 & {...} & a_L
 \end{bmatrix}
 $$
+
 L×1 列向量的对角矩阵相当于把列向量中的元素均匀分到 L×L 矩阵的对角线上。两个列向量的乘积 = 一方的对角矩阵与另一方列向量的乘积。
 
 **Symmetric matrix 对称矩阵**：矩阵转置仍然等于其本身。对角矩阵很明显就是对称的。
@@ -158,6 +170,7 @@ p(x1, x2) = p(x1)p(x2|x1).
 ### 贝叶斯定理
 
 贝叶斯定理（Bayes）被称为：改变信念 brief 的定理，大概是从概率角度上让人更改自己的偏好。所以也常用在机器学习中。
+
 $$
 p(x_2|x_1) = p(x_2) \frac{p(x_1|x_2)}{p(x_1)}
 $$
@@ -196,6 +209,7 @@ $$
 下面的公式示例中，第一行是 hard 的写法，代表：x = 0 时 t 的预测结果 = 1。
 
 第二行是条件概率的 soft 的写法，代表：x = 0 时 t = 1 的概率是 0.2。
+
 $$
 \begin{aligned}
 \hat t(0)= 1\\
@@ -216,18 +230,21 @@ $$
 > loss 一般指的是单个预测值和正确值的差距，而 cost 指的是模型整体（所有预测值和变量值）的差距。
 
 对于硬推理，我们用代价函数记录预测的硬推理值与真实值之间的偏差来评估硬推理。
+
 $$
 \mathcal{l} (t,\hat t)=|t-\hat t|^k
 $$
+
 k 一般 = 2，也就是平方损失（quadratic error loss）。
 
 一种损失函数：detection-error loss，也叫 0-1 loss。指实际值和预测值一致时损失=0，否则=1. 比如只有 0 和 1 两种结果的伯努利随机向量情况（猜猜明天是晴天还是雨天。猜对了损失 = 0，猜错了 = 1）。
 
 $\mathbb{1}$ 是指示符函数，预测结果正确时 = 1，否则 = 0.
+
 $$
 \begin{aligned}
   \mathcal{l} (t, \hat t) &= \mathbb{1}(t \ne \hat t) \\\\
-  \mathbb{1}(a) &= 
+  \mathbb{1}(a) &=
   \begin{cases}
       1 & \text{if a = true} \\
       0 & \text{if a = false}
@@ -236,9 +253,11 @@ $$
 $$
 
 用什么损失评估硬推理的整体性能？一般用损失函数的平均值（population loss）计算。
+
 $$
 L_p(\hat t(\cdot))= E_{(x, t)\sim p(x, t)}[l(t,\hat t(x))]
 $$
+
 比如下题，预测器是令 t 永远 = 1，求 population loss。只需要计算算错部分的概率即可。
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070004028.png" alt=" " style="zoom: 33%;" />
@@ -259,6 +278,7 @@ $$
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070142271.png" alt=" " style="zoom:67%;" />
 
 伯努利分布的 population 对数损失的计算公式如下（按 x 求期望)：
+
 $$
 Log\  Loss =-\frac{1}{N}\sum^N_{i = 1}[y_i log(q(y_i|x))+(1-y_i)log(1-q(y_i|x))]
 $$
@@ -301,38 +321,52 @@ $$
 
 #### 常见符号解释
 
-训练集：D，内含 N 个数据。training set D with N training data points 
+训练集：D，内含 N 个数据。training set D with N training data points
+
 $$
 D =\{(x_n, t_n)^N_{n = 1}\}
 $$
+
 硬预测器：^t
+
 $$
 \hat t_D(x)
 $$
+
 软预测器：q
+
 $$
 q_D(t|x)
 $$
+
 硬预测模型类 model class：意为我们对预测器做一个大概的假设，这个预测器属于某一个模型类（比如一次函数的预测器类，二次函数的预测器类等）。θ 是模型的参数，属于一个特定范围，在训练过程中调整 θ 值。注意 θ 是一个向量代表一系列系数。
+
 $$
 H =\{\hat t(\cdot|\theta):\theta\in\Theta\}
 $$
+
 如果选择的模型类是多项式函数，一般用 degree M 表示其项数。
+
 $$
 \hat t(x|\theta)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_Mx^M =\theta^Tu(x)
 $$
+
 其中的 u(x) 可不是阶跃函数，而是 feature vector 表示 $[1, x, x^2, x^3...x^M]^T$ 这个列向量。
 
 这个模型类被称为线性预测器（不是因为 t 和 x 呈线性关系，很明显不是。而是因为 t 和 θ 呈线性关系）。
 
 总体损失 population loss：特指推理中的损失，因为我们知道概率 p(x, t) 的具体值：
+
 $$
 L_p(\theta)= E_{(x, t)\sim p(x, t)}[l(t,\hat t(x|\theta))]
 $$
+
 但是学习和推理不同，我们不知道具体概率值因此这个损失无法得到。我们可以评估训练损失：
+
 $$
 L_D(\theta) = \frac{1}{N} \sum_{n = 1}^{N} \ell(t_n, \hat{t}(x_n \mid \theta)) = \sum_{x, t} p_D(x, t) \, \ell(t, \hat{t}(x \mid \theta))
 $$
+
 ### 归纳偏差选择
 
 选择模型类 / 预测器的过程也是确定归纳偏差（Inductive Bias Selection）的过程。
@@ -340,9 +374,11 @@ $$
 #### 三种预测器
 
 总体最优无约束预测器（Population-optimal unconstrainded predictor）：最小化总体损失且无视模型，所以叫做无约束预测器，因为不受模型类的限制。但是我们不知道标准概率分布所以很难实现。
+
 $$
 t^*(\cdot)= arg\,\mathop{min}\limits_{t(\cdot)}L_p(t(\cdot))
 $$
+
 总体最优类内预测器（Population-optimal within-class predictor）：首先确定模型类，在这种模型类的前提下选择 θ 最小化损失。
 
 $$
@@ -358,6 +394,7 @@ $$
 #### ERM 经验风险最小化预测
 
 针对这个损失函数，一种训练原则是 Empirical Risk Minimization 经验风险最小化（ERM），即找到使得 LD(θ) 最小的 θ 作为预测器参数。
+
 $$
 \theta_D^{ERM}= arg\,\mathop{min}\limits_{\theta \in \Theta}L_D(\theta)
 $$
@@ -375,9 +412,11 @@ X_D：一个矩阵，每行存储了一个 u(x)，和 θ 向量相乘后就组�
 意思就是所有预测值和训练值之间的代价损失的平均值。
 
 让这个代价函数最小的 θ 的解是：
+
 $$
 \theta^{ERM}_D =(X_D^TX_D)^{-1}X_D^Tt_D
 $$
+
 如果第一部分的矩阵乘积是不可逆的，舍去这一部分即可。
 
 #### ERM 相关的两个定理
@@ -433,6 +472,7 @@ M = 3 时，模型预测如图，可以看出 ERM 在欠拟合和过拟合中间
 #### 软预测器的概率模型
 
 软预测器的概率模型（Probabilistic Models）用已知 t 和 θ 的条件概率表示。第三章的时候用 q 符号表示，这章用 p 符号，反正意思到位了。
+
 $$
 \mathcal H =\left\{p(t|x,\theta):\theta \in \Theta \right\}
 $$
@@ -443,18 +483,23 @@ $$
 事实上很多确定性模型也可以用概率模型的特例来看待，也同样可以应用其公式。
 
 总体损失：
+
 $$
 L_p(\theta)= E_{(x, t)~p(x, t)}[-log\, p(t|x,\theta)]
 $$
+
 训练损失（ERM）：
+
 $$
 L_D(\theta)=\frac{1}{N}\sum^{N}_{n = 1}(-log\, p(t_n|x_n,\theta))
 $$
+
 也叫 Maximum Likehood Learning (ML Learning) 最大似然学习。最小化 log 损失，最大化概率。
 
 ### 验证
 
 可以先拿出一部分已知数据作为验证集（validation set）不参与训练。预测器用训练集训练，验证集再计算损失。计算损失的方法仍然是整体损失：
+
 $$
 \hat L_p(\theta)= L_{D^v}(\theta)=\frac{1}{N^v}\sum^{N^v}_{n = 1}l(t^v_n,\hat t(x^v_n|\theta))
 $$
@@ -492,21 +537,25 @@ $$
 
 
 学习（ERM）：现在假设我们先选择两个数据作为训练数据。假设我们选择了 x = 2 x = 3. 那就完蛋了，用这两个数据我们训练得到的预测器是 t(x)= 2，t 的值不受 x 的影响。
+
 $$
 \hat t(x|\theta) = \theta _0 + \theta _1x. \theta _0 = 2, \theta _1 = 0.
 $$
+
 总体损失就是(2^2^+1^2^+0+0)/4 = 5/4，过拟合。
 
 #### Bias vs Estimation Error
 
 如何权衡偏差和估计错误？
+
 $$
 \begin{aligned}
-L_p(\theta_D) &= L_p(\hat{t}^{(\cdot)})^{\text{minimum unconstrained population loss}} 
- +\left(L_p(\theta_H) -L_p(\hat{t}^{(\cdot)})\right)^{\text{bias}} 
+L_p(\theta_D) &= L_p(\hat{t}^{(\cdot)})^{\text{minimum unconstrained population loss}}
+ +\left(L_p(\theta_H) -L_p(\hat{t}^{(\cdot)})\right)^{\text{bias}}
  +\left(L_p(\theta_D) -L_p(\theta_H)\right)^{\text{estimation error}}
 \end{aligned}
 $$
+
 第一部分：最优预测的损失。当然最优预测很难找到因为不知道概率。
 
 第二部分：bias。跟模型选择有关。
@@ -523,9 +572,10 @@ N 增加，也就是训练数据集增加，bias 不变，estimation error 会�
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png" alt="" style="zoom:67%;" />
 
 再细化一点，对于每个输入 x，损失函数的表达方式是：
+
 $$
 \begin{aligned}
-L_p(\theta_D \mid x) =\ 
+L_p(\theta_D \mid x) =\
 &\underset{\mathrm{aleatoric\ uncertainty}}{\underbrace{L_p(\hat{t}^\*(x) \mid x)}} \\
 &+ \underset{\mathrm{bias}}{\underbrace{\left(L_p(\theta_H^* \mid x) - L_p(\hat{t}^\*(x) \mid x)\right)}} \\
 &+ \underset{\mathrm{epistemic\ uncertainty}}{\underbrace{\left(L_p(\theta_D \mid x) - L_p(\theta_H^\* \mid x)\right)}}
@@ -539,6 +589,7 @@ $$
 正交化（Regularization）一种让 ERM 模型变得更加泛化的方法。
 
 θ 的参数过多会导致 overfitting，而正交化期望：降低 θ 的权重使得过拟合问题不那么明显。
+
 $$
 \theta^{\mathrm{R\mbox{-}ERM}}_D = \arg\min_{\theta \in \Theta} \lbrace L_D(\theta) + \frac{\lambda}{N} R(\theta) \rbrace
 $$
@@ -561,9 +612,11 @@ R：正交化 θ。比如一维范式就是所有 θ 的值求和 ||θ||，二�
 ### 优化
 
 我们之前已经得出损失公式，以及训练的目标就是让损失最小化：
+
 $$
 min_{\theta}\{g(\theta)=\frac{1}{N}\sum^N_{n = 1}f(x_n, t_n|\theta)+\frac{\lambda}{N}R(\theta)\}
 $$
+
 但是并不能一定取到最小值，比如类似 e^n 的函数，最小值无限接近 0 永远取不到。
 
 最小值点（global optimal point g(θ\*)），对于所有 g(θ) 都有 g(θ)>= g(θ\*)，但大多数时候找不到。
@@ -602,6 +655,7 @@ $$
 
 
 公式如下，注意这里的 θ 不是指多项式中的每一个参数 θ，而是每次迭代产生的一组 θ。初始化第一组 θ 后，后面的每组 θ 都迭代计算。γ 是学习率，步长，决定每次迭代要迈多大的步子。
+
 $$
 \theta^{(i+1)}=\theta^{(i)}-\gamma\nabla g(\theta^{(i)})
 $$
@@ -627,13 +681,13 @@ $$
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270022541.png" alt=" " style="zoom: 67%;" />
 
 - 当学习率 γ <= 1/L 时，有如下性质：
-  -  guaranteed reduction of the loss function: 
+  - guaranteed reduction of the loss function:
 
 $$
 g(\theta^{(i+1)})\le g(\theta^{(i)})-\frac{\gamma}{2}\|\nabla g(\theta^{(i)})\|^2
 $$
 
-​		也就是说下一次迭代的 θ 一定能让损失下降这么多。
+  也就是说下一次迭代的 θ 一定能让损失下降这么多。
 
 - - convergence to a stationary point：g(θ) 收敛，$\nabla g(\theta^{(i)})\rightarrow0$
 
@@ -644,15 +698,19 @@ $$
 计算整个数据集的梯度，对于大模型来说计算成本还是太高了。
 
 每次迭代我们不挑出所有的训练集样本点计算 g(θ) ，只随机选取部分：随机梯度下降（Stochastic Gradient Descent）。
+
 $$
 \theta^{(i+1)}\leftarrow \theta^{(i)}-\frac{\gamma^{(i)}}{S^{(i)}}\sum_{n \in S^{(i)}}\nabla g_n(\theta^{(i)})
 $$
+
 SGD 相比 GD 可能需要多走几步因为一开始的每一步不一定精准朝着 g(θ) 下降方向。但是计算成本还是下降了，因为 GD 每一步迈之前都要先考虑清楚所有可能的方向，再决定出让损失最小化的下一次迈步；如果数据量太大，这个功夫都够 SGD 走好多步了。
 
 所以选择合适的学习率也可以适当减少迭代次数。根据 Munro-Robbins conditions，SGD 的学习率设置：
+
 $$
 \sum_{i = 1}^{\infty} \gamma^{(i)} = \infty \quad \text{and} \quad \sum_{i = 1}^{\infty} \left( \gamma^{(i)} \right)^2 < \infty
 $$
+
 第一部分保证了学习率不会太小以至于原地踏步，永远无法到达 stationary point；第二部分确保学习率不会太大，SGD 的方差是逐渐减小直到消失的，保证逐渐逼近 stationary point 而不会在极点附近来回徘徊。
 
 比如 $\gamma^{(i)}=1/i^{\alpha},\alpha \in (0.5, 1]$ 这个学习率满足这一条件。
@@ -673,7 +731,6 @@ Numerical Differentiation：利用导数定义近似求解。把 g(θ) 看作一
 
 
 
-
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271542004.png" alt=" " style="zoom:50%;" />
 
 Automatic Differentiation：使用求导方法，但是只求出某个点的梯度值而不是先求出整体公式。
@@ -687,9 +744,11 @@ Automatic Differentiation：使用求导方法，但是只求出某个点的梯�
 计算图（Computational Graph）便于计算梯度的图。
 
 比如：
+
 $$
 g(\theta)=\theta^2_1+\theta^2_2+\theta^2_3
 $$
+
 计算图表示为：
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626631.png" alt=" " style="zoom: 50%;" />
@@ -739,8 +798,9 @@ $$
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120216352.png)
 
 目标 t 值：0 或者 1.
+
 $$
-t^{\pm} = 2t - 1 = 
+t^{\pm} = 2t - 1 =
 \begin{cases}
 1, & \text{if } t = 1 \\
 -1, & \text{if } t = 0
@@ -763,12 +823,15 @@ $$
 #### 预测器
 
 还是经典公式：
+
 $$
 \theta^T u(x)= \sum^{D'}_{d = 1}\theta_du_d(x)
 $$
+
 特征向量 u(x) 也不一定只是 x 的多次幂列向量，比如可能是“一个句子中不同词的出现次数”。
 
 硬预测器的计算结果：如果公式值 > 0 则 t 预测 = 1，如果 < 0 则预测 = 0. 公式值 = 0 的情况不考虑也很难发生。
+
 $$
 \hat t(x|\theta)= step(\theta^Tu(x))
 $$
@@ -777,6 +840,7 @@ $$
 
 
 软预测用指数函数处理：
+
 $$
 \begin{aligned}
 p(t = 1|x,\theta)&=\sigma (\theta^T u(x))\\
@@ -784,6 +848,7 @@ p(t = 0|x,\theta)= 1&-p(t = 1|x,\theta)\\
 \sigma (x)=(&1+e^{(-x)})^{-1}
 \end{aligned}
 $$
+
 $\sigma=\frac{1}{1+e^{-x}}$ 或者 $=\frac{e^2}{1+e^2}$ ，**注意两种形式！**
 
 
@@ -799,18 +864,22 @@ $\sigma=\frac{1}{1+e^{-x}}$ 或者 $=\frac{e^2}{1+e^2}$ ，**注意两种形式�
 #### 损失函数
 
 考虑下面这个式子，就是 classification margin：
+
 $$
 y = t^\pm \cdot \theta^T u(x)
 $$
+
 这个式子为正值时预测结果为正确，为负值时预测结果为错误。
 
 所以硬预测的 Detection-Error Loss Function 损失函数（还是指示符函数，预测正确 = 0，预测错误 = 1）可以写作：
+
 $$
 \begin{aligned}
 l(t,\hat t(x|\theta))&=\mathbb{1} (t\neq \hat t(x|\theta))\\
 &= step(-y)
 \end{aligned}
 $$
+
 但是这个函数没法应用 GD 降维（损失函数图像类似矩阵函数，只有 0 和 1，没法降维）。所以我们可以应用其他的损失函数：
 
 
@@ -836,6 +905,7 @@ $$
 损失函数：$l(y)=max(0,-y)$
 
 梯度函数：
+
 $$
 \begin{aligned}
 \nabla \ell\left(t^{\pm} \cdot (\theta^T u(x))\right) &=
@@ -847,6 +917,7 @@ t^{\pm} \cdot u(x), & \text{if prediction is wrong}
 $$
 
 每次梯度下降迭代后的新 θ 参数计算公式：
+
 $$
 \begin{aligned}
 \theta^{(i+1)} &= \theta^{(i)} + \gamma^{(i)} \cdot
@@ -863,6 +934,7 @@ $$
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120744954.png)
 
 首先假设选取 (2.1, 1) 点计算梯度下降。
+
 $$
 \begin{aligned}
 prediction\; is\; wrong,\ &\theta_1\cdot 2.1 =-2.1, hard\ prediction = 0\neq 1\\\\
@@ -870,7 +942,9 @@ prediction\; is\; wrong,\ &\theta_1\cdot 2.1 =-2.1, hard\ prediction = 0\neq 1\\
 \theta_2&=-1+0.1\cdot 2.1 =-0.79
 \end{aligned}
 $$
+
 然后选取 (-1.5, 0) 点计算梯度下降。
+
 $$
 \begin{aligned}
 prediction\; is\; wrong,\ &\theta_2\cdot -1.5 = 1.185,\ hard\ prediction = 1\neq 0\\\\
@@ -878,20 +952,25 @@ prediction\; is\; wrong,\ &\theta_2\cdot -1.5 = 1.185,\ hard\ prediction = 1\neq
 \theta_3&=-0.79-0.1\cdot (-1.5)=-0.64
 \end{aligned}
 $$
+
 计算每个步骤中的 classification margin 会发现值是逐渐接近于 0 的。
 
 对于 log loss 软预测器的梯度下降函数：
+
 $$
 \nabla l(t^\pm \cdot (\theta^T(u(x)))=(\sigma(\theta^T u(x))-t)\cdot u(x)
 $$
+
 $\sigma(\theta^T u(x))-t$ 部分又用 $\delta(x,t) $ 表示，表示 mean error，= 0 的时候说明预测完全准确。
 
-当 mean error = 0 时，如果 t = 1，则 $\theta^T(u(x))\rightarrow \infty$ ；如果 t = 0，则 $\theta^T(u(x))\rightarrow -\infty$ 
+当 mean error = 0 时，如果 t = 1，则 $\theta^T(u(x))\rightarrow \infty$ ；如果 t = 0，则 $\theta^T(u(x))\rightarrow -\infty$
 
 软预测器梯度下降公式：
+
 $$
 \theta^{i+1}\leftarrow \theta^{(i)}-\gamma^{(i)}\frac{1}{S^{(i)}}\sum_{n\in S^{(i)}}(\sigma((\theta^{(i)})^Tu(x_n))-t^n)\cdot u(x_n)
 $$
+
 例题：还是上一道题的数据，初始预测器 $\theta_1=-1, \lambda=0, \gamma=0.1$, minimum batch size S = 1
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
@@ -913,11 +992,13 @@ u(x) 并不像线性模型一样一开始是确定的，可能在模型训练过
 第一层输入 x 输出 D^1^ 维度的 h^1^ 向量。后面的每一层都用前一层的向量输入，输出一个 D^l-1^ 维度的 h^l-1^ 向量。最后一层叫做 classification layer 分类层，把 h 作为 u(x) 输入到预测器里计算概率。
 
 每一层的处理公式如下：
+
 $$
 \begin{aligned}
 a^l = W^l h^{l-1}
 \end{aligned}
 $$
+
 W：权重向量，分配不同项之间的权重。
 
 a：本层的 pre-activations 预激活向量。
@@ -960,9 +1041,11 @@ h：列向量，用本层的 a 向量通过一个激活函数激活后得到。
 > 来源：[神经网络——最易懂最清晰的一篇文章-CSDN 博客](https://blog.csdn.net/illikang/article/details/82019945)
 
 而 θ 也就是每一层的参数（权重）则这样表示：
+
 $$
 \theta =\{W^1, W^2, ..., W^{L-1}, w^L\}.
 $$
+
 *如果 h 是线性函数，那么整个预测器就是一个线性预测器。*
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260351906.png)
@@ -992,10 +1075,13 @@ p(0|x, θ) 就 1-0.12 = 0.88 即可。
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260408835.png)
 
 最后一层：
+
 $$
 l(\theta)=-log\,\sigma (t^{\pm}a^L)
 $$
+
 后向传播最后一层（第 L 层）所需梯度：只说结论的话：
+
 $$
 \delta^l =\sigma(a^L)-t
 $$
@@ -1189,7 +1275,7 @@ z 需要通过无监督学习找寻。
 
 在 AI 课里学过：
 
-https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6ccs3ain-lv6/note#principle-component-analysis-zhu-cheng-fen-fen-xi
+<https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6ccs3ain-lv6/note#principle-component-analysis-zhu-cheng-fen-fen-xi>
 
 对于 D 维度数据可以很好地提取出 M 个特征向量，M < D.
 
@@ -1237,7 +1323,7 @@ Directed Generative Models 一种 z-> x 模型。
 
 ##### K 聚类算法
 
-把 n 个 x 数据分配给 k 个聚类（K-means）。z 是分配结果，$z_{k,n}=1$ 代表第 n 个数据分配给了第 k 簇，$z_{k,n}=0$  代表不在这个簇里。所有的 z_{k, n} 组成列向量 z。 
+把 n 个 x 数据分配给 k 个聚类（K-means）。z 是分配结果，$z_{k,n}=1$ 代表第 n 个数据分配给了第 k 簇，$z_{k,n}=0$  代表不在这个簇里。所有的 z_{k, n} 组成列向量 z。
 
 分法本质上是每个簇的中心点离该簇内所有 x 数据点的欧几里得距离和最小。
 

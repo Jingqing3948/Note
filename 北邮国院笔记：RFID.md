@@ -21,7 +21,7 @@ description: 北京邮电大学国际学院物联网工程专业RFID课程学习
 
 首先明确一下比较对象。human identification（cost too high）是人力识别就不用说了。
 
-fingerprint identification: 
+fingerprint identification:
 
 - stability 稳定，精确度高；
 - high speed, 快速匹配；
@@ -94,9 +94,9 @@ Combine with Sensors: 开发更多应用方式。
 
 RFID and IoT:
 
-- embed intelligence in the physical object, so that simple physical objects can also “say”. 
-- allows a physical object to be uniquely identified in a way similar to the "IP address" of a computing node in the Internet. 
-- provides a low-cost communication way to achieve effective communication between nodes. 
+- embed intelligence in the physical object, so that simple physical objects can also “say”.
+- allows a physical object to be uniquely identified in a way similar to the "IP address" of a computing node in the Internet.
+- provides a low-cost communication way to achieve effective communication between nodes.
 - makes the physical objects in a passive environment achieve "passive intelligence“, providing fundamental guarantee for the “thing-thing connection"
 
 ## Identification
@@ -151,7 +151,7 @@ Signal Processing and Control Module: 主要是控制功能，协调一些本地
 
 Inductively Coupled RF Module: 主要是产生能量和调制发送信号功能
 
-- Generate high frequency send energy, activate RF tags and  provide energy (passive RF tags) 
+- Generate high frequency send energy, activate RF tags and  provide energy (passive RF tags)
 - Modulate signal to sent,  transferring data to RF tags
 - Receive and demodulate RF signal  from RF tags.
 
@@ -218,7 +218,7 @@ interactive, independent。
 
 相对变化 The relative change，这是一个比较新鲜的而且信号变化中比较重要的指标。
 
-$G_{dB}=10log_{10}\frac{P2}{P1}$ 
+$G_{dB}=10log_{10}\frac{P2}{P1}$
 
 参考功率 referenced power $dBm=10log_{10}\frac{P}{10^{-3}}$
 
@@ -336,7 +336,7 @@ Phase shift keying: 频率相位翻转180.
 
 ### Difficulty of traditional anti-collision algorithms for solving collision detection between RFID tags
 
-Compared with the reader, limited by hardware resources, tags have very limited storage capacity and computing. 
+Compared with the reader, limited by hardware resources, tags have very limited storage capacity and computing.
 
 标签受制于硬件资源，存储容量和计算能力都不高。
 
@@ -348,7 +348,7 @@ TDMA FDMA是multi-access, CSMA是broadcast
 
 FDMA: 多个频率通道 several frequency channels 传输数据。
 
-TDMA: 
+TDMA:
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230619212501183.png)
 
@@ -471,7 +471,7 @@ Binary Search 是每次都传输完整二进制字符串. 其实我们只需要�
 
 每次请求发送的信息: Request+NVB=4+1010
 
-### Advantages and disadvantages of ALOHA based anti-collision algorithm 
+### Advantages and disadvantages of ALOHA based anti-collision algorithm
 
 simple
 
@@ -493,9 +493,9 @@ intermediate state variables 不需要存储中间状态变量（QT）
 
 ### Concept of EPC global network
 
-EPCglobal Network: a technology that 
+EPCglobal Network: a technology that
 
-- allows trading partners to document and determine the location of individual goods 
+- allows trading partners to document and determine the location of individual goods
 - if possible in real time
 - additional information: such as 生产使用日期，能否被贸易伙伴交换
 
@@ -548,7 +548,7 @@ access rights to object data: 包含在EPCIS里，指明了trading partners 之�
 4. product：卖给零售商 retailer
 
 5. At the retailer’s goods-in point 数据存储在零售商EPCIS中
-6. registered by EPCIS with EPC Discovery Services 
+6. registered by EPCIS with EPC Discovery Services
 7. The company prefix send to root EPCIS
 8. root -> local -> the EPCIS
 
@@ -578,7 +578,7 @@ EPC C1G2 有 OSI 的七层模型，两条数据链路（R-T）
 
 发 query 命令，aribtrate 仲裁。选择随机数生成时间片。
 
-slot=0 的开始 reply 
+slot=0 的开始 reply
 
 tag 发 ack 给 reader，acknowledged 状态。
 

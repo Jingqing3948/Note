@@ -430,7 +430,7 @@ $U_{int}=F_{Int}/F_{Max\_Int}$
 
 ## GPIO
 
-General Purpose Input Output, 
+General Purpose Input Output,
 
 ### Memory-Mapped IO
 
@@ -499,7 +499,7 @@ stm32有几组GPIO，每个有16个Pin，可以配置为input output pullin pull
 
 先说一下考试定义：
 
-CMSIS transforms memory mapped registers  into C structs 
+CMSIS transforms memory mapped registers  into C structs
 
 ```c
 #define PORT0 ((struct PORT*)0x2000030)
@@ -517,7 +517,7 @@ CMSIS transforms memory mapped registers  into C structs
 >
 > 榊：这种与内核相关的文件，比如启动文件，内核文件是CMSIS规定。
 >
-> 
+>
 >
 > ![a6953d9ebb72f2ecd6cc4dbf569d406](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/a6953d9ebb72f2ecd6cc4dbf569d406.png)
 >
@@ -770,7 +770,7 @@ init 参数是中断间隔的毫秒数。timer_set_callback() 里跟一个可以
 
 当器件输出 out 为低电平时，总线导通到接地，总线被拉低（整条总线都被拉低）。江协科技老师举的例子很好，就像公交车上的一根横杆，有人拉住横杆拽下来，整条横杆都被拉低了，其他人都知道“横杆被一个人拉低了，说明有人正在使用总线”。
 
-然后是总线传输数据的方式，SCL SDA 两根总线在何种情况下表示 start stop 0 1 bit? 
+然后是总线传输数据的方式，SCL SDA 两根总线在何种情况下表示 start stop 0 1 bit?
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230713140225426.png)
 
@@ -826,7 +826,7 @@ slave 地址编址有一些固定格式。
 
 ### 编程应用
 
-slave mode: 
+slave mode:
 
 - I2C 设备默认工作在 slave mode。
 - 外设时钟在 I2C_CR2 寄存器中编程。频率介于 2kHz~100kHz。

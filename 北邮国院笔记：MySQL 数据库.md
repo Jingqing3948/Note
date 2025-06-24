@@ -164,7 +164,7 @@ Workbench 等工具支持画 ER 图，甚至画好后可以自动生成 SQL 语�
 | 时间日期 (year, date, time, datetime, timestamp)    | date：年月日<br />time：时间<br />datetime：年月日时分秒<br />timestamp：时间戳，现在距离 1970-1-1 的毫秒数 |
 | Mysql 中的枚举类型 (enum, boolean)                  |                                                              |
 
-PS: 
+PS:
 
 1. 虽然 text 等类型可以存储很大的数据，不过大数据一般还是不会直接往数据库里存储。如图片，数据库中一般存储其路径、链接。如果非要存储，有 blob (binary large object)。
 
@@ -200,7 +200,7 @@ PS:
 | use      | 选中数据库          | use \`数据库名\`;                                            |
 | alter    | 更改数据库 / 表信息 | alter table \`表名\` add constraint \`约束名\` unique (\`字段名\`); |
 
-PS： 
+PS：
 
 修改表的引擎 / 更改自增约束初始值是在 create table \`表名\` () 后面添加的。
 
@@ -429,7 +429,7 @@ select * from table where `stu_name`='Jingqing';
 
 这里的字段如果是数字类型的，也可以进行 + - * / % mod（也是取余）以及 < >  = >= <= <> 等形式的运算。
 
-还有一种条件写法是 `between …… and ……` 
+还有一种条件写法是 `between …… and ……`
 
 ```mysql
 select * from table where `stu_age` between 10 and 30;-- 相当于 <=30 and >=10
@@ -552,7 +552,7 @@ select floor(datediff(curdate(),`date`)/365) from `staff`;
 
   ***如果利用 sum()和count() 做除法求平均值，要考虑空值对结果的影响。***
 
-  *比如有10个学生，但有一个学生的成绩为空，如果忽略掉成绩为空的学生， sum(score) / count(stu_id) 就是错误的，因为是9个人的成绩 / 10.* 
+  *比如有10个学生，但有一个学生的成绩为空，如果忽略掉成绩为空的学生， sum(score) / count(stu_id) 就是错误的，因为是9个人的成绩 / 10.*
 
   *如果成绩为空的学生视为 = 0，就要用 sum(score) / count(stu_id)，或者对 avg() 函数做如下处理：*
 
@@ -566,8 +566,8 @@ select floor(datediff(curdate(),`date`)/365) from `staff`;
 
 - std(字段名)，计算标准差，越小说明越稳定。
 
-  + std(), stddev() 和 stddev_pop()：所有数据总体的标准差
-  + stddev_samp()：样本标准差，抽样计算。
+  - std(), stddev() 和 stddev_pop()：所有数据总体的标准差
+  - stddev_samp()：样本标准差，抽样计算。
 
 - variance(字段名)，计算方差，标准差的平方。
 
@@ -700,7 +700,7 @@ from `tb_student` natural join `tb_college`;
 
 #### 内 / 外连接
 
-另一种连接方式是 inner join / outer join 
+另一种连接方式是 inner join / outer join
 
 或者用 `where A.id=B.id` ，这种内连接方式叫做隐式内连接。
 
@@ -756,11 +756,11 @@ natural join `tb_course`;
 
 ### 查询小技巧
 
-百度搜索：filetype:pdf python 搜索带 python 名的 pdf 文件
+百度搜索：filetype:pdf Python 搜索带 Python 名的 pdf 文件
 
-python -推广链接 不想看到广告推送
+Python -推广链接 不想看到广告推送
 
-site:zhihu.com python 只搜索知乎里的 python 内容
+site:zhihu.com Python 只搜索知乎里的 Python 内容
 
 2023-01-23 补充：关于信息检索，博主也有开一个新坑：[信息检索_灰海宽松的博客-CSDN博客](https://blog.csdn.net/jtwqwq/category_12158048.html?spm=1001.2014.3001.5482)。目前更新还不完全，不过对于搜索引擎部分应该足够用了。
 
@@ -1440,7 +1440,7 @@ DROP INDEX index_name ON table_name;
 
 `show global status like 'Com_______';`查看当前数据库增删改查等操作的频次。如 Com_commit Com_select。
 
-慢查询日志：记录了所有查询时间超过10s（long_query_time）sql语句的日志。查询变量：slow_query_log 可以看是否开启。
+慢查询日志：记录了所有查询时间超过10s（long_query_time）SQL语句的日志。查询变量：slow_query_log 可以看是否开启。
 
 默认没有开启，需要到/etc/my.cnf中开启 slow_query_log。
 
@@ -1463,7 +1463,7 @@ show variables like 'slow_query_log';//查询是否开启
 
 但是慢查询查询不到少于它规定秒数的语句。
 
-show profiles 可以帮助我们了解每条sql语句耗时。首先通过：have_profiling参数 查看当前数据库是否支持profile操作
+show profiles 可以帮助我们了解每条SQL语句耗时。首先通过：have_profiling参数 查看当前数据库是否支持profile操作
 
 ```mysql
 select @@have_profiling;
@@ -1489,13 +1489,13 @@ id：select查询的序列号，表示select或操作表的顺序，从大到小
 
 select_type：查询类型。
 
-​	simple：简单类型
+ simple：简单类型
 
-​	subquery：子查询
+ subquery：子查询
 
-​	primary：主查询，外层查询
+ primary：主查询，外层查询
 
-​	union：联合的后半部分
+ union：联合的后半部分
 
 **type**：连接类型，性能由好到坏分别为：null（不查询表，查询常量时）, system（系统表）, const（主键约束查询，唯一性约束查询）, eq_ref（子查询的 const）, ref（非唯一性约束查询）, range, index（用到了索引，但也是全表索引扫描）, all（全表扫描）
 
@@ -1519,8 +1519,8 @@ filtered：返回的行数/读取的行数百分比，越大越好。比如查�
 
 #### 使用规则
 
-1. 联合索引的**最左前缀法则**。比如一个索引要关联多列，那么查询从最左列开始，且不跳过索引中的列。比如我们给 profession age status 三列添加了一个索引，那么查询时就该写：`select * from table where profession="" and age="" and status=""; ` 不写 profession 查询或者只写 profession 和 status 查询会出错，会出现有 null 的列。（好像8.0可以不写最左列）原理大概是复合属性的索引是先按第一个排序，再按第二个，再第三个……所以只按后面的排序查找就出错。当然这三个查询顺序无所谓，关键是左边的一定得有。（这里的左指的是创建索引的时候的顺序，比如 `create index index_name on table_name(left_column, right column);`）
-2. 联合索引中如果出现范围查询（< >），范围查询右侧的属性失效。比如 `select * from table where profession="" and age>30 and status=""; `  status 查询就会失效。解决办法是尽量用 >= <=。
+1. 联合索引的**最左前缀法则**。比如一个索引要关联多列，那么查询从最左列开始，且不跳过索引中的列。比如我们给 profession age status 三列添加了一个索引，那么查询时就该写：`select * from table where profession="" and age="" and status="";` 不写 profession 查询或者只写 profession 和 status 查询会出错，会出现有 null 的列。（好像8.0可以不写最左列）原理大概是复合属性的索引是先按第一个排序，再按第二个，再第三个……所以只按后面的排序查找就出错。当然这三个查询顺序无所谓，关键是左边的一定得有。（这里的左指的是创建索引的时候的顺序，比如 `create index index_name on table_name(left_column, right column);`）
+2. 联合索引中如果出现范围查询（< >），范围查询右侧的属性失效。比如 `select * from table where profession="" and age>30 and status="";`  status 查询就会失效。解决办法是尽量用 >= <=。
 3. 索引列上不要做运算，否则会失效。 比如查询姓名三个字以“松”结尾的学生，姓名有索引，但是 `select * from students where substring(name,3,1)="松";` 不走索引。
 4. 查询字符串没加单引号也失效。
 5. 尾部模糊匹配（"abc%"）不会失效，头部模糊匹配（"%abc"）失效。

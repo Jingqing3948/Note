@@ -47,7 +47,6 @@ web 开发实践课的大作业。本次小程序设计主要围绕 map 组件�
 
 
 
-
 wxml 文件：
 
 ```html
@@ -167,6 +166,7 @@ Page({
 ```
 
 ## 发布文章
+
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/28e718d09b274fb89bbed42d385fab02.png)
 
 

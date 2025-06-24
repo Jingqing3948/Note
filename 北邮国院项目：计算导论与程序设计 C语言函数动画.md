@@ -73,6 +73,7 @@ void rest(int msec)//当前画面静止一定时间
 #endif
 }
 ```
+
 其中`clear()`函数清屏；`gotoxy()`函数使光标移动到指定位置；`rest()`当前画面静止。
 
 **思路**

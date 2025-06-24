@@ -5,7 +5,7 @@ tags:
 - Java
 - Spring
 categories:
-- 算道求索（课外IT技能学习）
+- 算道（课外IT技能学习）
 - Lecture
 description: 黑马程序员Java Spring入门课程学习笔记
 ---

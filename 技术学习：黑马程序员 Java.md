@@ -4,7 +4,7 @@ date: 2022-05-02
 tags: 
 - Java
 categories:
-- 算道求索（课外IT技能学习）
+- 算道（课外IT技能学习）
 - Lecture
 description: 黑马程序员Java入门课程学习笔记
 ---
@@ -32,13 +32,13 @@ JDK: Java Development Kit，Java 程序开发工具包。
 
 ```
 
-尽管 JRE 对于运行 java 文件已经足够，作为学习肯定还是要下载 JDK 的~
+尽管 JRE 对于运行 Java 文件已经足够，作为学习肯定还是要下载 JDK 的~
 
 JDK 的安装目录如下：
 
 | JDK 目录名称 | 说明                                |
 | ----------- | ----------------------------------- |
-| bin         | 存放工具命令，如：javac, java, etc. |
+| bin         | 存放工具命令，如：javac, Java, etc. |
 | conf        | 配置文件                            |
 | include     | 某些平台特定的头文件                |
 | jmods       | 模块                                |
@@ -46,11 +46,11 @@ JDK 的安装目录如下：
 | lib         | 补充 JAR 包                         |
 | 其他        | 说明型文档                          |
 
-环境配置等就不多赘述了，网上好的教程太多太多。总之就是终端 javac 和 java 可以执行，最好使用 IDEA 作为 IDE。
+环境配置等就不多赘述了，网上好的教程太多太多。总之就是终端 javac 和 Java 可以执行，最好使用 IDEA 作为 IDE。
 
 ### IDEA 环境介绍
 
-集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 java 的集成环境之一。
+集成环境：能够把代码编写、编译、执行、调试等功能集合到一起的开发工具。IDEA  就是 Java 的集成环境之一。
 
 创建项目-项目内创建模块（实现不同的功能）-模块 src 下创建包（类似文件夹，用于归纳区分不同的类）-包下创建类-类中编写代码。
 
@@ -60,7 +60,7 @@ JDK 的安装目录如下：
 
 ## 基础语法（重点比较与 C 的区别）
 
-### HelloWorld 
+### HelloWorld
 
 *使用 Notepad++ 前需要设置：`设置 -- 首选项 -- 新建 -- 默认语言：Java -- 编码 ANSI`。*
 
@@ -81,7 +81,7 @@ javac HelloWorld.java //编译，得到 .class 字节码文件，可以在任何
 java HelloWorld // .class 文件被解释执行，转化为可以直接在本地对应平台上运行的机器码文件
 ```
 
-java 和 C、C++ 一样，属于 **编译型语言**（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。
+Java 和 C、C++ 一样，属于 **编译型语言**（一次性翻译全部源程序，然后执行机器语言程序），而不是解释型语言（源程序逐条翻译并执行）。
 
 ### 注释
 
@@ -126,7 +126,7 @@ float f=1.235F; //防止 long 类型和 float 类型不兼容
 
 ==，>=，<=，>，<，!=
 
-? : 
+? :
 
 &，|，^，!（逻辑运算符）
 
@@ -170,7 +170,7 @@ s=(short)(s+10);// 也可以
 
 ### 数据输入
 
-输入通过 Scanner 类实现。Scanner 类在 java.util 包下，要先导包才能使用。
+输入通过 Scanner 类实现。Scanner 类在 Java.util 包下，要先导包才能使用。
 
 ```java
 import java.util.Scanner;//导包
@@ -189,7 +189,7 @@ for, while, do - while 语句，及 break continue 和 C 一样。
 
 ### 随机数
 
-Random 类，在 java.util 包下，需要导包。
+Random 类，在 Java.util 包下，需要导包。
 
 ```java
 import java.util.Random;
@@ -214,7 +214,7 @@ int[] arr=new int[3];//动态初始化，只申请了空间，系统赋予初始
 //引用类型：初始值为 null
 ```
 
-java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。
+Java 程序运行时需要在内存中分配空间，为了提高效率，内存空间也被划分为不同的部分。
 
 #### 栈内存
 
@@ -265,7 +265,7 @@ String line=sc.nextLine();
 
 String 类型代表字符串。其内容都是被双引号引住的。
 
-在 java.lang 包下，不用导包。
+在 Java.lang 包下，不用导包。
 
 ```java
 String s="abc";//直接赋值
@@ -286,7 +286,7 @@ String s3=new String(b);
 
 用 == 判断的比较，是比较 s1 和 s2 的值（即：对应字符串的地址值）是否相同。
 
-基本类型 == 比较的是数据值是否相同，引用类型 **== ** 比较的是 ** 地址 ** 是否相同。
+基本类型 == 比较的是数据值是否相同，引用类型 **==** 比较的是 **地址** 是否相同。
 
 用字符串的成员方法 **equals()** 判断，是比较字符串 **内容** 是否相同。
 
@@ -308,7 +308,7 @@ System.out.println(s1.equals(s3));//输出 true
 
 #### 遍历字符串：成员方法 length() 和 charAt()
 
-`s.length()` 可以获取字符串长度。**这里注意是有括号的，和数组长度 length 区分开！** 
+`s.length()` 可以获取字符串长度。**这里注意是有括号的，和数组长度 length 区分开！**
 
 s.charAt(i) 可以获取索引为 i 处的字符
 
@@ -343,7 +343,7 @@ s1.endsWith("world");
 
 与 String 类相比，最主要的特点在于内容可变。
 
-在 java.lang 包下，不用导包。
+在 Java.lang 包下，不用导包。
 
 构造方法：
 
@@ -383,7 +383,7 @@ String sr=new StringBuilder(s).reverse().toString();
 
 ### 方法
 
-java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。
+Java 中的方法类似 C 中的函数。只是涉及类和对象的问题，有一些小不同。
 
 像函数一样，是有独立功能的代码块组成的集合，可以拿去调用。
 
@@ -623,7 +623,7 @@ ArrayList 就是集合的一种。
 
 ### ArrayList \< E \>
 
-在 java.util 包下，需要导包。
+在 Java.util 包下，需要导包。
 
 \< E \> 表示泛型，限制数组中的元素只能是某一种类型（或者其子类，多态），可以在编译阶段约束操作的数据类型并进行检查（下面左边的 String）。
 
@@ -760,7 +760,7 @@ Strudent s2=new Student();//university 变量的值是 "北大"
 
 文件夹，用于存放编译后生成的 class 文件，方便管理。
 
-在 IDEA 中新建的 java 文件会自动生成包路径。如果要在 cmd 窗口中运行带有包路径的文件，编译照常，执行需要注明 class 文件的路径。
+在 IDEA 中新建的 Java 文件会自动生成包路径。如果要在 cmd 窗口中运行带有包路径的文件，编译照常，执行需要注明 class 文件的路径。
 
 ```java
 package com.ithema;
@@ -867,7 +867,7 @@ public abstract void eat();
 
 ### 接口
 
-接口是一种公共的行为规范标准，只要符合规范，大家都可以使用。 java 中的接口主要是对行为的抽象。如：
+接口是一种公共的行为规范标准，只要符合规范，大家都可以使用。 Java 中的接口主要是对行为的抽象。如：
 
 ```java
 public interface Jumpping{ // 接口
@@ -1123,7 +1123,7 @@ public boolean equals(Object o) {
 
 以下这些方法不能创建对象：
 
-```java 
+```java
 public Math(){};
 public Arrays(){};
 public System(){};
@@ -1185,7 +1185,7 @@ i3+=300;//NullPointerException。因此对象使用之前最好先判断是否�
 
 #### Date
 
-Date 类，需要导包。**注意是 java.util 下的，而不是 java.sql 下的！** java.util 下的 Date 类非最终类，所以可以有子类， java.sql 下的 Date 类就是其子类。
+Date 类，需要导包。**注意是 Java.util 下的，而不是 Java.SQL 下的！** Java.util 下的 Date 类非最终类，所以可以有子类， Java.SQL 下的 Date 类就是其子类。
 
 | 方法                           | 说明                                                   |
 | ------------------------------ | ------------------------------------------------------ |
@@ -1323,7 +1323,7 @@ catch(ParseException e){
 
 出现异常时，异常对象会被提交给 Java 运行时系统，如果和 catch 中的异常类匹配就会进行异常的处理，**处理完成后可以继续执行。**
 
-如果异常变量命名为 e , 调用 e 的成员方法 `e.printStackTrace()` 就会输出平时出现异常时系统默认提示的信息：`java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3  at com.ithema_02.ExceptionDemo02.method..... `
+如果异常变量命名为 e , 调用 e 的成员方法 `e.printStackTrace()` 就会输出平时出现异常时系统默认提示的信息：`java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3  at com.ithema_02.ExceptionDemo02.method.....`
 
 但是通过这种方法处理异常之后，异常后面的部分仍然可以执行。
 
@@ -1508,7 +1508,7 @@ System.out.println(c);//输出['Hello','World']，因为 ArrayList 中重写了 
 
 #### 迭代器 iterator
 
-java.util.Iterator
+Java.util.Iterator
 
 Iterator 是一个接口。使用 Iterator 迭代器遍历集合元素。
 
@@ -1575,7 +1575,7 @@ cfe-->|yes|X("集合没有被修改,继续遍历")
 
 ### List
 
-java.util.List
+Java.util.List
 
 继承自 Collection 类，可以使用其中的方法。
 
@@ -1671,7 +1671,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 用法一模一样，查询效率高就用 ArrayList，增删效率高用 LinkedList。
 
-#### ArrayList 
+#### ArrayList
 
 实现原理：
 
@@ -1687,7 +1687,7 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 方法的话没什么特殊的。
 
-#### LinkList 
+#### LinkList
 
 双向链表，有很多操作首尾元素的特殊方法。
 
@@ -1712,9 +1712,9 @@ ArrayList 底层数据结构是数组，LinkedList 底层数据结构是双向�
 
 但是多态的弊端在于没法使用子类中的特有自定义方法。迭代器的类型也和泛型定义的一样。
 
-但是其实 java 中的泛型是伪泛型。就是只在编译阶段检查，其实泛型检查相当于一个保安大爷。编译阶段会简单判断一下你传入的数据是否都符合泛型数据类型，符合才让存；但是存进去的时候还是按照 Object 类型存入的。只不过取出数据准备处理的时候多做了一步操作，就是将 Object 类型的数据再转化为对应的泛型数据类型。
+但是其实 Java 中的泛型是伪泛型。就是只在编译阶段检查，其实泛型检查相当于一个保安大爷。编译阶段会简单判断一下你传入的数据是否都符合泛型数据类型，符合才让存；但是存进去的时候还是按照 Object 类型存入的。只不过取出数据准备处理的时候多做了一步操作，就是将 Object 类型的数据再转化为对应的泛型数据类型。
 
-为什么这样做？因为泛型的概念是 JDK 1.5 才提出的，在之前的集合是没有泛型的，而新版本要尽可能向下兼容（因为之前已经诞生了很多 java 代码了，如果全部改成按指定泛型存入数据类型，之前很多旧版本的代码就用不了了，都要改）。
+为什么这样做？因为泛型的概念是 JDK 1.5 才提出的，在之前的集合是没有泛型的，而新版本要尽可能向下兼容（因为之前已经诞生了很多 Java 代码了，如果全部改成按指定泛型存入数据类型，之前很多旧版本的代码就用不了了，都要改）。
 
 *其实这也解释了为什么泛型不能设定为基本数据类型如 `int` `char` 这些，因为这些类型存入的时候无法转换为 `Object` 类型）*
 
@@ -1921,7 +1921,7 @@ TreeSet<String> ts = new TreeSet<>((o1, o2) -> {
 });
 ```
 
-Comparator 优先级高于 compareTo，对于 Integer 和 String java 已经定义好 compareTo 的情况我们又不想修改源码，就可以使用 Comparator 来重新设置排序方法。
+Comparator 优先级高于 compareTo，对于 Integer 和 String Java 已经定义好 compareTo 的情况我们又不想修改源码，就可以使用 Comparator 来重新设置排序方法。
 
 ### List Set 集合使用场景总结
 
@@ -2819,10 +2819,12 @@ Arrays.sort(arr, (o2,o1)-> o2 - o1);
 
 想使用方法引用的前提：
 
-- 引用处必须是函数式接口；
-- 被引用的方法需要已经存在，自定义的或者 java 自带的都可以；
+- 引用处必须是函数式接口 `FunctionalInterface`；要么是已经定义了 `@FunctionalInterface` 的接口，要么就是只有一个抽象方法，可以有多个非抽象方法的接口。
+- 被引用的方法需要已经存在，自定义的或者 Java 自带的都可以；
 - 形参，返回值数据类型相对应；
 - 功能上满足当前需求。
+
+### 静态方法引用
 
 比如对上面这个重写 Integer 数组排序的方法引用实现：
 
@@ -2840,6 +2842,75 @@ public static void main(String[] args){
 public static int substraction(int num1, int num2){
 	return num2 - num1;   
 }
+```
+
+还有比如 String 集合转为 Integer 并输出，结合方法引用 + 集合流处理：
+
+```java
+list.stream.map(new Function<String, Integer>(){
+    @Override
+    public Integer apply(String s){
+        return Integer.parseInt(s);
+    }
+}).forEach(s -> System.out.println(s));
+
+// 方法重写
+list.stream().map(Integer::parseInt).forEach(s -> System.out.println(s));
+```
+
+### 其他类方法引用
+
+比如专门写了一个 `StringOperation` 类，里面有实现等效于集合流 `.filter(s -> s.startsWith("张")).filter(s -> s.length==3)` 的非静态方法 `stringJudge`，那么我们可以：
+
+```java
+list.stream().map(new StringOperation()::stringJudge).forEach(s -> System.out.println(s));
+
+// 或者
+StringOperation so = new StringOperation();
+list.stream().map(so::stringJudge).forEach(s -> System.out.println(s));
+```
+
+### 本类或父类方法引用
+
+这里不可以引用静态方法。必须是非静态方法。（因为 this 和 super 可能就相当于创建了两个对象吧）。
+
+### 构造方法引用
+
+比如下面这个例子，我们想将集合中的每个字符串映射成一个 Student 对象，存储为一个 Student 集合：
+
+```java
+ArrayList<String> list = new ArrayList<>();
+
+Collections.addAll(list, "张无忌,15", "周芷若,14", "赵敏,13", "张强,20");
+
+List<Student> newList = list.stream().map(new Function<String, Student>() {
+    @Override
+    public Student apply(String s) {
+        String[] arr = s.split(",");
+        String name = arr[0];
+        int age = Integer.parseInt(arr[1]);
+        return new Student(name, age);
+    }
+}).collect(Collectors.toList());
+
+```
+
+首先我们可以先写一个 Student 构造方法，接收这个集合中的字符串，将其分隔并创建相应的 Student 对象。因为我们还记得，方法引用一个前提就是形参和返回值要对应。
+
+```java
+public Student(String str){
+	String[] arr = s.split(",");
+    String name = arr[0];
+    int age = Integer.parseInt(arr[1]);
+    this.name = name;
+    this.age = age;
+}
+```
+
+然后 map 就可以直接简写为构造方法方法引用形式：
+
+```java
+List<Student> newList = list.stream().map(Student::new).collect(Collectors.toList());
 ```
 
 
@@ -2992,7 +3063,7 @@ fis.close();
 >
 >第三次读取，获取到 "ed"，这是为什么？因为只获取到 e 结尾字节，后面就没了，就不会再继续对字节数组做覆盖了。返回值1.
 >
->所以读取结果转换为字符串可以这样处理：`new String(bytes, offset, length)` 
+>所以读取结果转换为字符串可以这样处理：`new String(bytes, offset, length)`
 >
 >```java
 >int len = 0;
@@ -3319,7 +3390,7 @@ public class MyCallable implements Callable<Integer> {
 > Thread.currentThread().getName();
 > ```
 >
-> 
+>
 
 ### 多线程方法
 
@@ -3449,7 +3520,7 @@ public class MyThread extends Thread {
 
 使用 `synchronized` 将要操作的对象锁住。我要操作数据的时候，把数据先锁起来自己操作，操作完了才解锁让别人能访问到。这样避免同时操作出现错误。
 
-java 实现真的是简单到极致：
+Java 实现真的是简单到极致：
 
 ```java
 public class MyThread extends Thread {
@@ -3886,7 +3957,7 @@ public class ThreadDemo {
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202506111835767.png" alt=" " style="zoom:50%;" />
 
-为什么说是只有 6 个状态？因为 java 中没有定义运行态。java ThreadState 定义如下：
+为什么说是只有 6 个状态？因为 Java 中没有定义运行态。Java ThreadState 定义如下：
 
 - 新建 NEW
 - 就绪 RUNNABLE
@@ -3903,11 +3974,11 @@ public class ThreadDemo {
 
 1. 抢红包问题。5 个人抢 3 个包，100 块钱随机分成 3 个包。最小金额 0.01.
 
-​	这里第一个点在于：前三个线程抢到红包，如何随机计算钱数。前两个线程的问题在于，不能随机出 0 或者全部剩余金额（这样就没给另外两个人留下钱了）。比如线程 1 最少能抢到 0.01，顶多只能抢到 99.98，这样才能给后面俩人留下至少 0.02 的红包。所以计算公式是 `random.nextDouble(leftAmount - 0.01*(leftCount - 1)) + 0.01`
+ 这里第一个点在于：前三个线程抢到红包，如何随机计算钱数。前两个线程的问题在于，不能随机出 0 或者全部剩余金额（这样就没给另外两个人留下钱了）。比如线程 1 最少能抢到 0.01，顶多只能抢到 99.98，这样才能给后面俩人留下至少 0.02 的红包。所以计算公式是 `random.nextDouble(leftAmount - 0.01*(leftCount - 1)) + 0.01`
 
-​	然后，第三个人就不用随机计算能抢到多少了，第三个人直接获得剩余的所有金额。
+ 然后，第三个人就不用随机计算能抢到多少了，第三个人直接获得剩余的所有金额。
 
-​	最后，抢到红包的三个人要输出自己抢到的金额，但是不能输出 double，要约到小数点后两位。老师是用了什么 BigDecimal 实现，我看到有一种比较有意思的方法是随机整数 `(0~9999)*0.01`. 
+ 最后，抢到红包的三个人要输出自己抢到的金额，但是不能输出 double，要约到小数点后两位。老师是用了什么 BigDecimal 实现，我看到有一种比较有意思的方法是随机整数 `(0~9999)*0.01`.
 
 2. 多线程比较问题，比如抽奖箱问题每个抽奖箱都抽到金额不等的一系列奖券，最后我们要输出谁抢到了最大的奖券，谁的总计奖券最大。也就是说需要多线程返回结果，需要使用 `Callable` 创建多线程的方法，并且通过 FutureTask 获取返回值。
 
@@ -3917,7 +3988,7 @@ public class ThreadDemo {
 
 线程池可以保存线程。线程池会一口气创建完所有线程，然后所有线程进入 wait 状态阻塞。线程池负责将线程唤醒分配给任务，完成任务后继续休眠阻塞。程序关闭线程池回收，销毁所有线程。但是如果是 24 小时运行的服务器，线程池就不会关闭了。
 
-这部分在 java 里实现非常简单：
+这部分在 Java 里实现非常简单：
 
 | 方法名称                                                     | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -4071,7 +4142,7 @@ CAS 的优点是不脱离用户态，所以减少上下文切换开销。缺点�
 
 HashMap 是不安全的。比如两个线程同时往一个 HashMap 写入大量的值，可能就会丢数据。
 
-解决方法可以加锁，实际上 java 中有一种 HashTable 就是加锁版的 HashMap 实现，底层很多方法都用 synchronized 修饰。但是这样效率会大大降低，因为每次读写数据都要阻塞其他线程（不过其倒可以绝对保证线程安全）。
+解决方法可以加锁，实际上 Java 中有一种 HashTable 就是加锁版的 HashMap 实现，底层很多方法都用 synchronized 修饰。但是这样效率会大大降低，因为每次读写数据都要阻塞其他线程（不过其倒可以绝对保证线程安全）。
 
 ConcurrentHashMap 是 JDK 1.5 之后的类。
 
@@ -4422,7 +4493,7 @@ UDP 适用于丢失部分数据影响不大的情况，比如视频语音会议�
 
 TCP 适合数据安全性要求高的情况。
 
-### UDP 
+### UDP
 
 发送数据主要经历四个步骤：
 

@@ -6,7 +6,7 @@ tags:
 - MySQL
 - Redis
 categories:
-- 算道求索（课外IT技能学习）
+- 算道（课外IT技能学习）
 - Lecture
 description: 黑马程序员Java面试课程学习笔记
 ---
@@ -397,7 +397,7 @@ IO 模型具体解释：Redis 执行速度非常快，瓶颈主要在网络延�
 
 - key 和 key_len：指明使用的索引和索引大小，我们可以根据这个判断是否命中索引。
 - extra：提供一些额外优化建议。比如 using index condition，说明使用了索引，但是还是回表查询了，可能是索引需要优化。
-- type：看 sql 是否有进一步的优化空间，是否出现了全盘扫描（all）或者全索引扫描（index）。
+- type：看 SQL 是否有进一步的优化空间，是否出现了全盘扫描（all）或者全索引扫描（index）。
 
 ### 索引
 

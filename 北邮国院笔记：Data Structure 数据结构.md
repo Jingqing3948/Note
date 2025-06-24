@@ -22,11 +22,11 @@ description: 北京邮电大学国际学院物联网工程专业数据结构课�
 Program = Algorithm + Data Structure
 An algorithm is a finite set of instructions that, fi followed, accomplishes a particular task. In addition, all algorithms must satisfy the following criteria:
 
--	Input
--	Output
--	Definiteness
--	Finiteness
--	Effectiveness
+- Input
+- Output
+- Definiteness
+- Finiteness
+- Effectiveness
 
 *Note:
 A program is written in some programming language, and does not have to be finite.
@@ -36,7 +36,7 @@ An algorithm can be described by human languages, flow charts, some programming 
 
 $2^n^>n^2^>nlogn>n>logn>1$
 
-## 单词：
+## 单词
 
 Algorithm 算法
 Definiteness 确定性
@@ -69,13 +69,16 @@ Pow 指数
 
 ## The List ADT
 
-1.	Array implementation
-   - 	**MaxSize** has to be estimated. （大小必须事先给出。给小了数组越界；(可以再申请)给大了太浪费空间）
-   - 	**Find_Kth** takes O(1) time. （随机存取）
-   - 	**Insertion and Deletion** not only take O(N) time, but also involve a lot of data movements which takes time.（插入删除不方便，需要移动大量元素；存储密度高）
-2.	Linked Lists（是否带有头结点）
-   -	三种操作：Find_Kth、Find_Value、Find_Length take O(N) time. 注意循环逻辑，以及有无头结点时对边界情况的处理
-   -	找前一个结点不方便，只能重新从头遍历、
+1. Array implementation
+
+- **MaxSize** has to be estimated. （大小必须事先给出。给小了数组越界；(可以再申请)给大了太浪费空间）
+- **Find_Kth** takes O(1) time. （随机存取）
+- **Insertion and Deletion** not only take O(N) time, but also involve a lot of data movements which takes time.（插入删除不方便，需要移动大量元素；存储密度高）
+
+2. Linked Lists（是否带有头结点）
+
+- 三种操作：Find_Kth、Find_Value、Find_Length take O(N) time. 注意循环逻辑，以及有无头结点时对边界情况的处理
+- 找前一个结点不方便，只能重新从头遍历、
 
 ### Doubly Linked Lists
 
@@ -114,22 +117,22 @@ Pop: 栈顶元素出栈
 
 ### Application 2: Postfix Evaluation 后缀表达式的计算
 
-Infix expression中缀表达式： a + b * c - d / e
-Prefix expression 前缀表达式：- + a * b c / d e
+Infix expression中缀表达式： a + b *c - d / e
+Prefix expression 前缀表达式：- + a* b c / d e
 Postfix expression 后缀表达式： a b c * + d e / -
 中缀表达式更符合人脑的计算方法，而后缀表达式更符合计算机的计算方法。
 实际上在计算机中计算表达式，是先转化为postfix expression，再进行计算的。
 转换方法：
 建立堆栈。
 
-1)	读入的字符是操作数：直接输出
-2)	读入的字符是操作符：
-   a)	堆栈是空的，则直接存入堆栈中（push）
-   b)	该操作符的优先级>栈顶元素操作符，则直接入栈（push）
-   c)	该操作符的优先级<=栈顶元素操作符，则栈顶元素出栈（pop），直到该操作符的优先级大于栈顶元素（这个栈顶元素也要出栈），然后该操作符入栈（push）
-   d)	操作符是左括号，则直接入栈（pop），遇到右括号之前永不输出
-   e)	操作符是右括号，则一直出栈（pop）直到左括号出栈
-   f)	最终输入结束，栈若非空，栈中元素全部出栈。
+1) 读入的字符是操作数：直接输出
+2) 读入的字符是操作符：
+   a) 堆栈是空的，则直接存入堆栈中（push）
+   b) 该操作符的优先级>栈顶元素操作符，则直接入栈（push）
+   c) 该操作符的优先级<=栈顶元素操作符，则栈顶元素出栈（pop），直到该操作符的优先级大于栈顶元素（这个栈顶元素也要出栈），然后该操作符入栈（push）
+   d) 操作符是左括号，则直接入栈（pop），遇到右括号之前永不输出
+   e) 操作符是右括号，则一直出栈（pop）直到左括号出栈
+   f) 最终输入结束，栈若非空，栈中元素全部出栈。
 
 [7-2 Infix to postfix Conversion 代码实现](https://github.com/Jingqing3948/Data-Structure-in-BUPT/blob/main/1%20STACK/7-2%20Infix%20to%20Postfix%20Conversion.cpp)
 
@@ -150,7 +153,7 @@ DeQueue: 出队
 树
 【基本概念】各类树的度、高、深、节点数与叶子节点的关系；孩子兄弟节点树；
 【二分检索树】：概念 平衡二叉树 完全二叉树 满二叉树 AVL树…… 会插入 删除；
-【遍历树】：先序 后序 中序 层序；会代码创建树和检索、会执行画图 
+【遍历树】：先序 后序 中序 层序；会代码创建树和检索、会执行画图
 【B-树】：会画图 构建B-树，增加节点，删除节点 B-树
 【霍夫曼树】：理解原理 给出数据 会画霍夫曼树的图；节点关系
 理清各种树之间的关系
@@ -325,6 +328,7 @@ Tree DoubleRotatewithRight(Tree T)
 #### Insertion
 
 考完试补全
+
 $$
 Depth(M,N)=O(log_{[M/2]}N)
 $$
@@ -338,11 +342,13 @@ $$
 ### Huffman Tree
 
 Weighted Path Length, WPL
+
 $$
 WPL=\sum^k_{i=1}w_i*l_i
 $$
+
 Huffman Tree: the binary tree with the minimum weighted path length.
-0 is appended to left branch, 
+0 is appended to left branch,
 1 is appended to right branch.
 
 哈希
@@ -359,14 +365,14 @@ Huffman Tree: the binary tree with the minimum weighted path length.
 
 - must be easy to compute and minimizes the number of collisions.
 - Should be unbiased. For any x and any i, we have that probability(f(x)=i)=1/b. (Uniform hash function)
-  ** f(x)=x%TableSize**
+  **f(x)=x%TableSize**
   TableSize=prime number is good for random integer keys.
 
 ### 处理冲突的办法
 
 #### open addressing 开放定址法
 
-find another empty cell to solve collision 
+find another empty cell to solve collision
 
 ##### Linear Probing 线性探测法
 
@@ -625,13 +631,13 @@ Step 4:  If (there is a path s -> t in G_r )
 
 ### Minimum Spanning Tree
 
-is a tree which consists of V(G) and a subset of E(G). 
+is a tree which consists of V(G) and a subset of E(G).
 
 - It is acyclic -- the number of edges is |V|-1.
 - It is minimum for the total cost of edges is minimized.
 - A minimum spanning tree exists if G is connected.
 
-### 2 Method of calculating the minimum spanning tree: 
+### 2 Method of calculating the minimum spanning tree
 
 1. Prim's Algorithm
    very samiliar to Dijkstra’s algorithm. We choose a vertex to start, and every time add a a least cost vertex until all vertex is connected.
@@ -684,7 +690,7 @@ strcpy(str1, str2, k)  //String copy；
 
 strcmp(str1, str2) //String comparision；
 
-strlen(str)  //Get the length of string 
+strlen(str)  //Get the length of string
 
 ### Pattern Matching algorithm
 

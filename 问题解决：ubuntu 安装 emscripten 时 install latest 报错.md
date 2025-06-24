@@ -31,7 +31,7 @@ Linux jingqing 5.19.0-35-generic #36~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 
 
 > emsdk install latest报错（因为从谷歌中下载，cmd中命令形式访问不到google）
 > 版权声明：本文为CSDN博主「小白啥时候能进阶成功」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-> 原文链接：https://blog.csdn.net/qq_34754747/article/details/103815349
+> 原文链接：<https://blog.csdn.net/qq_34754747/article/details/103815349>
 
 非常感谢博主的答疑解惑，不过我没有看得太懂原文中的解决方案，网上搜到的大多数方案也是 windows 环境下的解决方案，因此我决定自己写一个 ubuntu 系统下的补安装。
 
@@ -39,7 +39,7 @@ Linux jingqing 5.19.0-35-generic #36~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 
 
 说白了就是我自己复制链接到浏览器里，下载安装这几个包，放到 emsdk 的指定位置。
 
-这里有两个要注意的点，这一部分主要是分析，不想看的同学可以直接跳到[具体步骤](#solution)处：
+这里有两个要注意的点，这一部分主要是分析，不想看的同学可以直接跳到[具体步骤](#具体步骤)处：
 
 1. emsdk install 的默认安装规则是：不管你有没有安装过这些包，我 install latest 都是重新安装，保证最新版本。但是现在问题是 install latest 有问题，我要手动安装包放进去。
    我们打开 emsdk.py 通过搜索关键词可以找到报错信息的位置：
@@ -134,11 +134,11 @@ Linux jingqing 5.19.0-35-generic #36~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Feb 
 
 ## 具体步骤
 
-1. 首先要安装所缺的所有包，一个个安装，报错信息里提示什么安装什么。比如文章开头的报错信息中下载链接是：https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2，就先安装这个。
+1. 首先要安装所缺的所有包，一个个安装，报错信息里提示什么安装什么。比如文章开头的报错信息中下载链接是：<https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2，就先安装这个。>
 
-   node: https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2
+   node: <https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2>
 
-   wasm-binaries: https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2
+   wasm-binaries: <https://storage.googleapis.com/webassembly/emscripten-releases-builds/linux/b90507fcf011da61bacfca613569d882f7749552/wasm-binaries.tbz2>
 
    安装完成后要重命名 b90507fcf011da61bacfca613569d882f7749552-wasm-binaries.tbz2。
 

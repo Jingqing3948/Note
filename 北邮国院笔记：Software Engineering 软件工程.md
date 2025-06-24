@@ -95,7 +95,7 @@ transition: 交付到客户手中。
 
 通用的完整流程，动态。但是开销大了。
 
-#### Agile Software Development 
+#### Agile Software Development
 
 现代软件开发流程：敏捷开发。
 
@@ -105,11 +105,11 @@ Rapid software development 快速开发：争取每一版都交一个可以交�
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/8a04dc9794b9fae3b772c1efab38b648.png)
 
-Individuals and interactions over processes and tools 
+Individuals and interactions over processes and tools
 
-Working software over comprehensive documentation 
+Working software over comprehensive documentation
 
-Customer collaboration over contract negotiation 
+Customer collaboration over contract negotiation
 
 Responding to change over following a plan
 
@@ -125,7 +125,7 @@ Responding to change over following a plan
 
 • Removing duplication.
 
-• Increasing cohesion. 
+• Increasing cohesion.
 
 • Reducing coupling
 
@@ -138,9 +138,9 @@ Responding to change over following a plan
 - 先开发测试单元，再写代码
 - 测试过了才算构建完成
 
-Test Driven Development (TDD): 
+Test Driven Development (TDD):
 
-- Define both an interface and a specification. 
+- Define both an interface and a specification.
 - 先写test后写code。
 - 基于增量设计测试 Incremental。
 - 每次构建后自动化测试 Automated。
@@ -268,13 +268,13 @@ MoSCoW：一种 dsdm 动态系统开发方法。
 
 估计项目用时。
 
->  story point：故事点，用于表示完成一个产品待办项或者其他任何某项工作所需的所有工作量的估算结果。
+> story point：故事点，用于表示完成一个产品待办项或者其他任何某项工作所需的所有工作量的估算结果。
 >
->  当采用故事点估算时，我们为每个待办项分配一个点数。待办项估算结果的原生数据并不重要，我们只关注最后得到的相对估算结果。一个估算值为2的用户故事应该是估算值为1的用户故事的2倍。而它也应该是另一个估算值为3的用户故事的三分之二。
+> 当采用故事点估算时，我们为每个待办项分配一个点数。待办项估算结果的原生数据并不重要，我们只关注最后得到的相对估算结果。一个估算值为2的用户故事应该是估算值为1的用户故事的2倍。而它也应该是另一个估算值为3的用户故事的三分之二。
 >
->  团队不要采用100、200、300，或者1百万、2百万、3百万，而要使用1、2、3。估算结果是比值，而不是绝对值。
+> 团队不要采用100、200、300，或者1百万、2百万、3百万，而要使用1、2、3。估算结果是比值，而不是绝对值。
 >
->  [敏捷开发中到底什么是故事点（Story Point）？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/351172855)
+> [敏捷开发中到底什么是故事点（Story Point）？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/351172855)
 
 #### 评判 good usr story
 
@@ -331,11 +331,11 @@ relationships: – Association – Inheritance.
 
 Activities:  
 
-1. Identify Entity, Boundary and Control classes 
-2. Identify class relationships 
-3. A conceptual class diagram 
-4. Identify attributes for each entity class 
-5. Add constraints 
+1. Identify Entity, Boundary and Control classes
+2. Identify class relationships
+3. A conceptual class diagram
+4. Identify attributes for each entity class
+5. Add constraints
 
 ### design
 
@@ -431,7 +431,7 @@ test cases 示例（正确的输入。错误的输入比如学号输入英文）
 
 Test Procedures 测试程序，通常设置为可通用的，便于之后修改重用。这个程序不一定是代码，可能以流程指导的形式（比如按下login按钮，输入账号99001122登录……）
 
-test matrix: 
+test matrix:
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/image-20230602161119974.png)
 
@@ -654,7 +654,7 @@ class and objects：类和对象。对象是类的实例 instance。两者关系
 
 static：静态方法只能被类自己和其附加类调用。静态类实例化的对象是只有一个通用的对象，而不是实例化出无数个对象。
 
-Variables and referencing：java中变量是对对象的引用，比如var2=var1不是赋值而是改变var2指向var1的引用。包括一个变量的自带方法的
+Variables and referencing：Java中变量是对对象的引用，比如var2=var1不是赋值而是改变var2指向var1的引用。包括一个变量的自带方法的
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332273.png)
 
@@ -670,23 +670,23 @@ Scope and garbage collection：对象的作用域只要有变量还在引用这�
 
 - Design by Contract：一种思想。客户端代码应当满足承包商的先决需求pre-conditions；应当对异常做处理（exception）；后置条件post-conditions在测试中作为断言assertions合并到程序中。（前置条件：前提；后置条件：方法运行后的状态）
 
-#### **Single Responsibility Principle (SRP)** 
+#### **Single Responsibility Principle (SRP)**
 
 单一责任原则：每个类有一个职责 responsibility，其所有对象都服务于这个职责。Leads to highly cohesive 内聚性高
 
 #### Open-Closed Principle (OCP)
 
-开放闭合原则：模块（类和方法）open to extension，close to modification 
+开放闭合原则：模块（类和方法）open to extension，close to modification
 
 对扩展开放，意味着有新的需求或变化时，可以对现有代码进行扩展，以适应新的情况。
 
 对修改封闭，意味着类一旦设计完成，就可以独立完成其工作，而不要对类进行任何修改。比如一个类以不同对象形式表现这就是扩展，因为需求改变或者有新需求。
 
-#### **Do not Repeat Yourself principle (DRY)** 
+#### **Do not Repeat Yourself principle (DRY)**
 
 不要复读机原则（不要重复自己原则）。本模块中如果发现重复内容，建议再抽象为方法和类。
 
-#### **Liskov Substitution Principle (LSP) **
+#### **Liskov Substitution Principle (LSP)**
 
 Liskov替代原理：重写方法，不应该抱着”修改其方法“的想法。不能加强 strengthen 前置条件，不能削弱 weaken 后置条件。
 
@@ -702,7 +702,7 @@ Association, Aggregation and Composition：association是两个不同东西的�
 
 有的时候继承满足不了LSP（比如令正方形为矩形的子类），可以使用聚类来防止破坏LSP。
 
-#### **Interface-Segregation Principle (ISP)** 
+#### **Interface-Segregation Principle (ISP)**
 
 接口隔离原则：首先接口应该尽量分解为小接口。客户端每个类不应该依赖他不使用的方法。就是接口用啥实现啥，别多实现。
 
@@ -749,7 +749,7 @@ Association, Aggregation and Composition：association是两个不同东西的�
 
 Wrapper 模式包括 decorator 和 adapter。decorator 主要是外面的包裹类和里面的类都实现一个接口，比如上例的鸭子嘎嘎。adapter 是内部类不需实现。
 
-Immutable View：前面提过java引用的问题，比如两个变量引用同一个对象，一改都改。这样就相当于有引用的时候，该目标对象完全暴露出来了。在wrapper里我们可以限制包装类：禁止修改对象，修改则抛出异常。
+Immutable View：前面提过Java引用的问题，比如两个变量引用同一个对象，一改都改。这样就相当于有引用的时候，该目标对象完全暴露出来了。在wrapper里我们可以限制包装类：禁止修改对象，修改则抛出异常。
 
 ![1685986070602](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/1685986070602.png)
 
@@ -763,7 +763,7 @@ Immutable View：前面提过java引用的问题，比如两个变量引用同�
 
 比如看到绿灯汽车知道该走了，这种观察者一个变量改变影响其他变量的实现。
 
-java是提供了observable的api的，当对应变量值改变时触发函数。
+Java是提供了observable的api的，当对应变量值改变时触发函数。
 
 ![1685986641156](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202505152332446.png)
 
@@ -853,7 +853,7 @@ java是提供了observable的api的，当对应变量值改变时触发函数。
 
 ## Open Source Software
 
-free of charge, free of legal restrictions on usage. 
+free of charge, free of legal restrictions on usage.
 
 也需要敏捷开发，但是开发方式略有不同，毕竟不是利益相关的模式。强调个人之间的密切交互 close personal interaction，开发者也是自己的客户，因此有很多人做测试，而且修改后的小版本可以很快发布；通常分的小模块很多，世界各地的大家分别开发。
 
@@ -946,7 +946,7 @@ merge：合并入主分支。
 
 发布前，作战小组确认系统“好到可以发布”。检查运行是否正常，剩余的bug严重程度等。
 
-#### Code reviews and coding guidelines 
+#### Code reviews and coding guidelines
 
 团队对彼此代码进行彻底审查。
 

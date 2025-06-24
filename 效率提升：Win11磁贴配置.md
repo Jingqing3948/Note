@@ -4,7 +4,7 @@ date: 2023-10-09
 tags:
 - Windows
 categories:
-- 踏星逐路（创新探索）
+- 踏星（创新探索）
 - Efficiency
 description: Win11 磁贴配置办公效率提升
 ---
@@ -25,8 +25,8 @@ description: Win11 磁贴配置办公效率提升
 
 正版软件是免费试用的，欢迎付费支持原作者。或采用博主的同款方案：
 
-链接：https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru 
-提取码：1fru 
+链接：<https://pan.baidu.com/s/1HY0WuV7ynlXdBI7qfuWZzg?pwd=1fru>
+提取码：1fru
 --来自百度网盘超级会员V2的分享
 
 首先如果是按博主的磁贴方法配置，就要选“win10配置”。或者你觉得其他风格也还不错都可以选。并且 ENABLE start11.
